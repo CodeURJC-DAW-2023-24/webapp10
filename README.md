@@ -2,15 +2,15 @@
 ---
 ## Index 📖
 [Phase 0](#fase-0)
-   - [Team Members](#team-members)
-   - [Team Tools](#team-tools)
-   - [Entities](#entities)
-   - [Users](#users)
-   - [Permissions](#permissions)
-   - [Images](#images)
-   - [Graphics](#graphics)
-   - [Complementary Technology](#complementary-technology)
-   - [Algorithm or Advanced Query](#algorithm-or-advanced-query) <br>
+   - [Team Members](#01--team-members)
+   - [Team Tools](#02--team-tools)
+   - [Entities](#03--entities)
+   - [Users](#04--users)
+   - [Permissions](#05--permissions)
+   - [Images](#06--images)
+   - [Graphics](#07--graphics)
+   - [Complementary Technology](#08--complementary-technology)
+   - [Algorithm or Advanced Query](#09--algorithm-or-advanced-query) <br>
 ---
 
 # Phase 0
