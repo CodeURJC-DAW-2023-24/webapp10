@@ -1,7 +1,7 @@
 # Mortez365
 ---
 ## Index 📖
-[Phase 0](#fase-0)
+[Phase 0](#phase-0)
    - [Team Members](#team-members)
    - [Team Tools](#team-tools)
    - [Entities](#entities)
