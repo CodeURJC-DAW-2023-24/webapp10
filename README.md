@@ -52,9 +52,13 @@ In our web application we have the following permissions:
   - **Registered User**: User who can view the page and its content, and also participate in the available bets.
   - **Administrator**: User who can modify, add and delete any bet from the application.
 
+
 ___
 
 ## 📷 Images 
+In our web application we have the following types of images:
+   - **User Profile Photo**: The photo which is shown in the profile of the users. This image will be upladed by the users.
+   - **Football Matches Photos**: The photo which is shown in each football match on which users can bet.
 
 
 
@@ -62,6 +66,9 @@ ___
 ___
 
 ## ↗️ Grapchics 
+In our web application we have the following types of graphics:
+   - **Bets Won Graph**: This graph will show the statistics of the bets won by users.
+   - **Hot Roulette Numbers Graph**: This graph will show the numbers that have won the most bets in the roulette. 
 
 
 
