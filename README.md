@@ -1,23 +1,21 @@
-# webapp10
-
 # Mortez365
 ---
-## Índice
-[Fase 0](#fase-0)
-   - [Miembros del Equipo](#miembros)
-   - [Herramientas del Equipo](#herramientas)
-   - [Entidades](#entidades)
-   - [Usuarios](#usuarios)
-   - [Permisos](#permisos)
-   - [Imágenes](#imagenes)
-   - [Gráficos](#graficos)
-   - [Tecnología Complementaria](#tecnologia-complementaria)
-   - [Algoritmo o Consulta Avanzada](#algoritmo-consulta-avanzada) <br>
+## Index
+[Phase 0](#fase-0)
+   - [Team Members](#miembros)
+   - [Team Tools](#herramientas)
+   - [Entities](#entidades)
+   - [Users](#usuarios)
+   - [Permissions](#permisos)
+   - [Images](#imagenes)
+   - [Graphics](#graficos)
+   - [Complementary Technology](#tecnologia-complementaria)
+   - [Algorithm or Advanced Query](#algoritmo-consulta-avanzada) <br>
 ---
 
-# Fase 0
-## 0.1 | Miembros del Equipo 
-| Nombre                        | Correo                             | GitHub Nick       |
+# Phase 0
+## 0.1 | Team Members
+| Name                        | Email                             | GitHub Nick       |
 | ---------                     | ----                               | ---------         |
 | Vicente Navarro Raboso        | v.navarro.2021@alumnos.urjc.es     | vicentenavarro13  |
 | Alberto Roldán Nieto          | a.roldan.2021@alumnos.urjc.es      | albertorolnie     |
@@ -26,30 +24,30 @@
 
 ___
 
-## 0.2 | Herramientas del Equipo
-Para la realización de la práctica, hemos coordinado nuestras tareas usando Jira.
+## 0.2 | Team Tools
+For the implementation of the practice, we have coordinated our tasks using Jira.
 
 ___
 
-## 0.3 | Entidades
-En nuestra aplicación web encontramos las siguientes entidades:
-  - **Usuarios**
-  - **Eventos**
-  - **Apuestas**
-  - **Transacciones**
+## 0.3 | Entities
+In our web application we find the following entities:
+  - **Users**
+  - **Events**
+  - **Bets**
+  - **Transactions**
 
 ___
 
-## 0.4 | Usuarios
-En nuestra aplicación web encontramos los siguientes usuarios:
-  - **Usuario Anónimo**: Usuario que accede a la aplicación sin iniciar sesión en la misma
-  - **Usuario Registrado**: Usuario que ha iniciado sesión en la aplicación previo registro
-  - **Administrador**: Usuario encargado de funciones especiales en la aplicación
+## 0.4 | Users
+In our web application we have the following users:
+  - **Anonymous User**: User who accesses the application without logging in.
+  - **Registered User**: User who has logged into the application after registration.
+  - **Administrator**: User in charge of special functions in the application.
 
 ___
 
-## 0.5 | Permisos
-En nuestra aplicación web encontramos los siguientes usuarios:
-  - Usuario Anónimo
-  - Usuario Registrado
-  - Administrador
+## 0.5 | Permissions
+In our web application we have the following permissions:
+  - **Anonymous User**: User who can view the page and its content, but not participate in any bets.
+  - **Registered User**: User who can view the page and its content, and also participate in the available bets.
+  - **Administrator**: User who can modify, add and delete any bet from the application.
