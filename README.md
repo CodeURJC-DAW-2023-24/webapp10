@@ -2,19 +2,19 @@
 ---
 ## Index 📖
 [Phase 0](#fase-0)
-   - [Team Members](#01--team-members)
-   - [Team Tools](#02--team-tools)
-   - [Entities](#03--entities)
-   - [Users](#04--users)
-   - [Permissions](#05--permissions)
-   - [Images](#06--images)
-   - [Graphics](#07--graphics)
-   - [Complementary Technology](#08--complementary-technology)
-   - [Algorithm or Advanced Query](#09--algorithm-or-advanced-query) <br>
+   - [Team Members](#team-members)
+   - [Team Tools](#team-tools)
+   - [Entities](#entities)
+   - [Users](#users)
+   - [Permissions](#permissions)
+   - [Images](#images)
+   - [Graphics](#graphics)
+   - [Complementary Technology](#complementary-technology)
+   - [Algorithm or Advanced Query](#algorithm-or-advanced-query) <br>
 ---
 
 # Phase 0
-## 0.1 | Team Members 😎
+##  😎 Team Members
 | Name                        | Email                             | GitHub Nick       |
 | ---------                     | ----                               | ---------         |
 | Vicente Navarro Raboso        | v.navarro.2021@alumnos.urjc.es     | vicentenavarro13  |
@@ -24,12 +24,12 @@
 
 ___
 
-## 0.2 | Team Tools 🧰
+## 🧰 Team Tools 
 For the implementation of the practice, we have coordinated our tasks using Jira.
 
 ___
 
-## 0.3 | Entities 🎰
+## 🎰 Entities 
 In our web application we find the following entities:
   - **Users**
   - **Events**
@@ -38,7 +38,7 @@ In our web application we find the following entities:
 
 ___
 
-## 0.4 | Users 👱
+## 👱 Users 
 In our web application we have the following users:
   - **Anonymous User**: User who accesses the application without logging in.
   - **Registered User**: User who has logged into the application after registration.
@@ -46,7 +46,7 @@ In our web application we have the following users:
 
 ___
 
-## 0.5 | Permissions 🔓
+## 🔓 Permissions 
 In our web application we have the following permissions:
   - **Anonymous User**: User who can view the page and its content, but not participate in any bets.
   - **Registered User**: User who can view the page and its content, and also participate in the available bets.
@@ -54,24 +54,24 @@ In our web application we have the following permissions:
 
 ___
 
-## 0.6 | Images 📷
+## 📷 Images 
 
 
 
 
 ___
 
-## 0.7 | Grapchics ↗️
+## ↗️ Grapchics 
 
 
 
 ___
 
-## 0.8 | Complementary Technology 👨‍💻
+## 👨‍💻 Complementary Technology 
 
 
 
 ___
 
 
-## 0.9 | Algorithm or Advanced Query 🤖
+## 🤖 Algorithm or Advanced Query 
