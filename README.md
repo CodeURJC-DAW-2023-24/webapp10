@@ -75,10 +75,13 @@ In our web application we have the following types of graphics:
 ___
 
 ## 👨‍💻 Complementary Technology 
-
+In our web application we use this complementary technology:
+   - **
 
 
 ___
 
 
 ## 🤖 Algorithm or Advanced Query 
+In our web application we use this algorithms:
+   - **Roulette Algorithm**: To let the users play to the roulette we use an algorithm that chooses one random number from the 36           numbers of the roulette
