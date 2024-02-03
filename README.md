@@ -2,15 +2,15 @@
 
 ## 📖 Index
 [Phase 0](#phase-0)
-   - [Team Members](#😎-team-members)
-   - [Team Tools](#🧰-team-tools)
-   - [Entities](#🎰-entities)
-   - [Users](#👱-users)
-   - [Permissions](#🔓-permissions)
-   - [Images](#📷-images)
-   - [Graphics](#↗️-graphics)
-   - [Complementary Technology](#👨‍💻-complementary-technology)
-   - [Algorithm or Advanced Query](#🤖-algorithm-or-advanced-query) <br>
+   - [Team Members](#-team-members)
+   - [Team Tools](#-team-tools)
+   - [Entities](#-entities)
+   - [Users](#-users)
+   - [Permissions](#-permissions)
+   - [Images](#-images)
+   - [Graphics](#-graphics)
+   - [Complementary Technology](#-complementary-technology)
+   - [Algorithm or Advanced Query](#-algorithm-or-advanced-query) <br>
 ---
 
 ## Phase 0
