@@ -77,7 +77,9 @@ ___
 
 ## 👨‍💻 Complementary Technology
 In our web application we use this complementary technology:
-   - **
+   - **PDF Generator**: we use a PDF generator to create the tickets with the information of the bets made by the users.
+   - **Roulette API**: we use an external API of a roulette to implementate the roulette game.
+   - **Slot Machine Roulette**: we use an external API of a slot machine to implementate the slot machine game.
 
 
 ___
