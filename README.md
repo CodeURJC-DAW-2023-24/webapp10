@@ -58,8 +58,9 @@ ___
 
 ## 📷 Images
 In our web application we have the following types of images:
-   - **User Profile Photo**: the photo which is shown in the profile of the users. This image will be upladed by the users.
-   - **Football Matches Photos**: the photo which is shown in each football match on which users can bet.
+   - **User Profile Picture**: the picture which is shown in the profile of the users. This image will be upladed by the users.
+   - **Football Matches Picture**: the picture which is shown in each football match on which users can bet.
+   - **Auction Picture**: the picture that describes the main product of the auction (optional target).
 
 
 
@@ -77,9 +78,11 @@ ___
 
 ## 👨‍💻 Complementary Technology
 In our web application we use this complementary technology:
-   - **PDF Generator**: we use a PDF generator to create the tickets with the information of the bets made by the users.
-   - **Roulette API**: we use an external API of a roulette to implementate the roulette game.
-   - **Slot Machine API**: we use an external API of a slot machine to implementate the slot machine game.
+   - **Email sending**: third-party technology will be used to send e-mails to our users.
+   - **PDF generator**: external technology will be used to generate betting and other tickets in PDF format.
+   - **Websockets**: third-party libraries will be used to create real-time notifications.
+   - **Roulette API**: we will use an external roulette API to implementate the roulette game.
+   - **Slot Machine API**: we will use an external slot machine API to implementate the slot machine game.
 
 
 ___
@@ -87,4 +90,5 @@ ___
 
 ## 🤖 Algorithm or Advanced Query
 In our web application we use this algorithms:
-   - **Roulette Algorithm**: To let the users play to the roulette we use an algorithm that chooses one random number from the 36           numbers of the roulette
+   - **Roulette Algorithm**: in order for users to play roulette correctly, an algorithm will be used to choose a random number out of the 36 that make up the roulette wheel.
+   - **Horse Racing Algorithm**: the application will use an algorithm that simulates a horse racing, making one of all the competitors the winner.
