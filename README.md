@@ -18,15 +18,15 @@
 ##  😎 Team Members
 | Name                        | Email                             | GitHub Nick       |
 | ---------                     | ----                               | ---------         |
-| Vicente Navarro Raboso        | v.navarro.2021@alumnos.urjc.es     | vicentenavarro13  |
-| Alberto Roldán Nieto          | a.roldan.2021@alumnos.urjc.es      | albertorolnie     |
-| José Andrés Villagrán Robles  | ja.villagran.2021@alumnos.urjc.es  | josrob13          |
-| Guillermo Romero Almazán      | g.romero.2021@alumnos.urjc.es      | Guillalox         |
+| Vicente Navarro Raboso        | v.navarro.2021@alumnos.urjc.es     | [@vicentenavarro13](https://github.com/vicentenavarro13)  |
+| Alberto Roldán Nieto          | a.roldan.2021@alumnos.urjc.es      | [@albertorolnie](https://github.com/albertorolnie)     |
+| José Andrés Villagrán Robles  | ja.villagran.2021@alumnos.urjc.es  | [@josrob13](https://github.com/josrob13)          |
+| Guillermo Romero Almazán      | g.romero.2021@alumnos.urjc.es      | [@Guillalox](https://github.com/guillalox)         |
 
 ___
 
 ## 🧰 Team Tools
-For the implementation of the practice, we have coordinated our tasks using Jira.
+For the implementation of the practice, we have coordinated our tasks using [Jira](https://daw-equipo10-23-24.atlassian.net/jira/software/projects/DAW10/boards/1).
 
 ___
 
@@ -41,25 +41,25 @@ ___
 
 ## 👱 Users
 In our web application we have the following users:
-  - **Anonymous User**: User who accesses the application without logging in.
-  - **Registered User**: User who has logged into the application after registration.
-  - **Administrator**: User in charge of special functions in the application.
+  - **Anonymous User**: user who accesses the application without logging in.
+  - **Registered User**: user who has logged into the application after registration.
+  - **Administrator**: user in charge of special functions in the application.
 
 ___
 
 ## 🔓 Permissions
 In our web application we have the following permissions:
-  - **Anonymous User**: User who can view the page and its content, but not participate in any bets.
-  - **Registered User**: User who can view the page and its content, and also participate in the available bets.
-  - **Administrator**: User who can modify, add and delete any bet from the application.
+  - **Anonymous User**: user who can view the page and its content, but not participate in any bets.
+  - **Registered User**: user who can view the page and its content, and also participate in the available bets.
+  - **Administrator**: user who can modify, add and delete any bet from the application.
 
 
 ___
 
 ## 📷 Images
 In our web application we have the following types of images:
-   - **User Profile Photo**: The photo which is shown in the profile of the users. This image will be upladed by the users.
-   - **Football Matches Photos**: The photo which is shown in each football match on which users can bet.
+   - **User Profile Photo**: the photo which is shown in the profile of the users. This image will be upladed by the users.
+   - **Football Matches Photos**: the photo which is shown in each football match on which users can bet.
 
 
 
@@ -68,8 +68,8 @@ ___
 
 ## ↗️ Graphics
 In our web application we have the following types of graphics:
-   - **Bets Won Graph**: This graph will show the statistics of the bets won by users.
-   - **Hot Roulette Numbers Graph**: This graph will show the numbers that have won the most bets in the roulette. 
+   - **Bets Won Graph**: this graph will show the statistics of the bets won by users.
+   - **Hot Roulette Numbers Graph**: this graph will show the numbers that have won the most bets in the roulette. 
 
 
 
