@@ -8,7 +8,7 @@
    - [Users](#-users)
    - [Permissions](#-permissions)
    - [Images](#-images)
-   - [Graphics](#-graphics)
+   - [Graphics](#%EF%B8%8F-graphics)
    - [Complementary Technology](#-complementary-technology)
    - [Algorithm or Advanced Query](#-algorithm-or-advanced-query) <br>
 ---
