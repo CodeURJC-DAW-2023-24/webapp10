@@ -53,7 +53,7 @@ ___
 In our web application we have the following permissions:
   - **Anonymous User**: user who can view the page and its content, but not participate in any bets.
   - **Registered User**: user who can view the page and its content, also participate in the available bets and be able to do transactions.
-  - **Administrator**: user who can modify, add and delete any bet from the application.
+  - **Administrator**: user who can modify, add and delete any bet from the application and is able to delete a registered user
 
 
 ___
