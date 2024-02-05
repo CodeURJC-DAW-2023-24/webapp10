@@ -27,6 +27,7 @@ ___
 
 ## 🧰 Team Tools
 For the implementation of the practice, we have coordinated our tasks using [Jira](https://daw-equipo10-23-24.atlassian.net/jira/software/projects/DAW10/boards/1).
+To coordinate the implementation of the code and be able to work on it separately, we have used [github](https://github.com/CodeURJC-DAW-2023-24/webapp10)
 
 ___
 
@@ -50,7 +51,7 @@ ___
 ## 🔓 Permissions
 In our web application we have the following permissions:
   - **Anonymous User**: user who can view the page and its content, but not participate in any bets.
-  - **Registered User**: user who can view the page and its content, and also participate in the available bets.
+  - **Registered User**: user who can view the page and its content, also participate in the available bets and be able to do transactions.
   - **Administrator**: user who can modify, add and delete any bet from the application.
 
 
@@ -61,6 +62,7 @@ In our web application we have the following types of images:
    - **User Profile Picture**: the picture which is shown in the profile of the users. This image will be upladed by the users.
    - **Football Matches Picture**: the picture which is shown in each football match on which users can bet.
    - **Auction Picture**: the picture that describes the main product of the auction (optional target).
+   - **Games Picture**: the picture that represents a game that is playable (roulette, horses...)
 
 
 
@@ -70,7 +72,8 @@ ___
 ## ↗️ Graphics
 In our web application we have the following types of graphics:
    - **Bets Won Graph**: this graph will show the statistics of the bets won by users.
-   - **Hot Roulette Numbers Graph**: this graph will show the numbers that have won the most bets in the roulette. 
+   - **Hot Roulette Numbers Graph**: this graph will show the numbers that have won the most bets in the roulette.
+   - **Cold Roulette Numbers Graph**: This graph will represent the numbers that have come out the least recently in the roulette.
 
 
 
