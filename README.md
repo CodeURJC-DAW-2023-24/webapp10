@@ -38,7 +38,7 @@ In our web application we find the following entities:
   - **Events**
   - **Bets**
   - **Transactions**
-
+  - **Deposit**
 ___
 
 ## 👱 Users
@@ -63,7 +63,7 @@ In our web application we have the following types of images:
    - **User Profile Picture**: the picture which is shown in the profile of the users. This image will be upladed by the users.
    - **Football Matches Picture**: the picture which is shown in each football match on which users can bet.
    - **Auction Picture**: the picture that describes the main product of the auction (optional target).
-   - **Games Picture**: the picture that represents a game that is playable (roulette, horses...)
+   - **Games Picture**: the pictures inside a game that represents the different objects
 
 
 
