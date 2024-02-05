@@ -27,7 +27,8 @@ ___
 
 ## 🧰 Team Tools
 For the implementation of the practice, we have coordinated our tasks using [Jira](https://daw-equipo10-23-24.atlassian.net/jira/software/projects/DAW10/boards/1).
-To coordinate the implementation of the code and be able to work on it separately, we have used [github](https://github.com/CodeURJC-DAW-2023-24/webapp10)
+
+To coordinate the implementation of the code and be able to work on it separately, we have used [github](https://github.com/CodeURJC-DAW-2023-24/webapp10).
 
 ___
 
