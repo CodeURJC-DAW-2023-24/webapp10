@@ -475,8 +475,18 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .breadcrumb-bg {
-  background-image: url(../img/breadcrumb-bg.jpg);
+  background-image: url(../img/Depositphotos_181278194_m-2015.jpg);
+  height: 650px; 
+  background-size: cover;
+  background-position: center;
 }
+.breadcrumb1-bg {
+  background-image: url(../img/ruletilla.jpg);
+  height: 650px; 
+  background-size: cover;
+  background-position: center;
+}
+
 
 .breadcrumb-text p {
   color: #FF6A5A;
@@ -1361,7 +1371,7 @@ a.mobile-show.search-bar-icon:hover {
 
 ----------------------------------------------------------------------------- */
 .hero-bg {
-  background-image: url(../img/hero-bg.jpg);
+  background-image: url(../img/casino_gamblers.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -2755,3 +2765,10 @@ table.order-details tbody td {
   vertical-align: middle;
   width: 100%;
 }
+
+/* -----------------------------------------------------------------------------
+
+# New things for the css
+
+----------------------------------------------------------------------------- */
+

@@ -42,7 +42,7 @@
   
       let matchContainer = document.querySelector('.product-lists');
 
-      if (matchContainer) { // Verifica si matchContainer existe antes de intentar usarlo
+      if (matchContainer) { 
         matches.forEach((match, index) => {
           let matchElement = document.createElement('div');
           matchElement.className = 'col-lg-4 col-md-6 text-center';
@@ -64,7 +64,7 @@
       let params = new URLSearchParams(window.location.search);
       let matchId = params.get('id');
       
-      if (matchId) { // Verifica si matchId existe antes de intentar usarlo
+      if (matchId) { 
         let match = matches[matchId];
       
         document.querySelector('.single-product-img img').src = match.image;
@@ -72,3 +72,15 @@
         document.querySelector('.single-product-pricing').textContent = `${match.price} `;
         console.log(match.name);
       } 
+
+      function validateForm() {
+        var inputs = document.getElementsByTagName('input');
+        console.log("eee");
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value === '') {
+                alert('Por favor, rellene todos los campos antes de enviar el formulario.');
+                return false;
+            }
+        }
+        return true;
+    }
