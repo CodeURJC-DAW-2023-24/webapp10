@@ -2,14 +2,14 @@
     let matches = [
         {
           image: "assets/img/partidos/madridatleti.webp",
-          name: "Athletico de Madrid - Real Madrid",
+          name: "Atlético de Madrid - Real Madrid",
           price: "85$",
           date : ""
-        
+  
         },
         {
           image: "assets/img/partidos/sevillatenerife.webp",
-          name: "Sevilla - Tenerife",
+          name: "Villarreal - Tenerife",
           price: "70$",
       
         },
@@ -21,7 +21,7 @@
         },
         {
           image: "assets/img/partidos/madridgirona.webp",
-          name: "Real Madrid- Girona",
+          name: "Real Madrid - Girona",
           price: "50$",
       
         },
