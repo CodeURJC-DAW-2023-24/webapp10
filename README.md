@@ -22,6 +22,7 @@
 | Alberto Roldán Nieto          | a.roldan.2021@alumnos.urjc.es      | [@albertorolnie](https://github.com/albertorolnie)     |
 | José Andrés Villagrán Robles  | ja.villagran.2021@alumnos.urjc.es  | [@josrob13](https://github.com/josrob13)          |
 | Guillermo Romero Almazán      | g.romero.2021@alumnos.urjc.es      | [@Guillalox](https://github.com/guillalox)         |
+| Álvaro Pindado Castiñeira     | a.pindado.2019@alumnos.urjc.es     | [@Alvaropin17](https://github.com/Alvaropin17)         |
 
 ___
 
