@@ -476,13 +476,13 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 
 .breadcrumb-bg {
   background-image: url(../img/Depositphotos_181278194_m-2015.jpg);
-  height: 650px; 
+  height: 950px; 
   background-size: cover;
   background-position: center;
 }
 .breadcrumb1-bg {
   background-image: url(../img/ruletilla.jpg);
-  height: 650px; 
+  height: 950px; 
   background-size: cover;
   background-position: center;
 }
@@ -493,6 +493,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 7px;
+  margin-top: 200px;
 }
 
 .breadcrumb-text h1 {
