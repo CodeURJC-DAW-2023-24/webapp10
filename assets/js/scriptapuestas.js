@@ -84,3 +84,9 @@
         }
         return true;
     }
+
+    function apuesta() {
+        var apostado = document.getElementById("apuesta-goles").value;
+        document.getElementById("total-apuesta").innerHTML = apostado + "€";
+      
+    }
