@@ -114,3 +114,5 @@ for (var i = 0; i < deleteButtons.length; i++) {
       this.closest('.single-product-item').remove();
   });
 }
+
+

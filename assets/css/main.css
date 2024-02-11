@@ -486,6 +486,12 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
   background-size: cover;
   background-position: center;
 }
+.breadcrumb2-bg {
+  background-image: url(../img/casino-slot-machine-games-wallpaper.jpg);
+  height: 950px; 
+  background-size: cover;
+  background-position: center;
+}
 
 
 .breadcrumb-text p {
@@ -2169,7 +2175,7 @@ a.video-play-btn {
 }
 
 .feature-bg:after {
-  background-image: url(../img/feature-bg.jpg);
+  background-image: url(../img/gambling-images-topwebsearch-1024x803.jpg);
   position: absolute;
   right: 0;
   top: 0;
@@ -3594,3 +3600,5 @@ html, body{
 	margin-top: -25px;
 }
 /*chip end*/
+
+
