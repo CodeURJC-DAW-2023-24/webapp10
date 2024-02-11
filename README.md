@@ -11,6 +11,7 @@
    - [Graphics](#%EF%B8%8F-graphics)
    - [Complementary Technology](#-complementary-technology)
    - [Algorithm or Advanced Query](#-algorithm-or-advanced-query) <br>
+   - [Navigation flow](#-navigation-flow)
 ---
 
 ## Phase 0
@@ -97,3 +98,10 @@ ___
 In our web application we use this algorithms:
    - **Roulette Algorithm**: in order for users to play roulette correctly, an algorithm will be used to choose a random number out of the 36 that make up the roulette wheel.
    - **Horse Racing Algorithm**: the application will use an algorithm that simulates a horse racing, making one of all the competitors the winner.
+
+
+___
+
+## Navigation flow
+
+![esquema daw](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/de4b96e2-25e9-4322-9122-9b125e1c13e3)
