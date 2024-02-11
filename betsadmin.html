@@ -7,7 +7,7 @@
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Login</title>
+	<title>Apuestas</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
@@ -59,12 +59,17 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="index.html">Inicio</a></li>
-								<li><a href="bets.html">Apuestas</a></li>
+								<li><a href="index.html">Inicio</a></li>
+								<li class="current-list-item"><a href="bets.html">Apuestas</a></li>
 								<li><a href="roulette.html">Ruleta</a></li>
-								<li><a href="slots.html">Slots</a></li>
-								<li><a href="games.html">Juegos</a></li>
-								<li><a href="info.html">Información</a></li>
+								<li><a href="news.html">Slots</a></li>
+								<li><a href="contact.html">Juegos</a></li>
+								<li><a href="shop.html">Información</a>
+									<ul class="sub-menu">
+										<li><a href="shop.html">Contacto</a></li>
+										<li><a href="checkout.html">Juego Responsable</a></li>
+									</ul>
+								</li>
 								<li>
 									<div class="header-icons">
 										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
@@ -103,68 +108,118 @@
 	<!-- end search arewa -->
 	
 	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb2-bg">
-	
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Eventos Disponibles</p>
+						<h1>Apuestas Deportivas</h1>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- check out section -->
-	<div class="checkout-section mt-150 mb-150">
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
 		<div class="container">
+
 			<div class="row">
-				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
-						<div class="accordion" id="accordionExample">				
-						        <div class="billing-address-form">
-						        	<form action="index.html">                   
-                                      <div class="card single-accordion">
-                                        <div class="card-header" id="headingThree">
-                                          <h5 class="mb-0">
-                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                              Login
-                                            </button>
-                                          </h5>
-                                        </div>
-                                          <div class="card-body">
-                                            <div class="billing-address-form">
-                                             
-                                                    <p><input type="text" placeholder="Usuario" required></p>
-                                                    <p><input type="password" placeholder="Contraseña" required></p>
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li class="active" data-filter="*">LaLiga</li>
+                            <li data-filter=".strawberry">Premier League</li>
+                            <li data-filter=".berry">Serie A</li>
+							<li data-filter=".berry">Bundesliga</li>
+							<li data-filter=".berry">Ligue1</li>
+                            <li data-filter=".lemon">Internacional Clubes</li>
+							<li data-filter=".berry">Selecciones</li>
+							<li data-filter=".berry">Baloncesto</li>
+							<li data-filter=".berry">Tenis</li>
+							<li data-filter=".berry">Formula1</li>
+							<li data-filter=".berry">Eventos Especiales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-                                                    <p><a href="assets/img/avaters/avatar3.png" download>He olvidado la contaseña</a></p>
-                                          
-                                            </div>
-                                           
-                                          </div>
-                                         
-                                        
-                                      </div>
-                                      <div style="text-align: right;">
-										<input type="submit" class="boxed-btn" value="Acceder como usuario">
-										<input type="submit" class="boxed-btn" value="Acceder como administador">
-                                    </div>
-									
-						        		
-						        	</form>
-						        </div>
-						      
-						  </div>
-						  
-						</div>
+			<div class="row product-lists">
+			</div>
+            <div class="button-container">
+                <a id="showFormButton" class="cart-btn"><i class=""></i> Añadir evento</a>
+                <a id="editEventButton" class="cart-btn"><i class=""></i> Editar evento</a>
+            </div>
 
+            <div id="newmatch" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="display: none;">
+                <div class="card-body">
+                    <div class="billing-address-form">
+                        <p>
+                            <label for="name">Nombre:</label><br>
+                            <input type="text" id="name" name="name" placeholder="Nombre" required>
+                        </p>
+                        <p>
+                            <label for="league">Liga:</label><br>
+                            <input type="text" id="league" name="league" placeholder="Liga" required>
+                        </p>
+                        <p>
+                            <label for="img">Imagen:</label><br>
+                            <input type="file" id="img" name="img" required>
+                        </p>
+                        <p>
+                            <input type="submit" value="Guardar">
+                        </p>
+                    </div>
+                </div>
+            </div>   
+
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="pagination-wrap">
+						<ul>
+							<li><a href="#">Prev</a></li>
+							<li><a class="active" href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">Next</a></li>
+						</ul>
 					</div>
 				</div>
-                
-				</div>
 			</div>
-            
 		</div>
 	</div>
-   
-				
-	<!-- end check out section -->
+	<!-- end products -->
 
-	
+	<!-- logo carousel -->
+	<div class="logo-carousel-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="logo-carousel-inner">
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/laLiga.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/2.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/3.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/4.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/5.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end logo carousel -->
+
 	<!-- footer -->
 	<div class="footer-area">
 		<div class="container">
@@ -256,7 +311,7 @@
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
 
-    <script src="assets
+	<script src="assets/js/scriptapuestas.js"></script>
 
 </body>
 </html>

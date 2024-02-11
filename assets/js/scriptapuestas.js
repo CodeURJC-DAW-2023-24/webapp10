@@ -32,7 +32,7 @@
       
         },
         {
-          image: "assets/img/image.webp",
+          image: "assets/img/partidos/getafecelta.webp",
           name: "Getafe - Celta",
           price: "80$",
      
@@ -53,7 +53,7 @@
               </div>
               <h3>${match.name}</h3>
               <p class="product-price"><span>Per Kg</span> ${match.price} </p>
-              <a href="cart.html?id=${index}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+              <a href="single-product.html?id=${index}" class="cart-btn"></i>Realizar apuesta</a>
             </div>
           `;
       
@@ -90,3 +90,27 @@
         document.getElementById("total-apuesta").innerHTML = apostado + "€";
       
     }
+ 
+document.getElementById('showFormButton').addEventListener('click', function() {
+  document.getElementById('newmatch').style.display = 'block';
+});
+
+document.getElementById('editEventButton').addEventListener('click', function() {
+
+  var matches = document.getElementsByClassName('single-product-item');
+  for (var i = 0; i < matches.length; i++) {
+      var match = matches[i];
+      var name = match.querySelector('h3').innerText;
+      var price = match.querySelector('.product-price').innerText;
+      match.querySelector('h3').innerHTML = '<input type="text" value="' + name + '">';
+      match.querySelector('.product-price').innerHTML = '<input type="text" value="' + price + '">';
+  }
+});
+
+var deleteButtons = document.getElementsByClassName('deleteEventButton');
+for (var i = 0; i < deleteButtons.length; i++) {
+  deleteButtons[i].addEventListener('click', function() {
+
+      this.closest('.single-product-item').remove();
+  });
+}
