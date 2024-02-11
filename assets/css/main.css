@@ -425,6 +425,23 @@ a.bordered-btn {
   padding: 7px 20px;
 }
 
+a.bordered-btn-bets {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  color: #ae5c21;
+  border: 2px solid #FF6A5A;
+  padding: 6px 17px;
+}
+
+.numero-boton {
+  display: inline-block;
+  margin-right: 20px; /* Espacio entre los números y los botones */
+}
+
+.numero-boton h5 {
+  margin: 0;
+}
+
 a.read-more-btn {
   display: inline-block;
   margin-top: 15px;
@@ -2817,7 +2834,7 @@ html, body{
 	display: flex;
 	justify-content: center;
 	background-color: #016D29;
-	height: 470px;
+	height: 570px;
 	padding: 20px;
 	color: #fff;
 }
@@ -2881,8 +2898,8 @@ html, body{
 
 /*betting table*/
 #betting_board{
-	width: 500px;
-    height: 315px;
+	width: 477.8px;
+    height: 415px;
     border: 1px solid;
 }
 
@@ -2891,7 +2908,7 @@ html, body{
 }
 
 .bbtoptwo{
-	width: calc(50% - 8px);
+	width: calc(50% + 2px);
 	border: 1px solid;
 	display: inline-block;
 	padding: 12px 4px;
@@ -2929,13 +2946,15 @@ html, body{
 .bo3_board, .oto_board{
 	width:500px;
 	margin-left: 1px;
+  
 }
 
 .bo3_block, .oto_block{
+  height: 47px;
 	border: 1px solid;
 	display: inline-block;
-	padding: 8px 5px;
-	width: 156.65px;
+	padding: 8px 15px;
+	width: 160px;
 	margin-left: -1.98px;
 	text-align: center;
 	font-weight: bold;
@@ -2944,6 +2963,7 @@ html, body{
 
 .oto_block{
 	width: 114.94px;
+  margin-top: 10px;
 	margin-left: -1.98px;
 }
 
@@ -2955,15 +2975,17 @@ html, body{
 	padding: 120.55px 20px;
 	border-bottom-left-radius: 100%;
 	border-top-left-radius: 100%;
+  height: 307px;
+  
 }
 
 .tt1_block{
 	border: 2px solid;
-	width: 65px;
+	width: 72px;
 	position: absolute;
-	margin-left: 498px;
+	margin-left: 474px;
 	padding: 31.65px 0px;
-	margin-top: -89.75px;
+	margin-top: -102.50px;
 }
 
 .winning_lines{
@@ -3090,10 +3112,10 @@ html, body{
 .chipDeck, .bankContainer{
 	position: absolute;
 	margin-left: -383px;
-	margin-top: -74px;
-	width: 310px;
-	height:39px;
-	padding: 3px 0;
+	margin-top: -80px;
+	width: 230px;
+	height: 50px;
+	padding: 5px 0;
 	border: 1px solid;
 	border-radius: 10px;
 	box-shadow: inset -2px -4px rgb(0 0 0 / 20%);
@@ -3104,8 +3126,8 @@ html, body{
 }
 
 .cdChip{
-	width: 27px;
-    height: 27px;
+	width: 30px;
+    height: 30px;
     background-color: #fff;
     border: 5px solid;
     border-radius: 100%;
@@ -3118,8 +3140,8 @@ html, body{
 .cdChipSpan{
 	display: inherit;
 	position: relative;
-	top: 5px;
-	width: 26px;
+	top: -2px;
+	width: 17.5px;
 	font-weight: bold;
 	font-size: 14px;
 	text-align: center;
@@ -3132,10 +3154,12 @@ html, body{
 }
 
 .clearBet{
+  width: 40px;
 	border-color:red;
 	background-color:red;
 	color:#fff;
-	margin-left:22px;
+	margin-left:17px;
+  border-radius: 30%;
 }
 
 .clearBet .cdChipSpan{
@@ -3144,21 +3168,23 @@ html, body{
 
 .bank, .bet{
 	display: inline-block;
-	width: calc(50% - 28px);
+	width: calc(50% - 15px);
+  height: 37.5px;
     background-color: #000;
     font-size: 18px;
-    margin-left: 7px;
+    margin-left: 9.5px;
     padding: 5px;
     border: 4px solid silver;
     border-radius: 7px;
     text-align: right;
+    line-height: 22px;
 }
 
 .pnBlock{
 	position: absolute;
 	border: 1px solid;
-	width: 500px;
-	height: 45px;
+	width: 495px;
+	height: 55px;
 	margin-top: 10px;
 	margin-left: -1px;
 }
@@ -3166,11 +3192,11 @@ html, body{
 #pnContent{
 	border: 4px solid #d5b714;
 	width: 485px;
-	height: 31px;
+	height: 48px;
 	position: relative;
 	display: block;
 	margin-left: 4px;
-	margin-top: 3px;
+	margin-top: 2px;
 	background-color: #fff;
 	color: #000;
 	overflow:hidden;
@@ -3278,8 +3304,8 @@ html, body{
 	position: absolute;
 	left:0;
 	top:0;
-	width: 290px;
-	height: 290px;
+	width: 310px;
+	height: 310px;
 	border-radius: 100%;
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
 	border: 10px solid #F3c620;

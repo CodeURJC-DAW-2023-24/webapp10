@@ -116,3 +116,7 @@ for (var i = 0; i < deleteButtons.length; i++) {
 }
 
 
+function select_bet(elemento) {
+  // Cambiar el color de fondo del botón al hacer clic
+  elemento.style.backgroundColor = "black"; // Puedes cambiar el color aquí
+}
