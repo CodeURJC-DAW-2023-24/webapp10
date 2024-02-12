@@ -105,3 +105,42 @@ ___
 ## Navigation flow
 
 ![esquema daw](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/de4b96e2-25e9-4322-9122-9b125e1c13e3)
+
+
+___
+
+## Screenshots and information
+
+
+- **Index**:
+   This will be the main page. From here you will be able to sign in, sign up and access all our services.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/78827438-7ab4-4314-b6cb-12f59559771a)
+
+- **Sign in**:
+   Here you will be able to introduce your credentials and access our web as a registered user. This will allow you to enjoy most of our services.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/e6793fe1-fbea-4419-9c18-a119823edb4d)
+
+- **Sign up**:
+   Here you will be able to introduce your personal information in order to create a profile.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/5b76c7a5-e6dd-49ed-8e69-c50c52f8d7c2)
+
+- **Betting page**:
+   Here you will be able to select an event and place a bet with different choices.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/aa3a579f-2962-4947-86d3-f38e4ff44fa7)
+
+- **Roulette**:
+  Here you can play the famous Roulette game.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/0236a646-f97c-4118-b940-b530f351a335)
+
+- **Contact us**:
+  This is a page where any user can contact a specialized support team and receive fast help about any issue related to our page or bets.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/3bed6ad1-5d49-401a-80f1-f8922e0bfd61)
+
+- **Responsible game**:
+  In this page you can read about safe betting and the risks of this type of practices. We advise any player to have a look at this page before playing.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/152438c4-cdad-456b-94ea-e28b5bb3a025)
+
+- **About us**:
+  A page about the dev team and their contact information
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/9fe6d5bd-40d1-4eb9-9b4b-2ad3862e86cf)
+  
