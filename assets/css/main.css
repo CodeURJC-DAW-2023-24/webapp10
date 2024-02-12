@@ -2834,9 +2834,10 @@ html, body{
 	display: flex;
 	justify-content: center;
 	background-color: #016D29;
-	height: 570px;
+	height: 670px;
 	padding: 20px;
-	color: #fff;
+	color: #ffffff;
+  border-top: 50px solid #016D29;
 }
 
 /*notification*/
