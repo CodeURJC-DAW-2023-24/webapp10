@@ -52,7 +52,7 @@
                 <a href="single-product.html?id=${index}"><img src="${match.image}" alt=""></a>
               </div>
               <h3>${match.name}</h3>
-              <p class="product-price"><span>Per Kg</span> ${match.price} </p>
+              <p> </p>
               <a href="single-product.html?id=${index}" class="cart-btn"></i>Realizar apuesta</a>
             </div>
           `;
