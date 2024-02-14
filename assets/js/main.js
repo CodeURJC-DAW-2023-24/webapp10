@@ -3,6 +3,16 @@
 
     $(document).ready(function($){
         
+        var date = new Date();
+        date.setDate(date.getDate() + 1);
+
+        var anyo = date.getFullYear();
+        var mes = date.getMonth() + 1; // Se suma 1 porque los meses en JavaScript van de 0 a 11
+        var dia = date.getDate();
+
+        var fecha = anyo + '/' + mes + '/' + dia;
+        $('#contador').attr("data-countdown", fecha);
+        
         // testimonial sliders
         $(".testimonial-sliders").owlCarousel({
             items: 1,
