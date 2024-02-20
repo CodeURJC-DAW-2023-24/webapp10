@@ -41,7 +41,7 @@ In our web application we find the following entities:
   - **Events**
   - **Bets**
   - **Transactions**
-  - **Deposit**
+  - **Wallet**
 ___
 
 ## 👱 Users
