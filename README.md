@@ -37,6 +37,7 @@ ___
 ## 🎰 Entities
 In our web application we find the following entities:
   - **Users**
+  - **Championship**
   - **Events**
   - **Bets**
   - **Transactions**
