@@ -3,12 +3,12 @@ package es.codeurj.mortez365.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-import es.codeurj.mortez365.model.Match;
+import es.codeurj.mortez365.model.Event;
 
 
 
 
-public interface MatchRepository extends JpaRepository<Match, Long>{
+public interface EventRepository extends JpaRepository<Event, Long>{
     
 
     

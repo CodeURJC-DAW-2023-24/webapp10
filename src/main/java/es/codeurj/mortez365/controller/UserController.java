@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import es.codeurj.mortez365.model.Match;
-import es.codeurj.mortez365.repository.MatchRepository;
+import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.repository.EventRepository;
 
 
 
@@ -19,7 +19,7 @@ import es.codeurj.mortez365.repository.MatchRepository;
 public class UserController {
 
     @Autowired
-    private MatchRepository matches;
+    private EventRepository events;
 
     @RequestMapping("/mortez365")
     public String index() {
@@ -76,9 +76,9 @@ public class UserController {
     }
     
     @GetMapping("/bets")
-    public String getMatches(Model model) {
-    List<Match> allMatches = matches.findAll();
-    model.addAttribute("matches", allMatches);
+    public String getevents(Model model) {
+    List<Event> allEvents = events.findAll();
+    model.addAttribute("events", allEvents);
     return "bets"; 
 }
 

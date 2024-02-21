@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Match {
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,10 +14,10 @@ public class Match {
     private String image;
     private String championship;
 
-    public Match() {
+    public Event() {
     }
 
-    public Match(String name, String image, String championship) {
+    public Event(String name, String image, String championship) {
         super();
         this.name = name;
         this.image = image;
