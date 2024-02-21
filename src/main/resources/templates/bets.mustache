@@ -150,10 +150,25 @@
                     </div>
                 </div>
             </div>
-
-			<div class="row product-lists">
+			
+			<div class="matches-container">
+			 <div class="col-lg-4 col-md-6 text-center">
+	
+			{{#matches}}
+		 
+			<div class="single-product-item">
+				<div class="product-image">
+					<a href="single-product.html?id={{id}}"><img src="{{image}}" alt=""></a>
+				</div>
+				<h3>{{name}}</h3>
+				<p> </p>
+				<a href="single-product.html?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
 			</div>
-				
+			{{/matches}}
+			</div>
+		</div>
+
+							
 			
 
 			<div class="row">
@@ -171,6 +186,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<!-- end products -->
 
 	<!-- logo carousel -->
