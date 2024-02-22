@@ -84,8 +84,7 @@ public class UserController {
 
     @GetMapping("/single-product")
     public String getSingleProduct(@RequestParam("id") Long id, Model model) {
-        id = id-1;
-        Event event = events.findById(id-1).orElse(null);
+        Event event = events.findById(id).orElse(null);
         model.addAttribute("event", event);
         System.out.println(id);
         return "single-product";
