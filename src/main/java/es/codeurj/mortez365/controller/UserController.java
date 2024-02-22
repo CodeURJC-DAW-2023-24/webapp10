@@ -1,11 +1,11 @@
 package es.codeurj.mortez365.controller;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,10 +77,19 @@ public class UserController {
     
     @GetMapping("/bets")
     public String getevents(Model model) {
-    List<Event> allEvents = events.findAll();
-    model.addAttribute("events", allEvents);
-    return "bets"; 
-}
+        List<Event> allEvents = events.findAll();
+        model.addAttribute("events", allEvents);
+        return "bets"; 
+    }
+
+    @GetMapping("/single-product")
+    public String getSingleProduct(@RequestParam("id") Long id, Model model) {
+        id = id-1;
+        Event event = events.findById(id-1).orElse(null);
+        model.addAttribute("event", event);
+        System.out.println(id);
+        return "single-product";
+    }
 
 
 

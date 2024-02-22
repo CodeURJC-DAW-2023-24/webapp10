@@ -22,6 +22,7 @@ public class EventController {
 
     @PostConstruct
     public void init() {
+     
         events.save(new Event("Atlético de Madrid - Real Madrid", "assets/img/partidos/madridatleti.webp", "La Liga"));
         events.save(new Event("Villarreal - Tenerife", "assets/img/partidos/sevillatenerife.webp", "La Liga"));
         events.save(new Event("Levante - Leganés", "assets/img/partidos/levanteleganes.webp", "La Liga"));
@@ -35,6 +36,8 @@ public class EventController {
     public List<Event> getAllevents() {
         return events.findAll();
     }
+
+    
 
     
 }

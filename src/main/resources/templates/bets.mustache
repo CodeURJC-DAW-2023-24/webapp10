@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -151,22 +153,22 @@
                 </div>
             </div>
 			
-			<div class="events-container">
-			 <div class="col-lg-4 col-md-6 text-center">
-	
-			{{#events}}
-		 
-			<div class="single-product-item">
-				<div class="product-image">
-					<a href="single-product.html?id={{id}}"><img src="{{image}}" alt=""></a>
-				</div>
-				<h3>{{name}}</h3>
-				<p> </p>
-				<a href="single-product.html?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
-			</div>
-			{{/events}}
-			</div>
-		</div>
+		<div class="container-fluid">
+    <div class="row">
+        {{#events}}
+        <div class="col-lg-4 col-md-6 text-center">
+            <div class="single-product-item">
+                <div class="product-image">
+                    <a href="single-product?id={{id}}"><img src="{{image}}" alt=""></a>
+                </div>
+                <h3>{{name}}</h3>
+                <p> </p>
+                <a href="single-product?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
+            </div>
+        </div>
+        {{/events}}
+    </div>
+</div>
 
 							
 			

@@ -10,6 +10,7 @@ import es.codeurj.mortez365.model.Event;
 
 public interface EventRepository extends JpaRepository<Event, Long>{
     
+    
 
     
 }

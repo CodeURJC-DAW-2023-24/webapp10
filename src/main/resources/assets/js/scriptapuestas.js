@@ -120,3 +120,8 @@ function select_bet(elemento) {
  
   elemento.style.backgroundColor = "black"; 
 }
+
+let groupedEvents = [];
+for(let i = 0; i < events.length; i += 3) {
+    groupedEvents.push(events.slice(i, i+3));
+}
