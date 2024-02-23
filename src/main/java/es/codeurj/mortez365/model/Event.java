@@ -15,15 +15,17 @@ public class Event {
     private String name;
     private String image;
     private String championship;
+    private String sport;
 
     public Event() {
     }
 
-    public Event(String name, String image, String championship) {
+    public Event(String name, String image, String championship, String sport) {
         super();
         this.name = name;
         this.image = image;
         this.championship = championship;
+        this.sport = sport;
     }
 
 
@@ -37,6 +39,14 @@ public class Event {
     
     public String getName() {
         return name;
+    }
+
+    public String getSport() {
+        return sport;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
     }
     
     public void setName(String name) {

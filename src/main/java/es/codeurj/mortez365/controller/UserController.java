@@ -1,11 +1,13 @@
 package es.codeurj.mortez365.controller;
 import java.util.List;
 
-
+import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,17 +78,36 @@ public class UserController {
     }
     
     @GetMapping("/bets")
-    public String getevents(Model model) {
-        List<Event> allEvents = events.findAll();
-        model.addAttribute("events", allEvents);
-        return "bets"; 
+    public String getFilteredEvents(@RequestParam(name = "category", required = false) String category, Model model) {
+        List<Event> filteredEvents;
+    
+        if ("Todos".equals(category)) {
+          
+            filteredEvents = events.findAll();
+        } else if (category != null) {
+          
+            filteredEvents = events.findByChampionship(category);
+        } else {
+            
+            filteredEvents = events.findAll(PageRequest.of(0, 9)).getContent();
+        }
+    
+        model.addAttribute("events", filteredEvents);
+        return "bets";
     }
+
+    @GetMapping("/bets/json")
+    @ResponseBody
+    public List<Event> getEventsJson(@RequestParam(name = "start", defaultValue = "0") int start,
+                                     @RequestParam(name = "count", defaultValue = "9") int count) {
+        return events.findAll(PageRequest.of(start, count)).getContent();
+    }
+    
 
     @GetMapping("/single-product")
     public String getSingleProduct(@RequestParam("id") Long id, Model model) {
         Event event = events.findById(id).orElse(null);
         model.addAttribute("event", event);
-        System.out.println(id);
         return "single-product";
     }
 
