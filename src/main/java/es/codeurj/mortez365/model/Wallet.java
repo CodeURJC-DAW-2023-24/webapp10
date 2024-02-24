@@ -16,7 +16,7 @@ public class Wallet {
     @Column(name = "MONEY")
     private double money;
 
-    @Column(name = "USER")
+    @PrimaryKeyJoinColumn(name = "USER")
     @OneToOne(mappedBy = "wallet")
     private User user;
 }

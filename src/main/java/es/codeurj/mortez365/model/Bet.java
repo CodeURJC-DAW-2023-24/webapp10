@@ -2,7 +2,6 @@ package es.codeurj.mortez365.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Data
@@ -13,7 +12,6 @@ public class Bet {
     @Column(name = "ID")
     private long id;
 
-    // Igual sobra la descripcion
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -26,11 +24,11 @@ public class Bet {
     @Column(name = "PROFIT")
     private double profit;
 
-    @Column(name = "EVENT")
+    @PrimaryKeyJoinColumn(name = "EVENT")
     @OneToOne
     private Event event;
 
-    @Column(name = "USER")
+    @JoinColumn(name = "USER")
     @ManyToOne
     private User user;
 

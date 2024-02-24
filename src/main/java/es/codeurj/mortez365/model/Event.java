@@ -25,7 +25,7 @@ public class Event {
     @Column(name = "MARKER")
     private String marker;
 
-    @Column(name = "CHAMPIONSHIP")
+    @JoinColumn(name = "CHAMPIONSHIP")
     @ManyToOne
     private Championship championship;
 

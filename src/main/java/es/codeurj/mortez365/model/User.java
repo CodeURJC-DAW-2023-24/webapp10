@@ -13,7 +13,7 @@ public class User {
     @Column(name = "ID")
     private long id;
 
-    @Column(name = "WALLET")
+    @PrimaryKeyJoinColumn(name = "WALLET")
     @OneToOne
     private Wallet wallet;
 

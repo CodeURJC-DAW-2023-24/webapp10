@@ -18,7 +18,7 @@ public class Transaction {
     @Column(name = "SENSE")
     private char sense;
 
-    @Column(name = "WALLET")
+    @PrimaryKeyJoinColumn(name = "WALLET")
     @OneToOne
     private Wallet wallet;
 }

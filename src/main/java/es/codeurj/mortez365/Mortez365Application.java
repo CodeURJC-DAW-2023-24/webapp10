@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
-
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class Mortez365Application {
 
 	public static void main(String[] args) {
