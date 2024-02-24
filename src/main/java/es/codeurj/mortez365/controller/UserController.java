@@ -3,11 +3,13 @@ import java.util.List;
 
 import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -115,6 +117,19 @@ public class UserController {
     public String cart() {
         return "cart";
     }
+
+        @RestController
+        public class MyErrorController implements ErrorController  {
+
+            private static final String PATH = "/error";
+
+            @RequestMapping(value = PATH)
+            public String defaultErrorMessage() {
+                return "A custom error has occurred in the application.";
+            }
+
+          
+        }
 
 
 
