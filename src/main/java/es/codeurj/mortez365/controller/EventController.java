@@ -39,15 +39,7 @@ public class EventController {
         events.save(new Event("Bournemouth - Leicester City", "assets/img/facup/bournemouthleicestercity.webp", "FACup","Fútbol"));
         events.save(new Event("Blackburn Rovers - Newcastle United", "assets/img/facup/blackburnroversnewcastleunited.webp", "FACup","Fútbol"));
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     }
 

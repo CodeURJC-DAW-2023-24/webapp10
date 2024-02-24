@@ -1,4 +1,4 @@
-let start = 1; // Inicia en 1 porque ya se muestran los primeros 9 eventos
+let start = 1; 
 document.addEventListener('DOMContentLoaded', (event) => {
 document.getElementById('loadMoreButton').addEventListener('click', function() {
     fetch(`/bets/json?start=${start}&count=9`)

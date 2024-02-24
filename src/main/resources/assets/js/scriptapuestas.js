@@ -1,4 +1,4 @@
-
+/*
     let matches = [
         {
           image: "assets/img/partidos/madridatleti.webp",
@@ -72,7 +72,7 @@
         document.querySelector('.single-product-pricing').textContent = `${match.price} `;
         console.log(match.name);
       } 
-
+*/
       function validateForm() {
         var inputs = document.getElementsByTagName('input');
         console.log("eee");

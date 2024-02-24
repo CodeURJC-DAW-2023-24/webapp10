@@ -23,32 +23,12 @@ public class UserController {
     @Autowired
     private EventRepository events;
 
-    @RequestMapping("/mortez365")
+    @RequestMapping("/index")
     public String index() {
         return "index";
     }
 
    
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
-
-    @GetMapping("/wallet")
-    public String wallet() {
-        return "wallet";
-    }
 
 
   
@@ -109,6 +89,31 @@ public class UserController {
         Event event = events.findById(id).orElse(null);
         model.addAttribute("event", event);
         return "single-product";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
+    }
+
+    @GetMapping("/wallet")
+    public String wallet() {
+        return "wallet";
+    }
+
+    @GetMapping("/cart")
+    public String cart() {
+        return "cart";
     }
 
 
