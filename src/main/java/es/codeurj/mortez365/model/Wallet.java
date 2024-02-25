@@ -1,6 +1,8 @@
 package es.codeurj.mortez365.model;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -11,37 +13,20 @@ public class Wallet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter
+    @Getter
     @Column(name = "ID")
     private long id;
 
+    @Setter
+    @Getter
     @Column(name = "MONEY")
     private double money;
 
+    @Setter
+    @Getter
     @PrimaryKeyJoinColumn(name = "USER")
     @OneToOne(mappedBy = "wallet")
     private User user;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public double getMoney() {
-        return money;
-    }
-
-    public void setMoney(double money) {
-        this.money = money;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

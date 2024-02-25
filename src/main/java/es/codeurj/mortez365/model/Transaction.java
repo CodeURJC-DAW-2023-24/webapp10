@@ -1,6 +1,8 @@
 package es.codeurj.mortez365.model;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Data
@@ -9,49 +11,26 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter
+    @Getter
     @Column(name = "ID")
     private long id;
 
+    @Setter
+    @Getter
     @Column(name = "AMOUNT")
     private double amount;
 
     // Sentido de la operacion, positivo o negativo
+    @Setter
+    @Getter
     @Column(name = "SENSE")
     private char sense;
 
+    @Setter
+    @Getter
     @PrimaryKeyJoinColumn(name = "WALLET")
     @OneToOne
     private Wallet wallet;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public char getSense() {
-        return sense;
-    }
-
-    public void setSense(char sense) {
-        this.sense = sense;
-    }
-
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
 }
