@@ -65,4 +65,16 @@ public class Event {
     @JoinColumn(name = "SPORT")
     private String sport;
 
+    public Event(String name, String image, String championship, String sport) {
+        super();
+        this.name = name;
+        this.image = image;
+        this.championship = championship;
+        this.sport = sport;
+    }
+
+    public Event() {
+
+    }
+
 }
