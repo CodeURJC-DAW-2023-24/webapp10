@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class User {
 
     @Id
+    @GeneratedValue
     @Column(name = "ID")
     private long id;
 
@@ -20,4 +21,28 @@ public class User {
     @Column(name = "BETS")
     @OneToMany(mappedBy = "user")
     private ArrayList<Bet> bets;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    public ArrayList<Bet> getBets() {
+        return bets;
+    }
+
+    public void setBets(ArrayList<Bet> bets) {
+        this.bets = bets;
+    }
 }

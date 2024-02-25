@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Event {
 
     @Id
+    @GeneratedValue
     @Column(name = "ID")
     private long id;
 
@@ -29,4 +30,51 @@ public class Event {
     @ManyToOne
     private Championship championship;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getWinner_team() {
+        return winner_team;
+    }
+
+    public void setWinner_team(String winner_team) {
+        this.winner_team = winner_team;
+    }
+
+    public String getLoser_team() {
+        return loser_team;
+    }
+
+    public void setLoser_team(String loser_team) {
+        this.loser_team = loser_team;
+    }
+
+    public String getMarker() {
+        return marker;
+    }
+
+    public void setMarker(String marker) {
+        this.marker = marker;
+    }
+
+    public Championship getChampionship() {
+        return championship;
+    }
+
+    public void setChampionship(Championship championship) {
+        this.championship = championship;
+    }
 }

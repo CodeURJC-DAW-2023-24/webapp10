@@ -8,6 +8,7 @@ import lombok.Data;
 public class Transaction {
 
     @Id
+    @GeneratedValue
     @Column(name = "ID")
     private long id;
 
@@ -21,4 +22,36 @@ public class Transaction {
     @PrimaryKeyJoinColumn(name = "WALLET")
     @OneToOne
     private Wallet wallet;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public char getSense() {
+        return sense;
+    }
+
+    public void setSense(char sense) {
+        this.sense = sense;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
 }
