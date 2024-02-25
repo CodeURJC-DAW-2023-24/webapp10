@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Championship {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private String id;
 

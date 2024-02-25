@@ -9,7 +9,7 @@ import lombok.Data;
 public class Bet {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 

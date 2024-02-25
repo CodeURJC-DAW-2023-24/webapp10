@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Event {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 
