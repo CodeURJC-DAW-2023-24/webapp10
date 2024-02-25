@@ -98,10 +98,8 @@ public class AppController {
         return "login";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
+
+    
 
     @GetMapping("/profile")
     public String profile() {
