@@ -120,8 +120,7 @@ for (var i = 0; i < deleteButtons.length; i++) {
 
 
 function select_bet(elemento) {
-    // Obtener todos los elementos con la clase 'numero-boton'
-    var botones = document.getElementsByClassName('numero-boton');
+    var botones = document.getElementsByClassName('bordered-btn-bets');
 
     // Deseleccionar todos los botones
     for (var i = 0; i < botones.length; i++) {
@@ -130,13 +129,15 @@ function select_bet(elemento) {
 
     // Seleccionar el botón actual
     elemento.style.backgroundColor = "black";
-    console.log("3");
+    document.getElementById('selected-bet').value = elemento.innerText;
 }
 
 function comprobarApuesta(){
     var money = document.forms["form-bet"]["bet-amount"].value;
-    if (money <= 0 || money==null) {
-        alert("Apuesta algo ludopata");
+    var result = document.getElementById("selected-bet").value;
+    console.log(result);
+    if (money <= 0 || money == null || result === '') {
+        alert("Se te olvida apostar pasta o a que apostar ludopatilla");
         return false;
     }
     return true;

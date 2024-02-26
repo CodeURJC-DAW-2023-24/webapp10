@@ -97,12 +97,26 @@ public class UserController {
         return "single-product";
     }
     @PostMapping("/single-product")
-    public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId, Model model){
+    public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId,
+                              @RequestParam("selected-bet") String selectedBet,Model model){
         Event event = events.findById(eventId).orElse(null);
-        System.out.println(money);
         assert event != null;
-        System.out.println(event.getName());
-        bets.save(new Bet(event, money, Result.WIN));
+
+        Result result = null;
+        switch (selectedBet){
+            case "Victoria":
+                result = Result.WIN;
+                break;
+            case "Empate":
+                result = Result.TIE;
+                break;
+            case "Derrota":
+                result = Result.LOSE;
+                break;
+            default:
+                break;
+        }
+        bets.save(new Bet(event, money, result));
         return "redirect:/index";
     }
 
