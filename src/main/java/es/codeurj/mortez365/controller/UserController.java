@@ -45,29 +45,28 @@ public class UserController {
 
     
     @PostMapping
-    public String registerUser(@RequestParam String name, 
-                           @RequestParam String firstSurname, 
-                           @RequestParam String secondSurname, 
-                           @RequestParam Date birthDate, 
-                           @RequestParam String nationality, 
-                           @RequestParam String dni, 
-                           @RequestParam String address, 
-                           @RequestParam String postalCode, 
-                           @RequestParam String phone, 
-                           @RequestParam String email, 
-                           @RequestParam String username, 
-                           @RequestParam String password
-                           ) {
+    public String registerUser(@RequestParam String name,
+    @RequestParam String firstsurname,
+    @RequestParam String secondsurname,
+    @RequestParam Date birthdate,
+    @RequestParam String nationality,
+    @RequestParam String dni,
+    @RequestParam String adress,
+    @RequestParam String postcode,
+    @RequestParam String telphone,
+    @RequestParam String email,
+    @RequestParam String username,
+    @RequestParam String password) {
     User user = new User();
     user.setName(name);
-    user.setFirstsurname(firstSurname);
-    user.setSecondsurname(secondSurname);
-    user.setBirthdate(birthDate);
+    user.setFirstsurname(firstsurname);
+    user.setSecondsurname(secondsurname);
+    user.setBirthdate(birthdate);
     user.setNationality(nationality);
     user.setDni(dni);
-    user.setAdress(address);
-    user.setPostcode(postalCode);
-    user.setTelphone(phone);
+    user.setAdress(adress);
+    user.setPostcode(postcode);
+    user.setTelphone(telphone);
     user.setEmail(email);
     user.setUsername(username);
     user.setPassword(password);
