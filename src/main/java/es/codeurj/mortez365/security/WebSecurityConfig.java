@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/logout").permitAll();
 
         // Private pages
-
+        http.authorizeRequests().anyRequest().authenticated();
 
         // Login form
         http.formLogin().loginPage("/login");
