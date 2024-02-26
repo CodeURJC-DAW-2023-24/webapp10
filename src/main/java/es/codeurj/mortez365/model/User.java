@@ -17,11 +17,31 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 @Entity
-
+@Data
+@Table(name = "USER")
 public class User {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Setter
+    @Getter
+    @Column(name = "ID")
+    private long id;
+
+    @Setter
+    @Getter
+    @PrimaryKeyJoinColumn(name = "WALLET")
+    @OneToOne
+    private Wallet wallet;
+
+    @Setter
+    @Getter
+    @Column(name = "BETS")
+    @OneToMany(mappedBy = "user")
+    private ArrayList<Bet> bets;
+
+
     private String name;
     private String firstsurname;
     private String secondsurname;
@@ -66,29 +86,5 @@ public class User {
    
 
 
-
-@Entity
-@Data
-@Table(name = "USER")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Setter
-    @Getter
-    @Column(name = "ID")
-    private long id;
-
-    @Setter
-    @Getter
-    @PrimaryKeyJoinColumn(name = "WALLET")
-    @OneToOne
-    private Wallet wallet;
-
-    @Setter
-    @Getter
-    @Column(name = "BETS")
-    @OneToMany(mappedBy = "user")
-    private ArrayList<Bet> bets;
-
 }
+
