@@ -116,9 +116,30 @@ for (var i = 0; i < deleteButtons.length; i++) {
 }
 
 
+
+
+
 function select_bet(elemento) {
- 
-  elemento.style.backgroundColor = "black"; 
+    // Obtener todos los elementos con la clase 'numero-boton'
+    var botones = document.getElementsByClassName('numero-boton');
+
+    // Deseleccionar todos los botones
+    for (var i = 0; i < botones.length; i++) {
+        botones[i].style.backgroundColor = ''; // Restaurar el color por defecto
+    }
+
+    // Seleccionar el botón actual
+    elemento.style.backgroundColor = "black";
+    console.log("3");
+}
+
+function comprobarApuesta(){
+    var money = document.forms["form-bet"]["bet-amount"].value;
+    if (money <= 0 || money==null) {
+        alert("Apuesta algo ludopata");
+        return false;
+    }
+    return true;
 }
 
 let groupedEvents = [];
