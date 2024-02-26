@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 
         @RestController
         public class MyErrorController implements ErrorController  {
+
+                @RequestMapping("/error")
+                public String defaultErrorMessage() {
+                    return "A custom error has occurred in the application.";
+                }
+    
         }
+        
     
 

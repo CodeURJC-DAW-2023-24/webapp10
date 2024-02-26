@@ -20,7 +20,7 @@ public class UserSevice {
     
     
     public User save(User user) {
-        User newUser = new User(user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getBirthdate(), user.getNationality(), user.getDni(), user.getUsername(), user.getPassword(), user.isAdmin(), user.getAdress(), user.getPostcode(), user.getTelphone(), Arrays.asList(new Role( "USER")));
-        return userRepository.save(newUser);
+      
+        return userRepository.save(user);
     }
 }

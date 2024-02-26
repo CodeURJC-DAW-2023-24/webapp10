@@ -1,17 +1,20 @@
 package es.codeurj.mortez365.controller;
 
+
+
 import java.sql.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.service.UserSevice;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -22,8 +25,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/register")
 
 public class UserController {
-    
-  
+
+
     private UserSevice userService;
 
     public UserController(UserSevice userService) {
@@ -38,12 +41,11 @@ public class UserController {
 
     @GetMapping
     public String registerForm() {
-       
+
         return "register";
     }
-
-
-    
+ 
+  
     @PostMapping
     public String registerUser(@RequestParam String name,
     @RequestParam String firstsurname,
@@ -76,7 +78,9 @@ public class UserController {
     System.out.println("User Saved");
     return "redirect:/login";
 }
+ 
 
+   
     
     
     

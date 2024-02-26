@@ -13,14 +13,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
+import es.codeurj.mortez365.service.UserSevice;
 
 
 
 
 @Controller
 public class AppController {
+
+  
 
     @Autowired
     private EventRepository events;
@@ -96,8 +102,7 @@ public class AppController {
     }
 
 
-    
-
+  
     @GetMapping("/profile")
     public String profile() {
         return "profile";
