@@ -98,9 +98,7 @@ public class AppController {
     }
 
     @GetMapping("/login")
-    public String login(Model model, HttpServletRequest request) {
-        CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-        model.addAttribute("token", token.getToken());
+    public String login() {
         return "login";
     }
 
