@@ -59,21 +59,25 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="index.html">Inicio</a></li>
-								<li><a href="bets.html">Apuestas</a></li>
-								<li><a href="roulette.html">Ruleta</a></li>
-								<li><a href="slots.html">Slots</a></li>
-								<li><a href="games.html">Juegos</a></li>
-								<li><a href="info.html">Información</a>
+								<li class="current-list-item"><a href="/index">Inicio</a></li>
+								<li><a href="/bets">Apuestas</a></li>
+								<li><a href="/roulette">Ruleta</a></li>
+								<li><a href="/slots">Slots</a></li>
+								<li><a href="/games">Juegos</a></li>
+								<li><a href="">Información</a>
 									<ul class="sub-menu">
-										<li><a href="news.html">Historia</a></li>
-										<li><a href="single-news.html">Porque la ludopatia es sana y no arruina familias</a></li>
+										
+											<li><a href="/contact">Contacto</a></li>
+											<li><a href="/responsablegame">Juego Responsable</a></li>
+											<li><a href="/about">Sobre nosostros</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="mobile-hide search-bar-icon" href="wallet.html"><i class="fas fa-wallet"></i></a>
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="mobile-hide search-bar-icon" href="/wallet"><i class="fas fa-wallet"></i></a>
+										<a class="shopping-cart" href="/cart"><i class="fas fa-receipt"></i></a>
+										
+										<a class="mobile-hide search-bar-icon" href="/profile"><i class="fas fa-user"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>
@@ -129,14 +133,14 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img id="product-image" src="" alt="">
+						<img id="product-image" src="{{event.image}}" alt="">
 					</div>
 				</div>
 				<div class="col-md-7">
 					<div class="single-product-content">
-						<h3 id="product-name"></h3>
-						<p class="single-product-pricing"><span>Per Kg</span> <span id="product-price"></span></p>
-						<p>Descripción del partido</p>
+						<h3 id="product-name">{{event.name}}</h3>
+						<h3 id="product-championship">{{event.championship}}</h3>
+						<p>{{event.sport}}</p>
 						<h4>Cuotas</h4>	
 						
 						<div class="container">

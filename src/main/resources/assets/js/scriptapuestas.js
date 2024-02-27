@@ -1,4 +1,4 @@
-
+/*
     let matches = [
         {
           image: "assets/img/partidos/madridatleti.webp",
@@ -72,7 +72,7 @@
         document.querySelector('.single-product-pricing').textContent = `${match.price} `;
         console.log(match.name);
       } 
-
+*/
       function validateForm() {
         var inputs = document.getElementsByTagName('input');
         console.log("eee");
@@ -119,4 +119,9 @@ for (var i = 0; i < deleteButtons.length; i++) {
 function select_bet(elemento) {
  
   elemento.style.backgroundColor = "black"; 
+}
+
+let groupedEvents = [];
+for(let i = 0; i < events.length; i += 3) {
+    groupedEvents.push(events.slice(i, i+3));
 }
