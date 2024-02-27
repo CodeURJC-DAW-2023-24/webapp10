@@ -437,6 +437,10 @@ function buildBettingBoard(){
 function clearBet(){
 	bet = [];
 	numbersBet = [];
+	var spinBtn = document.querySelector('.spinBtn');
+	if(spinBtn){
+		spinBtn.remove();
+	}
 }
 
 function setBet(e, n, t, o){
