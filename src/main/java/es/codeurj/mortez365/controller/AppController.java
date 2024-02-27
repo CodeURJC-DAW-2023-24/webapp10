@@ -118,6 +118,11 @@ public class AppController {
         return "cart";
     }
 
+    @GetMapping("/betsadmin")
+    public String betsadmin() {
+        return "betsadmin";
+    }
+
     
 
 
