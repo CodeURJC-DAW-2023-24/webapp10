@@ -10,8 +10,13 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.repository.EventRepository;
 
@@ -91,40 +96,8 @@ public class UserController {
     @GetMapping("/single-product")
     public String getSingleProduct(@RequestParam("id") Long id, Model model) {
         Event event = events.findById(id).orElse(null);
-        assert event != null;
         model.addAttribute("event", event);
-        model.addAttribute("feeT", 1.7);
-        model.addAttribute("feeL", Math.round((3.5 - event.getFee()) * 100.0)/ 100.0);
         return "single-product";
-    }
-    @PostMapping("/single-product")
-    public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId,
-                              @RequestParam("selected-bet") String selectedBet,Model model){
-        Event event = events.findById(eventId).orElse(null);
-        assert event != null;
-
-        Double m = 0.0;
-        Result result = null;
-        switch (selectedBet){
-            case "Victoria":
-                result = Result.WIN;
-                m = event.getFee();
-                break;
-            case "Empate":
-                result = Result.TIE;
-                m = 1.7;
-                break;
-            case "Derrota":
-                result = Result.LOSE;
-                m = (3.5 - event.getFee());
-                break;
-            default:
-                break;
-        }
-        m = m * money;
-        Double b = m - money;
-        bets.save(new Bet(event, money, result, m, b));
-        return "redirect:/index";
     }
 
     @GetMapping("/login")
