@@ -1,4 +1,44 @@
 let bankValue = 1000;
+
+/* cuando tengamos lo de añañdir fondos usamos esto para 
+pasarle a la ruleta el saldo del usuario
+async function fetchBankValue() {
+    try {
+        const response = await fetch("/obtenerValor");
+        const data = await response.text();
+        bankValue = parseInt(data);
+        console.log("Valor obtenido:", bankValue);
+    } catch (error) {
+        console.error("Error al obtener el valor:", error);
+    }
+}
+async function withdrawFunds() {
+    try {
+        const response = await fetch('/retirarFondos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ amount: bankValue }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al retirar fondos');
+        }
+
+        const data = await response.json();
+        console.log('Fondos retirados:', data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Asegúrate de que este código se ejecuta después de que el DOM se haya cargado completamente
+document.querySelector('#withdrawButton').addEventListener('click', withdrawFunds);
+fetchBankValue().then(() => {;
+*/
+console.log("Valor:", bankValue);
+
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;

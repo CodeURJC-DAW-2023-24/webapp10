@@ -122,9 +122,16 @@ public class AppController {
     public String betsadmin() {
         return "betsadmin";
     }
-
-    
-
-
-
 }
+/* 
+    @GetMapping("/obtenerValor")
+    @ResponseBody
+    public int obtenerValor() {
+        int valor = 10;
+        return valor;
+    }
+}
+    
+*/
+
+
