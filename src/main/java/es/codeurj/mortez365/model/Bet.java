@@ -18,15 +18,19 @@ public class Bet {
     private Event event;
     private Double money;
     private Result result;
+    private Double winning_amount;
+    private Double benefit;
 
     public Bet() {
     }
 
-    public Bet(Event event, Double money, Result result) {
+    public Bet(Event event, Double money, Result result, Double winning_amount, Double benefit) {
         super();
         this.event = event;
         this.money = money;
         this.result = result;
+        this.winning_amount = winning_amount;
+        this.benefit = benefit;
     }
 
     public Long getId() {
@@ -59,5 +63,21 @@ public class Bet {
 
     public void setResult(Result result) {
         this.result = result;
+    }
+
+    public Double getWinning_amount() {
+        return winning_amount;
+    }
+
+    public void setWinning_amount(Double winning_amount) {
+        this.winning_amount = winning_amount;
+    }
+
+    public Double getBenefit() {
+        return benefit;
+    }
+
+    public void setBenefit(Double benefit) {
+        this.benefit = benefit;
     }
 }
