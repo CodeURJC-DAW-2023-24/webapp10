@@ -151,8 +151,24 @@
                 </div>
             </div>
 
-			<div class="row product-lists">
-			</div>
+					<div class="container-fluid">
+    <div class="row" id = "eventsContainer">
+        {{#events}}
+        <div class="col-lg-4 col-md-6 text-center">
+            <div class="single-product-item">
+                <div class="product-image">
+                    <a href="/single-product?id={{id}}"><img src="{{image}}" alt=""></a>
+                </div>
+                <h3>{{name}}</h3>
+                <p class="product-price">{{championship}} <span>{{sport}}</span></p>
+				
+                <a href="single-product?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
+            </div>
+        </div>
+        {{/events}}
+    </div>
+</div>
+
             <div class="button-container">
                 <a id="showFormButton" class="cart-btn"><i class=""></i> Añadir evento</a>
                 <a id="editEventButton" class="cart-btn"><i class=""></i> Editar evento</a>

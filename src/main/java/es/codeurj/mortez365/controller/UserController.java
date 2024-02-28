@@ -1,156 +1,87 @@
 package es.codeurj.mortez365.controller;
-import java.util.List;
 
-import es.codeurj.mortez365.model.Bet;
-import es.codeurj.mortez365.model.Result;
-import es.codeurj.mortez365.repository.BetRepository;
-import org.hibernate.query.Page;
+
+
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import es.codeurj.mortez365.model.User;
+import es.codeurj.mortez365.service.UserSevice;
+
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import es.codeurj.mortez365.model.Event;
-import es.codeurj.mortez365.repository.EventRepository;
 
 
 
 
 @Controller
+
+@RequestMapping("/register")
+
 public class UserController {
 
-    @Autowired
-    private EventRepository events;
 
-    @Autowired
-    private BetRepository bets;
+    private UserSevice userService;
 
-    @RequestMapping("/index")
-    public String index() {
-        return "index";
+    public UserController(UserSevice userService) {
+        super();
+        this.userService = userService;
     }
 
-   
-
-
-  
-    @GetMapping("/roulette")
-    public String roulette() {
-        return "roulette";
+    @ModelAttribute("user")
+    public User user() {
+        return new User();
     }
 
-    @GetMapping("/slots")
-    public String slots() {
-        return "slots";
-    }
+    @GetMapping
+    public String registerForm() {
 
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
-
-    @GetMapping("/about")
-    public String about() {
-        return "about";
-    }
-
-    @GetMapping("/responsablegame")
-    public String responsablegame() {
-        return "responsablegame";
-    }
-    
-    @GetMapping("/bets")
-    public String getFilteredEvents(@RequestParam(name = "category", required = false) String category, Model model) {
-        List<Event> filteredEvents;
-    
-        if ("Todos".equals(category)) {
-          
-            filteredEvents = events.findAll();
-        } else if (category != null) {
-          
-            filteredEvents = events.findByChampionship(category);
-        } else {
-            
-            filteredEvents = events.findAll(PageRequest.of(0, 9)).getContent();
-        }
-    
-        model.addAttribute("events", filteredEvents);
-        return "bets";
-    }
-
-    @GetMapping("/bets/json")
-    @ResponseBody
-    public List<Event> getEventsJson(@RequestParam(name = "start", defaultValue = "0") int start,
-                                     @RequestParam(name = "count", defaultValue = "9") int count) {
-        return events.findAll(PageRequest.of(start, count)).getContent();
-    }
-    
-
-    @GetMapping("/single-product")
-    public String getSingleProduct(@RequestParam("id") Long id, Model model) {
-        Event event = events.findById(id).orElse(null);
-        model.addAttribute("event", event);
-        return "single-product";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String register() {
         return "register";
     }
-
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
-
-    @GetMapping("/wallet")
-    public String wallet() {
-        return "wallet";
-    }
-
-    @GetMapping("/cart")
-    public String cart(Model model) {
-        model.addAttribute("bets", bets.findAll(PageRequest.of(0, 9)).getContent());
-        List<Bet> allBets = bets.findAll();
-        Double totalWinningAmount = 0.0;
-        Double totalBet = 0.0;
-        Double totalBenefit = 0.0;
-        for (Bet bet : allBets) {
-            totalWinningAmount += bet.getWinning_amount();
-            totalBet += bet.getMoney();
-            totalBenefit = bet.getBenefit();
-        }
-        model.addAttribute("total-bet", totalBet);
-        model.addAttribute("total-winning-amount", totalWinningAmount);
-        model.addAttribute("total-benefit", totalBenefit);
-        return "cart";
-    }
-
-        @RestController
-        public static class MyErrorController implements ErrorController  {
-
-            private static final String PATH = "/error";
-
-            @RequestMapping(value = PATH)
-            public String defaultErrorMessage() {
-                return "A custom error has occurred in the application.";
-            }
+ 
+  
+    @PostMapping
+    public String registerUser(@RequestParam String name,
+    @RequestParam String firstsurname,
+    @RequestParam String secondsurname,
+    @RequestParam Date birthdate,
+    @RequestParam String nationality,
+    @RequestParam String dni,
+    @RequestParam String adress,
+    @RequestParam String postcode,
+    @RequestParam String telphone,
+    @RequestParam String email,
+    @RequestParam String username,
+    @RequestParam String password) {
+    User user = new User();
+    user.setName(name);
+    user.setFirstsurname(firstsurname);
+    user.setSecondsurname(secondsurname);
+    user.setBirthdate(birthdate);
+    user.setNationality(nationality);
+    user.setDni(dni);
+    user.setAdress(adress);
+    user.setPostcode(postcode);
+    user.setTelphone(telphone);
+    user.setEmail(email);
+    user.setUsername(username);
+    user.setPassword(password);
 
 
-        }
+    userService.save(user);
+    System.out.println("User Saved");
+    return "redirect:/login";
+}
+ 
 
-
-
+   
+    
+    
+    
 }
