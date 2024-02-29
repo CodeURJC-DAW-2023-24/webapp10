@@ -117,8 +117,27 @@ for (var i = 0; i < deleteButtons.length; i++) {
 
 
 function select_bet(elemento) {
- 
-  elemento.style.backgroundColor = "black"; 
+    var botones = document.getElementsByClassName('bordered-btn-bets');
+
+    // Deseleccionar todos los botones
+    for (var i = 0; i < botones.length; i++) {
+        botones[i].style.backgroundColor = ''; // Restaurar el color por defecto
+    }
+
+    // Seleccionar el botón actual
+    elemento.style.backgroundColor = "black";
+    document.getElementById('selected-bet').value = elemento.innerText;
+}
+
+function comprobarApuesta(){
+    var money = document.forms["form-bet"]["bet-amount"].value;
+    var result = document.getElementById("selected-bet").value;
+    console.log(result);
+    if (money <= 0 || money == null || result === '') {
+        alert("Se te olvida apostar pasta o a que apostar ludopatilla");
+        return false;
+    }
+    return true;
 }
 
 let groupedEvents = [];

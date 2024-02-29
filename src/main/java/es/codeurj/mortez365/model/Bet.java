@@ -45,9 +45,27 @@ public class Bet {
 
     @Setter
     @Getter
+    @PrimaryKeyJoinColumn(name = "RESULT")
+    private Result result;
+
+
+    @Setter
+    @Getter
     @JoinColumn(name = "USER")
     @ManyToOne
     private User user;
 
+    public Bet() {
+    }
+
+    public Bet(Event event, double bet_amount, Result result, double winning_amount, double profit) {
+        super();
+        this.bet_amount = bet_amount;
+        this.result = result;
+        this.winning_amount = winning_amount;
+        this.profit = profit;
+        this.event = event;
+        this.user = user;
+    }
 }
 

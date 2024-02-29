@@ -2,18 +2,17 @@ package es.codeurj.mortez365.controller;
 import java.util.List;
 
 
+import es.codeurj.mortez365.model.Bet;
+import es.codeurj.mortez365.model.Result;
+import es.codeurj.mortez365.repository.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.model.User;
@@ -30,6 +29,10 @@ public class AppController {
 
     @Autowired
     private EventRepository events;
+
+
+    @Autowired
+    private BetRepository bets;
 
     @RequestMapping("/index")
     public String index() {
@@ -92,8 +95,41 @@ public class AppController {
     @GetMapping("/single-product")
     public String getSingleProduct(@RequestParam("id") Long id, Model model) {
         Event event = events.findById(id).orElse(null);
+        assert event != null;
         model.addAttribute("event", event);
-        return "single-product";
+        model.addAttribute("feeT", 1.7);
+        model.addAttribute("feeL", Math.round((3.5 - event.getFee()) * 100.0)/ 100.0);
+         return "single-product";
+    }
+    @PostMapping("/single-product")
+    public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId,
+                              @RequestParam("selected-bet") String selectedBet,Model model){
+        Event event = events.findById(eventId).orElse(null);
+        assert event != null;
+
+        Double m = 0.0;
+        Result result = null;
+        switch (selectedBet){
+            case "Victoria":
+                result = Result.WIN;
+                m = event.getFee();
+                break;
+            case "Empate":
+                result = Result.TIE;
+                m = 1.7;
+                break;
+            case "Derrota":
+                result = Result.LOSE;
+                m = (3.5 - event.getFee());
+                break;
+            default:
+                break;
+        }
+        m = m * money;
+        System.out.println(m);
+        Double p = m - money;
+        bets.save(new Bet(event, money, result, m, p));
+        return "redirect:/index";
     }
 
     @GetMapping("/login")
@@ -102,7 +138,7 @@ public class AppController {
     }
 
 
-  
+
     @GetMapping("/profile")
     public String profile() {
         return "profile";
@@ -114,7 +150,20 @@ public class AppController {
     }
 
     @GetMapping("/cart")
-    public String cart() {
+    public String cart(Model model) {
+        model.addAttribute("bets", bets.findAll(PageRequest.of(0, 9)).getContent());
+        List<Bet> allBets = bets.findAll();
+        Double totalWinningAmount = 0.0;
+        Double totalBet = 0.0;
+        Double totalBenefit = 0.0;
+        for (Bet bet : allBets) {
+            totalWinningAmount += bet.getWinning_amount();
+            totalBet += bet.getBet_amount();
+            totalBenefit = bet.getProfit();
+        }
+        model.addAttribute("total-bet", totalBet);
+        model.addAttribute("total-winning-amount", totalWinningAmount);
+        model.addAttribute("total-benefit", totalBenefit);
         return "cart";
     }
 
@@ -123,7 +172,7 @@ public class AppController {
         return "betsadmin";
     }
 
-    
+
 
 
 

@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
+import java.util.Random;
+
 @Entity
 @Data
 @Table(name = "EVENT")
@@ -65,12 +67,24 @@ public class Event {
     @JoinColumn(name = "SPORT")
     private String sport;
 
+    @Setter
+    @Getter
+    @JoinColumn(name = "FEE")
+    private Double fee;
+
     public Event(String name, String image, String championship, String sport) {
         super();
         this.name = name;
         this.image = image;
         this.championship = championship;
         this.sport = sport;
+        this.fee = generateFee();
+    }
+
+    private Double generateFee() {
+        Random random = new Random();
+        double randomFee = 1 + (random.nextDouble() * 2);
+        return Math.round(randomFee * 100.0)/ 100.0;
     }
 
     public Event() {

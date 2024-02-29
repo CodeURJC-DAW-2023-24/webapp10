@@ -128,94 +128,66 @@
 	<!-- end breadcrumb section -->
 
 	<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-						<table class="cart-table">
-							<thead class="cart-table-head">
-								<tr class="table-head-row">
-									<th class="product-remove"></th>
-									<th class="product-name">Apuestas disponibles</th>
-									<th class="product-price">Tipo</th>
-									<th class="product-price">Cuota</th>
-									<th class="product-quantity">Cantidad</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="fa-shopping-cart"></i></a></td>
-									<td class="product-name">Goles</td>
-									<td class="product-price"><select title="tipo"> 
-										<option value="mayor">Mas</option>
-										<option value="menor">Menos</option>
-										<option value="igual">Igual</option>
-									<td class="product-price">1.3</td>
-									<td class="product-quantity"><input type="number" placeholder="0€" id="apuesta-goles"></td>
-									
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="fa-shopping-cart"></i></a></td>
-									<td class="product-name">Faltas</td>
-									<td class="product-price"><select title="tipo"> 
-										<option value="mayor">Mas</option>
-										<option value="menor">Menos</option>
-										<option value="igual">Igual</option>
-									<td class="product-price">2.4</td>
-									<td class="product-quantity"><input type="number" placeholder="0€"></td>
-									
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="fa-shopping-cart"></i></a></td>
-									<td class="product-name">Corners</td>
-									<td class="product-price"><select title="tipo"> 
-										<option value="mayor">Mas</option>
-										<option value="menor">Menos</option>
-										<option value="igual">Igual</option>
-									<td class="product-price">5.1</td>
-									<td class="product-quantity"><input type="number" placeholder="0€"></td>
-									
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+    <div class="cart-section mt-150 mb-150">
+        <div class="container">
+            <h2>Eventos apostados</h2>
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="cart-table-wrap">
+                        <table class="cart-table">
+                            <thead class="cart-table-head tr">
+                            <tr class="table-head-row">
+                                <th class="product-remove"></th>
+                                <th class="product-name">Partido</th>
+                                <th class="product-price">Resultado</th>
+                                <th class="product-price">Cuota</th>
+                                <th class="product-quantity">Dinero apostado</th>
+                                <th class="product-money">Ganancias</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#bets}}
+                                <tr class="table-body-row">
+                                    <td class="product-remove"><a href="#"><i class="fa-shopping-cart"></i></a></td>
+                                    <td class="product-name">{{event.name}}</td>
+                                    <td class="product-price">{{result}}</td>
+                                    <td class="product-price">{{event.fee}}</td>
+                                    <td class="product-quantity">{{bet_amount}}</td>
+                                    <td class="product-money">{{winning_amount}}</td>
+                                </tr>
+                            {{/bets}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="total-section">
+                        <table class="total-table">
+                            <tbody>
+                            <tr class="total-data">
+                                <td><strong>Total apostado: {{total-bet}}</strong></td>
+                                <td id="total-apuesta"></td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>Ganacias totales: {{total-winning-amount}}</strong></td>
+                                <td id="total-ganancia"></td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>Beneficio total: {{total-benefit}}</strong></td>
+                                <td id="Beneficio"></td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-				<div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>Total</th>
-									<th>Dinerito</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="total-data">
-									<td><strong>Total: </strong></td>
-									<td id="total-apuesta"></td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Ganacias: </strong></td>
-									<td id="total-ganancia"></td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Beneficio: </strong></td>
-									<td id="Beneficio"></td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Apostar</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <div class="cart-buttons">
+                            <a href="cart.html" class="boxed-btn">Apostar</a>
+                            <a href="checkout.html" class="boxed-btn black">Check Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- end cart -->
 
 
