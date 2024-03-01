@@ -1,31 +1,20 @@
 package es.codeurj.mortez365.controller;
 
 
-
-import java.sql.Date;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.service.UserSevice;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import java.sql.Date;
 
 
 
 
 
 @Controller
-
 @RequestMapping("/register")
-
 public class UserController {
-
 
     private UserSevice userService;
 
