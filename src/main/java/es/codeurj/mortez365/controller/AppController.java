@@ -1,27 +1,18 @@
 package es.codeurj.mortez365.controller;
-import java.util.List;
 
-
+import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import org.springframework.ui.Model;
+import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import es.codeurj.mortez365.model.Event;
-import es.codeurj.mortez365.model.User;
-import es.codeurj.mortez365.repository.EventRepository;
-import es.codeurj.mortez365.service.UserSevice;
-
-import javax.servlet.http.HttpServletRequest;
 
 
 @Controller

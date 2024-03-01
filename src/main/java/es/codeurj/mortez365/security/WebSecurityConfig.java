@@ -7,13 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import java.security.SecureRandom;
 
 @Configuration
 @EnableWebSecurity
@@ -24,7 +20,7 @@ public class WebSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10, new SecureRandom());
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -44,9 +40,9 @@ public class WebSecurityConfig {
 
         http.authorizeRequests(authorize -> authorize
                         // PERMIT ALL
-                        .antMatchers("/").permitAll()
+                        .requestMatchers("/").permitAll()
                         // PRIVATE PAGES
-                        .antMatchers("/betsadmin").hasRole("ADMIN")
+                        .requestMatchers("/betsadmin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
