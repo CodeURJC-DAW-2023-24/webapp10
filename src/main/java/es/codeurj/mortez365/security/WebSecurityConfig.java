@@ -55,7 +55,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/wallet").permitAll()
                         .requestMatchers("/loginerror").permitAll()
                         // PRIVATE PAGES
-                        .requestMatchers("/betsadmin").hasRole("ADMIN")
+                        .requestMatchers("/betsadmin").permitAll()
+                        .requestMatchers("/addEvent").permitAll()
                       
                 )
                 .formLogin(formLogin -> formLogin

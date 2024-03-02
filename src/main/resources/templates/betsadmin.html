@@ -131,25 +131,7 @@
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
 
-			<div class="row">
-                <div class="col-md-12">
-                    <div class="product-filters">
-                        <ul>
-                            <li class="active" data-filter="*">LaLiga</li>
-                            <li data-filter=".strawberry">Premier League</li>
-                            <li data-filter=".berry">Serie A</li>
-							<li data-filter=".berry">Bundesliga</li>
-							<li data-filter=".berry">Ligue1</li>
-                            <li data-filter=".lemon">Internacional Clubes</li>
-							<li data-filter=".berry">Selecciones</li>
-							<li data-filter=".berry">Baloncesto</li>
-							<li data-filter=".berry">Tenis</li>
-							<li data-filter=".berry">Formula1</li>
-							<li data-filter=".berry">Eventos Especiales</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+		
 
 					<div class="container-fluid">
     <div class="row" id = "eventsContainer">
@@ -168,11 +150,14 @@
         {{/events}}
     </div>
 </div>
-
-            <div class="button-container">
-                <a id="showFormButton" class="cart-btn"><i class=""></i> Añadir evento</a>
-                <a id="editEventButton" class="cart-btn"><i class=""></i> Editar evento</a>
-            </div>
+<form action="/addEvent" method="post">
+    <input type="text" id="eventName" name="name" placeholder="Nombre">
+	<input type="text" id="eventChampionship" name="championship" placeholder="Liga">
+	<input type="text" id="eventSport" name="sport" placeholder="Deporte">
+	<input type="file" id="eventImage" name="image">
+    <button type="submit">Add Event</button>
+	<input type="hidden" name="_csrf" value="{{token}}"/>
+</form>
 
             <div id="newmatch" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="display: none;">
                 <div class="card-body">

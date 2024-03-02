@@ -12,6 +12,8 @@ import jakarta.persistence.SequenceGenerator;
 
 import java.util.Random;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Data
 @Table(name = "EVENT")
@@ -72,6 +74,7 @@ public class Event {
     @JoinColumn(name = "FEE")
     private Double fee;
 
+   
     public Event(String name, String image, String championship, String sport) {
         super();
         this.name = name;
@@ -89,6 +92,11 @@ public class Event {
 
     public Event() {
 
+    }
+
+    public void setImage(byte[] bs) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setImage'");
     }
 
 }

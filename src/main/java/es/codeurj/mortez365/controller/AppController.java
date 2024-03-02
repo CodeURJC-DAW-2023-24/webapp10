@@ -27,8 +27,6 @@ import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.UserSevice;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -188,11 +186,12 @@ public class AppController {
         return "cart";
     }
 
-    @GetMapping("/betsadmin")
-    public String betsadmin() {
-        return "betsadmin";
-    }
-
+   @GetMapping("/betsadmin")
+public String betsadmin(Model model) {
+    List<Event> allEvents = events.findAll();
+    model.addAttribute("events", allEvents);
+    return "betsadmin";
+}
 
     @GetMapping("/profile")
     public String profile(Model model) {
@@ -205,6 +204,11 @@ public class AppController {
         return "loginerror";
     }
     
-
+    @PostMapping("/addEvent")
+    public String addEvent(Event event) {
+        events.save(event);
+        System.out.println("Evento añadido");
+        return "redirect:/betsadmin";
+    }
 
 }
