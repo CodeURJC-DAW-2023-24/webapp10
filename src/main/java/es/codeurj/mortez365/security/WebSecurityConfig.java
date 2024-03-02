@@ -44,13 +44,11 @@ public class WebSecurityConfig {
 
                         // PERMIT ALL
                         .requestMatchers("/index").permitAll()
-                        .requestMatchers( "/login").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/bets").permitAll()
                         .requestMatchers("/roulette").permitAll()
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/about").permitAll()
-                        .requestMatchers("/loginerror").permitAll()
                         .requestMatchers("/responsablegame").permitAll()
                   
                         // PRIVATE PAGES
@@ -60,12 +58,12 @@ public class WebSecurityConfig {
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .failureUrl("/loginerror")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/index")
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("/index")
                         .permitAll()
                 );
 
