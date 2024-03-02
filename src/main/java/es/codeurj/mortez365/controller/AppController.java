@@ -27,6 +27,9 @@ import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.UserSevice;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -152,12 +155,6 @@ public class AppController {
     }
 
 
-
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
-
     @GetMapping("/wallet")
     public String showWallet(Model model, Principal principal) {
     // Get the current user
@@ -197,7 +194,17 @@ public class AppController {
     }
 
 
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        model.addAttribute("user", new User());
+        return "profile";
+    }
 
+    @GetMapping("/loginerror")
+    public String loginError() {
+        return "loginerror";
+    }
+    
 
 
 }

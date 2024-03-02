@@ -14,7 +14,7 @@ public class Bet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter
     @Getter
-    @Column(name = "ID")
+    @PrimaryKeyJoinColumn(name = "ID")
     private long id;
 
     @Setter
@@ -39,13 +39,13 @@ public class Bet {
 
     @Setter
     @Getter
-    @PrimaryKeyJoinColumn(name = "EVENT")
+    @JoinColumn(name = "EVENT")
     @OneToOne
     private Event event;
 
     @Setter
     @Getter
-    @PrimaryKeyJoinColumn(name = "RESULT")
+    @Column(name = "RESULT")
     private Result result;
 
 
@@ -68,4 +68,3 @@ public class Bet {
         this.user = user;
     }
 }
-

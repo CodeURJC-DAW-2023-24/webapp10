@@ -120,76 +120,68 @@
 
 	<!-- check out section -->
 	<div class="checkout-section mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
-						<div class="accordion" id="accordionExample">
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingOne">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Datos personales
-						        </button>
-						      </h5>
-						    </div>
-
-						
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="checkout-accordion-wrap">
+                        <div class="accordion" id="accordionExample">
+                          <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                              <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  Datos personales
+                                </button>
+                              </h5>
+                            </div>
                             <div class="card-body">
                                 <div class="billing-address-form">
                                     <div class="user-profile">
-                                        <p>Nombre: <span id="user-name"></span></p>
-                                        <p>Primer apellido: <span id="user-first-surname"></span></p>
-                                        <p>Segundo apellido: <span id="user-second-surname"></span></p>
-                                        <p>Fecha de nacimiento: <span id="user-birthdate"></span></p>
-                                        <p>Email: <span id="user-email"></span></p>
-                                        <p>Nacionalidad: <span id="user-nationality"></span></p>
-                                        <p>DNI: <span id="user-dni"></span></p>
-                                        <div class="card single-accordion">
-                                            <div class="card-header" id="headingTwo">
-                                                <h5 class="mb-0">
-                                                    Datos de contacto
-                                                </h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Dirección: <span id="user-address"></span></p>
-                                                <p>Código postal: <span id="user-postal-code"></span></p>
-                                                <p>Teléfono: <span id="user-phone"></span></p>
-                                                <p>Email: <span id="user-contact-email"></span></p>
-                                            </div>
-                                        </div>
-                                        <div class="card single-accordion">
-                                            <div class="card-header" id="headingThree">
-                                                <h5 class="mb-0">
-                                                    Datos de usuario
-                                                </h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p>Usuario: <span id="user-username"></span></p>
-                                            </div>
-
-											
-												
-											</div>
-
-											<a href="" class="boxed-btn"></i>Cerrar sesión</a>	
+                                        <p>Nombre: {{user.name}}<span id="user-name"></span></p>
+                                        <p>Primer apellido: {{user.firstsurname}}<span id="user-first-surname"></span></p>
+[20:12]
+<p>Segundo apellido: {{user.secondsurname}} <span id="user-second-surname"></span></p>
+                                        <p>Fecha de nacimiento: {{user.birthdate}} <span id="user-birthdate"></span></p>
+                                        <p>Nacionalidad: {{user.nationality}}<span id="user-nationality"></span></p>
+                                        <p>DNI: {{user.dni}}<span id="user-dni"></span></p>
                                     </div>
                                 </div>
                             </div>
-						    </div>
-						  </div>
-						  
 
-						</div>
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                                        Datos de contacto
+                                    </button>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Dirección: {{user.adress}}<span id="user-address"></span></p>
+                                <p>Código postal: {{user.postcode}}<span id="user-postal-code"></span></p>
+                                <p>Teléfono:{{user.telphone}} <span id="user-phone"></span></p>
+                                <p>Email: {{user.email}}<span id="user-contact-email"></span></p>
+                            </div>
 
-					</div>
-				</div>
-                
-				</div>
-			</div>
-            
-		</div>
-	</div>
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+
+									Datos de usuario
+                                    </button>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Usuario: {{user.username}}<span id="user-username"></span></p>
+                            </div>
+
+                            <a href="" class="boxed-btn"></i>Cerrar sesión</a>
+
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
    
 		
 	<!-- end check out section -->
