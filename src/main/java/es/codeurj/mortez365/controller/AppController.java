@@ -1,14 +1,11 @@
 package es.codeurj.mortez365.controller;
 
 import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -18,17 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
 import java.util.List;
-import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import es.codeurj.mortez365.model.Event;
-import es.codeurj.mortez365.model.User;
-import es.codeurj.mortez365.repository.EventRepository;
-import es.codeurj.mortez365.repository.UserRepository;
-import es.codeurj.mortez365.service.UserSevice;
+import java.util.Optional;
 
 
 
@@ -47,7 +36,7 @@ public class AppController {
     @RequestMapping("/index")
     public String index() {
         log.info("Prueba123");
-        log.info(userRepository.findByName("usuario_prueba").toString());
+        log.info(userRepository.findByName("user").toString());
         return "index";
     }
 
