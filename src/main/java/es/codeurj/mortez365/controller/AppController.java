@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.security.Principal;
 import java.util.List;
-
+import java.util.Optional;
 
 import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.model.Result;
@@ -200,3 +200,4 @@ public class AppController {
 
 
 
+}
