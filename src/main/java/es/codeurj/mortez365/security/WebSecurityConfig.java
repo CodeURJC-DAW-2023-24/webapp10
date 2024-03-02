@@ -46,7 +46,6 @@ public class WebSecurityConfig {
                         .requestMatchers("/index").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/bets").permitAll()
-                        .requestMatchers("/roulette").permitAll()
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/responsablegame").permitAll()
