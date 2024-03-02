@@ -496,8 +496,24 @@ function setBet(e, n, t, o){
 	}
 }
 
+function customRandomizer(seed) {	//Gets the local date and generates a random (0..1)
+	const a = 1664525;		//Uses the Linear Congruential Algorithm
+	const c = 1013904223;
+	const m = Math.pow(2, 32);
+	seed = (a * seed + c) % m;
+
+	return seed/m;
+}
+
+function advancedRandomNum() {	//Generates a random from a complex seed (instead of Math.random)
+	var currentDate = new Date();
+	var timeInMilisecs = currentDate.getTime();
+	var decimalRand = customRandomizer(timeInMilisecs.toString());
+	return Math.floor(decimalRand * 37);
+}
+
 function spin(){
-	var winningSpin = Math.floor(Math.random() * 37);
+	var winningSpin = advancedRandomNum();
 	spinWheel(winningSpin);
 	setTimeout(function(){
 		if(numbersBet.includes(winningSpin)){
