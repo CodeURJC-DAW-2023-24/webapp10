@@ -122,6 +122,11 @@ public class AppController {
     public String betsadmin() {
         return "betsadmin";
     }
+
+    @GetMapping("/loginerror")
+    public String loginerror() {
+        return "loginerror";
+    }
 }
 /* 
     @GetMapping("/obtenerValor")

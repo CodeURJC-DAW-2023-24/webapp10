@@ -3,13 +3,6 @@ package es.codeurj.mortez365.model;
 import java.util.Date;
 import java.util.List;
 
-
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -110,9 +103,10 @@ public class User {
     @Setter
     @Getter
     @Column(name = "ROLE")
-    private String role;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
 
-    public User(String name, String firstsurname, String secondsurname, String email, Date birthdate, String nationality, String dni, String username, String password, boolean admin, String adress, String postcode, String telphone, String role) {
+    public User(String name, String firstsurname, String secondsurname, String email, Date birthdate, String nationality, String dni, String username, String password, boolean admin, String adress, String postcode, String telphone,List <String> roles) {
         super();
         this.name = name;
         this.firstsurname = firstsurname;
@@ -127,7 +121,7 @@ public class User {
         this.adress = adress;
         this.postcode = postcode;
         this.telphone = telphone;
-        this.role = role;
+        this.roles = roles;
 
 
     }

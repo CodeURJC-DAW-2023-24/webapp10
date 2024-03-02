@@ -124,33 +124,35 @@
 					<div class="checkout-accordion-wrap">
 						<div class="accordion" id="accordionExample">				
 						        <div class="billing-address-form">
-						        	<form action="index.html">                   
+						        	
                                       <div class="card single-accordion">
                                         <div class="card-header" id="headingThree">
                                           <h5 class="mb-0">
                                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                              Login
+                                              Iniciar Sesión
                                             </button>
                                           </h5>
                                         </div>
                                           <div class="card-body">
                                             <div class="billing-address-form">
-                                             
-                                                    <p><input type="text" placeholder="Usuario" required></p>
-                                                    <p><input type="password" placeholder="Contraseña" required></p>
-
-                                                    <p><a href="assets/img/avaters/avatar3.png" download>He olvidado la contaseña</a></p>
-                                          
+												<form action="/login" method="post">
+													<label>Nombre de usuario:</label>
+													<p><input type="text" name="username"></p>
+													<label>Contraseña:</label>
+													<p><input type="password" name="password"></p>
+												
+													<input type="submit" class="boxed-btn" value="Iniciar Sesión">
+													<input type="hidden" name="_csrf" value="{{token}}"/>
+													
+													<p><a href="assets/img/avaters/avatar3.png">He olvidado la contaseña</a></p>
+												</form>
                                             </div>
                                            
                                           </div>
                                          
                                         
                                       </div>
-                                      <div style="text-align: right;">
-										<input type="submit" class="boxed-btn" value="Acceder como usuario">
-										<input type="submit" class="boxed-btn" value="Acceder como administador">
-                                    </div>
+
 									
 						        		
 						        	</form>

@@ -76,7 +76,7 @@ public class UserController {
 
     userService.save(user);
     System.out.println("User Saved");
-    return "redirect:/login";
+    return "redirect:/index";
 }
  
 
