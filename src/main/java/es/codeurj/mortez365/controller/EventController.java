@@ -47,7 +47,7 @@ public class EventController {
     public List<Event> getAllevents() {
         return events.findAll();
     }
-
+   
     
 
     
