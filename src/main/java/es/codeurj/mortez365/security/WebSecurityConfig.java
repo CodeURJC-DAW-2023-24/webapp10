@@ -44,6 +44,7 @@ public class WebSecurityConfig {
 
                         // PERMIT ALL
                         .requestMatchers("/index").permitAll()
+                        .requestMatchers("/login").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/bets").permitAll()
                         .requestMatchers("/roulette").permitAll()
