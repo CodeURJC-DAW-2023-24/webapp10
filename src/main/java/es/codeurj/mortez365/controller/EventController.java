@@ -22,8 +22,9 @@ public class EventController {
 
     @PostConstruct
     public void init() {
+        events.deleteAll();
      
-        events.save(new Event("Atlético de Madrid - Real Madrid", "assets/img/laliga/madridatleti.webp", "LaLiga","Fútbol"));
+        
         events.save(new Event("Villarreal - Tenerife", "assets/img/laliga/sevillatenerife.webp", "LaLiga","Fútbol"));
         events.save(new Event("Levante - Leganés", "assets/img/laliga/levanteleganes.webp", "LaLiga","Fútbol"));
         events.save(new Event("Real Madrid - Girona", "assets/img/laliga/madridgirona.webp", "LaLiga","Fútbol"));

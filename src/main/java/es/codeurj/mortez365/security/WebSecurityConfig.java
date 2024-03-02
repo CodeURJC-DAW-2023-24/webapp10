@@ -53,7 +53,7 @@ public class WebSecurityConfig {
                   
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                      
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
