@@ -34,7 +34,7 @@ public class PDFGeneratorService {
         fontTitle.setSize(28);
 
         // First title
-        Paragraph paragraph = new Paragraph("Historial de apuestas - Usuario:\n" + principal.getName() + "\n", fontTitle);
+        Paragraph paragraph = new Paragraph("Historial de apuestas - Usuario:\n" + principal.getName() + "\n\n\n", fontTitle);
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
 
         document.add(paragraph);

@@ -67,14 +67,12 @@ public class WebSecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/bets").permitAll()
-                        .requestMatchers("/roulette").permitAll()
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
                         // PRIVATE PAGES
-                        .requestMatchers("/wallet/addFunds").hasRole("USER")
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -89,6 +87,12 @@ public class WebSecurityConfig {
                         .logoutSuccessUrl("/index")
                         .permitAll()
                 );
+/*
+        http.exceptionHandling(exceptionHandling -> exceptionHandling
+                    .authenticationEntryPoint((request, response, authException) ->
+                            response.sendRedirect("/login") // Redirect to log-in in unauthenticated case
+                    )
+                );*/
 
         return http.build();
     }

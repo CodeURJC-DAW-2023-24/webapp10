@@ -99,4 +99,29 @@ public class Event {
         throw new UnsupportedOperationException("Unimplemented method 'setImage'");
     }
 
+    public String getChampionship() {
+        return championship;
+    }
+    public void setChampionship(String championship) {
+        this.championship = championship;
+    }
+    public String getSport() {
+        return sport;
+    }
+    public void setSport(String sport) {
+        this.sport = sport;
+    }
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
