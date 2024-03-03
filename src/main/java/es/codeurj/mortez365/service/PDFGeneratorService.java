@@ -3,7 +3,9 @@ package es.codeurj.mortez365.service;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfWriter;
 import es.codeurj.mortez365.model.Bet;
+import es.codeurj.mortez365.repository.BetRepository;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,37 +14,41 @@ import java.util.List;
 @Service
 public class PDFGeneratorService {
 
+    @Autowired
+    private BetRepository betRepository;
+
     public void export(HttpServletResponse response) throws IOException {
 
+        // Initialize document
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
-
         document.open();
-/*
-        List<Bet> allBets = bets.findAll();
-        Double totalWinningAmount = 0.0;
-        Double totalBet = 0.0;
-        Double totalBenefit = 0.0;
-        for (Bet bet : allBets) {
-            totalWinningAmount += bet.getWinning_amount();
-            totalBet += bet.getBet_amount();
-            totalBenefit = bet.getProfit();
-        }*/
 
+        // To get all the bets
+        List<Bet> allBets = betRepository.findAll();
+
+        // Title font
         Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-        fontTitle.setSize(18);
+        fontTitle.setSize(28);
 
-        Paragraph paragraph = new Paragraph("This is a title.", fontTitle);
+        // First title
+        Paragraph paragraph = new Paragraph("Historial de apuestas - Usuario:\n" + allBets.get(0).getUser().getUsername() + "\n", fontTitle);
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
 
+        document.add(paragraph);
+
+        // Paragraph font
         Font fontParagraph = FontFactory.getFont(FontFactory.HELVETICA);
         fontParagraph.setSize(12);
 
-        Paragraph paragraph2 = new Paragraph("This is a paragraph.", fontParagraph);
-        paragraph2.setAlignment(Paragraph.ALIGN_LEFT);
+        for (Bet bet : allBets) {
+            Paragraph new_paragraph = new Paragraph(String.valueOf(allBets.indexOf(bet)) + ".- " + bet.getEvent().getName() + "\nCantidad apostada: "
+                    + bet.getBet_amount() + "€" + "\nCantidad ganada: " + bet.getWinning_amount() + "€" + "\nBeneficio obtenido: "
+                    + bet.getProfit() + "€", fontParagraph);
+            new_paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            document.add(new_paragraph);
+        }
 
-        document.add(paragraph);
-        document.add(paragraph2);
         document.close();
     }
 

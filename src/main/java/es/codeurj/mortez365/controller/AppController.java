@@ -160,13 +160,6 @@ public class AppController {
         return "login";
     }
 
-
-
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
-
     @GetMapping("/wallet")
     public String showWallet(Model model, Principal principal) {
     // Get the current user

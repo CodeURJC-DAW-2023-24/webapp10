@@ -26,7 +26,7 @@ public class PDFExportController {
         String currentDateTime = dateFormatter.format(new Date());
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=Mortez365_Apuesta-" + currentDateTime + ".pdf";
+        String headerValue = "attachment; filename=Mortez365-Apuestas-" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
         this.pdfGeneratorService.export(response);

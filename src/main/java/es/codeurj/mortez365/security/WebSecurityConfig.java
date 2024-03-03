@@ -25,7 +25,7 @@ public class WebSecurityConfig {
     @Autowired
     public RepositoryUserDetailsService userDetailService;
    
- /*  @Bean
+    @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User.builder()
                 .username("user")
@@ -39,7 +39,7 @@ public class WebSecurityConfig {
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
 
-    } */
+    }
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
     
