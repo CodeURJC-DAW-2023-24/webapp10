@@ -1,4 +1,44 @@
 let bankValue = 1000;
+
+/* cuando tengamos lo de añañdir fondos usamos esto para 
+pasarle a la ruleta el saldo del usuario
+async function fetchBankValue() {
+    try {
+        const response = await fetch("/obtenerValor");
+        const data = await response.text();
+        bankValue = parseInt(data);
+        console.log("Valor obtenido:", bankValue);
+    } catch (error) {
+        console.error("Error al obtener el valor:", error);
+    }
+}
+async function withdrawFunds() {
+    try {
+        const response = await fetch('/retirarFondos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ amount: bankValue }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al retirar fondos');
+        }
+
+        const data = await response.json();
+        console.log('Fondos retirados:', data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Asegúrate de que este código se ejecuta después de que el DOM se haya cargado completamente
+document.querySelector('#withdrawButton').addEventListener('click', withdrawFunds);
+fetchBankValue().then(() => {;
+*/
+console.log("Valor:", bankValue);
+
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;
@@ -496,8 +536,24 @@ function setBet(e, n, t, o){
 	}
 }
 
+function customRandomizer(seed) {	//Gets the local date and generates a random (0..1)
+	const a = 1664525;		//Uses the Linear Congruential Algorithm
+	const c = 1013904223;
+	const m = Math.pow(2, 32);
+	seed = (a * seed + c) % m;
+
+	return seed/m;
+}
+
+function advancedRandomNum() {	//Generates a random from a complex seed (instead of Math.random)
+	var currentDate = new Date();
+	var timeInMilisecs = currentDate.getTime();
+	var decimalRand = customRandomizer(timeInMilisecs.toString());
+	return Math.floor(decimalRand * 37);
+}
+
 function spin(){
-	var winningSpin = Math.floor(Math.random() * 37);
+	var winningSpin = advancedRandomNum();
 	spinWheel(winningSpin);
 	setTimeout(function(){
 		if(numbersBet.includes(winningSpin)){

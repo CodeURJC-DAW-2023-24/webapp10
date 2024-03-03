@@ -4,7 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
+import java.util.Random;
 
 @Entity
 @Data
@@ -12,11 +18,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
+    @SequenceGenerator(name="id_generator", sequenceName = "my_sequence", initialValue = 0)
     @Setter
     @Getter
     @Column(name = "ID")
     private long id;
+
+    @Setter
+    @Getter
+    @JoinColumn(name = "NAME")
+    private String name;
 
     @Setter
     @Getter
@@ -44,5 +56,39 @@ public class Event {
     @JoinColumn(name = "CHAMPIONSHIP")
     //@ManyToOne
     private String championship;
+
+    @Setter
+    @Getter
+    @JoinColumn(name = "IMAGE")
+    private String image;
+
+    @Setter
+    @Getter
+    @JoinColumn(name = "SPORT")
+    private String sport;
+
+    @Setter
+    @Getter
+    @JoinColumn(name = "FEE")
+    private Double fee;
+
+    public Event(String name, String image, String championship, String sport) {
+        super();
+        this.name = name;
+        this.image = image;
+        this.championship = championship;
+        this.sport = sport;
+        this.fee = generateFee();
+    }
+
+    private Double generateFee() {
+        Random random = new Random();
+        double randomFee = 1 + (random.nextDouble() * 2);
+        return Math.round(randomFee * 100.0)/ 100.0;
+    }
+
+    public Event() {
+
+    }
 
 }

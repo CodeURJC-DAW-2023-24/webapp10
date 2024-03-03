@@ -166,9 +166,12 @@
         $(".close-btn").on("click", function() {
             $(".search-area").removeClass("search-active");
         });
+
+        $.get("/fragments/footer.html", function(data) {
+            $("#footerContainer").html(data);
+        });
     
     });
-
 
     jQuery(window).on("load",function(){
         jQuery(".loader").fadeOut(1000);

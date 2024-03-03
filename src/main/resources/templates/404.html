@@ -43,53 +43,7 @@
     <!--PreLoader Ends-->
 	
 	<!-- header -->
-	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="index.html">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
-
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="index.html">Inicio</a></li>
-								<li><a href="apuestas.html">Apuestas</a></li>
-								<li><a href="news.html">Ruleta</a></li>
-								<li><a href="news.html">Slots</a></li>
-								<li><a href="contact.html">Juegos</a></li>
-								<li><a href="shop.html">Información</a>
-									<ul class="sub-menu">
-										<li><a href="shop.html">Contacto</a></li>
-										<li><a href="checkout.html">Juego Responsable</a></li>
-									</ul>
-								</li>
-								<li>
-									<div class="header-icons">
-										<a class="mobile-hide search-bar-icon" href="wallet.html"><i class="fas fa-wallet"></i></a>
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-receipt"></i></a>
-										
-										<a class="mobile-hide search-bar-icon" href="profile.html"><i class="fas fa-user"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/header}}
 	<!-- end header -->
 
 		<!-- search area -->
@@ -100,9 +54,9 @@
 						<span class="close-btn"><i class="fas fa-window-close"></i></span>
 						<div class="search-bar">
 							<div class="search-bar-tablecell">
-								<h3>Search For:</h3>
-								<input type="text" placeholder="Keywords">
-								<button type="submit">Search <i class="fas fa-search"></i></button>
+								<h3>Quiero buscar:</h3>
+								<input type="text" placeholder="Palabra Clave">
+								<button type="submit">Buscar <i class="fas fa-search"></i></button>
 							</div>
 						</div>
 					</div>
@@ -116,7 +70,7 @@
 				<div class="row">
 					<div class="col-lg-8 offset-lg-2 text-center">
 						<div class="breadcrumb-text">
-							<p>Fresh adn Organic</p>
+							<p>Lo sentimos mucho</p>
 							<h1>404 - Not Found</h1>
 						</div>
 					</div>
@@ -132,9 +86,9 @@
 						<div class="col-lg-8 offset-lg-2 text-center">
 							<div class="error-text">
 								<i class="far fa-sad-cry"></i>
-								<h1>Oops! Not Found.</h1>
-								<p>The page you requested for is not found.</p>
-								<a href="index.html" class="boxed-btn">Back to Home</a>
+								<h1>Ups! No lo hemos encontrado.</h1>
+								<p>La página que buscas no se encuentra disponible.</p>
+								<a href="/index" class="boxed-btn">Volver</a>
 							</div>
 						</div>
 					</div>
@@ -171,74 +125,11 @@
 		<!-- end logo carousel -->
 		
 	<!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">Sobre Nosotros</h2>
-						<p>Mortez365 nace en 2024 con la necesidad de brindar el mayor disfrute posible a nuestros clientes, garantizando máxima calidad y las mejores cuotas del mercado.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Contacto</h2>
-						<ul>
-							<li>C/ de la Luminosa, Móstoles, Madrid</li>
-							<li>mortez365.contacto@gmail.com</li>
-							<li>+34 685 16 48 21</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Secciones</h2>
-						<ul>
-							<li><a href="index.html">Inicio</a></li>
-							<li><a href="bets.html">Apuestas</a></li>
-							<li><a href="roulette.html">Ruleta</a></li>
-							<li><a href="slots.html">Slots</a></li>
-							<li><a href="games.html">Juegos</a></li>
-							<li><a href="info.html">Información</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Abonarse</h2>
-						<p>Abónate a nuestro correo para recibir las últimas novedades.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/footer}}
 	<!-- end footer -->
 	
 	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/copyright}}
 	<!-- end copyright -->
 	
 	<!-- jquery -->

@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -41,56 +43,9 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-	
-	<!-- header -->
-	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="index.html">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
 
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="/index">Inicio</a></li>
-								<li><a href="/bets">Apuestas</a></li>
-								<li><a href="/roulette">Ruleta</a></li>
-								<li><a href="/slots">Slots</a></li>
-								<li><a href="/games">Juegos</a></li>
-								<li><a href="">Información</a>
-									<ul class="sub-menu">
-										
-											<li><a href="/contact">Contacto</a></li>
-											<li><a href="/responsablegame">Juego Responsable</a></li>
-											<li><a href="/about">Sobre nosostros</a></li>
-									</ul>
-								</li>
-								<li>
-									<div class="header-icons">
-										<a class="mobile-hide search-bar-icon" href="/wallet"><i class="fas fa-wallet"></i></a>
-										<a class="shopping-cart" href="/cart"><i class="fas fa-receipt"></i></a>
-										
-										<a class="mobile-hide search-bar-icon" href="/profile"><i class="fas fa-user"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- header -->
+	{{> ../fragments/header}}
 	<!-- end header -->
 
 	<!-- search area -->
@@ -135,42 +90,57 @@
                 <div class="col-md-12">
                     <div class="product-filters">
                         <ul>
-                            <li class="active" data-filter="*">LaLiga</li>
-                            <li data-filter=".strawberry">Premier League</li>
-                            <li data-filter=".berry">Serie A</li>
-							<li data-filter=".berry">Bundesliga</li>
-							<li data-filter=".berry">Ligue1</li>
-                            <li data-filter=".lemon">Internacional Clubes</li>
-							<li data-filter=".berry">Selecciones</li>
-							<li data-filter=".berry">Baloncesto</li>
-							<li data-filter=".berry">Tenis</li>
-							<li data-filter=".berry">Formula1</li>
-							<li data-filter=".berry">Eventos Especiales</li>
+						<li data-filter="*"><a href="/bets?category=Todos">Todos</a></li>
+                        <li data-filter="*"><a href="/bets?category=LaLiga">LaLiga</a></li>
+                        <li data-filter=".strawberry"><a href="/bets?category=PremierLeague">Premier League</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=SerieA">Serie A</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=FACup">FA Cup</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=Ligue1">Ligue1</a></li>
+                        <li data-filter=".lemon"><a href="/bets?category=InternacionalClubes">Internacional Clubes</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=Selecciones">Selecciones</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=Baloncesto">Baloncesto</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=Tenis">Tenis</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=Formula1">Formula1</a></li>
+                        <li data-filter=".berry"><a href="/bets?category=EventosEspeciales">Eventos Especiales</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-			<div class="row product-lists">
-			</div>
+			
+		<div class="container-fluid">
+    <div class="row" id = "eventsContainer">
+        {{#events}}
+        <div class="col-lg-4 col-md-6 text-center">
+            <div class="single-product-item">
+                <div class="product-image">
+                    <a href="/single-product?id={{id}}"><img src="{{image}}" alt=""></a>
+                </div>
+                <h3>{{name}}</h3>
+                <p class="product-price">{{championship}} <span>{{sport}}</span></p>
 				
+                <a href="single-product?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
+            </div>
+        </div>
+        {{/events}}
+    </div>
+</div>
+
+							
 			
 
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="pagination-wrap">
 						<ul>
-							<li><a href="#">Prev</a></li>
-							<li><a class="active" href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">Next</a></li>
+							<li><a id="loadMoreButton">Cargar más eventos</a></li>
+						
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<!-- end products -->
 
 	<!-- logo carousel -->
@@ -202,74 +172,12 @@
 	<!-- end logo carousel -->
 
 	<!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">Sobre Nosotros</h2>
-						<p>Mortez365 nace en 2024 con la necesidad de brindar el mayor disfrute posible a nuestros clientes, garantizando máxima calidad y las mejores cuotas del mercado.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Contacto</h2>
-						<ul>
-							<li>C/ de la Luminosa, Móstoles, Madrid</li>
-							<li>mortez365.contacto@gmail.com</li>
-							<li>+34 685 16 48 21</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Secciones</h2>
-						<ul>
-							<li><a href="index.html">Inicio</a></li>
-							<li><a href="bets.html">Apuestas</a></li>
-							<li><a href="roulette.html">Ruleta</a></li>
-							<li><a href="slots.html">Slots</a></li>
-							<li><a href="games.html">Juegos</a></li>
-							<li><a href="info.html">Información</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Abonarse</h2>
-						<p>Abónate a nuestro correo para recibir las últimas novedades.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/footer}}
 	<!-- end footer -->
-	
+
 	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2024   <a>Mortez365</a> | All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/copyright}}
+	<!-- end copyright -->
 	
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -293,6 +201,8 @@
 	<script src="assets/js/main.js"></script>
 
 	<script src="assets/js/scriptapuestas.js"></script>
+
+	<script src= "assets/js/eventRouter.js"></script>
 
 </body>
 </html>

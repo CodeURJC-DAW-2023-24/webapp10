@@ -1578,6 +1578,27 @@ div.owl-controls, .owl-controls div {
   right: 60px;
   margin-top: -30px;
 }
+.matches-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.matches-container .col-lg-4 {
+  flex: 0 0 calc(33.33% - 10px); /* Esto hará que los elementos ocupen aproximadamente un tercio del ancho del contenedor, permitiendo 3 elementos por fila. El -10px es para tener en cuenta cualquier margen que puedas tener. */
+}
+
+@media (max-width: 992px) {
+  .matches-container .col-lg-4 {
+    flex: 0 0 calc(50% - 10px); /* En pantallas más pequeñas, muestra 2 elementos por fila */
+  }
+}
+
+@media (max-width: 576px) {
+  .matches-container .col-lg-4 {
+    flex: 0 0 100%; /* En pantallas muy pequeñas, muestra 1 elemento por fila */
+  }
+}
 
 /* -----------------------------------------------------------------------------
 
@@ -3627,5 +3648,4 @@ html, body{
 	margin-top: -25px;
 }
 /*chip end*/
-
 

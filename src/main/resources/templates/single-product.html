@@ -41,56 +41,9 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-	
-	<!-- header -->
-	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="index.html">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
 
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="/index">Inicio</a></li>
-								<li><a href="/bets">Apuestas</a></li>
-								<li><a href="/roulette">Ruleta</a></li>
-								<li><a href="/slots">Slots</a></li>
-								<li><a href="/games">Juegos</a></li>
-								<li><a href="">Información</a>
-									<ul class="sub-menu">
-										
-											<li><a href="/contact">Contacto</a></li>
-											<li><a href="/responsablegame">Juego Responsable</a></li>
-											<li><a href="/about">Sobre nosostros</a></li>
-									</ul>
-								</li>
-								<li>
-									<div class="header-icons">
-										<a class="mobile-hide search-bar-icon" href="/wallet"><i class="fas fa-wallet"></i></a>
-										<a class="shopping-cart" href="/cart"><i class="fas fa-receipt"></i></a>
-										
-										<a class="mobile-hide search-bar-icon" href="/profile"><i class="fas fa-user"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- header -->
+	{{> ../fragments/header}}
 	<!-- end header -->
 
 	<!-- search area -->
@@ -133,42 +86,43 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img id="product-image" src="" alt="">
+						<img id="product-image" src="{{event.image}}" alt="">
 					</div>
 				</div>
 				<div class="col-md-7">
 					<div class="single-product-content">
-						<h3 id="product-name"></h3>
-						<p class="single-product-pricing"><span>Per Kg</span> <span id="product-price"></span></p>
-						<p>Descripción del partido</p>
-						<h4>Cuotas</h4>	
-						
+						<h3 id="product-name">{{event.name}}</h3>
+						<h3 id="product-championship">{{event.championship}}</h3>
+						<p>{{event.sport}}</p>
+						<h4>Cuotas</h4>
+
 						<div class="container">
 							<div class="row">
 								<div class="col-lg-9 offset-lg-2 text-center">
 									<!-- Números y botones en la misma línea -->
 									<div class="numero-boton">
-										<h5>2.1</h5>
+										<h5>{{event.fee}}</h5>
 										<a onclick="select_bet(this)" class="bordered-btn-bets">Victoria</a>
 									</div>
 									<div class="numero-boton">
-										<h5>3.2</h5>
+										<h5>{{feeT}}</h5>
 										<a onclick="select_bet(this)" class="bordered-btn-bets">Empate</a>
 									</div>
 									<div class="numero-boton">
-										<h5>1.5</h5>
+										<h5>{{feeL}}</h5>
 										<a onclick="select_bet(this)" class="bordered-btn-bets">Derrota</a>
 									</div>
 								</div>
 							</div>
 						</div>
 						<p></p>
-						<div class="single-product-form">
-							<form action="index.html">
-								<input type="number" placeholder="0">
-							</form>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i>Apostar</a>
-							
+                        <div class="single-product-form">
+                            <form name="form-bet" action="/single-product" method="post" onsubmit="return comprobarApuesta()">
+                                <input type="hidden" name="eventId" value="{{event.id}}">
+                                <input type="hidden" name="selected-bet" id="selected-bet">
+                                <label for="bet-amount"></label><input name="bet-amount" id="money-bet" type="number" step="0.1" placeholder="0"><p></p>
+                                <input class="cart-btn" type="submit" value="Apostar">
+                            </form>
 						</div>
 					</div>
 				</div>
@@ -212,75 +166,13 @@
 	</div>
 	<!-- end logo carousel -->
 
-		<!-- footer -->
-		<div class="footer-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-box about-widget">
-							<h2 class="widget-title">Sobre Nosotros</h2>
-							<p>Mortez365 nace en 2024 con la necesidad de brindar el mayor disfrute posible a nuestros clientes, garantizando máxima calidad y las mejores cuotas del mercado.</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-box get-in-touch">
-							<h2 class="widget-title">Contacto</h2>
-							<ul>
-								<li>C/ de la Luminosa, Móstoles, Madrid</li>
-								<li>mortez365.contacto@gmail.com</li>
-								<li>+34 685 16 48 21</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-box pages">
-							<h2 class="widget-title">Secciones</h2>
-							<ul>
-								<li><a href="index.html">Inicio</a></li>
-								<li><a href="bets.html">Apuestas</a></li>
-								<li><a href="roulette.html">Ruleta</a></li>
-								<li><a href="slots.html">Slots</a></li>
-								<li><a href="games.html">Juegos</a></li>
-								<li><a href="info.html">Información</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-box subscribe">
-							<h2 class="widget-title">Abonarse</h2>
-							<p>Abónate a nuestro correo para recibir las últimas novedades.</p>
-							<form action="index.html">
-								<input type="email" placeholder="Email">
-								<button type="submit"><i class="fas fa-paper-plane"></i></button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end footer -->
-	
+	<!-- footer -->
+	{{> ../fragments/footer}}
+	<!-- end footer -->
+
 	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2024   <a>Mortez365</a> | All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/copyright}}
+	<!-- end copyright -->
 	
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>

@@ -27,7 +27,8 @@ public class Championship {
     @Setter
     @Getter
     @Column(name = "EVENTS")
-    @OneToMany(mappedBy = "championship", cascade = CascadeType.ALL)
-    private ArrayList<Event> events;
+    /*@OneToMany(mappedBy = "championship", cascade = CascadeType.ALL)
+    private ArrayList<Event> events;*/
+    private String events;
 
 }
