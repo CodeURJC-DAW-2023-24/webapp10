@@ -149,7 +149,7 @@ ___
 
 ## Class Diagram
 
-![classDiagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/de4b96e2-25e9-4322-9122-9b125e1c13e3)
+![classDiagram](![Classes Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/c54d9a3d-9afc-4adb-93c4-2a1a845fab11))
 
 ___
   
