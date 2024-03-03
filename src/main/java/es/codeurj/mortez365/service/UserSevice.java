@@ -2,6 +2,7 @@ package es.codeurj.mortez365.service;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class UserSevice {
     
     
     public User save(User user) {
+        
       
         return userRepository.save(user);
     }
