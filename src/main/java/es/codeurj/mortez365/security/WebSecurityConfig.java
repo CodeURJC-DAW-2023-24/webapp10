@@ -22,31 +22,24 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("pass"))
-                .roles("USER")
-                .build();
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("adminpass"))
-                .roles("USER", "ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user, admin);
-
-    }
+    @Autowired
+    public RepositoryUserDetailsService userDetailService;
+   
+ 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-
-        authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
-
-        return authProvider;
+    
+          DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    
+          authProvider.setUserDetailsService(userDetailService);
+    
+          authProvider.setPasswordEncoder(passwordEncoder());
+    
+          return authProvider;
+    
     }
 
+  
     @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
