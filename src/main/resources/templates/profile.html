@@ -172,7 +172,12 @@
 												
 											</div>
 
-											<a href="" class="boxed-btn"></i>Cerrar sesión</a>	
+											<form action="/logout" method="POST">
+
+											
+												<input type="submit" class="boxed-btn" value="Cerrar sesión">
+												<input type="hidden" name="_csrf" value="{{token}}"/>
+											</form>
                                     </div>
                                 </div>
                             </div>
