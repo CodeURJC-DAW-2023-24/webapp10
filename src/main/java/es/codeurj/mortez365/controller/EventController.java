@@ -23,7 +23,6 @@ public class EventController {
 
     @PostConstruct
     public void init() {
-        events.deleteAll();
      
         
         events.save(new Event("Villarreal - Tenerife", "assets/img/laliga/sevillatenerife.webp", "LaLiga","Fútbol"));
