@@ -22,8 +22,8 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    /*@Autowired
-    public RepositoryUserDetailsService userDetailService;*/
+    @Autowired
+    public RepositoryUserDetailsService userDetailService;
    
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
@@ -63,6 +63,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
 
                         // PERMIT ALL
+                        .requestMatchers("/").permitAll()
                         .requestMatchers("/index").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/register").permitAll()
@@ -87,12 +88,6 @@ public class WebSecurityConfig {
                         .logoutSuccessUrl("/index")
                         .permitAll()
                 );
-/*
-        http.exceptionHandling(exceptionHandling -> exceptionHandling
-                    .authenticationEntryPoint((request, response, authException) ->
-                            response.sendRedirect("/login") // Redirect to log-in in unauthenticated case
-                    )
-                );*/
 
         return http.build();
     }

@@ -30,7 +30,7 @@ public class User {
 
     @Setter
     @Getter
-    @Column(name = "BETS")
+    @PrimaryKeyJoinColumn(name = "BETS")
     @OneToMany(mappedBy = "user")
     private ArrayList<Bet> bets;
 
