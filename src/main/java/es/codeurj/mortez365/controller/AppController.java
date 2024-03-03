@@ -106,9 +106,10 @@ public class AppController {
     }
 
 
-  
     @GetMapping("/profile")
-    public String profile() {
+    public String showProfile(Model model, Principal principal) {
+        Optional<User> user = userRepository.findByName(principal.getName());
+        model.addAttribute("user", user);
         return "profile";
     }
 

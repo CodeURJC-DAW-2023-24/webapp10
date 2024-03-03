@@ -67,6 +67,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                   
                         // PRIVATE PAGES
+                        .requestMatchers("/wallet/addFunds").hasRole("USER")
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
