@@ -79,27 +79,27 @@
                     <div class="checkout-accordion-wrap">
                         <div class="accordion" id="accordionExample">                
                             <div class="billing-address-form">
-                                <form action="index.html">                   
+                                             
                                     <div class="card single-accordion">
                                         <div class="card-header" id="headingThree">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    Añadir dinero
-                                                </button>
+                                             
                                             </h5>
                                         </div>
+										<form action ="/wallet/addFunds" method="post">
                                         <div class="card-body">
                                             <div class="billing-address-form">
-                                                <p><input type="text" placeholder="Número de tarjeta" required></p>
+												<p><input type="text" placeholder="Número de tarjeta" required></p>
                                                 <p><input type="text" placeholder="Fecha de vencimiento (MM/AA)" required></p>
                                                 <p><input type="text" placeholder="CVV" required></p>
-                                                <p><input type="number" placeholder="Cantidad a añadir" required></p>
-                                                <p>Saldo actual: <span id="currentBalance">0</span></p>
+                                                <p><input type="number" name="amountToAdd" placeholder="Cantidad a añadir" required></p>
+                                                <p>Saldo actual: <span id="currentBalance"></span></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div style="text-align: right;">
                                         <input type="submit" class="boxed-btn" value="Añadir dinero">
+										<input type="hidden" name="_csrf" value="{{token}}"/>
                                     </div>
                                 </form>
                             </div>

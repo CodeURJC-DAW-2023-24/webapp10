@@ -1,6 +1,7 @@
 package es.codeurj.mortez365.controller;
 
 import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import org.slf4j.Logger;
@@ -19,7 +20,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.ui.Model;
 
 import es.codeurj.mortez365.model.Event;
@@ -50,7 +53,7 @@ public class AppController {
     @RequestMapping("/index")
     public String index() {
         log.info("Prueba123");
-        log.info(userRepository.findByName("usuario_prueba").toString());
+        log.info(userRepository.findByName("user").toString());
         return "index";
     }
 
@@ -221,5 +224,14 @@ public String betsadmin(Model model) {
         System.out.println("Evento añadido");
         return "redirect:/betsadmin";
     }
-
+/* 
+    @GetMapping("/obtenerValor")
+    @ResponseBody
+    public int obtenerValor() {
+        int valor = 10;
+        return valor;
+    }
+}
+    
+*/
 }

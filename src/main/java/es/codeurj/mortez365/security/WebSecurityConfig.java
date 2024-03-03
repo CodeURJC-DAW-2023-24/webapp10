@@ -7,32 +7,53 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-    @Autowired
-    RepositoryUserDetailsService userDetailsService;
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    @Autowired
+    public RepositoryUserDetailsService userDetailService;
+   
+ /*  @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode("pass"))
+                .roles("USER")
+                .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(passwordEncoder().encode("adminpass"))
+                .roles("USER", "ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
 
+    } */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-
-        return authProvider;
+    
+          DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    
+          authProvider.setUserDetailsService(userDetailService);
+    
+          authProvider.setPasswordEncoder(passwordEncoder());
+    
+          return authProvider;
+    
     }
 
+  
     @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -55,9 +76,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/wallet").permitAll()
                         .requestMatchers("/loginerror").permitAll()
                         // PRIVATE PAGES
-                        .requestMatchers("/betsadmin").permitAll()
-                        .requestMatchers("/addEvent").permitAll()
-                      
+                        .requestMatchers("/wallet/addFunds").hasRole("USER")
+                        .requestMatchers("/betsadmin").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

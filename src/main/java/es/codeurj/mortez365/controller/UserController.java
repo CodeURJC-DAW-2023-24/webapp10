@@ -3,8 +3,12 @@ package es.codeurj.mortez365.controller;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,10 +32,12 @@ public class UserController {
 
 
     private UserSevice userService;
+    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserSevice userService) {
+    public UserController(UserSevice userService, PasswordEncoder passwordEncoder) {
         super();
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @ModelAttribute("user")
@@ -71,7 +77,9 @@ public class UserController {
     user.setTelphone(telphone);
     user.setEmail(email);
     user.setUsername(username);
-    user.setPassword(password);
+    user.setPassword(passwordEncoder.encode(password));
+   
+
 
 
     userService.save(user);

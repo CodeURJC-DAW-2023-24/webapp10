@@ -93,6 +93,9 @@ public class User {
     @Getter
     @Column(name = "PASSWORD")
     private String password;
+    
+    @Column(name= "MONEY")
+    private double money;
 
     @Setter
     @Getter
@@ -266,5 +269,12 @@ public class User {
     }
 
 
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
 }
 

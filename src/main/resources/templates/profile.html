@@ -126,15 +126,29 @@
                                 <p>Usuario: {{user.username}}<span id="user-username"></span></p>
                             </div>
 
-                            <a href="" class="boxed-btn"></i>Cerrar sesión</a>
+											<form action="/logout" method="POST">
 
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+											
+												<input type="submit" class="boxed-btn" value="Cerrar sesión">
+												<input type="hidden" name="_csrf" value="{{token}}"/>
+											</form>
+                                    </div>
+                                </div>
+                            </div>
+						    </div>
+						  </div>
+						  
+
+						</div>
+
+					</div>
+				</div>
+                
+				</div>
+			</div>
+            
+		</div>
+	</div>
    
 
 	<!-- end check out section -->

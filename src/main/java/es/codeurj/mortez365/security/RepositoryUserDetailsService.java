@@ -1,7 +1,10 @@
 package es.codeurj.mortez365.security;
 
+import es.codeurj.mortez365.controller.AppController;
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +19,8 @@ import java.util.List;
 @Service
 public class RepositoryUserDetailsService implements UserDetailsService {
 
+    private static final Logger log = LoggerFactory.getLogger(AppController.class);
+
     @Autowired
     private UserRepository userRepository;
 
@@ -25,8 +30,11 @@ public class RepositoryUserDetailsService implements UserDetailsService {
         User user = userRepository.findByName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
+        log.info("Detalles prueba");
+
         List<GrantedAuthority> roles = new ArrayList<>();
         for (String role : user.getRoles()) {
+        
             roles.add(new SimpleGrantedAuthority("ROLE_" + role));
         }
 
