@@ -22,8 +22,8 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Autowired
-    public RepositoryUserDetailsService userDetailService;
+    /*@Autowired
+    public RepositoryUserDetailsService userDetailService;*/
    
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
@@ -38,14 +38,13 @@ public class WebSecurityConfig {
                 .roles("USER", "ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
-
     }
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
     
           DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
     
-          authProvider.setUserDetailsService(userDetailService);
+          authProvider.setUserDetailsService(userDetailsService());
     
           authProvider.setPasswordEncoder(passwordEncoder());
     
@@ -61,7 +60,7 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
 
         http.authorizeRequests(authorize -> authorize
-                        .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
 
                         // PERMIT ALL
                         .requestMatchers("/index").permitAll()
@@ -72,9 +71,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/responsablegame").permitAll()
-                        .requestMatchers("/profile").permitAll()
-                        .requestMatchers("/wallet").permitAll()
-                        .requestMatchers("/loginerror").permitAll()
+                        .requestMatchers("/games").permitAll()
+                        .requestMatchers("/slots").permitAll()
                         // PRIVATE PAGES
                         .requestMatchers("/wallet/addFunds").hasRole("USER")
                         .requestMatchers("/betsadmin").hasRole("ADMIN")

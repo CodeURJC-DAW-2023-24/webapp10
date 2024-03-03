@@ -4,11 +4,12 @@ import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.model.Result;
@@ -126,7 +127,7 @@ public class AppController {
     }
     @PostMapping("/single-product")
     public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId,
-                              @RequestParam("selected-bet") String selectedBet,Model model){
+                              @RequestParam("selected-bet") String selectedBet, Model model){
         Event event = events.findById(eventId).orElse(null);
         assert event != null;
 
@@ -201,8 +202,15 @@ public String betsadmin(Model model) {
 }
 
     @GetMapping("/profile")
-    public String profile(Model model) {
-        model.addAttribute("user", new User());
+    public String profile(Model model, HttpServletRequest request, Principal principal) {
+        log.info("PRUEBA PROFILE");
+        String username = principal.getName();
+        log.info("ESTE ES EL NOMBRE DEL USUARIO: " + username);
+        /*String name = request.getUserPrincipal().getName();
+        User user = userRepository.findByName(name).orElseThrow();*/
+        List <String> roles = List.of(new String[]{"MARKY TIONOTOI"});
+        Date date = new Date();
+        model.addAttribute("user", new User("pablo", "requejo", "postulbawer", "pablo@gmail.com", date, "pr-durop", "53432T", "roldan", "12345", false, "Calle Luminada", "28914", "76123412", roles));
         return "profile";
     }
 
