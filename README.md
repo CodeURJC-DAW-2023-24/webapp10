@@ -144,4 +144,12 @@ ___
 - **About us**:
   A page about the dev team and their contact information
 ![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/9fe6d5bd-40d1-4eb9-9b4b-2ad3862e86cf)
+
+___
+
+## Class Diagram
+
+![classDiagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/de4b96e2-25e9-4322-9122-9b125e1c13e3)
+
+___
   
