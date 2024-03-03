@@ -65,6 +65,11 @@ public class AppController {
         return "slots";
     }
 
+    @GetMapping("/games")
+    public String games() {
+        return "games";
+    }
+
     @GetMapping("/contact")
     public String contact() {
         return "contact";
@@ -153,6 +158,12 @@ public class AppController {
     }
 
 
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
+    }
+
     @GetMapping("/wallet")
     public String showWallet(Model model, Principal principal) {
     // Get the current user
@@ -203,7 +214,7 @@ public String betsadmin(Model model) {
     public String loginError() {
         return "loginerror";
     }
-    
+
     @PostMapping("/addEvent")
     public String addEvent(Event event) {
         events.save(event);
