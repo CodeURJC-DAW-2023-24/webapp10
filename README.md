@@ -149,7 +149,27 @@ ___
 
 ## Class Diagram
 
-![classDiagram](![Classes Diagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/c54d9a3d-9afc-4adb-93c4-2a1a845fab11))
+![classDiagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/c54d9a3d-9afc-4adb-93c4-2a1a845fab11)
 
 ___
-  
+
+___
+
+## SQL Entities Diagram
+
+![entitiesDiagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/a3091959-7355-4de6-a077-6550b7920e64)
+
+___
+
+___
+
+## Work Done by the Team Members
+
+![jira1](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/79723178-4010-4ce3-8e1e-2ef6626ed946)
+![jira2](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/37d07731-14c0-41ed-b7f3-115067531129)
+![jira3](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/44e5c50d-97b1-442d-b252-a0e5cfd843dd)
+![jira4](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/42c90891-a839-42df-934d-ea7fa08dd849)
+
+
+
+___
