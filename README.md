@@ -167,7 +167,7 @@ ___
 
 ## Class Diagram
 
-![classDiagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/c54d9a3d-9afc-4adb-93c4-2a1a845fab11)
+![esquema clases daw](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/29429ab9-38a5-4560-9308-9dd0d0d18999)
 
 ___
 
@@ -276,7 +276,7 @@ ___
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/security/WebSecurityConfig.java)  
 
   - **Álvaro Pindado Castiñeira**:
-    In this phase I developed the security and updated it to SpringBoot 3.  
+    In this phase I developed the security and updated it to SpringBoot 3 and helped the rest of the team with the controllers and mustache implementation.  
     My most important commits:  
     [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/b869be16353d81762850031839ee3e4d26f34282)  
     [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/7f409f2d70d048c38b19bb2ac706fc3d2794a04e)  
@@ -284,13 +284,12 @@ ___
     [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d17f53e6b3531f5e92bcaa81d91561951a3b7786)  
     [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/befb2ea13779b402c24d795ac6960122f47de9e9)  
 
-    The files I worked in the most:
-    [File 1]()  
-    [File 2]()  
-    [File 3]()  
-    [File 4]()  
-    [File 5]()  
-
+    The files I worked in the most:  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/WebSecurityConfig.java)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/templates/login.html)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/RepositoryUserDetailsService.java)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/CSRFHandlerConfiguration.java)  
 
   - **Alberto Roldán Nieto**:
     In this phase I helped the rest of the team and implemented the roulette algorithm and https  
