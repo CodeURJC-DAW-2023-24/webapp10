@@ -177,8 +177,8 @@ ___
 
 
   ## Phase 2 MEMBERS' PARTICIPATION
-  
-
+  - **Vicente Navarro Raboso**:
+    In this phase I made the load more function, to display more than nine events in the bets page. I also created the singup functions to allow the user to register in the app and store their information in the data base. I made the logout function and I fixed the login that had a few errors and didn't work. I make the admin page to allow the admin to add new events where the users can make their bets.
   - **Álvaro Pindado Castiñeira**:
     In this phase I developed the security and updated it to SpringBoot 3.  
     My most important commits:  
