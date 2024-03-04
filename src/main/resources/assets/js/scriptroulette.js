@@ -1,4 +1,41 @@
-let bankValue = 1000;
+let bankValue = 0;
+
+async function fetchBankValue() {
+    try {
+        const response = await fetch("/getValue");
+        const data = await response.text();
+        bankValue = parseInt(data);
+        console.log("Valor obtenido:", bankValue);
+    } catch (error) {
+        console.error("Error al obtener el valor:", error);
+    }
+}
+async function updateBankValue() {
+    try {
+        const response = await fetch("/updateValue", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bankValue)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        console.log("Valor actualizado con éxito");
+    } catch (error) {
+        console.error("Error al actualizar el valor:", error);
+    }
+}
+
+
+
+fetchBankValue().then(() => {;
+
+console.log("Valor:", bankValue);
+
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;
@@ -19,7 +56,8 @@ let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
 function resetGame(){
-	bankValue = 1000;
+	updateBankValue();
+	
 	currentBet = 0;
 	wager = 5;
 	bet = [];
@@ -496,8 +534,24 @@ function setBet(e, n, t, o){
 	}
 }
 
+function customRandomizer(seed) {	//Gets the local date and generates a random (0..1)
+	const a = 1664525;		//Uses the Linear Congruential Algorithm
+	const c = 1013904223;
+	const m = Math.pow(2, 32);
+	seed = (a * seed + c) % m;
+
+	return seed/m;
+}
+
+function advancedRandomNum() {	//Generates a random from a complex seed (instead of Math.random)
+	var currentDate = new Date();
+	var timeInMilisecs = currentDate.getTime();
+	var decimalRand = customRandomizer(timeInMilisecs.toString());
+	return Math.floor(decimalRand * 37);
+}
+
 function spin(){
-	var winningSpin = Math.floor(Math.random() * 37);
+	var winningSpin = advancedRandomNum();
 	spinWheel(winningSpin);
 	setTimeout(function(){
 		if(numbersBet.includes(winningSpin)){
@@ -642,4 +696,6 @@ function removeChips(){
 		}
 		removeChips();
 	}
-}
+}});
+
+

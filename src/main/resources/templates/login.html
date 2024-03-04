@@ -41,49 +41,9 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-	
-	<!-- header -->
-	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="index.html">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
 
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="index.html">Inicio</a></li>
-								<li><a href="bets.html">Apuestas</a></li>
-								<li><a href="roulette.html">Ruleta</a></li>
-								<li><a href="slots.html">Slots</a></li>
-								<li><a href="games.html">Juegos</a></li>
-								<li><a href="info.html">Información</a></li>
-								<li>
-									<div class="header-icons">
-										<a class="mobile-hide search-bar-icon" href="wallet.html"><i class="fas fa-wallet"></i></a>
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-receipt"></i></a>
-										
-										<a class="mobile-hide search-bar-icon" href="profile.html"><i class="fas fa-user"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- header -->
+	{{> ../fragments/header}}
 	<!-- end header -->
 
 	<!-- search area -->
@@ -119,33 +79,33 @@
 					<div class="checkout-accordion-wrap">
 						<div class="accordion" id="accordionExample">				
 						        <div class="billing-address-form">
-						        	<form action="index.html">                   
+
                                       <div class="card single-accordion">
                                         <div class="card-header" id="headingThree">
                                           <h5 class="mb-0">
                                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                              Login
+                                              Iniciar Sesión
                                             </button>
                                           </h5>
                                         </div>
                                           <div class="card-body">
                                             <div class="billing-address-form">
-                                             
-                                                    <p><input type="text" placeholder="Usuario" required></p>
-                                                    <p><input type="password" placeholder="Contraseña" required></p>
+												<form action="/login" method="POST">
+													<label>Nombre de usuario:</label>
+													<p><input type="text" name="username"></p>
+													<label>Contraseña:</label>
+													<p><input type="password" name="password"></p>
 
-                                                    <p><a href="assets/img/avaters/avatar3.png" download>He olvidado la contaseña</a></p>
-                                          
+													<input type="submit" class="boxed-btn" value="Iniciar Sesión">
+													<input type="hidden" name="_csrf" value="{{token}}"/>
+												</form>
                                             </div>
-                                           
+
                                           </div>
-                                         
-                                        
+
+
                                       </div>
-                                      <div style="text-align: right;">
-										<input type="submit" class="boxed-btn" value="Acceder como usuario">
-										<input type="submit" class="boxed-btn" value="Acceder como administador">
-                                    </div>
+
 									
 						        		
 						        	</form>
@@ -157,10 +117,8 @@
 
 					</div>
 				</div>
-                
 				</div>
 			</div>
-            
 		</div>
 	</div>
    
@@ -169,74 +127,11 @@
 
 	
 	<!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">Sobre Nosotros</h2>
-						<p>Mortez365 nace en 2024 con la necesidad de brindar el mayor disfrute posible a nuestros clientes, garantizando máxima calidad y las mejores cuotas del mercado.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Contacto</h2>
-						<ul>
-							<li>C/ de la Luminosa, Móstoles, Madrid</li>
-							<li>mortez365.contacto@gmail.com</li>
-							<li>+34 685 16 48 21</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Secciones</h2>
-						<ul>
-							<li><a href="index.html">Inicio</a></li>
-							<li><a href="bets.html">Apuestas</a></li>
-							<li><a href="roulette.html">Ruleta</a></li>
-							<li><a href="slots.html">Slots</a></li>
-							<li><a href="games.html">Juegos</a></li>
-							<li><a href="info.html">Información</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Abonarse</h2>
-						<p>Abónate a nuestro correo para recibir las últimas novedades.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/footer}}
 	<!-- end footer -->
-	
+
 	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{> ../fragments/copyright}}
 	<!-- end copyright -->
 	
 	<!-- jquery -->
@@ -260,7 +155,7 @@
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
 
-    <script src="assets
+
 
 </body>
 </html>
