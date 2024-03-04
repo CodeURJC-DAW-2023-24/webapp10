@@ -4,7 +4,7 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfWriter;
 import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.repository.BetRepository;
-import es.codeurj.mortez365.repository.UserRepository;
+
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

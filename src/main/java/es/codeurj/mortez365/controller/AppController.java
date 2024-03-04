@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.Principal;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -198,27 +198,7 @@ public class AppController {
     public String login() {
         return "login";
     }
-/*
-    @GetMapping("/wallet")
-    public String showWallet(Model model, Principal principal) {
-        log.info("CARRITO: " + userRepository.findByName(principal.getName()).toString());
-        // Get the current user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Optional<User> currentUser = userRepository.findByUsername(authentication.getName());
 
-        log.info(authentication.getName());
-        log.info("USUARIO: " + currentUser);
-
-        if (currentUser.isPresent()) {
-            // Get the balance
-            double balance = currentUser.get().getMoney();
-
-            // Add the balance to the model
-            model.addAttribute("currentBalance", balance);
-        }
-        return "wallet";
-    }
- */
     @GetMapping("/wallet")
     public String wallet (Model model, HttpServletRequest request){
         String name = request.getUserPrincipal().getName();

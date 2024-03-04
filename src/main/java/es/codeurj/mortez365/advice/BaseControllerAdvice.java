@@ -1,8 +1,7 @@
 package es.codeurj.mortez365.advice;
 
-import es.codeurj.mortez365.model.User;
-import es.codeurj.mortez365.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,12 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.security.Principal;
 import java.util.Collection;
-import java.util.Optional;
+
 
 @ControllerAdvice
 public class BaseControllerAdvice {
-    @Autowired
-    private UserRepository userRepository;
+
 
     @ModelAttribute
     public void addCommonAttributes(Model model, Principal principal) {

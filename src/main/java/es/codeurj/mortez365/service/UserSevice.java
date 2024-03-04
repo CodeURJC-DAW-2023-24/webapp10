@@ -1,12 +1,11 @@
 package es.codeurj.mortez365.service;
 
 
-import java.util.Arrays;
-import java.util.Collections;
+
 
 import org.springframework.stereotype.Service;
 
-import es.codeurj.mortez365.model.Role;
+
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.UserRepository;
 
