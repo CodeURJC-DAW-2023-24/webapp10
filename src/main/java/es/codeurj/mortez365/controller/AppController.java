@@ -141,29 +141,37 @@ public class AppController {
 
         User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
 
-        Double m = 0.0;
-        Result result = null;
-        switch (selectedBet){
-            case "Victoria":
-                result = Result.WIN;
-                m = event.getFee();
-                break;
-            case "Empate":
-                result = Result.TIE;
-                m = 1.7;
-                break;
-            case "Derrota":
-                result = Result.LOSE;
-                m = (3.5 - event.getFee());
-                break;
-            default:
-                break;
+        if(currentUser.getMoney() > money){
+            Double m = 0.0;
+            Result result = null;
+            switch (selectedBet){
+                case "Victoria":
+                    result = Result.WIN;
+                    m = event.getFee();
+                    break;
+                case "Empate":
+                    result = Result.TIE;
+                    m = 1.7;
+                    break;
+                case "Derrota":
+                    result = Result.LOSE;
+                    m = (3.5 - event.getFee());
+                    break;
+                default:
+                    break;
+            }
+            m = m * money;
+            double userMoney = currentUser.getMoney();
+            currentUser.setMoney(userMoney - money);
+            System.out.println(m);
+            Double p = m - money;
+            betRepository.save(new Bet(event, money, result, m, p, currentUser));
+            return "redirect:/index";
         }
-        m = m * money;
-        System.out.println(m);
-        Double p = m - money;
-        betRepository.save(new Bet(event, money, result, m, p, currentUser));
-        return "redirect:/index";
+        else{
+
+            return "/single-product";
+        }
     }
 
     @GetMapping("/login")

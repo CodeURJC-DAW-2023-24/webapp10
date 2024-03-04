@@ -126,7 +126,7 @@ public class User {
         this.postcode = postcode;
         this.telphone = telphone;
         this.roles = roles;
-
+        this.money = 10;
 
     }
 
