@@ -105,7 +105,7 @@ ___
 
 ## Navigation flow
 
-![esquema daw](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/de4b96e2-25e9-4322-9122-9b125e1c13e3)
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/103b54c9-d31e-4179-9214-f3c308975ea5)
 
 
 ___
