@@ -225,3 +225,14 @@ ___
     [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/91aabd4b4756bad393e1f585a5673abdc6ec7053)
     [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/6aaade018285ffb072eca7a37644c73618205753)
     
+
+ - **Guillermo Romero Almazan**:
+    In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also I helped with the register and fixing some errors.
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/78145be0f0f32b3d3a02a8a47630ce6fc93089ec)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/33c7b9b8f4f4ecb75a94b0ab7877f67828c33292)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/bdae85457ed73644d6e900c299fea9cfc8f1fef1#diff-9d3d6d342c0eb97140c741512078e2f8b5265e892d5f3850800febb86b583ec3)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/a318818d121d2e08c06d53c00d09646ba7e13f76)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/60f394bfa50cbf1fdaada632b22a4cc49bf2a45a#diff-94076bacca6130783ae9057d5e04863a29cc29cd6978d236b2112dd03900ae38)
+    
+
