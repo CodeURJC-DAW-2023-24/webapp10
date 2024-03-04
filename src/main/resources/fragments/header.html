@@ -15,7 +15,11 @@
                     <nav class="main-menu">
                         <ul>
                             <li class="current-list-item"><a href="/index">Inicio</a></li>
-                            <li><a href="/bets">Apuestas</a></li>
+                            <li><a href="/bets">Apuestas</a>
+                                {{#isAdmin}}
+                                    <li><a href="/betsadmin">Apuestas Administrador</a></li>
+                                {{/isAdmin}}
+                            </li>
                             <li><a href="/roulette">Ruleta</a></li>
                             <li><a href="/slots">Slots</a></li>
                             <li><a href="/games">Juegos</a></li>
