@@ -321,11 +321,11 @@ ___
 
     
     The files I worked in the most:
-    [File 1]()  
-    [File 2]()  
-    [File 3]()  
-    [File 4]()  
-    [File 5]()  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/PDFExportController.java)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/MainController.java)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/PDFGeneratorService.java)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/User.java)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
 
  - **Guillermo Romero Almazan**:
     In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also I helped with the register and fixing some errors.
