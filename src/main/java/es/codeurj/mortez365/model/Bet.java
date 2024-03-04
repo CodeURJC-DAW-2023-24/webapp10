@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Optional;
+
 @Entity
 @Data
 @Table(name = "BET")
@@ -58,7 +60,7 @@ public class Bet {
     public Bet() {
     }
 
-    public Bet(Event event, double bet_amount, Result result, double winning_amount, double profit) {
+    public Bet(Event event, double bet_amount, Result result, double winning_amount, double profit, User user) {
         super();
         this.bet_amount = bet_amount;
         this.result = result;

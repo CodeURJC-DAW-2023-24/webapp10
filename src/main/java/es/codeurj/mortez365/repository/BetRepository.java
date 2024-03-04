@@ -21,7 +21,7 @@ public interface BetRepository extends JpaRepository<Bet, Long>{
 
     List<Bet> findByUser(User user);
 
-    Page<Bet> findByUser(User user, Pageable pageable);
+    Page<Bet> findByUser(Optional<User> user, Pageable pageable);
 
 
 }

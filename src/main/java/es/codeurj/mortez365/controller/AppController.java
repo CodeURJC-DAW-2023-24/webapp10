@@ -21,7 +21,10 @@ import es.codeurj.mortez365.model.Result;
 import es.codeurj.mortez365.repository.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +48,6 @@ public class AppController {
 
     @Autowired
     private EventRepository events;
-
 
     @Autowired
     private BetRepository betRepository;
@@ -122,13 +124,19 @@ public class AppController {
         model.addAttribute("event", event);
         model.addAttribute("feeT", 1.7);
         model.addAttribute("feeL", Math.round((3.5 - event.getFee()) * 100.0)/ 100.0);
-         return "single-product";
+        return "single-product";
     }
     @PostMapping("/single-product")
     public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId,
                               @RequestParam("selected-bet") String selectedBet, Model model){
         Event event = events.findById(eventId).orElse(null);
         assert event != null;
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        log.info("NOMBRE ACTUAL: " + currentUserName);
+
+        User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
 
         Double m = 0.0;
         Result result = null;
@@ -151,7 +159,7 @@ public class AppController {
         m = m * money;
         System.out.println(m);
         Double p = m - money;
-        betRepository.save(new Bet(event, money, result, m, p));
+        betRepository.save(new Bet(event, money, result, m, p, currentUser));
         return "redirect:/index";
     }
 
@@ -179,12 +187,25 @@ public class AppController {
     @GetMapping("/cart")
     public String cart(Model model) {
         log.info("AQUI EL CARRITO:");
-        model.addAttribute("bets", betRepository.findAll(PageRequest.of(0, 9)).getContent());
-        List<Bet> allBets = betRepository.findAll();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> currentUser = userRepository.findByUsername(authentication.getName());
+
+        if (currentUser.isPresent()) {
+            log.info("NOMBRE DEL USUARIO ACTUAL: " + currentUser.get().getName());
+        }else {
+            log.info("EL USUARIO ACTUAL ESTA A NULL");
+        }
+
+        Page<Bet> betPage = betRepository.findByUser(currentUser, PageRequest.of(0, 9));
+        List<Bet> bets = betPage.getContent();
+
+        model.addAttribute("bets", bets);
+
         Double totalWinningAmount = 0.0;
         Double totalBet = 0.0;
         Double totalBenefit = 0.0;
-        for (Bet bet : allBets) {
+        for (Bet bet : bets) {
             totalWinningAmount += bet.getWinning_amount();
             totalBet += bet.getBet_amount();
             totalBenefit = bet.getProfit();
@@ -206,13 +227,17 @@ public String betsadmin(Model model) {
     public String profile(Model model, HttpServletRequest request) {
         try {
             String name = request.getUserPrincipal().getName();
-            User user = userRepository.findByName(name).orElseThrow();
+            User user = userRepository.findByUsername(name).orElseThrow();
             model.addAttribute("user", user);
         } catch (Exception e) {
             if (Objects.equals(request.getUserPrincipal().getName(), "user")) {
-                model.addAttribute("user", new User("Usuario", "Por", "Defecto", "user@gmail.com", new Date(), "Sierra Leona", "674321O", "user", "pass", false, "Calle Luminada", "28914", "76123412", new ArrayList<>()));
+                User user = new User("Usuario", "Por", "Defecto", "user@gmail.com", new Date(), "Sierra Leona", "674321O", "user", "pass", false, "Calle Luminada", "28914", "76123412", new ArrayList<>());
+                model.addAttribute("user", user);
+                userRepository.save(user);
             }else if (Objects.equals(request.getUserPrincipal().getName(), "admin")) {
-                model.addAttribute("user", new User("Administrador", "Por", "Defecto", "admin@gmail.com", new Date(), "República Democrática y Popular de Argelia", "674321O", "admin", "adminpass", true, "Calle Luminada", "28914", "76123412", new ArrayList<>()));
+                User user = new User("Administrador", "Por", "Defecto", "admin@gmail.com", new Date(), "República Democrática y Popular de Argelia", "674321O", "admin", "adminpass", true, "Calle Luminada", "28914", "76123412", new ArrayList<>());
+                model.addAttribute("user", user);
+                userRepository.save(user);
             }else {
                 return "login";
             }

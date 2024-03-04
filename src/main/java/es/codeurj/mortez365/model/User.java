@@ -32,7 +32,7 @@ public class User {
     @Getter
     @PrimaryKeyJoinColumn(name = "BETS")
     @OneToMany(mappedBy = "user")
-    private ArrayList<Bet> bets;
+    private List<Bet> bets;
 
     @Setter
     @Getter
@@ -86,7 +86,7 @@ public class User {
 
     @Setter
     @Getter
-    @Column(name = "USERNAME")
+    @PrimaryKeyJoinColumn(name = "USERNAME")
     private String username;
 
     @Setter
@@ -172,7 +172,7 @@ public class User {
         this.wallet = wallet;
     }
 
-    public ArrayList<Bet> getBets() {
+    public List<Bet> getBets() {
         return bets;
     }
 
