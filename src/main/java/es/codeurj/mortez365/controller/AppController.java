@@ -14,6 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import es.codeurj.mortez365.model.Bet;
@@ -172,16 +175,48 @@ public class AppController {
     public String showWallet(Model model, Principal principal) {
         log.info("CARRITO: " + userRepository.findByName(principal.getName()).toString());
         // Get the current user
-        Optional<User> user = userRepository.findByName(principal.getName());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> currentUser = userRepository.findByUsername(authentication.getName());
 
-        if (user.isPresent()) {
+        log.info(authentication.getName());
+        log.info("USUARIO: " + currentUser);
+
+        if (currentUser.isPresent()) {
             // Get the balance
-            double balance = user.get().getWallet().getMoney();
+            double balance = currentUser.get().getMoney();
 
             // Add the balance to the model
             model.addAttribute("currentBalance", balance);
         }
         return "wallet";
+    }
+
+    @PostMapping("/wallet/addFunds")
+    public String increaseWallet(Model model, @RequestParam("card-number") String card, @RequestParam("card-date") String date,
+                                 @RequestParam("card-cvv") String cvv, @RequestParam("amount") Long amount) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Optional<User> currentUser = userRepository.findByUsername(authentication.getName());
+
+        if (card.length() == 16 && isValidDate(date) && cvv.length() == 3 && amount > 0){
+            if (currentUser.isPresent()) {
+                double money = currentUser.get().getMoney();
+                money = amount + money;
+                currentUser.get().setMoney(money);
+            }
+        }
+
+        return "redirect:/wallet";
+    }
+    private boolean isValidDate(String date) {
+        DateFormat dateFormat = new SimpleDateFormat("MM/yy");
+        try {
+            Date expirationDate = dateFormat.parse(date);
+            Date currentDate = new Date();
+            return !expirationDate.before(currentDate);
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
     @GetMapping("/cart")

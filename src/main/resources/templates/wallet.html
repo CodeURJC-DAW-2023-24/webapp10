@@ -79,29 +79,28 @@
                     <div class="checkout-accordion-wrap">
                         <div class="accordion" id="accordionExample">                
                             <div class="billing-address-form">
-                                             
-                                    <div class="card single-accordion">
-                                        <div class="card-header" id="headingThree">
-                                            <h5 class="mb-0">
-                                             
-                                            </h5>
-                                        </div>
-										<form action ="/wallet/addFunds" method="post">
-                                        <div class="card-body">
-                                            <div class="billing-address-form">
-												<p><input type="text" placeholder="Número de tarjeta" required></p>
-                                                <p><input type="text" placeholder="Fecha de vencimiento (MM/AA)" required></p>
-                                                <p><input type="text" placeholder="CVV" required></p>
-                                                <p><input type="number" name="amountToAdd" placeholder="Cantidad a añadir" required></p>
-                                                <p>Saldo actual: <span id="currentBalance"></span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <input type="submit" class="boxed-btn" value="Añadir dinero">
+								<div class="card single-accordion">
+									<div class="card-header" id="headingThree">
+										<h5 class="mb-0">
+
+										</h5>
+									</div>
+									<form action ="/wallet/addFunds" method="post">
+									<div class="card-body">
+										<div class="billing-address-form">
+											<p><input name="card-number" type="text" placeholder="Número de tarjeta" required></p>
+											<p><input name="card-date" type="text" placeholder="Fecha de vencimiento (MM/AA)" required></p>
+											<p><input name="card-cvv" type="text" placeholder="CVV" required></p>
+											<p><input name="amount" type="number" name="amountToAdd" placeholder="Cantidad a añadir" required></p>
+											<p>Saldo actual: {{currentBalance}}<span id="currentBalance"></span></p>
+										</div>
+									</div>
+									<div style="text-align: right;">
+										<input type="submit" class="boxed-btn" value="Añadir dinero">
 										<input type="hidden" name="_csrf" value="{{token}}"/>
-                                    </div>
-                                </form>
+									</div>
+									</form>
+								</div>
                             </div>
                         </div>
                     </div>

@@ -93,7 +93,9 @@ public class User {
     @Getter
     @Column(name = "PASSWORD")
     private String password;
-    
+
+    @Setter
+    @Getter
     @Column(name= "MONEY")
     private double money;
 
