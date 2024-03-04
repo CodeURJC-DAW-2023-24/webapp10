@@ -188,6 +188,7 @@ ___
     [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d33c6c0dcd117f1f4b9331119c0565a26f83fc36)  
     [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/e090be907e363fe8c0cf61087ef8337d96f8324e)
 
+    The files I worked the most:
     [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/UserSevice.java)  
     [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blame/develop/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
     [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blame/develop/src/main/java/es/codeurj/mortez365/controller/EventController.java)  
@@ -220,6 +221,13 @@ ___
     [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5773574b4f40cb106e7b9694089d4d23efbf1448)
     [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/34054be3e905502a77b007f8ddc0be31a1c57848)
 
+   
+    The files I worked in the most:
+    [File 1]()  
+    [File 2]()  
+    [File 3]()  
+    [File 4]()  
+    [File 5]()  
     
   - **José Villagrán Robles**:
     In this phase I connected the database on MySQL to the application, and also helped with the login, create
@@ -230,7 +238,14 @@ ___
     [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/f3a928148a07e8c5c8da881cbde431d455c2ab2c)
     [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/91aabd4b4756bad393e1f585a5673abdc6ec7053)
     [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/6aaade018285ffb072eca7a37644c73618205753)
+
     
+    The files I worked in the most:
+    [File 1]()  
+    [File 2]()  
+    [File 3]()  
+    [File 4]()  
+    [File 5]()  
 
  - **Guillermo Romero Almazan**:
     In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also I helped with the register and fixing some errors.
