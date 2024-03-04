@@ -1,10 +1,8 @@
-let bankValue = 1000;
+let bankValue = 0;
 
-/* cuando tengamos lo de añañdir fondos usamos esto para 
-pasarle a la ruleta el saldo del usuario
 async function fetchBankValue() {
     try {
-        const response = await fetch("/obtenerValor");
+        const response = await fetch("/getValue");
         const data = await response.text();
         bankValue = parseInt(data);
         console.log("Valor obtenido:", bankValue);
@@ -12,31 +10,30 @@ async function fetchBankValue() {
         console.error("Error al obtener el valor:", error);
     }
 }
-async function withdrawFunds() {
+async function updateBankValue() {
     try {
-        const response = await fetch('/retirarFondos', {
-            method: 'POST',
+        const response = await fetch("/updateValue", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify({ amount: bankValue }),
+            body: JSON.stringify(bankValue)
         });
 
         if (!response.ok) {
-            throw new Error('Error al retirar fondos');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        console.log('Fondos retirados:', data);
+        console.log("Valor actualizado con éxito");
     } catch (error) {
-        console.error('Error:', error);
+        console.error("Error al actualizar el valor:", error);
     }
 }
 
-// Asegúrate de que este código se ejecuta después de que el DOM se haya cargado completamente
-document.querySelector('#withdrawButton').addEventListener('click', withdrawFunds);
+
+
 fetchBankValue().then(() => {;
-*/
+
 console.log("Valor:", bankValue);
 
 let currentBet = 0;
@@ -59,7 +56,8 @@ let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
 function resetGame(){
-	bankValue = 1000;
+	updateBankValue();
+	
 	currentBet = 0;
 	wager = 5;
 	bet = [];
@@ -698,4 +696,6 @@ function removeChips(){
 		}
 		removeChips();
 	}
-}
+}});
+
+

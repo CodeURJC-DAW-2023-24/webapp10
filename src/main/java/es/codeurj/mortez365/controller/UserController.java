@@ -66,7 +66,8 @@ public class UserController {
     @RequestParam String telphone,
     @RequestParam String email,
     @RequestParam String username,
-    @RequestParam String password) {
+    @RequestParam String password,
+    @RequestParam Double money) {
     User user = new User();
     user.setName(name);
     user.setFirstsurname(firstsurname);
@@ -80,6 +81,7 @@ public class UserController {
     user.setEmail(email);
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
+    user.setMoney(money);
    
 
 

@@ -198,7 +198,7 @@ public class AppController {
     public String login() {
         return "login";
     }
-
+/*
     @GetMapping("/wallet")
     public String showWallet(Model model, Principal principal) {
         log.info("CARRITO: " + userRepository.findByName(principal.getName()).toString());
@@ -218,7 +218,15 @@ public class AppController {
         }
         return "wallet";
     }
-
+ */
+    @GetMapping("/wallet")
+    public String wallet (Model model, HttpServletRequest request){
+        String name = request.getUserPrincipal().getName();
+        User user = userRepository.findByUsername(name).orElseThrow();
+        model.addAttribute("user", user);
+        return "wallet";
+       
+    }
     @PostMapping("/wallet/addFunds")
     public String increaseWallet(Model model, @RequestParam("amount") Long amount) {
 
@@ -339,14 +347,25 @@ public String betsadmin(Model model) {
         return "redirect:/betsadmin";
     }
 
-/* 
-    @GetMapping("/obtenerValor")
+
+    @GetMapping("/getValue")
     @ResponseBody
-    public int obtenerValor() {
-        int valor = 10;
+    public int getValue(Model model, HttpServletRequest request) {
+        String name = request.getUserPrincipal().getName();
+        User user = userRepository.findByUsername(name).orElseThrow();
+        int valor =  (int) user.getMoney();
         return valor;
     }
+
+    @PostMapping("/updateValue")
+@ResponseBody
+public void updateValue(@RequestBody int newValue, HttpServletRequest request) {
+    String name = request.getUserPrincipal().getName();
+    User user = userRepository.findByUsername(name).orElseThrow();
+    user.setMoney(newValue);
+    userRepository.save(user);
 }
+}
+
     
-*/
-}
+
