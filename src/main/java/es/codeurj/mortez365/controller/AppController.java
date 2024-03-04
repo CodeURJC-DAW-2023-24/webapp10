@@ -30,9 +30,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 import org.springframework.ui.Model;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -314,7 +311,7 @@ public String betsadmin(Model model) {
         return "loginerror";
     }
 
-    @PostMapping("/addEvent")
+   @PostMapping("/addEvent")
     public String addEvent(@RequestParam String name, @RequestParam String championship,
                            @RequestParam String sport, @RequestParam MultipartFile image) throws IOException {
         Event event = new Event();
@@ -322,13 +319,15 @@ public String betsadmin(Model model) {
         if(!image.isEmpty()) {
             Path imageDirectory = Paths.get("src/main/resources/assets/img/laliga");
             String imagePath = imageDirectory.toFile().getAbsolutePath();
-
+            Random rand = new Random();
+            double randomValue = 1 + (2.5 - 1) * rand.nextDouble();
             byte[] bytes = image.getBytes();
             Path path = Paths.get(imagePath + "//" +image.getOriginalFilename());
             Files.write(path, bytes);
             event.setName(name);
             event.setChampionship(championship);
             event.setSport(sport);
+            event.setFee(randomValue);
             event.setImage("assets/img/laliga/"+image.getOriginalFilename());
             eventService.save(event);
 

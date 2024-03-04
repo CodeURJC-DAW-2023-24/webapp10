@@ -25,26 +25,13 @@ public class WebSecurityConfig {
     @Autowired
     public RepositoryUserDetailsService userDetailService;
    
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("pass"))
-                .roles("USER")
-                .build();
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("adminpass"))
-                .roles("USER", "ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user, admin);
-    }
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
     
           DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
     
-          authProvider.setUserDetailsService(userDetailsService());
+          authProvider.setUserDetailsService(userDetailService);
     
           authProvider.setPasswordEncoder(passwordEncoder());
     

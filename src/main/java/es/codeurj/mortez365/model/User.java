@@ -278,5 +278,12 @@ public class User {
     public void setMoney(double money) {
         this.money = money;
     }
+
+
+ public User(String username, String password, List<String> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
 }
 

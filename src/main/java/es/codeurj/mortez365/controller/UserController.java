@@ -4,6 +4,7 @@ package es.codeurj.mortez365.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.service.UserSevice;
+import jakarta.annotation.PostConstruct;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,9 +89,15 @@ public class UserController {
     return "redirect:/index";
 }
  
+    @PostConstruct
+    public void initAdmin() {
+        List<String> roles = Arrays.asList("USER", "ADMIN");
+        userService.save(new User("admin", passwordEncoder.encode("adminpass"), roles));
+    }
 
+ }
    
     
     
     
-}
+
