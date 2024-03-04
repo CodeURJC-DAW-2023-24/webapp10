@@ -129,6 +129,34 @@ function select_bet(elemento) {
     document.getElementById('selected-bet').value = elemento.innerText;
 }
 
+
+function tarjetaValida(){
+    var card = document.forms["form-card"]["card-number"].value;
+    var date = document.forms["form-card"]["card-date"].value;
+    var cvv = document.forms["form-card"]["card-cvv"].value;
+    var amount = document.forms["form-card"]["amount"].value;
+
+    function isValidDate(date) {
+        var parts = date.split('/');
+        var month = parseInt(parts[0], 10);
+        var year = parseInt(parts[1], 10);
+
+        // Obtener la fecha actual
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        var currentMonth = currentDate.getMonth() + 1; // El método getMonth() devuelve el mes indexado desde 0, por lo que sumamos 1
+
+        // Comprobar si la fecha es válida y posterior a la fecha actual
+        return year > currentYear || (year === currentYear && month >= currentMonth);
+    }
+
+    if (card.length() === 12 && isValidDate(date) && cvv.length() === 3 && amount > 0) {
+        alert("La tarjeta tiene que tener 12 digitos, la fecha posterior a la actual, el cvv tres cifras y la cantidad mayor que 0");
+        return false;
+    }
+    return true;
+
+}
 function comprobarApuesta(){
     var money = document.forms["form-bet"]["bet-amount"].value;
     var result = document.getElementById("selected-bet").value;

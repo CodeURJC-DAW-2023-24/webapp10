@@ -180,7 +180,8 @@ public class AppController {
             }
             m = m * money;
             double userMoney = currentUser.getMoney();
-            currentUser.setMoney(userMoney - money);
+            userMoney = userMoney - money;
+            currentUser.setMoney(userMoney);
             System.out.println(m);
             Double p = m - money;
             betRepository.save(new Bet(event, money, result, m, p, currentUser));
@@ -191,6 +192,7 @@ public class AppController {
             return "/single-product";
         }
     }
+
 
     @GetMapping("/login")
     public String login() {
@@ -218,18 +220,19 @@ public class AppController {
     }
 
     @PostMapping("/wallet/addFunds")
-    public String increaseWallet(Model model, @RequestParam("card-number") String card, @RequestParam("card-date") String date,
-                                 @RequestParam("card-cvv") String cvv, @RequestParam("amount") Long amount) {
+    public String increaseWallet(Model model, @RequestParam("amount") Long amount) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Optional<User> currentUser = userRepository.findByUsername(authentication.getName());
+        User currentUser = userRepository.findByUsername(authentication.getName()).orElse(null);
 
-        if (card.length() == 16 && isValidDate(date) && cvv.length() == 3 && amount > 0){
-            if (currentUser.isPresent()) {
-                double money = currentUser.get().getMoney();
-                money = amount + money;
-                currentUser.get().setMoney(money);
-            }
+        if (currentUser != null) {
+            log.info(currentUser.getName());
+            log.info(String.valueOf(currentUser.getMoney()));
+            double money = currentUser.getMoney();
+            money = amount + money;
+            log.info(String.valueOf(money));
+            currentUser.setMoney(money);
+            log.info("DINERO", String.valueOf(currentUser.getMoney()));
         }
 
         return "redirect:/wallet";

@@ -85,13 +85,13 @@
 
 										</h5>
 									</div>
-									<form action ="/wallet/addFunds" method="post">
+									<form name="form-card" action="/wallet/addFunds" method="post" onsubmit="return tarjetaValida()">
 									<div class="card-body">
 										<div class="billing-address-form">
 											<p><input name="card-number" type="text" placeholder="Número de tarjeta" required></p>
-											<p><input name="card-date" type="text" placeholder="Fecha de vencimiento (MM/AA)" required></p>
+											<p><input name="card-date" type="date" placeholder="Fecha de vencimiento (MM/AA)" required></p>
 											<p><input name="card-cvv" type="text" placeholder="CVV" required></p>
-											<p><input name="amount" type="number" name="amountToAdd" placeholder="Cantidad a añadir" required></p>
+											<p><input name="amount" type="number" step="0.1" placeholder="Cantidad a añadir" required></p>
 											<p>Saldo actual: {{currentBalance}}<span id="currentBalance"></span></p>
 										</div>
 									</div>

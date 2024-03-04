@@ -86,7 +86,7 @@ public class Event {
 
     private Double generateFee() {
         Random random = new Random();
-        double randomFee = 1 + (random.nextDouble() * 2);
+        double randomFee = 1.5 + (random.nextDouble() * 1);
         return Math.round(randomFee * 100.0)/ 100.0;
     }
 
