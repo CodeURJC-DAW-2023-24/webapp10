@@ -12,7 +12,7 @@ import es.codeurj.mortez365.repository.UserRepository;
 @Service
 public class UserSevice {
     private UserRepository userRepository;
-
+//The UserSevice class is used to save the user in the database.
     public UserSevice(UserRepository userRepository) {
         super();
         this.userRepository = userRepository;

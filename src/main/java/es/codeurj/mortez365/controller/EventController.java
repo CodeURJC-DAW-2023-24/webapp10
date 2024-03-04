@@ -19,8 +19,7 @@ public class EventController {
     @Autowired
     private EventRepository events;
 
-    
-
+     //Initialize events
     @PostConstruct
     public void init() {
      

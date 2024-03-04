@@ -21,6 +21,7 @@ public class PDFExportController {
     }
 
     @GetMapping("/pdf/generate")
+    //The generatePDF method is used to generate the PDF file.
     public void generatePDF(HttpServletResponse response, Principal principal) throws IOException {
         response.setContentType("appplication/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");

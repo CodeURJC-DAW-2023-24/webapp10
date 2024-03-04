@@ -21,7 +21,7 @@ public class Transaction {
     @Column(name = "AMOUNT")
     private double amount;
 
-    // Sentido de la operacion, positivo o negativo
+  
     @Setter
     @Getter
     @Column(name = "SENSE")

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @ComponentScan(basePackages = "es.codeurj.mortez365.repository")
 public class MvcConfig implements WebMvcConfigurer {
-
+//The MvcConfig class is used to configure the Spring MVC framework.
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**")

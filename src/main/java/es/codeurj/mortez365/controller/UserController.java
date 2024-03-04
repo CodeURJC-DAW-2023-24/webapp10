@@ -53,7 +53,7 @@ public class UserController {
         return "register";
     }
  
-  
+  //The registerUser method is used to register the user in the database.
     @PostMapping
     public String registerUser(@RequestParam String name,
     @RequestParam String firstsurname,
@@ -90,7 +90,7 @@ public class UserController {
     System.out.println("User Saved");
     return "redirect:/index";
 }
- 
+ //The initAdmin method is used to initialize the admin user in the database.
     @PostConstruct
     public void initAdmin() {
         List<String> roles = Arrays.asList("USER", "ADMIN");

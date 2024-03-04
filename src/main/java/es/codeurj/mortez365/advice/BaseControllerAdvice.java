@@ -22,17 +22,16 @@ public class BaseControllerAdvice {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
-            // Obtener el nombre de usuario
+        
             String username = authentication.getName();
             model.addAttribute("username", username);
 
-            // Verificar si el usuario tiene el rol de administrador
             boolean isAdmin = hasRole(authentication, "ROLE_ADMIN");
             model.addAttribute("isAdmin", isAdmin);
         }
     }
 
-    // Método de utilidad para verificar si el usuario tiene un rol específico
+    
     private boolean hasRole(Authentication authentication, String role) {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         return authorities.stream().anyMatch(authority -> authority.getAuthority().equals(role));

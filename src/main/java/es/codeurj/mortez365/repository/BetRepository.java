@@ -14,7 +14,7 @@ import es.codeurj.mortez365.model.Bet;
 
 
 
-
+//The BetRepository interface is used to save the bet in the database.
 public interface BetRepository extends JpaRepository<Bet, Long>{
 
     List<Bet> findByEvent(Event event);

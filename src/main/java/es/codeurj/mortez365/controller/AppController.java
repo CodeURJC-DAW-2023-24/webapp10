@@ -54,11 +54,12 @@ public class AppController {
 
     @RequestMapping("/index")
     public String index(Model model) {
+        // Get the current user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         Optional<User> currentUser = userRepository.findByUsername(currentUserName);
 
-        // Agregar el atributo "currentUser" al modelo
+        // Add the current user to the model
         model.addAttribute("currentUser", true);
         if (currentUser.isEmpty()){
             model.addAttribute("currentUser", false);
@@ -68,11 +69,12 @@ public class AppController {
     }
     @GetMapping("/index")
     public String indx(Model model) {
+        
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         Optional<User> currentUser = userRepository.findByUsername(currentUserName);
 
-        // Agregar el atributo "currentUser" al modelo
+
         model.addAttribute("currentUser", false);
         if (currentUser.isEmpty()){
             model.addAttribute("currentUser", true);
@@ -110,7 +112,7 @@ public class AppController {
     public String responsablegame() {
         return "responsablegame";
     }
-    
+    //Method to get the events
     @GetMapping("/bets")
     public String getFilteredEvents(@RequestParam(name = "category", required = false) String category, Model model) {
         List<Event> filteredEvents;
@@ -129,7 +131,7 @@ public class AppController {
         model.addAttribute("events", filteredEvents);
         return "bets";
     }
-
+    //Method to get the events in json format
     @GetMapping("/bets/json")
     @ResponseBody
     public List<Event> getEventsJson(@RequestParam(name = "start", defaultValue = "0") int start,
@@ -158,8 +160,9 @@ public class AppController {
         log.info("NOMBRE ACTUAL: " + currentUserName);
 
         User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
-
+        
         if(currentUser.getMoney() > money){
+            // Generate the bet
             Double m = 0.0;
             Result result = null;
             switch (selectedBet){
@@ -198,7 +201,7 @@ public class AppController {
     public String login() {
         return "login";
     }
-
+  
     @GetMapping("/wallet")
     public String wallet (Model model, HttpServletRequest request){
         String name = request.getUserPrincipal().getName();
@@ -209,10 +212,10 @@ public class AppController {
     }
     @PostMapping("/wallet/addFunds")
     public String increaseWallet(Model model, @RequestParam("amount") Long amount) {
-
+        // Get the current user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = userRepository.findByUsername(authentication.getName()).orElse(null);
-
+        // Increase the money of the current user
         if (currentUser != null) {
             log.info(currentUser.getName());
             log.info(String.valueOf(currentUser.getMoney()));
@@ -238,6 +241,7 @@ public class AppController {
 
     @GetMapping("/cart")
     public String cart(Model model) {
+    
         log.info("AQUI EL CARRITO:");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -248,11 +252,12 @@ public class AppController {
         }else {
             log.info("EL USUARIO ACTUAL ESTA A NULL");
         }
-
+        // Get the bets of the current user
         Page<Bet> betPage = betRepository.findByUser(currentUser, PageRequest.of(0, 9));
         List<Bet> bets = betPage.getContent();
 
         model.addAttribute("bets", bets);
+        // Calculate the total bet, the total winning amount and the total benefit
 
         Double totalWinningAmount = 0.0;
         Double totalBet = 0.0;
@@ -262,6 +267,7 @@ public class AppController {
             totalBet += bet.getBet_amount();
             totalBenefit = bet.getProfit();
         }
+        // Add the total bet, the total winning amount and the total benefit to the model
         model.addAttribute("total-bet", totalBet);
         model.addAttribute("total-winning-amount", totalWinningAmount);
         model.addAttribute("total-benefit", totalBenefit);
@@ -278,10 +284,12 @@ public String betsadmin(Model model) {
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request) {
         try {
+            // If the user is logged in, we get the user from the database
             String name = request.getUserPrincipal().getName();
             User user = userRepository.findByUsername(name).orElseThrow();
             model.addAttribute("user", user);
         } catch (Exception e) {
+            // If the user is not logged in, we create a default user
             if (Objects.equals(request.getUserPrincipal().getName(), "user")) {
                 User user = new User("Usuario", "Por", "Defecto", "user@gmail.com", new Date(), "Sierra Leona", "674321O", "user", "pass", false, "Calle Luminada", "28914", "76123412", new ArrayList<>());
                 model.addAttribute("user", user);
@@ -306,7 +314,7 @@ public String betsadmin(Model model) {
     public String addEvent(@RequestParam String name, @RequestParam String championship,
                            @RequestParam String sport, @RequestParam MultipartFile image) throws IOException {
         Event event = new Event();
-
+        //Save the image int the data base
         if(!image.isEmpty()) {
             Path imageDirectory = Paths.get("src/main/resources/assets/img/laliga");
             String imagePath = imageDirectory.toFile().getAbsolutePath();
@@ -327,7 +335,7 @@ public String betsadmin(Model model) {
         return "redirect:/betsadmin";
     }
 
-
+    //Method to get the value of the money of the user
     @GetMapping("/getValue")
     @ResponseBody
     public int getValue(Model model, HttpServletRequest request) {
@@ -336,7 +344,7 @@ public String betsadmin(Model model) {
         int valor =  (int) user.getMoney();
         return valor;
     }
-
+//Method to update the value of the money of the user
     @PostMapping("/updateValue")
 @ResponseBody
 public void updateValue(@RequestBody int newValue, HttpServletRequest request) {
