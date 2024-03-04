@@ -129,6 +129,19 @@ ___
    Here you will be able to select an event and place a bet with different choices.
 ![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/aa3a579f-2962-4947-86d3-f38e4ff44fa7)
 
+- **Profile**:
+   Here you can watch your profile information.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/47c6abd3-92bf-459a-ad14-1b08a9715039)
+
+- **Wallet**:
+   Here you deposit your money and watch your funds.
+ ![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/14e061ad-5493-4b93-943d-f0ab6f847358)
+
+
+- **Bets saved**:
+   Here you can see the bets you've made.
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/ad52078f-0800-4653-9b5f-7d91d96b26f0)
+   
 - **Roulette**:
   Here you can play the famous Roulette game.
 ![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/0236a646-f97c-4118-b940-b530f351a335)
@@ -145,6 +158,11 @@ ___
   A page about the dev team and their contact information
 ![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/9fe6d5bd-40d1-4eb9-9b4b-2ad3862e86cf)
 
+- **Add events for admin**:
+  A page where the admin user can add new events
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/dc01f040-b72d-4f99-98e8-1aca089ea624)
+
+
 ___
 
 ## Class Diagram
@@ -158,6 +176,69 @@ ___
 ## SQL Entities Diagram
 
 ![entitiesDiagram](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/145127838/a3091959-7355-4de6-a077-6550b7920e64)
+
+___
+
+___
+
+## How to configure develop enviroment and the application 
+## 1. Install Java Development Kit (JDK):
+
+- Visit the Oracle JDK download page or use OpenJDK, an open-source alternative.
+- Download the installer suitable for your operating system.
+- Follow the installation instructions provided by the JDK installer.
+- After installation, set the JAVA_HOME environment variable to the JDK installation path, and add the bin directory to the system PATH.
+
+## 2. Install and Set Up MySQL:
+
+- Visit the MySQL download page and choose the appropriate version for your operating system.
+- Download the MySQL installer and follow the installation instructions.
+- During installation, set a root password for MySQL.
+- Start the MySQL server after installation.
+- Optionally, install a MySQL GUI tool like MySQL Workbench for easier database management.
+
+## 3. Use a Build Tool (Maven or Gradle):
+
+## a. Maven:
+- Visit the Apache Maven download page.
+- Download the Maven binary zip file.
+- Extract the contents to a directory on your machine.
+- Add the Maven bin directory to the system PATH.
+- Verify the installation by running mvn -v in the terminal.
+
+## b. Gradle:
+
+- Visit the Gradle download page.
+- Download the Gradle binary-only distribution.
+- Extract the contents to a directory on your machine.
+- Add the Gradle bin directory to the system PATH.
+- Verify the installation by running gradle -v in the terminal.
+
+## 4. Clone the project
+- Clone the Spring project repository from your version control system (e.g., Git)
+
+## 5.Configure MYSQL Database
+- Create a MySQL database for your project.
+- Update the application.properties or application.yml file in your Spring project with the database connection details.
+
+spring.datasource.url=jdbc:mysql://localhost:3306/maindb
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+
+## 6.Build the project 
+- Use Maven or Gradle to build your project.
+
+## For Maven
+mvn clean install
+
+## For Gradle
+./gradlew build
+
+## 7.Run the application
+- Execute the generated JAR file or run the application from your IDE.
+
+## 8. Access the Application
+- Open a web browser and go to https://localhost:8443.
 
 ___
 
@@ -182,7 +263,6 @@ ___
     My most inmportant commits:
 
      [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/aaaa9005310f455f7417d57694293cb21999b98d)
-
     [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/b0d1805eee686a464ab60d5aa847561fa7e24aec)  
     [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/e72281db46e5864b403d0acae7df468aeafb2521)  
     [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d33c6c0dcd117f1f4b9331119c0565a26f83fc36)  
