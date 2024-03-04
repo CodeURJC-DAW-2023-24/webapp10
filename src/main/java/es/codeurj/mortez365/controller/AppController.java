@@ -56,12 +56,33 @@ public class AppController {
     private BetRepository betRepository;
 
     @RequestMapping("/index")
-    public String index() {
-        log.info("Prueba123");
-        log.info(userRepository.findByName("user").toString());
+    public String index(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Optional<User> currentUser = userRepository.findByUsername(currentUserName);
+
+        // Agregar el atributo "currentUser" al modelo
+        model.addAttribute("currentUser", true);
+        if (currentUser.isEmpty()){
+            model.addAttribute("currentUser", false);
+        }
+
         return "index";
     }
+    @GetMapping("/index")
+    public String indx(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Optional<User> currentUser = userRepository.findByUsername(currentUserName);
 
+        // Agregar el atributo "currentUser" al modelo
+        model.addAttribute("currentUser", false);
+        if (currentUser.isEmpty()){
+            model.addAttribute("currentUser", true);
+        }
+
+        return "index";
+    }
 
     @GetMapping("/roulette")
     public String roulette() {
