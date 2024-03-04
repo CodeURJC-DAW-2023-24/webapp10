@@ -195,3 +195,13 @@ ___
     [File 4]()  
     [File 5]()  
 
+
+  - **Alberto Roldán Nieto**:
+    In this phase I helped the rest of the team and implemented the roulette algorithm and https  
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/8069106ab74e0653aa14aa89deb3447beb72aeef)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5ce73fe0a9d4e886852e9180c49ef527016ab785) 
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c7fb5e3eb955de8ae696892e9684c7db05d14617)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5773574b4f40cb106e7b9694089d4d23efbf1448)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/34054be3e905502a77b007f8ddc0be31a1c57848)
+    
