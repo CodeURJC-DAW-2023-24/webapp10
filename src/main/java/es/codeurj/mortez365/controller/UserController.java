@@ -94,7 +94,8 @@ public class UserController {
     @PostConstruct
     public void initAdmin() {
         List<String> roles = Arrays.asList("USER", "ADMIN");
-        userService.save(new User("admin", passwordEncoder.encode("adminpass"), roles));
+        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131",roles);
+        userService.save(u);
     }
 
  }

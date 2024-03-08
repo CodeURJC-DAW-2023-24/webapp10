@@ -212,10 +212,10 @@ public class AppController {
     }
     @PostMapping("/wallet/addFunds")
     public String increaseWallet(Model model, @RequestParam("amount") Long amount) {
-        // Get the current user
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = userRepository.findByUsername(authentication.getName()).orElse(null);
-        // Increase the money of the current user
+
         if (currentUser != null) {
             log.info(currentUser.getName());
             log.info(String.valueOf(currentUser.getMoney()));
@@ -223,21 +223,13 @@ public class AppController {
             money = amount + money;
             log.info(String.valueOf(money));
             currentUser.setMoney(money);
+            userRepository.save(currentUser);
             log.info("DINERO", String.valueOf(currentUser.getMoney()));
         }
 
         return "redirect:/wallet";
     }
-    private boolean isValidDate(String date) {
-        DateFormat dateFormat = new SimpleDateFormat("MM/yy");
-        try {
-            Date expirationDate = dateFormat.parse(date);
-            Date currentDate = new Date();
-            return !expirationDate.before(currentDate);
-        } catch (ParseException e) {
-            return false;
-        }
-    }
+
 
     @GetMapping("/cart")
     public String cart(Model model) {
@@ -332,6 +324,13 @@ public String betsadmin(Model model) {
 
 
         }
+        return "redirect:/betsadmin";
+    }
+
+    @PostMapping("/deleteEvent")
+    public String deleteItem(@RequestParam("id") Long id) {
+        System.out.println(events.findAll());
+        events.deleteById(id);
         return "redirect:/betsadmin";
     }
 

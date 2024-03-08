@@ -150,7 +150,7 @@ function tarjetaValida(){
         return year > currentYear || (year === currentYear && month >= currentMonth);
     }
 
-    if (card.length() === 12 && isValidDate(date) && cvv.length() === 3 && amount > 0) {
+    if (card.length() !== 12 && !isValidDate(date) && cvv.length() !== 3 && amount < 0) {
         alert("La tarjeta tiene que tener 12 digitos, la fecha posterior a la actual, el cvv tres cifras y la cantidad mayor que 0");
         return false;
     }

@@ -120,7 +120,7 @@
                             <form name="form-bet" action="/single-product" method="post" onsubmit="return comprobarApuesta()">
                                 <input type="hidden" name="eventId" value="{{event.id}}">
                                 <input type="hidden" name="selected-bet" id="selected-bet">
-                                <label for="bet-amount"></label><input name="bet-amount" id="money-bet" type="number" step="0.1" placeholder="0"><p></p>
+                                <input name="bet-amount" id="money-bet" type="number" step="0.1" placeholder="0"><p></p>
                                 <input class="cart-btn" type="submit" value="Apostar">
 								<input type="hidden" name="_csrf" value="{{token}}"/>
                             </form>

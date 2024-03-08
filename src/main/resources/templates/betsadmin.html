@@ -83,10 +83,7 @@
 	<!-- products -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
-
-
-
-					<div class="container-fluid">
+			<div class="container-fluid">
     <div class="row" id = "eventsContainer">
         {{#events}}
         <div class="col-lg-4 col-md-6 text-center">
@@ -97,8 +94,13 @@
                 <h3>{{name}}</h3>
                 <p class="product-price">{{championship}} <span>{{sport}}</span></p>
 
-                <a href="single-product?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
-            </div>
+                <a href="edit?id={{id}}" class="cart-btn"></i>Editar</a>
+				<form action="/deleteEvent?id={{id}}" method="post">
+					<input type="hidden" name="id" value="{{id}}">
+					<button type="submit" class="cart-btn">Eliminar</button>
+					<input type="hidden" name="_csrf" value="{{token}}"/>
+				</form>
+			</div>
         </div>
         {{/events}}
     </div>
