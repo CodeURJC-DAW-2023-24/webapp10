@@ -14,10 +14,4 @@ public interface EventRepository extends JpaRepository<Event, Long>{
 
         List<Event> findByChampionship(String championship);
     
-    
-    
-    
-    
-
-    
 }

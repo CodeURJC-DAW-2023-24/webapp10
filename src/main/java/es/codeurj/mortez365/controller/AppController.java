@@ -14,9 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import es.codeurj.mortez365.model.Bet;
@@ -33,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -150,8 +148,9 @@ public class AppController {
         return "single-product";
     }
     @PostMapping("/single-product")
-    public String generateBet(@RequestParam("bet-amount") Double money,  @RequestParam("eventId") Long eventId,
-                              @RequestParam("selected-bet") String selectedBet, Model model){
+    public String generateBet(@RequestParam("bet-amount") Double money, @RequestParam("eventId") Long eventId,
+                              @RequestParam("selected-bet") String selectedBet,
+                              RedirectAttributes redirectAttributes, Model model, HttpServletRequest request){
         Event event = events.findById(eventId).orElse(null);
         assert event != null;
 
@@ -191,8 +190,9 @@ public class AppController {
             return "redirect:/index";
         }
         else{
-
-            return "/single-product";
+            String refer = request.getHeader("Referer");
+            redirectAttributes.addFlashAttribute("noMoney", true);
+            return "redirect:" + refer;
         }
     }
 
@@ -319,7 +319,7 @@ public String betsadmin(Model model) {
             event.setChampionship(championship);
             event.setSport(sport);
             event.setFee(randomValue);
-            event.setImage("assets/img/laliga/"+image.getOriginalFilename());
+            event.setImage(("assets/img/laliga/"+image.getOriginalFilename()).getBytes());
             eventService.save(event);
 
 

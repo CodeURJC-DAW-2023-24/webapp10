@@ -1,13 +1,15 @@
 package es.codeurj.mortez365.model;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Data
-@Table(name = "TRANSACTION")
-public class Transaction {
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,21 +18,21 @@ public class Transaction {
     @Column(name = "ID")
     private long id;
 
-    @Setter
     @Getter
-    @Column(name = "AMOUNT")
-    private double amount;
+    @Setter
+    @JoinColumn(name = "AUTHOR")
+    @ManyToOne
+    private User user;
 
-  
-    @Setter
     @Getter
-    @Column(name = "SENSE")
-    private char sense;
+    @Setter
+    @Column(name = "CONTENT")
+    private String content;
 
-    @Setter
     @Getter
-    @PrimaryKeyJoinColumn(name = "WALLET")
-    @OneToOne
-    private Wallet wallet;
+    @Setter
+    @JoinColumn(name = "EVENT")
+    @ManyToOne
+    private Event event;
 
 }

@@ -10,6 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -52,11 +55,9 @@ public class Event {
     @Column(name = "MARKER")
     private String marker;
 
-    // STRING O ENTIDAD A PARTE ????
     @Setter
     @Getter
     @JoinColumn(name = "CHAMPIONSHIP")
-    //@ManyToOne
     private String championship;
 
     @Setter
@@ -74,14 +75,35 @@ public class Event {
     @JoinColumn(name = "FEE")
     private Double fee;
 
-   
+    @Getter
+    @Setter
+    @JoinColumn(name = "FINISHED")
+    private Boolean finished;
+
+    @Getter
+    @Setter
+    @JoinColumn(name = "DEADLINE")
+    private Date deadline;
+
+    @Getter
+    @Setter
+    @Column(name = "COMMENT")
+    @OneToMany(mappedBy = "event")
+    private List<Comment> comments;
+
     public Event(String name, String image, String championship, String sport) {
         super();
+        var v = new Date();
+        v.setMinutes(v.getMinutes() + 1);
+
         this.name = name;
         this.image = image;
         this.championship = championship;
         this.sport = sport;
         this.fee = generateFee();
+        this.finished = false;
+        this.deadline = v;
+        this.comments = new ArrayList<>();
     }
 
     private Double generateFee() {
@@ -91,37 +113,11 @@ public class Event {
     }
 
     public Event() {
-
     }
 
     public void setImage(byte[] bs) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setImage'");
-    }
-
-    public String getChampionship() {
-        return championship;
-    }
-    public void setChampionship(String championship) {
-        this.championship = championship;
-    }
-    public String getSport() {
-        return sport;
-    }
-    public void setSport(String sport) {
-        this.sport = sport;
-    }
-    public String getImage() {
-        return image;
-    }
-    public void setImage(String image) {
-        this.image = image;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

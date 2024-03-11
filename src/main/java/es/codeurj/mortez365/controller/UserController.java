@@ -63,7 +63,7 @@ public class UserController {
     @RequestParam String dni,
     @RequestParam String adress,
     @RequestParam String postcode,
-    @RequestParam String telphone,
+    @RequestParam String telephone,
     @RequestParam String email,
     @RequestParam String username,
     @RequestParam String password,
@@ -77,7 +77,7 @@ public class UserController {
     user.setDni(dni);
     user.setAdress(adress);
     user.setPostcode(postcode);
-    user.setTelphone(telphone);
+    user.setTelephone(telephone);
     user.setEmail(email);
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));

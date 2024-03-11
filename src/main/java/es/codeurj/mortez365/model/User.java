@@ -8,12 +8,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 @Entity
 @Data
 @Table(name = "USER")
 public class User {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -81,8 +79,8 @@ public class User {
 
     @Setter
     @Getter
-    @Column(name = "TELPHONE")
-    private String telphone;
+    @Column(name = "TELEPHONE")
+    private String telephone;
 
     @Setter
     @Getter
@@ -110,7 +108,7 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
-    public User(String name, String firstsurname, String secondsurname, String email, Date birthdate, String nationality, String dni, String username, String password, boolean admin, String adress, String postcode, String telphone,List <String> roles) {
+    public User(String name, String firstsurname, String secondsurname, String email, Date birthdate, String nationality, String dni, String username, String password, boolean admin, String adress, String postcode, String telephone, List <String> roles) {
         super();
         this.name = name;
         this.firstsurname = firstsurname;
@@ -124,163 +122,16 @@ public class User {
         this.admin = admin;
         this.adress = adress;
         this.postcode = postcode;
-        this.telphone = telphone;
+        this.telephone = telephone;
         this.roles = roles;
         this.money = money;
-
     }
 
     public User() {
         super();
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
-
-    public List<Bet> getBets() {
-        return bets;
-    }
-
-    public void setBets(ArrayList<Bet> bets) {
-        this.bets = bets;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstsurname() {
-        return firstsurname;
-    }
-
-    public void setFirstsurname(String firstsurname) {
-        this.firstsurname = firstsurname;
-    }
-
-    public String getSecondsurname() {
-        return secondsurname;
-    }
-
-    public void setSecondsurname(String secondsurname) {
-        this.secondsurname = secondsurname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getTelphone() {
-        return telphone;
-    }
-
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
-    public double getMoney() {
-        return money;
-    }
-
-    public void setMoney(double money) {
-        this.money = money;
-    }
-
-
- public User(String username, String password, List<String> roles) {
+    public User(String username, String password, List<String> roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
