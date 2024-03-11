@@ -328,9 +328,21 @@ public String betsadmin(Model model) {
     }
 
     @PostMapping("/deleteEvent")
-    public String deleteItem(@RequestParam("id") Long id) {
-        System.out.println(events.findAll());
+    public String deleteItem(@RequestParam("id") Long id, Model model) {
         events.deleteById(id);
+
+        return "redirect:/betsadmin";
+    }
+    @GetMapping("/edit")
+    public String editEvent(@RequestParam("id") Long id, Model model){
+        Event event = events.findById(id).orElse(null);
+        assert event != null;
+        model.addAttribute("event", event);
+        return "edit";
+    }
+    @PostMapping("/edit")
+    public String edit(){
+
         return "redirect:/betsadmin";
     }
 

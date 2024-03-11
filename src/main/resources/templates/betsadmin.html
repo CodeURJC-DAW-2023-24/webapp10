@@ -95,7 +95,7 @@
                 <p class="product-price">{{championship}} <span>{{sport}}</span></p>
 
                 <a href="edit?id={{id}}" class="cart-btn"></i>Editar</a>
-				<form action="/deleteEvent?id={{id}}" method="post">
+				<form action="/deleteEvent?id={{id}}" method="post" onsubmit="return confirm('Estas seguro de eliminarlo?')">
 					<input type="hidden" name="id" value="{{id}}">
 					<button type="submit" class="cart-btn">Eliminar</button>
 					<input type="hidden" name="_csrf" value="{{token}}"/>
