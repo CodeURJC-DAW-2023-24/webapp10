@@ -174,12 +174,6 @@
 	<!-- copyright -->
 	{{> ../fragments/copyright}}
 	<!-- end copyright -->
-
-	{{#noMoney}}
-	<script>
-		alert("Saldo insuficiente!!")
-	</script>
-	{{/noMoney}}
 	
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -203,6 +197,14 @@
 	<script src="assets/js/main.js"></script>
 
 	<script src="assets/js/scriptapuestas.js"></script>
+
+	{{#noMoney}}
+	<script>
+		setTimeout(function() {
+			alert("Saldo insuficiente!!\nRecarga tu monedero...");
+		}, 1100);
+	</script>
+	{{/noMoney}}
 
 </body>
 </html>
