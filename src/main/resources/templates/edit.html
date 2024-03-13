@@ -84,30 +84,29 @@
 <div class="single-product mt-150 mb-150">
     <div class="container">
         <div class="row">
+            <form name="edit-event" action="/edit" method="post">
             <div class="col-md-5">
                 <div class="single-product-img">
                     <img id="product-image" src="{{event.image}}" alt=""><input type="file">
                 </div>
-            </div>
+            </div><p></p>
             <div class="col-md-7">
                 <div class="single-product-content">
                     <h3 id="product-name">Nombre: <label>
                         <input name="event-name" value="{{event.name}}">
                     </label></h3>
-                    <h3 id="product-championship">Campeonato: <input name="event-championship" value="{{event.championship}}"></h3>
+                    <h3>Campeonato: <input name="event-championship" value="{{event.championship}}"></h3>
                     <p>Deporte: <input name="event-sport" value="{{event.sport}}"></p>
-                    <h4>Cuota: </h4><input name="event-fee" value="{{event.fee}}">
-
+                    <h4>Cuota: <input name="event-fee" value="{{event.fee}}"></h4>
                     <p></p>
                     <div class="single-product-form">
-                        <form name="edit-event" action="/edit" method="post">
                             <input type="hidden" name="eventId" value="{{event.id}}">
                             <input class="cart-btn" type="submit" value="Realizar cambios">
                             <input type="hidden" name="_csrf" value="{{token}}"/>
-                        </form>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

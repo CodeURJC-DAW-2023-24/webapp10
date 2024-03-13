@@ -267,7 +267,7 @@ public class AppController {
     }
 
    @GetMapping("/betsadmin")
-public String betsadmin(Model model) {
+    public String betsadmin(Model model) {
     List<Event> allEvents = events.findAll();
     model.addAttribute("events", allEvents);
     return "betsadmin";
@@ -341,8 +341,16 @@ public String betsadmin(Model model) {
         return "edit";
     }
     @PostMapping("/edit")
-    public String edit(){
-
+    public String edit(Model model, @RequestParam("eventId") Long eventId, @RequestParam("event-name") String eventName,
+                       @RequestParam("event-championship") String eventChampionship, @RequestParam("event-sport") String eventSport,
+                       @RequestParam("event-fee") Double eventFee) {
+        Event event = events.findById(eventId).orElse(null);
+        assert event != null;
+        event.setName(eventName);
+        event.setChampionship(eventChampionship);
+        event.setSport(eventSport);
+        event.setFee(eventFee);
+        events.save(event);
         return "redirect:/betsadmin";
     }
 
