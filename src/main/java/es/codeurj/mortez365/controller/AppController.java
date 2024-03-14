@@ -160,7 +160,7 @@ public class AppController {
 
         User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
         
-        if(currentUser.getMoney() > money){
+        if(currentUser.getWallet().getMoney() > money){
             // Generate the bet
             Double m = 0.0;
             Result result = null;
@@ -181,9 +181,9 @@ public class AppController {
                     break;
             }
             m = m * money;
-            double userMoney = currentUser.getMoney();
+            double userMoney = currentUser.getWallet().getMoney();
             userMoney = userMoney - money;
-            currentUser.setMoney(userMoney);
+            currentUser.getWallet().setMoney(userMoney);
             System.out.println(m);
             Double p = m - money;
             betRepository.save(new Bet(event, money, result, m, p, currentUser));
@@ -218,13 +218,13 @@ public class AppController {
 
         if (currentUser != null) {
             log.info(currentUser.getName());
-            log.info(String.valueOf(currentUser.getMoney()));
-            double money = currentUser.getMoney();
+            log.info(String.valueOf(currentUser.getWallet().getMoney()));
+            double money = currentUser.getWallet().getMoney();
             money = amount + money;
             log.info(String.valueOf(money));
-            currentUser.setMoney(money);
+            currentUser.getWallet().setMoney(money);
             userRepository.save(currentUser);
-            log.info("DINERO", String.valueOf(currentUser.getMoney()));
+            log.info("DINERO", String.valueOf(currentUser.getWallet().getMoney()));
         }
 
         return "redirect:/wallet";
@@ -360,7 +360,7 @@ public class AppController {
     public int getValue(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
         User user = userRepository.findByUsername(name).orElseThrow();
-        int valor =  (int) user.getMoney();
+        int valor =  (int) user.getWallet().getMoney();
         return valor;
     }
 //Method to update the value of the money of the user
@@ -369,7 +369,7 @@ public class AppController {
 public void updateValue(@RequestBody int newValue, HttpServletRequest request) {
     String name = request.getUserPrincipal().getName();
     User user = userRepository.findByUsername(name).orElseThrow();
-    user.setMoney(newValue);
+    user.getWallet().setMoney(newValue);
     userRepository.save(user);
 }
 }
