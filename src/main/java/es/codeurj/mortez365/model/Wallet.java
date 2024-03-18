@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @Entity
 @Data
@@ -17,6 +20,26 @@ public class Wallet {
     @Getter
     private long id;
 
+    @Column(name = "CARD_NUMBER")
+    @Setter
+    @Getter
+    private String card_number;
+
+    @Column(name = "EXPIRED_DATE")
+    @Setter
+    @Getter
+    private String expired_date;
+
+    @Column(name = "CVV")
+    @Setter
+    @Getter
+    private String cvv;
+
+    @Column(name = "OWNER")
+    @Setter
+    @Getter
+    private String owner;
+
     @Column(name = "MONEY")
     @Setter
     @Getter
@@ -28,4 +51,16 @@ public class Wallet {
     @Getter
     private User user;
 
+    public Wallet(String card_number, String cvv, Date expired_date, User user) {
+        this.card_number = card_number;
+        this.cvv = cvv;
+        this.money = 100;
+        this.user = user;
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/yy");
+        this.expired_date = sdf.format(expired_date);
+        this.owner = user.getName() + " " + user.getFirstsurname();
+    }
+
+    public Wallet() {
+    }
 }

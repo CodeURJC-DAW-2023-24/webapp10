@@ -50,6 +50,10 @@ public class Bet {
     @Column(name = "RESULT")
     private Result result;
 
+    @Setter
+    @Getter
+    @Column(name = "TYPE_BET")
+    private TypeBet typeBet;
 
     @Setter
     @Getter

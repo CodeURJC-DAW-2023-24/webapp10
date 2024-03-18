@@ -23,7 +23,7 @@ public class User {
     @Setter
     @Getter
     @PrimaryKeyJoinColumn(name = "WALLET")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Wallet wallet;
 
     @Setter

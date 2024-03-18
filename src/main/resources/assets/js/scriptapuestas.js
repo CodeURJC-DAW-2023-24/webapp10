@@ -157,6 +157,21 @@ function tarjetaValida(){
     return true;
 
 }
+
+function validCVV() {
+    var introduced_cvv = document.forms["form-card"]["card-cvv"].value;
+    var amount = document.forms["form-card"]["amount"].value;
+    var real_cvv = document.forms["form-card"]["real-cvv"].value;
+
+    if (introduced_cvv !== real_cvv) {
+        alert("No coinciden los cvv");
+        return false;
+    }else {
+        return true;
+    }
+
+}
+
 function comprobarApuesta(){
     var money = document.forms["form-bet"]["bet-amount"].value;
     var result = document.getElementById("selected-bet").value;
