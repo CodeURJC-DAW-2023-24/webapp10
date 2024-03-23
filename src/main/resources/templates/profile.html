@@ -89,6 +89,7 @@
                             <div class="card-body">
                                 <div class="billing-address-form">
                                     <div class="user-profile">
+										
                                         <p>Nombre: {{user.name}}<span id="user-name"></span></p>
                                         <p>Primer apellido: {{user.firstsurname}}<span id="user-first-surname"></span></p>
 										<p>Segundo apellido: {{user.secondsurname}} <span id="user-second-surname"></span></p>
@@ -132,11 +133,15 @@
 												<input type="hidden" name="_csrf" value="{{token}}"/>
 											</form>
                                     </div>
+									<form method="POST" action="/uploadImage" enctype="multipart/form-data">
+										<input type="file" name="imageFile" accept="image/*">
+										<button type="submit">Subir imagen</button>
+									</form>
                                 </div>
                             </div>
 						    </div>
 						  </div>
-						  
+						  <img src="data:image/jpeg;base64,{{user.image}}" alt="{{user.image}}">
 
 						</div>
 

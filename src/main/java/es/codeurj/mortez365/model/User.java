@@ -104,6 +104,11 @@ public class User {
 
     @Setter
     @Getter
+    @Column(name = "IMAGE", columnDefinition = "BLOB")
+    private byte[] image;
+
+    @Setter
+    @Getter
     @Column(name = "ROLE")
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;

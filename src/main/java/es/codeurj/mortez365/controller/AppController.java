@@ -6,10 +6,13 @@ import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.EventSevice;
 import jakarta.servlet.http.HttpServletRequest;
+
+import org.apache.tomcat.util.http.parser.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.http.HttpHeaders;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -279,6 +283,9 @@ public class AppController {
             // If the user is logged in, we get the user from the database
             String name = request.getUserPrincipal().getName();
             User user = userRepository.findByUsername(name).orElseThrow();
+            byte[] imageBytes = user.getImage();
+            String imageBase64 = Base64.getEncoder().encodeToString(imageBytes);
+            model.addAttribute("image", imageBase64);
             model.addAttribute("user", user);
         } catch (Exception e) {
             // If the user is not logged in, we create a default user
@@ -364,14 +371,26 @@ public class AppController {
         return valor;
     }
 //Method to update the value of the money of the user
-    @PostMapping("/updateValue")
+@PostMapping("/updateValue")
 @ResponseBody
-public void updateValue(@RequestBody int newValue, HttpServletRequest request) {
+public void updateValue(@RequestBody Map<String, Integer> payload, HttpServletRequest request) {
     String name = request.getUserPrincipal().getName();
     User user = userRepository.findByUsername(name).orElseThrow();
-    user.getWallet().setMoney(newValue);
+    user.getWallet().setMoney(payload.get("value"));
     userRepository.save(user);
+
 }
+
+
+@GetMapping("/user/{id}/image")
+public String getUserImage(@PathVariable Long id) {
+    User user = userRepository.findById(id).orElseThrow();
+    byte[] image = user.getImage();
+    
+    String imageBase64 = Base64.getEncoder().encodeToString(image);
+    return imageBase64;
+}
+
 }
 
     

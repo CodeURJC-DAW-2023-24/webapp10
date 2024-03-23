@@ -59,6 +59,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
+                      
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
                         .anyRequest().authenticated()

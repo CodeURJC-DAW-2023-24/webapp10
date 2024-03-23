@@ -68,6 +68,7 @@ public class UserController {
     @RequestParam String email,
     @RequestParam String username,
     @RequestParam String password,
+    @RequestParam byte[] image,
     @RequestParam Double money) {
     User user = new User();
     user.setName(name);
@@ -82,6 +83,7 @@ public class UserController {
     user.setEmail(email);
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
+    user.setImage(image);
     user.setMoney(money);
    
 
