@@ -191,6 +191,25 @@
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
 
+	<script src="assets/js/scriptapuestas.js"></script>
+
+	<script>
+		document.getElementById('birthdate').addEventListener('change', function () {
+			
+			var birthdate = new Date(this.value);
+			var today = new Date();
+			var age = today.getFullYear() - birthdate.getFullYear();
+			var m = today.getMonth() - birthdate.getMonth();
+			if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+				age--;
+			}
+			if (age < 18) {
+				alert('Debes ser mayor de 18 años.');
+				this.value = '';
+			}
+		});
+		</script>
+
 
 
 </head>

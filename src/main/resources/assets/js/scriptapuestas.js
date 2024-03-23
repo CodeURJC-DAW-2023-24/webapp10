@@ -187,3 +187,19 @@ let groupedEvents = [];
 for(let i = 0; i < events.length; i += 3) {
     groupedEvents.push(events.slice(i, i+3));
 }
+
+document.getElementById('birthdate').addEventListener('change', function () {
+  console.log('Fecha de nacimiento: ' + this.value);
+  var birthdate = new Date(this.value);
+  var today = new Date();
+  var age = today.getFullYear() - birthdate.getFullYear();
+  var m = today.getMonth() - birthdate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+      age--;
+  }
+  if (age < 18) {
+      alert('Debes ser mayor de 18 años.');
+      this.value = '';
+      console.log('Debes ser mayor de 18 años.');
+  }
+});
