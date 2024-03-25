@@ -326,7 +326,7 @@ public class AppController {
             event.setChampionship(championship);
             event.setSport(sport);
             event.setFee(randomValue);
-            event.setImage(("assets/img/laliga/"+image.getOriginalFilename()).getBytes());
+            event.setImage(("assets/img/laliga/"+image.getOriginalFilename()));
             eventService.save(event);
 
 
