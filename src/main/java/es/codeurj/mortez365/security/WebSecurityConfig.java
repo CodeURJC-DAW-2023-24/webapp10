@@ -4,6 +4,7 @@ package es.codeurj.mortez365.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -38,13 +40,14 @@ public class WebSecurityConfig {
     
     }
 
-  
-    @SuppressWarnings("deprecation")
+
+    @SuppressWarnings({ "deprecation" })
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authenticationProvider(authenticationProvider());
-
+        
+       http.csrf().ignoringRequestMatchers("/events/*");
         http.authorizeRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
 
@@ -59,10 +62,17 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
+                        .requestMatchers("/events/").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/events/").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/events/").permitAll()
+                        
                       
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/roulette").hasRole("USER")
+                        .requestMatchers("/profile").hasRole("USER")
+                        .requestMatchers("/wallet").hasRole("USER")
+                        .requestMatchers("/single-product").hasRole("USER")
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")

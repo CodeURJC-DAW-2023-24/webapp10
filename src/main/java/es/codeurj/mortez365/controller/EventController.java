@@ -26,6 +26,8 @@ import org.springframework.http.ResponseEntity;
 import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.service.EventSevice;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -47,12 +49,12 @@ public class EventController {
 
     @PostMapping("/")
     public ResponseEntity<Event> newEvent(@RequestBody Event newEvent) {
-       eventService.save(newEvent);
-        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(newEvent.getId()).toUri();
-        return ResponseEntity.created(location).body(newEvent);
+        Event savedEvent = eventService.save(newEvent);
+        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedEvent.getId()).toUri();
+        return ResponseEntity.created(location).body(savedEvent);
     }
  
-    @GetMapping("/events/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Event>> getEventById(@PathVariable Long id) {
         Optional<Event> event = events.findById(id);
         
@@ -72,6 +74,18 @@ public class EventController {
         } else {
             events.deleteById(id);
             return ResponseEntity.ok(event);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> replaceEvent(@RequestBody Event newEvent, @PathVariable Long id) {
+        Optional<Event> event = events.findById(id);
+        if (event.isPresent()) {
+            newEvent.setId(id);
+            events.save(newEvent);
+            return ResponseEntity.ok(newEvent);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
     
