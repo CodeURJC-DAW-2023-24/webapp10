@@ -115,9 +115,5 @@ public class Event {
     public Event() {
     }
 
-    public void setImage(byte[] bs) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setImage'");
-    }
-
+    
 }
