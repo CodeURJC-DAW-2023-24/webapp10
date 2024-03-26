@@ -6,8 +6,10 @@ import java.util.Optional;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
-
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import es.codeurj.mortez365.model.Event;
@@ -41,11 +42,11 @@ public class EventController {
 
      
     
-
-    @GetMapping("/")
-    public Collection<Event> getAllevents() {
-        return events.findAll();
-    }
+@GetMapping("/")
+public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
+    Page<Event> page = events.findAll(pageable);
+    return new ResponseEntity<>(page, HttpStatus.OK);
+}
 
     @PostMapping("/")
     public ResponseEntity<Event> newEvent(@RequestBody Event newEvent) {
@@ -100,6 +101,8 @@ public class EventController {
     public Collection <Event> getEventBySport(@PathVariable String sport){
         return events.findBySport(sport);
     }
+    
+
     
 
     

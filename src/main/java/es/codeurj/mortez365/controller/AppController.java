@@ -17,6 +17,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.*;
 
 import es.codeurj.mortez365.model.Bet;
@@ -116,23 +119,23 @@ public class AppController {
     }
     //Method to get the events
     @GetMapping("/bets")
-    public String getFilteredEvents(@RequestParam(name = "category", required = false) String category, Model model) {
-        List<Event> filteredEvents;
+    public String getFilteredEvents(@RequestParam(name = "page", defaultValue = "0") int page,
+                                    @RequestParam(name = "size", defaultValue = "10") int size,
+                                Model model) {
+    Pageable pageable = PageRequest.of(page, size);
+    Page<Event> eventsPage;
+
+   
+     eventsPage = events.findAll(pageable);
     
-        if ("Todos".equals(category)) {
-          
-            filteredEvents = events.findAll();
-        } else if (category != null) {
-          
-            filteredEvents = events.findByChampionship(category);
-        } else {
-            
-            filteredEvents = events.findAll(PageRequest.of(0, 9)).getContent();
-        }
-    
-        model.addAttribute("events", filteredEvents);
-        return "bets";
-    }
+
+    model.addAttribute("events", eventsPage.getContent());
+    model.addAttribute("currentPage", eventsPage.getNumber());
+    model.addAttribute("totalPages", eventsPage.getTotalPages());
+    model.addAttribute("totalItems", eventsPage.getTotalElements());
+
+    return "bets";
+}
     //Method to get the events in json format
     @GetMapping("/bets/json")
     @ResponseBody
@@ -151,6 +154,7 @@ public class AppController {
         model.addAttribute("feeL", Math.round((3.5 - event.getFee()) * 100.0)/ 100.0);
         return "single-product";
     }
+   
     @PostMapping("/single-product")
     public String generateBet(@RequestParam("bet-amount") Double money, @RequestParam("eventId") Long eventId,
                               @RequestParam("selected-bet") String selectedBet,
