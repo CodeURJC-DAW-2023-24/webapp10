@@ -40,7 +40,7 @@ public class EventController {
     private EventSevice eventService;
 
      
-   
+    
 
     @GetMapping("/")
     public Collection<Event> getAllevents() {
@@ -73,7 +73,7 @@ public class EventController {
             return ResponseEntity.notFound().build();
         } else {
             events.deleteById(id);
-            return ResponseEntity.ok(event);
+            return ResponseEntity.noContent().build();
         }
     }
 

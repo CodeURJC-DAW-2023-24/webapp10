@@ -47,7 +47,7 @@ public class WebSecurityConfig {
 
         http.authenticationProvider(authenticationProvider());
         
-       http.csrf().ignoringRequestMatchers("/events/*");
+        http.csrf().ignoringRequestMatchers("/api/events/*");
         http.authorizeRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
 
@@ -62,7 +62,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
-                        .requestMatchers("/events/").permitAll()
+                        .requestMatchers("/api/events/").permitAll()
                         .requestMatchers(HttpMethod.POST, "/events/").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/events/").permitAll()
                         
