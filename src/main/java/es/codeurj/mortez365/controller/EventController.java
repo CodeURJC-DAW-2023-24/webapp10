@@ -90,8 +90,20 @@ public class EventController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/championship/{championship}")
+    public Collection <Event> getEventByChampionship(@PathVariable String championship){
+        return events.findByChampionship(championship);
     
-}
+    }
+    @GetMapping("/sport/{sport}")
+    public Collection <Event> getEventBySport(@PathVariable String sport){
+        return events.findBySport(sport);
+    }
+    
+
+    
+} 
 
 
  

@@ -13,5 +13,5 @@ import es.codeurj.mortez365.model.Event;
 public interface EventRepository extends JpaRepository<Event, Long>{
 
         List<Event> findByChampionship(String championship);
-    
+        List<Event> findBySport (String sport);
 }
