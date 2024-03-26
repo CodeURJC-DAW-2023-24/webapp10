@@ -63,6 +63,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
                         .requestMatchers("/api/events/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/events/championship/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/events/sport/*").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/events/").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/api/events/").permitAll()
                         .requestMatchers (HttpMethod.PUT, "/api/events/").permitAll()
