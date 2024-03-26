@@ -80,10 +80,12 @@ public class EventController {
     @PutMapping("/{id}")
     public ResponseEntity<Event> replaceEvent(@RequestBody Event newEvent, @PathVariable Long id) {
         Optional<Event> event = events.findById(id);
+        
         if (event.isPresent()) {
             newEvent.setId(id);
             events.save(newEvent);
-            return ResponseEntity.ok(newEvent);
+            URI location = fromCurrentRequest().path("/{id}").buildAndExpand(newEvent.getId()).toUri();
+            return ResponseEntity.ok().location(location).body(newEvent);
         } else {
             return ResponseEntity.notFound().build();
         }
