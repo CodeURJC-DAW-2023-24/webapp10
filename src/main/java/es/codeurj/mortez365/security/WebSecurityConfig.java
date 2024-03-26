@@ -62,17 +62,17 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
-                        .requestMatchers("/api/events/").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/events/").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/events/").permitAll()
-                        
+                        .requestMatchers("/api/events/*").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/events/").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/events/").permitAll()
+                        .requestMatchers (HttpMethod.PUT, "/api/events/").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/events/").permitAll()
+
                       
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
-                        .requestMatchers("/roulette").hasRole("USER")
-                        .requestMatchers("/profile").hasRole("USER")
-                        .requestMatchers("/wallet").hasRole("USER")
-                        .requestMatchers("/single-product").hasRole("USER")
+                 
+                        .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
