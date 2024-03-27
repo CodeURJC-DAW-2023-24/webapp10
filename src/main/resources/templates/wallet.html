@@ -90,7 +90,7 @@
 										<div class="billing-address-form">
 											<h3>Número de tarjeta: {{user.wallet.card_number}}</h3>
 											<h3>Fecha de vencimiento: {{user.wallet.expired_date}}</h3>
-											<p><input name="card-cvv" type="text" placeholder="CVV" required></p>
+											<p><input name="card-cvv" type="number" placeholder="CVV" required></p>
 											<p><input name="amount" type="number" step="0.1" placeholder="Cantidad a añadir" required></p>
 											<h6>Saldo actual: {{user.wallet.money}}$<span id="currentBalance"></span></h6>
 											<input type="hidden" name="real-cvv" value="{{user.wallet.cvv}}">

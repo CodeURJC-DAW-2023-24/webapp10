@@ -286,24 +286,15 @@ public class AppController {
         try {
             // If the user is logged in, we get the user from the database
             String name = request.getUserPrincipal().getName();
+            log.info("USER NAME: " + name);
             User user = userRepository.findByUsername(name).orElseThrow();
             byte[] imageBytes = user.getImage();
             String imageBase64 = Base64.getEncoder().encodeToString(imageBytes);
             model.addAttribute("image", imageBase64);
             model.addAttribute("user", user);
         } catch (Exception e) {
-            // If the user is not logged in, we create a default user
-            if (Objects.equals(request.getUserPrincipal().getName(), "user")) {
-                User user = new User("Usuario", "Por", "Defecto", "user@gmail.com", new Date(), "Sierra Leona", "674321O", "user", "pass", false, "Calle Luminada", "28914", "76123412", new ArrayList<>());
-                model.addAttribute("user", user);
-                userRepository.save(user);
-            }else if (Objects.equals(request.getUserPrincipal().getName(), "admin")) {
-                User user = new User("Administrador", "Por", "Defecto", "admin@gmail.com", new Date(), "República Democrática y Popular de Argelia", "674321O", "admin", "adminpass", true, "Calle Luminada", "28914", "76123412", new ArrayList<>());
-                model.addAttribute("user", user);
-                userRepository.save(user);
-            }else {
-                return "login";
-            }
+            // If the user is not logged in, redirect to the login page
+            return "redirect:/login";
         }
         return "profile";
     }

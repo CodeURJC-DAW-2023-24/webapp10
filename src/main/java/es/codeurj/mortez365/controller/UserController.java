@@ -57,19 +57,13 @@ public class UserController {
   //The registerUser method is used to register the user in the database.
     @PostMapping
     public String registerUser(@RequestParam String name,
-    @RequestParam String firstsurname,
-    @RequestParam String secondsurname,
-    @RequestParam Date birthdate,
-    @RequestParam String nationality,
-    @RequestParam String dni,
-    @RequestParam String adress,
-    @RequestParam String postcode,
-    @RequestParam String telephone,
-    @RequestParam String email,
-    @RequestParam String username,
-    @RequestParam String password,
-    @RequestParam byte[] image,
-    @RequestParam Double money) {
+    @RequestParam String firstsurname, @RequestParam String secondsurname, @RequestParam Date birthdate,
+    @RequestParam String nationality, @RequestParam String dni, @RequestParam String adress,
+    @RequestParam String postcode, @RequestParam String telephone, @RequestParam String email,
+    @RequestParam String username, @RequestParam String password, @RequestParam byte[] image,
+    @RequestParam Double money, @RequestParam String card_number, @RequestParam String cvv,
+    @RequestParam String expired_date) {
+
     User user = new User();
     user.setName(name);
     user.setFirstsurname(firstsurname);
@@ -85,6 +79,10 @@ public class UserController {
     user.setPassword(passwordEncoder.encode(password));
     user.setImage(image);
     user.setMoney(money);
+
+    String real_date = expired_date.substring(5) + "/" + expired_date.substring(2,4);
+    Wallet w = new Wallet(card_number, cvv, real_date, user);
+    user.setWallet(w);
    
 
 
@@ -97,8 +95,9 @@ public class UserController {
     @PostConstruct
     public void initAdmin() {
         List<String> roles = Arrays.asList("USER", "ADMIN");
-        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131",roles);
-        Wallet wallet = new Wallet("123214", "980", new java.util.Date(), u);
+        byte[] false_image = new byte[8];
+        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131", roles, false_image);
+        Wallet wallet = new Wallet("123214", "980", "06/27", u);
         u.setWallet(wallet);
         userService.save(u);
     }

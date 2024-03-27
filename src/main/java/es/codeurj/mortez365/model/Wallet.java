@@ -51,13 +51,12 @@ public class Wallet {
     @Getter
     private User user;
 
-    public Wallet(String card_number, String cvv, Date expired_date, User user) {
+    public Wallet(String card_number, String cvv, String expired_date, User user) {
         this.card_number = card_number;
         this.cvv = cvv;
         this.money = 100;
         this.user = user;
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/yy");
-        this.expired_date = sdf.format(expired_date);
+        this.expired_date = expired_date;
         this.owner = user.getName() + " " + user.getFirstsurname();
     }
 
