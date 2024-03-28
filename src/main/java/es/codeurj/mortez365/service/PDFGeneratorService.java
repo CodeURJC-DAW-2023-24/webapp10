@@ -51,6 +51,12 @@ public class PDFGeneratorService {
             document.add(new_paragraph);
         }
 
+        if (allBets.isEmpty()) {
+            Paragraph en_blanco = new Paragraph("Aún no hay apuestas realizadas...", fontParagraph);
+            en_blanco.setAlignment(Paragraph.ALIGN_LEFT);
+            document.add(en_blanco);
+        }
+
         document.close();
     }
 

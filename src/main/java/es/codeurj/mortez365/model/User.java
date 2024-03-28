@@ -94,11 +94,6 @@ public class User {
 
     @Setter
     @Getter
-    @Column(name= "MONEY")
-    private double money;
-
-    @Setter
-    @Getter
     @Column(name = "ADMIN")
     private boolean admin;
 
@@ -114,7 +109,7 @@ public class User {
     private List<String> roles;
 
     public User(String name, String firstsurname, String secondsurname, String email, Date birthdate, String nationality, String dni, String username, String password,
-                boolean admin, String adress,String postcode, String telephone, List <String> roles, byte[] image) {
+                boolean admin, String adress, String postcode, String telephone, List <String> roles, byte[] image) {
         super();
         this.name = name;
         this.firstsurname = firstsurname;
@@ -130,7 +125,6 @@ public class User {
         this.postcode = postcode;
         this.telephone = telephone;
         this.roles = roles;
-        this.money = money;
         this.image = image;
     }
 

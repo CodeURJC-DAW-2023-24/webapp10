@@ -27,9 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-
 @RequestMapping("/register")
-
 public class UserController {
 
 
@@ -61,8 +59,7 @@ public class UserController {
     @RequestParam String nationality, @RequestParam String dni, @RequestParam String adress,
     @RequestParam String postcode, @RequestParam String telephone, @RequestParam String email,
     @RequestParam String username, @RequestParam String password, @RequestParam byte[] image,
-    @RequestParam Double money, @RequestParam String card_number, @RequestParam String cvv,
-    @RequestParam String expired_date) {
+    @RequestParam String card_number, @RequestParam String cvv, @RequestParam String expired_date) {
 
     User user = new User();
     user.setName(name);
@@ -78,7 +75,6 @@ public class UserController {
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
     user.setImage(image);
-    user.setMoney(money);
 
     String real_date = expired_date.substring(5) + "/" + expired_date.substring(2,4);
     Wallet w = new Wallet(card_number, cvv, real_date, user);

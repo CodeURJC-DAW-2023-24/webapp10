@@ -57,6 +57,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/bets").permitAll()
+                        .requestMatchers("/bets/json").permitAll()      // Permitting load more even if the user is not authenticated
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/about").permitAll()
                         .requestMatchers("/responsablegame").permitAll()
