@@ -6,20 +6,19 @@ FROM maven:3.8.4-openjdk-17 as builder
 # Define el directorio de trabajo donde ejecutar comandos
 WORKDIR /project
 
+# Copia las dependencias del proyecto
+COPY pom.xml /project/
 # Copia el código del proyecto
 COPY /src /project/src
-COPY pom.xml /project/
+
 
 # Compila proyecto y descarga librerías
-RUN mvn -B package
+RUN mvn package
 
 #################################################
 # Imagen base para el contenedor de la aplicación
 #################################################
-FROM openjdk:17-jdk-slim
-
-# Limitar el uso de la memoria
-ENV JAVA_TOOL_OPTIONS="-Xss256K -XX:ReservedCodeCacheSize=64M -XX:MaxMetaspaceSize=100000K -Xmx64M"
+FROM openjdk:17
 
 # Define el directorio de trabajo donde se encuentra el JAR
 WORKDIR /usr/src/app/
@@ -31,4 +30,4 @@ COPY --from=builder /project/target/*.jar /usr/src/app/
 EXPOSE 8443
 
 # Comando que se ejecuta al hacer docker run
-CMD [ "java", "-jar", "mortez365.jar" ]
+CMD [ "java", "-jar", "mortez365-0.0.1-SNAPSHOT.jar" ]
