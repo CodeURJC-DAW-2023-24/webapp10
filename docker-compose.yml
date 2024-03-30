@@ -12,7 +12,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=password
     restart: on-failure
   db:
-    image: mysql:8.0.36
+    image: mysql:8.0.36-oracle
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=password
