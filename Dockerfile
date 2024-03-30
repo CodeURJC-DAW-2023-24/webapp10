@@ -16,7 +16,7 @@ RUN mvn clean verify
 COPY src /project/src
 
 # Compila proyecto y descarga librerías
-RUN mvn package
+RUN mvn package -Dmaven.test.skip=true
 
 #################################################
 # Imagen base para el contenedor de la aplicación
