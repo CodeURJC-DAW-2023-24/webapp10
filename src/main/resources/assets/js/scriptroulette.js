@@ -17,7 +17,7 @@ async function updateBankValue(newBankValue) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({newBankValue})
+            body: JSON.stringify(newBankValue)
         });
 
         if (!response.ok) {

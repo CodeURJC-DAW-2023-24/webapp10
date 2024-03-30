@@ -365,16 +365,19 @@ public class AppController {
         int valor =  (int) user.getWallet().getMoney();
         return valor;
     }
-//Method to update the value of the money of the user
-@PostMapping("/updateValue")
-@ResponseBody
-public void updateValue(@RequestBody Map<String, Integer> payload, HttpServletRequest request) {
-    String name = request.getUserPrincipal().getName();
-    User user = userRepository.findByUsername(name).orElseThrow();
-    user.getWallet().setMoney(payload.get("value"));
-    userRepository.save(user);
 
-}
+/*
+    //Method to update the value of the money of the user
+    @PostMapping("/updateValue")
+    @ResponseBody
+    public void updateValue(@RequestBody Map<String, Integer> payload, HttpServletRequest request) {
+        String name = request.getUserPrincipal().getName();
+        User user = userRepository.findByUsername(name).orElseThrow();
+        user.getWallet().setMoney(payload.get("value"));
+        userRepository.save(user);
+
+    }
+*/
 
 
 @GetMapping("/user/{id}/image")

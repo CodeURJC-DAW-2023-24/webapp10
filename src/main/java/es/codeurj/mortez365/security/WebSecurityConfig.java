@@ -19,13 +19,13 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    @Autowired
+    public RepositoryUserDetailsService userDetailService;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Autowired
-    public RepositoryUserDetailsService userDetailService;
-   
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -48,6 +48,9 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         
         http.csrf().ignoringRequestMatchers("/api/events/*");
+        http.csrf().ignoringRequestMatchers("/updateValue");
+        http.csrf().ignoringRequestMatchers("/getValue");
+
         http.authorizeRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
 
@@ -71,7 +74,9 @@ public class WebSecurityConfig {
                         .requestMatchers (HttpMethod.PUT, "/api/events/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/events/").permitAll()
 
-                      
+                        .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
+
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
                  
