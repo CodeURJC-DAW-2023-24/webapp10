@@ -7,10 +7,13 @@ FROM maven:3.8.4-openjdk-17 as builder
 WORKDIR /project
 
 # Copia las dependencias del proyecto
-COPY pom.xml /project/
-# Copia el código del proyecto
-COPY /src /project/src
+COPY pom.xml .
 
+# Compila proyecto y descarga librerías
+RUN mvn clean verify
+
+# Copia el código del proyecto
+COPY src /project/src
 
 # Compila proyecto y descarga librerías
 RUN mvn package
