@@ -1,6 +1,6 @@
 services:
   web:
-    image: alvaro3517/mortez365:latest
+    image: josrob13/mortez365:1.0
     build:
       context: .
       dockerfile: Dockerfile
