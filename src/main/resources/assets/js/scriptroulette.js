@@ -32,7 +32,7 @@ async function updateBankValue(newBankValue) {
 
 
 
-fetchBankValue().then(() => {;
+fetchBankValue().then(() => {
 
 console.log("Valor:", bankValue);
 
@@ -572,6 +572,7 @@ function spin(){
 		currentBet = 0;
 		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
 		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+		updateBankValue(bankValue);
 		
 		let pnClass = (numRed.includes(winningSpin))? 'pnRed' : ((winningSpin == 0)? 'pnGreen' : 'pnBlack');
 		let pnContent = document.getElementById('pnContent');

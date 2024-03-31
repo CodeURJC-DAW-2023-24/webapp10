@@ -366,18 +366,17 @@ public class AppController {
         return valor;
     }
 
-/*
     //Method to update the value of the money of the user
     @PostMapping("/updateValue")
     @ResponseBody
-    public void updateValue(@RequestBody Map<String, Integer> payload, HttpServletRequest request) {
+    public String updateValue(@RequestBody Integer newBankValue, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
+        log.info("UPDATE VALUE LLEGA HASTA AQUI");
         User user = userRepository.findByUsername(name).orElseThrow();
-        user.getWallet().setMoney(payload.get("value"));
+        user.getWallet().setMoney(newBankValue);
         userRepository.save(user);
-
+        return "/roulette";
     }
-*/
 
 
 @GetMapping("/user/{id}/image")
