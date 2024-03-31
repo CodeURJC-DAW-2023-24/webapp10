@@ -7,6 +7,7 @@ import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.EventSevice;
 import jakarta.servlet.http.HttpServletRequest;
 
+import jdk.jfr.Timespan;
 import org.apache.tomcat.util.http.parser.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -41,6 +45,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
+@EnableScheduling
 public class AppController {
 
     private static final Logger log = LoggerFactory.getLogger(AppController.class);
@@ -127,15 +132,18 @@ public class AppController {
 
    
      eventsPage = events.findAll(pageable);
-    
+     List<Event> notFinalizedEvents = eventService.filterFinalizedEvents(eventsPage.getContent());
+     System.out.println(eventsPage);
+     System.out.println(notFinalizedEvents);
 
-    model.addAttribute("events", eventsPage.getContent());
+    model.addAttribute("events", notFinalizedEvents);
     model.addAttribute("currentPage", eventsPage.getNumber());
     model.addAttribute("totalPages", eventsPage.getTotalPages());
     model.addAttribute("totalItems", eventsPage.getTotalElements());
 
     return "bets";
-}
+    }
+
     //Method to get the events in json format
     @GetMapping("/bets/json")
     @ResponseBody
@@ -194,7 +202,8 @@ public class AppController {
             currentUser.getWallet().setMoney(userMoney);
             System.out.println(m);
             Double p = m - money;
-            betRepository.save(new Bet(event, money, result, m, p, currentUser));
+            Bet bet = new Bet(event, money, result, m, p, currentUser);
+            betRepository.save(bet);
             return "redirect:/index";
         }
         else{
@@ -238,6 +247,42 @@ public class AppController {
         return "redirect:/wallet";
     }
 
+    @Scheduled(fixedRate = 10000)
+    public void processEvents(){
+        List<Event> listEvents = events.findAll();
+        Date currentDate = new Date();
+
+        for(Event e: listEvents){
+            if(!e.getFinished() && currentDate.after(e.getDeadline())){
+                Result result = generateRandomResult();
+                e.setFinished(true);
+                System.out.println(e.getName() + result);
+                List<Bet> bets = betRepository.findAll();
+                List<Bet> eventBets = new ArrayList<>();
+                for(Bet b: bets){
+                    if(b.getEvent().equals(e)){
+                        eventBets.add(b);
+                    }
+                }
+                System.out.println(eventBets);
+                //List<Bet> bets = betRepository.findByEvent(e);   NOT WORKING
+                for(Bet b: eventBets){
+                    if(b.getResult() == result){
+                        User user = userRepository.findByUsername(b.getUser().getName()).orElseThrow();
+                        user.getWallet().addMoney(b.getProfit());
+                        userRepository.save(user);
+                    }
+                }
+                events.save(e);
+            }
+        }
+    }
+    private Result generateRandomResult() {
+        Result[] results = Result.values();
+        Random random = new Random();
+        int index = random.nextInt(results.length);
+        return results[index];
+    }
 
     @GetMapping("/cart")
     public String cart(Model model) {
@@ -305,8 +350,8 @@ public class AppController {
     }
 
    @PostMapping("/addEvent")
-    public String addEvent(@RequestParam String name, @RequestParam String championship,
-                           @RequestParam String sport, @RequestParam MultipartFile image) throws IOException {
+    public String addEvent(@RequestParam String name, @RequestParam String championship, @RequestParam String sport,
+                           @RequestParam MultipartFile image, @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") @RequestParam Date deadline) throws IOException {
         Event event = new Event();
         //Save the image int the data base
         if(!image.isEmpty()) {
@@ -321,6 +366,7 @@ public class AppController {
             event.setChampionship(championship);
             event.setSport(sport);
             event.setFee(randomValue);
+            event.setDeadline(deadline);
             event.setImage(("assets/img/laliga/"+image.getOriginalFilename()));
             eventService.save(event);
 

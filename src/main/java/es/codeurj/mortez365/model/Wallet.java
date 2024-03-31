@@ -62,4 +62,8 @@ public class Wallet {
 
     public Wallet() {
     }
+
+    public void addMoney(double profit) {
+        this.money += profit;
+    }
 }

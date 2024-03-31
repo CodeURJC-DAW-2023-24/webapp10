@@ -3,12 +3,16 @@ package es.codeurj.mortez365.service;
 
 
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import es.codeurj.mortez365.model.Event;
 
 import es.codeurj.mortez365.repository.EventRepository;
 import jakarta.annotation.PostConstruct;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -46,5 +50,15 @@ public class EventSevice {
     public Event save(Event event) {
       
         return events.save(event);
+    }
+
+    public List<Event> filterFinalizedEvents(List<Event> events) {
+        List<Event> finalizedEvents = new ArrayList<>();
+        for (Event event : events) {
+            if (!event.getFinished()) {
+                finalizedEvents.add(event);
+            }
+        }
+        return finalizedEvents;
     }
 }
