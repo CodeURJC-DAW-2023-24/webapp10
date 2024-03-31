@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
@@ -34,5 +35,9 @@ public class Comment {
     @JoinColumn(name = "EVENT")
     @ManyToOne
     private Event event;
+
+    public Comment() {
+        super();
+    }
 
 }

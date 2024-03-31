@@ -85,16 +85,10 @@ public class Event {
     @JoinColumn(name = "DEADLINE")
     private Date deadline;
 
-    @Getter
-    @Setter
-    @Column(name = "COMMENT")
-    @OneToMany(mappedBy = "event")
-    private List<Comment> comments;
 
-    public Event(String name, String image, String championship, String sport) {
+    public Event(String name, String image, String championship, String sport, Date deadline) {
         super();
-        var v = new Date();
-        v.setMinutes(v.getMinutes() + 1);
+
 
         this.name = name;
         this.image = image;
@@ -102,8 +96,8 @@ public class Event {
         this.sport = sport;
         this.fee = generateFee();
         this.finished = false;
-        this.deadline = v;
-        this.comments = new ArrayList<>();
+        this.deadline = deadline;
+
     }
 
     private Double generateFee() {

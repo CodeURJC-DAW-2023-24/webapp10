@@ -203,6 +203,7 @@ public class AppController {
             System.out.println(m);
             Double p = m - money;
             Bet bet = new Bet(event, money, result, m, p, currentUser);
+            System.out.println(bet.getEvent());
             betRepository.save(bet);
             return "redirect:/index";
         }
@@ -255,19 +256,33 @@ public class AppController {
         for(Event e: listEvents){
             if(!e.getFinished() && currentDate.after(e.getDeadline())){
                 Result result = generateRandomResult();
-                e.setFinished(true);
                 System.out.println(e.getName() + result);
                 List<Bet> bets = betRepository.findAll();
                 List<Bet> eventBets = new ArrayList<>();
                 for(Bet b: bets){
+                    System.out.println(b.getEvent());
+                    System.out.println(e);
                     if(b.getEvent().equals(e)){
                         eventBets.add(b);
                     }
                 }
-                System.out.println(eventBets);
+
+                e.setFinished(true);
+                String[] equipos = e.getName().split("-");
+                if(result == Result.WIN){
+                    e.setWinner_team(equipos[0].trim());
+                    e.setLoser_team(equipos[1].trim());
+                } else if (result == Result.LOSE) {
+                    e.setWinner_team(equipos[1].trim());
+                    e.setLoser_team(equipos[0].trim());
+                } else{
+                    e.setWinner_team("empate");
+                    e.setLoser_team("empate");
+                }
                 //List<Bet> bets = betRepository.findByEvent(e);   NOT WORKING
                 for(Bet b: eventBets){
                     if(b.getResult() == result){
+                        System.out.println("LLEGA");
                         User user = userRepository.findByUsername(b.getUser().getName()).orElseThrow();
                         user.getWallet().addMoney(b.getProfit());
                         userRepository.save(user);
