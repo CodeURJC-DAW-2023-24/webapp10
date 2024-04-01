@@ -235,7 +235,6 @@ public class AppController {
         }
     }
 
-
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -355,7 +354,7 @@ public class AppController {
         return "cart";
     }
 
-   @GetMapping("/betsadmin")
+    @GetMapping("/betsadmin")
     public String betsadmin(Model model) {
     List<Event> allEvents = events.findAll();
     model.addAttribute("events", allEvents);
@@ -385,11 +384,17 @@ public class AppController {
         return "loginerror";
     }
 
-   @PostMapping("/addEvent")
+    @Operation(summary = "Add Event", description = "Add a new event to the system")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Event successfully added"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @PostMapping("/addEvent")
     public String addEvent(@RequestParam String name, @RequestParam String championship, @RequestParam String sport,
                            @RequestParam MultipartFile image, @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") @RequestParam Date deadline) throws IOException {
         Event event = new Event();
-        //Save the image int the data base
+        //Save the image in the data base
         if(!image.isEmpty()) {
             Path imageDirectory = Paths.get("src/main/resources/assets/img/laliga");
             String imagePath = imageDirectory.toFile().getAbsolutePath();
@@ -405,18 +410,23 @@ public class AppController {
             event.setDeadline(deadline);
             event.setImage(("assets/img/laliga/"+image.getOriginalFilename()));
             eventService.save(event);
-
-
         }
         return "redirect:/betsadmin";
     }
 
+    @Operation(summary = "Delete Event", description = "Delete an event from the system")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Event successfully deleted"),
+            @ApiResponse(responseCode = "404", description = "Event not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PostMapping("/deleteEvent")
     public String deleteItem(@RequestParam("id") Long id, Model model) {
         events.deleteById(id);
 
         return "redirect:/betsadmin";
     }
+
     @GetMapping("/edit")
     public String editEvent(@RequestParam("id") Long id, Model model){
         Event event = events.findById(id).orElse(null);
@@ -424,6 +434,14 @@ public class AppController {
         model.addAttribute("event", event);
         return "edit";
     }
+
+    @Operation(summary = "Edit Event", description = "Edit details of an existing event")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Event details successfully updated"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "404", description = "Event not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PostMapping("/edit")
     public String edit(Model model, @RequestParam("eventId") Long eventId, @RequestParam("event-name") String eventName,
                        @RequestParam("event-championship") String eventChampionship, @RequestParam("event-sport") String eventSport,
@@ -438,7 +456,13 @@ public class AppController {
         return "redirect:/betsadmin";
     }
 
-    //Method to get the value of the money of the user
+    @Operation(summary = "Get User's Wallet Value", description = "Get the value of the user's wallet")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User's wallet value successfully retrieved"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "404", description = "User not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping("/getValue")
     @ResponseBody
     public int getValue(Model model, HttpServletRequest request) {
@@ -448,7 +472,14 @@ public class AppController {
         return valor;
     }
 
-    //Method to update the value of the money of the user
+    @Operation(summary = "Update User's Wallet Value", description = "Update the value of the user's wallet")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User's wallet value successfully updated"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "404", description = "User not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PostMapping("/updateValue")
     @ResponseBody
     public String updateValue(@RequestBody Integer newBankValue, HttpServletRequest request) {
@@ -461,14 +492,14 @@ public class AppController {
     }
 
 
-@GetMapping("/user/{id}/image")
-public String getUserImage(@PathVariable Long id) {
-    User user = userRepository.findById(id).orElseThrow();
-    byte[] image = user.getImage();
-    
-    String imageBase64 = Base64.getEncoder().encodeToString(image);
-    return imageBase64;
-}
+    @GetMapping("/user/{id}/image")
+    public String getUserImage(@PathVariable Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        byte[] image = user.getImage();
+
+        String imageBase64 = Base64.getEncoder().encodeToString(image);
+        return imageBase64;
+    }
 
 }
 
