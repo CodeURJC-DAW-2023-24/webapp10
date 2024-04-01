@@ -1,6 +1,9 @@
 package es.codeurj.mortez365.controller;
 
+import java.io.IOException;
 import java.net.URI;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Collection;
 
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import es.codeurj.mortez365.model.Event;
@@ -101,11 +105,19 @@ public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
         return events.findBySport(sport);
     }
     
-    @GetMapping("/image/{id}")
-    public ResponseEntity<String> getImageById(@PathVariable Long id){
-        Optional<Event> event = events.findById(id);
-        return event.map(value -> ResponseEntity.ok(value.getImage())).orElseGet(() -> ResponseEntity.noContent().build());
+  @GetMapping("/image/{id}")
+public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
+    Optional<Event> event = events.findById(id);
+    if (event.isPresent()) {
+        Blob blob = event.get().getImage();
+        int blobLength = (int) blob.length();  
+        byte[] blobAsBytes = blob.getBytes(1, blobLength);
+        blob.free();
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(blobAsBytes);
+    } else {
+        return ResponseEntity.noContent().build();
     }
+}
 
     
 } 

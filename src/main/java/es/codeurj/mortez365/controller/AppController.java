@@ -382,7 +382,7 @@ public class AppController {
             event.setSport(sport);
             event.setFee(randomValue);
             event.setDeadline(deadline);
-            event.setImage(("assets/img/laliga/"+image.getOriginalFilename()));
+            event.setImageFile(("assets/img/laliga/"+image.getOriginalFilename()));
             eventService.save(event);
 
 

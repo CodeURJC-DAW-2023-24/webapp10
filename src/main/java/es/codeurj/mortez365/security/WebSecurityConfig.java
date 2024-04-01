@@ -73,6 +73,7 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/events/").permitAll()
                         .requestMatchers (HttpMethod.PUT, "/api/events/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/events/").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/events/image/*").permitAll()
 
                         .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
                         .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
