@@ -5,6 +5,9 @@ import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.EventSevice;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jdk.jfr.Timespan;
@@ -144,15 +147,23 @@ public class AppController {
     return "bets";
     }
 
-    //Method to get the events in json format
+    @Operation(summary = "Get Events JSON", description = "Retrieve a list of events in JSON format.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful retrieval of events"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping("/bets/json")
     @ResponseBody
     public List<Event> getEventsJson(@RequestParam(name = "start", defaultValue = "0") int start,
                                      @RequestParam(name = "count", defaultValue = "9") int count) {
         return events.findAll(PageRequest.of(start, count)).getContent();
     }
-    
 
+    @Operation(summary = "Get Single Product", description = "Retrieve details of a single product by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful retrieval of product details"),
+            @ApiResponse(responseCode = "404", description = "Product not found")
+    })
     @GetMapping("/single-product")
     public String getSingleProduct(@RequestParam("id") Long id, Model model) {
         Event event = events.findById(id).orElse(null);
@@ -162,7 +173,17 @@ public class AppController {
         model.addAttribute("feeL", Math.round((3.5 - event.getFee()) * 100.0)/ 100.0);
         return "single-product";
     }
-   
+
+
+    @Operation(summary = "Generate Bet", description = "Generate a bet based on user input")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Bet successfully generated"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Forbidden"),
+            @ApiResponse(responseCode = "404", description = "Event not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @PostMapping("/single-product")
     public String generateBet(@RequestParam("bet-amount") Double money, @RequestParam("eventId") Long eventId,
                               @RequestParam("selected-bet") String selectedBet,
