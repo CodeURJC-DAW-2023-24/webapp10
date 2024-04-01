@@ -4,7 +4,10 @@ package es.codeurj.mortez365.service;
 
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+
 
 import es.codeurj.mortez365.model.Event;
 
@@ -17,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.Collection;
 
 import javax.sql.rowset.serial.SerialException;
 
@@ -66,7 +71,25 @@ public class EventSevice {
       
         return events.save(event);
     }
+  
+    public Page<Event> findAll(Pageable pageable) {
+        return events.findAll(pageable);
+    }
+    public Optional<Event> findById(Long id) {
+        return events.findById(id);
+    }
+    
+    public List<Event> findByChampionship (String championship){
+        return events.findByChampionship(championship);
+    }
 
+    public List<Event> findBySport (String sport){
+        return events.findBySport(sport);
+    }
+
+public void deleteById(Long id) {
+        events.deleteById(id);
+    }   
     public List<Event> filterFinalizedEvents(List<Event> events) {
         List<Event> finalizedEvents = new ArrayList<>();
         for (Event event : events) {

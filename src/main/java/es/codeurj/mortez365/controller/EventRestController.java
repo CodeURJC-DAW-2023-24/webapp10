@@ -36,9 +36,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/events")
-public class EventController {
-    @Autowired
-    private EventRepository events;
+public class EventRestController {
+  
 
     @Autowired
     private EventSevice eventService;
@@ -47,7 +46,7 @@ public class EventController {
     
 @GetMapping("/")
 public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
-    Page<Event> page = events.findAll(pageable);
+    Page<Event> page = eventService.findAll(pageable);
     return new ResponseEntity<>(page, HttpStatus.OK);
 }
 
@@ -60,7 +59,7 @@ public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
  
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Event>> getEventById(@PathVariable Long id) {
-        Optional<Event> event = events.findById(id);
+        Optional<Event> event = eventService.findById(id);
         
         if (event.isPresent()) {
            return ResponseEntity.ok(event);
@@ -72,22 +71,22 @@ public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Event> deleteEvent(@PathVariable Long id) {
-       Event event = events.findById(id).orElse(null);
+       Event event = eventService.findById(id).orElse(null);
         if (event == null) {
             return ResponseEntity.notFound().build();
         } else {
-            events.deleteById(id);
+            eventService.deleteById(id);
             return ResponseEntity.noContent().build();
         }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Event> replaceEvent(@RequestBody Event newEvent, @PathVariable Long id) {
-        Optional<Event> event = events.findById(id);
+        Optional<Event> event = eventService.findById(id);
         
         if (event.isPresent()) {
             newEvent.setId(id);
-            events.save(newEvent);
+            eventService.save(newEvent);
             URI location = fromCurrentRequest().path("/{id}").buildAndExpand(newEvent.getId()).toUri();
             return ResponseEntity.ok().location(location).body(newEvent);
         } else {
@@ -97,17 +96,17 @@ public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
 
     @GetMapping("/championship/{championship}")
     public Collection <Event> getEventByChampionship(@PathVariable String championship){
-        return events.findByChampionship(championship);
+        return eventService.findByChampionship(championship);
     
     }
     @GetMapping("/sport/{sport}")
     public Collection <Event> getEventBySport(@PathVariable String sport){
-        return events.findBySport(sport);
+        return eventService.findBySport(sport);
     }
     
   @GetMapping("/image/{id}")
-public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
-    Optional<Event> event = events.findById(id);
+  public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
+    Optional< Event> event = eventService.findById(id);
     if (event.isPresent()) {
         Blob blob = event.get().getImage();
         int blobLength = (int) blob.length();  
