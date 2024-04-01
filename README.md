@@ -342,3 +342,102 @@ The files I worked in the most:
     [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/resources/templates/single-product.html)  
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
 
+
+## Phase 3
+___
+
+  ## HOW TO DEPLOY THE WEB APPLICATION
+   1. Open GlobalProtect PaloAlto VPN (the VPN of the University) and login with the credentials of the team
+   2. In FileExplorer, go to the folder that contains the root folder of the application (webapp10)
+   3. Paste the special key of the team (prAppWeb10.key)
+   4. In the same folder (the one that contains "webapp10"), open Git Bash Here
+   5. In the terminal, paste the following command: ssh -i prAppWeb10.key vmuser@10.100.139.135
+   6. Now you should be in the virtual machine of the University (prompt vmuser@prappweb10)
+   7. If you put the command "ls" you should see the app folder (webapp10)
+   8. Execute "cd webapp10/"
+   9. Execute "sudo docker-compose up -d"
+   10. Now you should see both containers (webapp and database) running
+   11. Finally, open the browser and search "10.100.139.135:8443". You should be able to use the web application correctly
+
+___
+
+  ## MEMBERS' PARTICIPATION
+  - **Vicente Navarro Raboso**:
+    In this phase...
+
+    [Commit 1]
+    [Commit 2] 
+    [Commit 3]
+    [Commit 4]
+    [Commit 5]
+
+    The files I worked the most:
+    [File 1]
+    [File 2] 
+    [File 3]
+    [File 4]
+    [File 5]
+
+  - **Álvaro Pindado Castiñeira**:
+    In this phase...
+    
+    [Commit 1]
+    [Commit 2] 
+    [Commit 3]
+    [Commit 4]
+    [Commit 5]
+
+    The files I worked in the most:  
+    [File 1]
+    [File 2] 
+    [File 3]
+    [File 4]
+    [File 5]
+
+  - **Alberto Roldán Nieto**:
+    In this phase...
+    
+    [Commit 1]
+    [Commit 2] 
+    [Commit 3]
+    [Commit 4]
+    [Commit 5]
+
+    The files I worked in the most:  
+    [File 1]
+    [File 2] 
+    [File 3]
+    [File 4]
+    [File 5]
+    
+  - **José Villagrán Robles**:
+    In this phase...
+
+    [Commit 1]
+    [Commit 2] 
+    [Commit 3]
+    [Commit 4]
+    [Commit 5]
+
+    The files I worked in the most:  
+    [File 1]
+    [File 2] 
+    [File 3]
+    [File 4]
+    [File 5]
+
+ - **Guillermo Romero Almazan**:
+    In this phase...
+   
+    [Commit 1]
+    [Commit 2] 
+    [Commit 3]
+    [Commit 4]
+    [Commit 5]
+
+    The files I worked in the most:  
+    [File 1]
+    [File 2] 
+    [File 3]
+    [File 4]
+    [File 5]
