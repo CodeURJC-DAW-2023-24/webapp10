@@ -24,7 +24,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "my_sequence", initialValue = 0)
+    @SequenceGenerator(name="id_generator", sequenceName = "my_sequence", initialValue = 1)
     @Setter
     @Getter
     @Column(name = "ID")
@@ -85,6 +85,13 @@ public class Event {
     @JoinColumn(name = "DEADLINE")
     private Date deadline;
 
+/*
+    @Getter
+    @Setter
+    @Column(name = "COMMENT")
+    @OneToMany(mappedBy = "event")
+    private List<Comment> comments;
+ */
 
     public Event(String name, String image, String championship, String sport, Date deadline) {
         super();
