@@ -10,6 +10,9 @@ import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @Controller
 public class PDFExportController {
@@ -20,6 +23,12 @@ public class PDFExportController {
         this.pdfGeneratorService = pdfGeneratorService;
     }
 
+    @Operation(summary = "Generate PDF", description = "Generate a PDF file for betting")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "PDF file successfully generated"),
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     @GetMapping("/pdf/generate")
     //The generatePDF method is used to generate the PDF file.
     public void generatePDF(HttpServletResponse response, Principal principal) throws IOException {
