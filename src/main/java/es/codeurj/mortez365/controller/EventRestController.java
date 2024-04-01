@@ -4,9 +4,15 @@ import java.io.IOException;
 import java.net.URI;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Collection;
 
+import es.codeurj.mortez365.DTO.UserDataDTO;
+import es.codeurj.mortez365.model.User;
+import es.codeurj.mortez365.repository.UserRepository;
+import es.codeurj.mortez365.service.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -116,9 +122,8 @@ public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
     } else {
         return ResponseEntity.noContent().build();
     }
-}
+    }
 
-    
 } 
 
 

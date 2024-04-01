@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserSevice {
     private UserRepository userRepository;
@@ -20,8 +22,10 @@ public class UserSevice {
     
     
     public User save(User user) {
-        
-      
         return userRepository.save(user);
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 }
