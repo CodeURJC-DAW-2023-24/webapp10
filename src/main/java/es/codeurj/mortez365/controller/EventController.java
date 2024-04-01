@@ -1,7 +1,6 @@
 package es.codeurj.mortez365.controller;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 import java.util.Collection;
 
@@ -102,8 +101,11 @@ public ResponseEntity<Page<Event>> getAllevents(Pageable pageable) {
         return events.findBySport(sport);
     }
     
-
-    
+    @GetMapping("/image/{id}")
+    public ResponseEntity<String> getImageById(@PathVariable Long id){
+        Optional<Event> event = events.findById(id);
+        return event.map(value -> ResponseEntity.ok(value.getImage())).orElseGet(() -> ResponseEntity.noContent().build());
+    }
 
     
 } 
