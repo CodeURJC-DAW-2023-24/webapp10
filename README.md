@@ -370,20 +370,20 @@ ___
 
   ## MEMBERS' PARTICIPATION
   - **Vicente Navarro Raboso**:
-    In this phase...
+    In this phase I created the API for the events and helped in the other APIs
 
-    [Commit 1]
-    [Commit 2] 
-    [Commit 3]
-    [Commit 4]
-    [Commit 5]
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/2aab204b2bff4319171c3a68a7f12c11f0287e30)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/56ed26c52bc68aa208f306878a1d3acb4e93bd3f) 
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/6f95782a145d2ab2e56065e10109d0754ce011f5)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/505f67a4ae960e437c2cda03a889641c3594ef01)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c423c9b6fed120101fcc1176c3092361a9333cae)
 
     The files I worked the most:
-    [File 1]
-    [File 2] 
-    [File 3]
-    [File 4]
-    [File 5]
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/EventRestController.java)
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/EventSevice.java)
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/UserRestController.java)
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/UserSevice.java)
 
   - **Álvaro Pindado Castiñeira**:
     In this phase I developed the dockerfile and docker-compose files, worked in the deployment of the application and the documentation of the API Rests with swagger.
