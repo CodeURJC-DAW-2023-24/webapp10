@@ -380,7 +380,7 @@ ___
 
   - **Álvaro Pindado Castiñeira**:
     In this phase I developed the dockerfile and docker-compose files, worked in the deployment of the application and the documentation of the API Rests with swagger.
-    
+    My most important commits:  
     [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c70e30f85d7d9a8aece44c25abc5de6ffe493fb1)
     [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/4e6a86a9c10ccc16fe136f900bf0609a0b573cba)
     [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/0da561024fca9fc19156d9dc3b87b439bcb50bf3)
@@ -411,20 +411,21 @@ ___
     [File 5]
     
   - **José Villagrán Robles**:
-    In this phase...
-
-    [Commit 1]
-    [Commit 2] 
-    [Commit 3]
-    [Commit 4]
-    [Commit 5]
+    I fixed the roulette of the application, now using the money of each user's wallet. I also secured the API REST, making only authenticated users to be able to use it.
+    I worked on some other details, and prepared the API with my teammates in Postman. I also helped my teammates with some errors while we were working together.
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d46600e62bc776ca586f41b3084c5d394a8f1108)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/444ead48e69803c3f74c0e5b71e3e7e9f5278995)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/6a431677d1e55a5cc4776ff1c484ebc28565436f)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/2f024f8001327b1e0c7eaea6fcef7ddf101515d3)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/ed762934fdc70055bd456707efc10ee5ec8e5a34)
 
     The files I worked in the most:  
-    [File 1]
-    [File 2] 
-    [File 3]
-    [File 4]
-    [File 5]
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/WalletService.java)
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/resources/assets/js/scriptroulette.js)
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/AppController.java)
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/security/WebSecurityConfig.java)
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/security/jwt)
 
  - **Guillermo Romero Almazan**:
     In this phase...
