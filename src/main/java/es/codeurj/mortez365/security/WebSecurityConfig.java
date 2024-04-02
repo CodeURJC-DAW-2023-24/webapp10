@@ -71,6 +71,7 @@ public class WebSecurityConfig {
         http.csrf().ignoringRequestMatchers("/updateValue");
         http.csrf().ignoringRequestMatchers("/getValue");
         http.csrf().ignoringRequestMatchers("/api/users/*");
+        http.csrf().ignoringRequestMatchers("/api/wallets/*");
 
         http.authorizeRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
@@ -107,6 +108,10 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/users/").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
+
+                        //Security of UserRestController
+                        .requestMatchers("/api/wallets/*").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/wallets/").hasRole("ADMIN")
 
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
