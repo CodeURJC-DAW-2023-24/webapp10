@@ -361,6 +361,13 @@ ___
 
 ___
 
+## Updated Class Diagram
+
+![Captura de pantalla 2024-04-02 061442](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/d9c6bda0-c181-4faa-88d5-55fd5c91283b)
+
+___
+
+
   ## MEMBERS' PARTICIPATION
   - **Vicente Navarro Raboso**:
     In this phase...
