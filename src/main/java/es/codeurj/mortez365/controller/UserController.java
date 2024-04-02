@@ -84,8 +84,6 @@ public class UserController {
     String real_date = expired_date.substring(5) + "/" + expired_date.substring(2,4);
     Wallet w = new Wallet(card_number, cvv, real_date, user);
     user.setWallet(w);
-   
-
 
 
     userService.save(user);

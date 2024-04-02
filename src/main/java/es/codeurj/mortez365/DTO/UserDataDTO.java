@@ -47,6 +47,8 @@ public class UserDataDTO {
     public UserDataDTO(String username, String password, List<String> roles) {
         this.username = username;
     }
+
+
 }
 
 
