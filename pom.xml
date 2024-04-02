@@ -14,7 +14,6 @@
 	<description>Web application for mortez365</description>
 	<properties>
 		<java.version>17</java.version>
-		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -63,14 +62,17 @@
 			<version>1.3.8</version>
 		</dependency>
 		<dependency>
-
-			<groupId>org.springdoc</groupId>
-
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-
-			<version>2.3.0</version>
-
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version> <!-- O la versión más reciente disponible -->
+		</dependency>
+
 
 	</dependencies>
 
@@ -79,82 +81,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-						<configuration>
-							<mainClass>es.codeurj.mortez365.Mortez365Application</mainClass>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>repackage</goal>
-								</goals>
-							</execution>
-						</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>pre-integration-test</id>
-						<goals>
-							<goal>start</goal>
-						</goals>
-						<configuration>
-							<arguments>
-								<argument>--server.ssl.enabled=false</argument>
-							</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>post-integration-test</id>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-maven-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<apiDocsUrl>http://localhost:8443/v3/api-docs.yaml</apiDocsUrl>
-							<outputDir>${project.basedir}/api-docs</outputDir>
-							<outputFileName>api-docs.yaml</outputFileName>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>5.4.0</version>
-				<executions>
-					<execution>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>${project.basedir}/api-docs/api-docs.yaml</inputSpec>
-							<generatorName>html2</generatorName>
-							<output>${project.basedir}/api-docs</output>
-							<configOptions>
-								<hideGenerationTimestamp>true</hideGenerationTimestamp>
-							</configOptions>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<mainClass>es.codeurj.mortez365.Mortez365Application</mainClass>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
 

@@ -10,12 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -62,8 +65,15 @@ public class Event {
 
     @Setter
     @Getter
+    @Lob 
+    @JsonIgnore
     @JoinColumn(name = "IMAGE")
-    private String image;
+    private Blob image;
+
+    @Setter
+    @Getter
+    @JoinColumn(name = "IMAGEFILE")
+    private String imageFile;
 
     @Setter
     @Getter
@@ -93,12 +103,12 @@ public class Event {
     private List<Comment> comments;
  */
 
-    public Event(String name, String image, String championship, String sport, Date deadline) {
+    public Event(String name, String imageFile, String championship, String sport, Date deadline) {
         super();
 
 
         this.name = name;
-        this.image = image;
+        this.imageFile = imageFile;
         this.championship = championship;
         this.sport = sport;
         this.fee = generateFee();
