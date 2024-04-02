@@ -10,9 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
+import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -21,7 +27,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
-    @SequenceGenerator(name="id_generator", sequenceName = "my_sequence", initialValue = 0)
+    @SequenceGenerator(name="id_generator", sequenceName = "my_sequence", initialValue = 1)
     @Setter
     @Getter
     @Column(name = "ID")
@@ -52,17 +58,22 @@ public class Event {
     @Column(name = "MARKER")
     private String marker;
 
-    // STRING O ENTIDAD A PARTE ????
     @Setter
     @Getter
     @JoinColumn(name = "CHAMPIONSHIP")
-    //@ManyToOne
     private String championship;
 
     @Setter
     @Getter
+    @Lob 
+    @JsonIgnore
     @JoinColumn(name = "IMAGE")
-    private String image;
+    private Blob image;
+
+    @Setter
+    @Getter
+    @JoinColumn(name = "IMAGEFILE")
+    private String imageFile;
 
     @Setter
     @Getter
@@ -74,14 +85,36 @@ public class Event {
     @JoinColumn(name = "FEE")
     private Double fee;
 
-   
-    public Event(String name, String image, String championship, String sport) {
+    @Getter
+    @Setter
+    @JoinColumn(name = "FINISHED")
+    private Boolean finished;
+
+    @Getter
+    @Setter
+    @JoinColumn(name = "DEADLINE")
+    private Date deadline;
+
+/*
+    @Getter
+    @Setter
+    @Column(name = "COMMENT")
+    @OneToMany(mappedBy = "event")
+    private List<Comment> comments;
+ */
+
+    public Event(String name, String imageFile, String championship, String sport, Date deadline) {
         super();
+
+
         this.name = name;
-        this.image = image;
+        this.imageFile = imageFile;
         this.championship = championship;
         this.sport = sport;
         this.fee = generateFee();
+        this.finished = false;
+        this.deadline = deadline;
+
     }
 
     private Double generateFee() {
@@ -91,37 +124,7 @@ public class Event {
     }
 
     public Event() {
-
     }
 
-    public void setImage(byte[] bs) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setImage'");
-    }
-
-    public String getChampionship() {
-        return championship;
-    }
-    public void setChampionship(String championship) {
-        this.championship = championship;
-    }
-    public String getSport() {
-        return sport;
-    }
-    public void setSport(String sport) {
-        this.sport = sport;
-    }
-    public String getImage() {
-        return image;
-    }
-    public void setImage(String image) {
-        this.image = image;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    
 }

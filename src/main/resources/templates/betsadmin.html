@@ -83,22 +83,24 @@
 	<!-- products -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
-
-
-
-					<div class="container-fluid">
+			<div class="container-fluid">
     <div class="row" id = "eventsContainer">
         {{#events}}
         <div class="col-lg-4 col-md-6 text-center">
             <div class="single-product-item">
                 <div class="product-image">
-                    <a href="/single-product?id={{id}}"><img src="{{image}}" alt=""></a>
+                    <a href="/single-product?id={{id}}"><img src="{{imageFile}}" alt=""></a>
                 </div>
                 <h3>{{name}}</h3>
                 <p class="product-price">{{championship}} <span>{{sport}}</span></p>
 
-                <a href="single-product?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
-            </div>
+                <a href="edit?id={{id}}" class="cart-btn"></i>Editar</a>
+				<form action="/deleteEvent?id={{id}}" method="post" onsubmit="return confirm('Estas seguro de eliminarlo?')">
+					<input type="hidden" name="id" value="{{id}}">
+					<button type="submit" class="cart-btn">Eliminar</button>
+					<input type="hidden" name="_csrf" value="{{token}}"/>
+				</form>
+			</div>
         </div>
         {{/events}}
     </div>
@@ -107,6 +109,7 @@
     <input type="text" id="eventName" name="name" placeholder="Nombre">
 	<input type="text" id="eventChampionship" name="championship" placeholder="Liga">
 	<input type="text" id="eventSport" name="sport" placeholder="Deporte">
+	<input type="datetime-local" id="eventDeadline" name="deadline" placeholder="Fecha límite">
 	<input type="file" id="eventImage" name="image">
     <button type="submit">Add Event</button>
 	<input type="hidden" name="_csrf" value="{{token}}"/>

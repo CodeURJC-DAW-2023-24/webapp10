@@ -41,7 +41,7 @@ public class Bet {
 
     @Setter
     @Getter
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "EVENT")
     private Event event;
 
@@ -50,6 +50,10 @@ public class Bet {
     @Column(name = "RESULT")
     private Result result;
 
+    @Setter
+    @Getter
+    @Column(name = "TYPE_BET")
+    private TypeBet typeBet;
 
     @Setter
     @Getter

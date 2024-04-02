@@ -10,14 +10,14 @@ async function fetchBankValue() {
         console.error("Error al obtener el valor:", error);
     }
 }
-async function updateBankValue() {
+async function updateBankValue(newBankValue) {
     try {
         const response = await fetch("/updateValue", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(bankValue)
+            body: JSON.stringify(newBankValue)
         });
 
         if (!response.ok) {
@@ -32,7 +32,7 @@ async function updateBankValue() {
 
 
 
-fetchBankValue().then(() => {;
+fetchBankValue().then(() => {
 
 console.log("Valor:", bankValue);
 
@@ -56,7 +56,7 @@ let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
 function resetGame(){
-	updateBankValue();
+	
 	
 	currentBet = 0;
 	wager = 5;
@@ -495,6 +495,7 @@ function setBet(e, n, t, o){
 		currentBet = currentBet + wager;
 		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
 		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+		updateBankValue(bankValue)
 		for(i = 0; i < bet.length; i++){
 			if(bet[i].numbers == n && bet[i].type == t){
 				bet[i].amt = bet[i].amt + wager;
@@ -571,6 +572,7 @@ function spin(){
 		currentBet = 0;
 		document.getElementById('bankSpan').innerText = '' + bankValue.toLocaleString("en-GB") + '';
 		document.getElementById('betSpan').innerText = '' + currentBet.toLocaleString("en-GB") + '';
+		updateBankValue(bankValue);
 		
 		let pnClass = (numRed.includes(winningSpin))? 'pnRed' : ((winningSpin == 0)? 'pnGreen' : 'pnBlack');
 		let pnContent = document.getElementById('pnContent');

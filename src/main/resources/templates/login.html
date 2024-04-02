@@ -92,11 +92,14 @@
                                             <div class="billing-address-form">
 												<form action="/login" method="POST">
 													<label>Nombre de usuario:</label>
-													<p><input type="text" name="username"></p>
+													<p><input type="text" name="username" required></p>
 													<label>Contraseña:</label>
-													<p><input type="password" name="password"></p>
+													<p><input type="password" name="password" required></p>
 
-													<input type="submit" class="boxed-btn" value="Iniciar Sesión">
+													<div class="d-flex align-items-center">
+														<input type="submit" class="boxed-btn" value="Iniciar Sesión">
+														<h6 style="margin-left: 20px">¿No tienes cuenta? Regístrate <a href="/register">Aquí</a></h6>
+													</div>
 													<input type="hidden" name="_csrf" value="{{token}}"/>
 												</form>
                                             </div>

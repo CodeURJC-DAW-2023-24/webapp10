@@ -12,7 +12,7 @@ document.getElementById('loadMoreButton').addEventListener('click', function() {
                 div.innerHTML = `
                     <div class="single-product-item">
                         <div class="product-image">
-                            <a href="/single-product?id=${event.id}"><img src="${event.image}" alt=""></a>
+                            <a href="/single-product?id=${event.id}"><img src="${event.imageFile}" alt=""></a>
                         </div>
                         <h3>${event.name}</h3>
                         <p class="product-price">${event.championship} <span>${event.sport}</span></p>

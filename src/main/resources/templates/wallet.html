@@ -85,14 +85,15 @@
 
 										</h5>
 									</div>
-									<form name="form-card" action="/wallet/addFunds" method="post" onsubmit="return tarjetaValida()">
+									<form name="form-card" action="/wallet/addFunds" method="post" onsubmit="return validCVV()">
 									<div class="card-body">
 										<div class="billing-address-form">
-											<p><input name="card-number" type="text" placeholder="Número de tarjeta" required></p>
-											<p><input name="card-date" type="date" placeholder="Fecha de vencimiento (MM/AA)" required></p>
-											<p><input name="card-cvv" type="text" placeholder="CVV" required></p>
+											<h3>Número de tarjeta: {{user.wallet.card_number}}</h3>
+											<h3>Fecha de vencimiento: {{user.wallet.expired_date}}</h3>
+											<p><input name="card-cvv" type="number" placeholder="CVV" required></p>
 											<p><input name="amount" type="number" step="0.1" placeholder="Cantidad a añadir" required></p>
-											<p>Saldo actual: {{user.money}}<span id="currentBalance"></span></p>
+											<h6>Saldo actual: {{user.wallet.money}}$<span id="currentBalance"></span></h6>
+											<input type="hidden" name="real-cvv" value="{{user.wallet.cvv}}">
 										</div>
 									</div>
 									<div style="text-align: right;">
@@ -140,6 +141,8 @@
 	<script src="assets/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
+
+	<script src="assets/js/scriptapuestas.js"></script>
 
 </body>
 </html>

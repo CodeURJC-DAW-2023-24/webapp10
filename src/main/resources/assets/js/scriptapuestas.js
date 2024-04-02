@@ -150,13 +150,28 @@ function tarjetaValida(){
         return year > currentYear || (year === currentYear && month >= currentMonth);
     }
 
-    if (card.length() === 12 && isValidDate(date) && cvv.length() === 3 && amount > 0) {
+    if (card.length() !== 12 && !isValidDate(date) && cvv.length() !== 3 && amount < 0) {
         alert("La tarjeta tiene que tener 12 digitos, la fecha posterior a la actual, el cvv tres cifras y la cantidad mayor que 0");
         return false;
     }
     return true;
 
 }
+
+function validCVV() {
+    var introduced_cvv = document.forms["form-card"]["card-cvv"].value;
+    var amount = document.forms["form-card"]["amount"].value;
+    var real_cvv = document.forms["form-card"]["real-cvv"].value;
+
+    if (introduced_cvv !== real_cvv) {
+        alert("No coinciden los cvv");
+        return false;
+    }else {
+        return true;
+    }
+
+}
+
 function comprobarApuesta(){
     var money = document.forms["form-bet"]["bet-amount"].value;
     var result = document.getElementById("selected-bet").value;
@@ -172,3 +187,19 @@ let groupedEvents = [];
 for(let i = 0; i < events.length; i += 3) {
     groupedEvents.push(events.slice(i, i+3));
 }
+
+document.getElementById('birthdate').addEventListener('change', function () {
+  console.log('Fecha de nacimiento: ' + this.value);
+  var birthdate = new Date(this.value);
+  var today = new Date();
+  var age = today.getFullYear() - birthdate.getFullYear();
+  var m = today.getMonth() - birthdate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+      age--;
+  }
+  if (age < 18) {
+      alert('Debes ser mayor de 18 años.');
+      this.value = '';
+      console.log('Debes ser mayor de 18 años.');
+  }
+});
