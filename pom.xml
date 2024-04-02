@@ -14,6 +14,7 @@
 	<description>Web application for mortez365</description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -78,6 +79,20 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<mainClass>es.codeurj.mortez365.Mortez365Application</mainClass>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>pre-integration-test</id>
@@ -85,7 +100,6 @@
 							<goal>start</goal>
 						</goals>
 						<configuration>
-							<mainClass>es.codeurj.mortez365.Mortez365Application</mainClass>
 							<arguments>
 								<argument>--server.ssl.enabled=false</argument>
 							</arguments>
