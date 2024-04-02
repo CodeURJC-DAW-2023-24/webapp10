@@ -379,20 +379,20 @@ ___
     [File 5]
 
   - **Álvaro Pindado Castiñeira**:
-    In this phase...
+    In this phase I developed the dockerfile and docker-compose files, worked in the deployment of the application and the documentation of the API Rests with swagger.
     
-    [Commit 1]
-    [Commit 2] 
-    [Commit 3]
-    [Commit 4]
-    [Commit 5]
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c70e30f85d7d9a8aece44c25abc5de6ffe493fb1)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/4e6a86a9c10ccc16fe136f900bf0609a0b573cba)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/0da561024fca9fc19156d9dc3b87b439bcb50bf3)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/828dd0831817258f19c2375e0bf728f68497e981)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/0e8dd2947cac23fdd9f29a26d525770806840d49)
 
     The files I worked in the most:  
-    [File 1]
-    [File 2] 
-    [File 3]
-    [File 4]
-    [File 5]
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/Dockerfile)
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/docker-compose.yml)
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/pom.xml)
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/EventRestController.java)
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/UserRestController.java)
 
   - **Alberto Roldán Nieto**:
     In this phase...
