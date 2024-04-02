@@ -370,7 +370,7 @@ ___
 
   ## MEMBERS' PARTICIPATION
   - **Vicente Navarro Raboso**:
-    In this phase I created the API for the events and helped in the other APIs
+    In this phase I created the API for the events and helped in making the other APIs.
 
     [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/2aab204b2bff4319171c3a68a7f12c11f0287e30)
     [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/56ed26c52bc68aa208f306878a1d3acb4e93bd3f) 
@@ -402,20 +402,20 @@ ___
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/UserRestController.java)
 
   - **Alberto Roldán Nieto**:
-    In this phase...
+    In this phase I created the API for the users and I created the dockerfile and the docker-compose. I also helped my teametes with the creation of the other APis.
     
-    [Commit 1]
-    [Commit 2] 
-    [Commit 3]
-    [Commit 4]
-    [Commit 5]
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/85f65a7529e77676f38513396d686fee6b158776)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/a23ddcea25f9dadf62b4d76b2c13df340a488cfa)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/4db0f46f8b763b32075c0a99b21143ec200e3a54)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/e8c32a1174a8f2bb27e80c553e4ef32fbbf30d94)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/053892f2fd2726f2283c2a9993f9545c62e09a00)
 
     The files I worked in the most:  
-    [File 1]
-    [File 2] 
-    [File 3]
-    [File 4]
-    [File 5]
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/DTO/UserDataDTO.java)
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/UserRestController.java)
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/Dockerfile)
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/docker-compose.yml)
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/WalletRestController.java)
     
   - **José Villagrán Robles**:
     I fixed the roulette of the application, now using the money of each user's wallet. I also secured the API REST, making only authenticated users to be able to use it.
@@ -435,17 +435,17 @@ ___
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/security/jwt)
 
  - **Guillermo Romero Almazan**:
-    In this phase...
+    In this phase I created the API for the wallets and I helped my teamates with the other APIs. I also fixed the bet algorythm from the previous phase and the create new events function for the admin.
    
-    [Commit 1]
-    [Commit 2] 
-    [Commit 3]
-    [Commit 4]
-    [Commit 5]
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/04a860f4b4b6dd3700ea63728d83f547e8307359)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/7ca58a1bd3015afbcfeb9563bff619b62d66f623) 
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/1c37badf30f7066e627c3e101ff680317f98be7f)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/1d043e9ed1095498a814551e48ce5f8f422f8bf8)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5e73d093e8fd42496fbed5349559b7f816b80a06)
 
     The files I worked in the most:  
-    [File 1]
-    [File 2] 
-    [File 3]
-    [File 4]
-    [File 5]
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/DTO/WalletDataDTO.java)
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/WalletRestController.java) 
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/service/EventSevice.java)
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/DTO/UserDataDTO.java)
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)
