@@ -2,10 +2,12 @@ package es.codeurj.mortez365.security;
 
 
 import es.codeurj.mortez365.security.jwt.JwtRequestFilter;
+import es.codeurj.mortez365.security.jwt.UnauthorizedHandlerJwt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,7 +16,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -32,6 +34,9 @@ public class WebSecurityConfig {
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
+
+    @Autowired
+    private UnauthorizedHandlerJwt unauthorizedHandlerJwt;
 
     private final AuthenticationConfiguration authConfiguration;
 
@@ -59,18 +64,64 @@ public class WebSecurityConfig {
     }
 
 
+    @Bean 
+    @Order(1)
+    public SecurityFilterChain apFilterChain (HttpSecurity http ) throws Exception {
+        http.authenticationProvider(authenticationProvider());
+
+        http
+			.securityMatcher("/api/**")
+			.exceptionHandling(handling -> handling.authenticationEntryPoint(unauthorizedHandlerJwt));
+
+        http
+            .authorizeHttpRequests(authorize -> authorize
+            .requestMatchers("/api/events/*").hasRole("ADMIN")
+            .requestMatchers("/api/auth/login").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/events/championship/*").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/api/events/sport/*").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
+            .requestMatchers (HttpMethod.PUT, "/api/events/").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/api/events/").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/api/events/image/*").hasRole("ADMIN")
+
+            .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
+            .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
+                  //Security of UserRestController
+                  .requestMatchers("/api/users/*").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.GET, "/api/users/").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.POST, "/api/users/").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
+
+                  .anyRequest().permitAll()
+
+            );
+
+
+            http.formLogin(formLogin -> formLogin.disable());
+
+            http.csrf(csrf -> csrf.disable());
+
+            http.httpBasic(httpBasic -> httpBasic.disable());
+
+            http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+            http.addFilterBefore( jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+         return http.build();
+    }
+
+
     @SuppressWarnings({ "deprecation" })
     @Bean
+    @Order(2)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 
         http.authenticationProvider(authenticationProvider());
         
-        http.csrf().ignoringRequestMatchers("/api/events/*");
-        http.csrf().ignoringRequestMatchers("/api/auth/login");
-        http.csrf().ignoringRequestMatchers("/updateValue");
-        http.csrf().ignoringRequestMatchers("/getValue");
-        http.csrf().ignoringRequestMatchers("/api/users/*");
+    
 
         http.authorizeRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/assets/**", "/scss/**", "/vendor/**", "/video/**", "/fragments/**").permitAll()
@@ -87,26 +138,10 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
-                        .requestMatchers("/api/events/*").hasRole("ADMIN")
-                        .requestMatchers("/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/events/championship/*").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/events/sport/*").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
-                        .requestMatchers (HttpMethod.PUT, "/api/events/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/events/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/events/image/*").hasRole("ADMIN")
-
-                        .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
+                       
 
 
-                        //Security of UserRestController
-                        .requestMatchers("/api/users/*").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/users/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/users/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
+                  
 
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
@@ -125,8 +160,7 @@ public class WebSecurityConfig {
                         .permitAll()
                 );
 
-        // Add JWT Token filter
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+      
 
         return http.build();
     }
