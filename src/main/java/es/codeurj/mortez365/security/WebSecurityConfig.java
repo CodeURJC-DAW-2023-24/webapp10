@@ -75,26 +75,32 @@ public class WebSecurityConfig {
 
         http
             .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/api/events/*").hasRole("ADMIN")
+         
             .requestMatchers("/api/auth/login").permitAll()
-            .requestMatchers(HttpMethod.GET, "/api/events/championship/*").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.GET, "/api/events/sport/*").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/api/events/championship/*").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/events/sport/*").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
             .requestMatchers (HttpMethod.PUT, "/api/events/").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.GET, "/api/events/").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.GET, "/api/events/image/*").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/api/events/*").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/events/image/*").permitAll()
 
-            .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
-            .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
+      
                   //Security of UserRestController
-                  .requestMatchers("/api/users/*").hasRole("ADMIN")
+              
                   .requestMatchers(HttpMethod.GET, "/api/users/").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
-                  .requestMatchers(HttpMethod.POST, "/api/users/").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.POST, "/api/users/").permitAll()
                   .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
 
-                  .anyRequest().permitAll()
+                  //Security of WalletRestController
+                    .requestMatchers(HttpMethod.GET, "/api/wallets/").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.POST, "/api/wallets/").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/api/wallets/").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.DELETE, "/api/wallets/").hasRole("ADMIN")
+
+
+                  .anyRequest().authenticated()
 
             );
 
@@ -117,7 +123,8 @@ public class WebSecurityConfig {
     @Bean
     @Order(2)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+        http.csrf().ignoringRequestMatchers("/updateValue");
+        http.csrf().ignoringRequestMatchers("/getValue");
 
         http.authenticationProvider(authenticationProvider());
         
@@ -139,7 +146,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
                        
-
+                        .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
 
                   
 
