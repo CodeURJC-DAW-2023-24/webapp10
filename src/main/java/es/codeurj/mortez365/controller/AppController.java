@@ -25,6 +25,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.model.Result;
@@ -282,7 +283,7 @@ public class AppController {
                 for(Bet b: bets){
                     System.out.println(b.getEvent());
                     System.out.println(e);
-                    if(b.getEvent().equals(e)){
+                    if(b.getEvent().getName().equals(e.getName())){
                         eventBets.add(b);
                     }
                 }
@@ -299,13 +300,22 @@ public class AppController {
                     e.setWinner_team("empate");
                     e.setLoser_team("empate");
                 }
+                e.setFinalResult(result);
                 //List<Bet> bets = betRepository.findByEvent(e);   NOT WORKING
+                System.out.println("ACA ESTAMOS");
+
                 for(Bet b: eventBets){
                     if(b.getResult() == result){
                         System.out.println("LLEGA");
                         User user = userRepository.findByUsername(b.getUser().getName()).orElseThrow();
                         user.getWallet().addMoney(b.getProfit());
                         userRepository.save(user);
+                    } else {
+                        System.out.println("PITON");
+                        System.out.println(b.getEvent().getName());
+                        b.setWinning_amount(0);
+                        System.out.println(b.getWinning_amount());
+                        betRepository.save(b);
                     }
                 }
                 events.save(e);
@@ -321,22 +331,27 @@ public class AppController {
 
     @GetMapping("/cart")
     public String cart(Model model) {
-    
-        log.info("AQUI EL CARRITO:");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Optional<User> currentUser = userRepository.findByUsername(authentication.getName());
 
-        if (currentUser.isPresent()) {
-            log.info("NOMBRE DEL USUARIO ACTUAL: " + currentUser.get().getName());
-        }else {
-            log.info("EL USUARIO ACTUAL ESTA A NULL");
-        }
         // Get the bets of the current user
         Page<Bet> betPage = betRepository.findByUser(currentUser, PageRequest.of(0, 9));
         List<Bet> bets = betPage.getContent();
 
-        model.addAttribute("bets", bets);
+        List<Bet> betsFinished = bets.stream()
+                .filter(bet -> bet.getEvent().getFinished())
+                .toList();
+
+        List<Bet> betsInProgress = bets.stream()
+                .filter(bet -> !bet.getEvent().getFinished())
+                .toList();
+
+        model.addAttribute("bets", betsInProgress);
+        model.addAttribute("hasBets", !betsInProgress.isEmpty());
+
+        model.addAttribute("betsFinished", betsFinished);
+        model.addAttribute("hasBetsFinished", !betsFinished.isEmpty());
         // Calculate the total bet, the total winning amount and the total benefit
 
         Double totalWinningAmount = 0.0;

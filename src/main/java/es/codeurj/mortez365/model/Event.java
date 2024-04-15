@@ -95,6 +95,11 @@ public class Event {
     @JoinColumn(name = "DEADLINE")
     private Date deadline;
 
+    @Getter
+    @Setter
+    @JoinColumn(name = "FINAL_RESULT")
+    private Result finalResult;
+
 /*
     @Getter
     @Setter
