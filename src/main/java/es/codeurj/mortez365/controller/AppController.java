@@ -287,6 +287,7 @@ public class AppController {
                         eventBets.add(b);
                     }
                 }
+                //List<Bet> bets = betRepository.findByEvent(e);   NOT WORKING
 
                 e.setFinished(true);
                 String[] equipos = e.getName().split("-");
@@ -301,7 +302,7 @@ public class AppController {
                     e.setLoser_team("empate");
                 }
                 e.setFinalResult(result);
-                //List<Bet> bets = betRepository.findByEvent(e);   NOT WORKING
+
                 System.out.println("ACA ESTAMOS");
 
                 for(Bet b: eventBets){
