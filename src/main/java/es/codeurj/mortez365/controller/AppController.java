@@ -16,10 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.http.HttpHeaders;
+import org.springframework.http.HttpHeaders;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +31,8 @@ import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.model.Result;
 import es.codeurj.mortez365.repository.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.InputStreamResource;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -146,6 +149,23 @@ public class AppController {
 
     return "bets";
     }
+
+    @GetMapping("/events/{id}/image")
+	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+
+		Optional<Event> event = eventService.findById(id);
+
+		if (event.isPresent() && event.get().getImage() != null) {
+
+			Resource file = new InputStreamResource(event.get().getImage().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(event.get().getImage().length()).body(file);
+
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 
     @Operation(summary = "Get Events JSON", description = "Retrieve a list of events in JSON format.")
     @ApiResponses(value = {

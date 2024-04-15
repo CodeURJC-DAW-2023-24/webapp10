@@ -2,7 +2,10 @@ package es.codeurj.mortez365.service;
 
 
 
-
+import org.hibernate.engine.jdbc.BlobProxy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.repository.EventRepository;
 import jakarta.annotation.PostConstruct;
 
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,13 +41,13 @@ public class EventSevice {
     }
 
      @PostConstruct
-    public void init() throws SerialException, SQLException {
+    public void init() throws SerialException, SQLException, IOException {
 
          var v = new Date();
          v.setMinutes(v.getMinutes() + 1);
          
-        events.save(new Event("Villarreal - Tenerife", "assets/img/laliga/sevillatenerife.webp", "LaLiga","Fútbol", new Date(124, 3, 15, 15, 30)));
-        
+        events.save(new Event("Villarreal - Tenerife", "assets/img/laliga/carletes.jpeg", "LaLiga","Fútbol", new Date(124, 3, 15, 15, 30)));
+        /* 
         events.save(new Event("Levante - Leganés", "assets/img/laliga/levanteleganes.webp", "LaLiga","Fútbol", v));
         events.save(new Event("Real Madrid - Girona", "assets/img/laliga/madridgirona.webp", "LaLiga","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Cádiz - Betis", "assets/img/laliga/cadizbetis.webp", "LaLiga","Fútbol", new Date(124, 3, 15, 15, 30)));
@@ -52,20 +56,17 @@ public class EventSevice {
         events.save(new Event("Arsenal - New Castle United", "assets/img/premierleague/arsenalnewcastleunited.webp", "PremierLeague","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Brighton - Everton", "assets/img/premierleague/brightoneverton.webp", "PremierLeague","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Crystal Palace - Burnley", "assets/img/premierleague/crystalpalaceburnley.webp", "PremierLeague","Fútbol", new Date(124, 3, 15, 15, 30)));
-        events.save(new Event("West Ham - Brentford", "assets/img/premierleague/westhambrentford.webp", "PremierLeague","Fútbol", new Date(124, 3, 15, 15, 30)));
+        events.save(new Event("West Ham - Brentford", "ass363*ets/img/premierleague/westhambrentford.webp", "PremierLeague","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Bourner Mouth - Manchester City", "assets/img/premierleague/bournermouthmanchestercity.webp", "PremierLeague","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Coventry City - Maidstone United", "assets/img/facup/coventrycitymaidstoneunited.webp", "FACup","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Bournemouth - Leicester City", "assets/img/facup/bournemouthleicestercity.webp", "FACup","Fútbol", new Date(124, 3, 15, 15, 30)));
         events.save(new Event("Blackburn Rovers - Newcastle United", "assets/img/facup/blackburnroversnewcastleunited.webp", "FACup","Fútbol", new Date(124, 3, 15, 15, 30)));
-    
-       for (int i = 0; i < events.count(); i++) {
-            Event event = events.findAll().get(i);
-            byte[] bytes = event.getImageFile().getBytes();
-            Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-            event.setImage(blob);
+    */
+       for(Event event: events.findAll()) {
+            Resource image = new ClassPathResource(event.getImageFile());
+            event.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
             events.save(event);
         }
-    
     }
     public Event save(Event event) {
       
