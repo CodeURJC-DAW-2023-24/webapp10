@@ -124,8 +124,10 @@ public class WebSecurityConfig {
     @Bean
     @Order(2)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().ignoringRequestMatchers("/updateValue");
-        http.csrf().ignoringRequestMatchers("/getValue");
+
+        http.csrf((csrf) -> csrf
+                .ignoringRequestMatchers("/updateValue", "getValue")
+        );
 
         http.authenticationProvider(authenticationProvider());
         
