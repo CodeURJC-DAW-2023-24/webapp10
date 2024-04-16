@@ -83,16 +83,17 @@
 	<!-- cart -->
     <div class="cart-section mt-150 mb-150">
         <div class="container">
-            <h2>Eventos apostados</h2>
+            <h2>Apuestas en curso</h2>
             <div class="row">
                 <div class="col-lg-8 col-md-12">
+                    {{#hasBets}}
                     <div class="cart-table-wrap">
                         <table class="cart-table">
                             <thead class="cart-table-head tr">
                             <tr class="table-head-row">
                                 <th class="product-remove"></th>
                                 <th class="product-name">Partido</th>
-                                <th class="product-price">Resultado</th>
+                                <th class="product-price">Resultado apostado</th>
                                 <th class="product-price">Cuota</th>
                                 <th class="product-quantity">Dinero apostado</th>
                                 <th class="product-money">Ganancias</th>
@@ -112,7 +113,54 @@
                             </tbody>
                         </table>
                     </div>
+                    {{/hasBets}}
+
+
+                    {{^hasBets}}
+                    <p>No hay apuestas en curso.</p>
+                    {{/hasBets}}
                 </div>
+            </div>
+
+
+
+
+
+            <h2>Apuestas terminadas</h2>
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    {{#hasBetsFinished}}
+                    <div class="cart-table-wrap">
+                        <table class="cart-table">
+                            <thead class="cart-table-head tr">
+                            <tr class="table-head-row">
+                                <th class="product-name">Partido</th>
+                                <th class="product-price">Resultado partido</th>
+                                <th class="product-price">Resultado apostado</th>
+                                <th class="product-quantity">Dinero apostado</th>
+                                <th class="product-money">Ganancias</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#betsFinished}}
+                            <tr class="table-body-row">
+                                <td class="product-name">{{event.name}}</td>
+                                <td class="product-price">{{event.finalResult}}</td>
+                                <td class="product-price">{{result}}</td>
+                                <td class="product-quantity">{{bet_amount}}</td>
+                                <td class="product-money">{{winning_amount}}</td>
+                            </tr>
+                            {{/betsFinished}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{/hasBetsFinished}}
+
+                    {{^hasBetsFinished}}
+                    <p>No hay apuestas finalizadas.</p>
+                    {{/hasBetsFinished}}
+                </div>
+
                 <div class="col-lg-4">
                     <div class="total-section">
                         <table class="total-table">
