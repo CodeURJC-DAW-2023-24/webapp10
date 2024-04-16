@@ -100,6 +100,11 @@ public class Event {
     @JoinColumn(name = "FINAL_RESULT")
     private Result finalResult;
 
+
+    @Getter
+    @Setter
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
 /*
     @Getter
     @Setter

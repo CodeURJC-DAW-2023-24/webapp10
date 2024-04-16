@@ -1,9 +1,9 @@
 package es.codeurj.mortez365.controller;
 
-import es.codeurj.mortez365.model.Event;
-import es.codeurj.mortez365.model.User;
+import es.codeurj.mortez365.model.*;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
+import es.codeurj.mortez365.service.CommentService;
 import es.codeurj.mortez365.service.EventSevice;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -28,8 +28,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import es.codeurj.mortez365.model.Bet;
-import es.codeurj.mortez365.model.Result;
 import es.codeurj.mortez365.repository.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -68,6 +66,9 @@ public class AppController {
 
     @Autowired
     private BetRepository betRepository;
+
+    @Autowired
+    private CommentService commentService;
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -254,6 +255,17 @@ public class AppController {
             redirectAttributes.addFlashAttribute("noMoney", true);
             return "redirect:" + refer;
         }
+    }
+
+    @PostMapping("/single-product/{id}/comment")
+    public String addComment(@PathVariable Long id, @RequestParam("text") String commentText){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
+
+        Event currentEvent = eventService.findById(id).get();
+        commentService.save(new Comment(currentUser, commentText, currentEvent));
+        return "redirect:/single-product";
     }
 
     @GetMapping("/login")

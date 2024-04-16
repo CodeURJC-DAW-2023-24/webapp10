@@ -137,7 +137,16 @@
 	</div>
 	<!-- end single product -->
 
-	
+	<div class="comments-section">
+		<h2>Comments</h2>
+
+		<form action="/single-product/{{event.id}}/comment" method="post" class="comment-form">
+			<textarea name="text" placeholder="Write your comment here..."></textarea>
+			<button type="submit">Send</button>
+			<input type="hidden" name="_csrf" value="{{token}}"/>
+		</form>
+
+	</div>
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">

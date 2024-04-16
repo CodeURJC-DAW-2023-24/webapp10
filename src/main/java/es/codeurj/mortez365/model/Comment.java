@@ -40,4 +40,9 @@ public class Comment {
         super();
     }
 
+    public Comment(User user, String content, Event event) {
+        this.user = user;
+        this.content = content;
+        this.event = event;
+    }
 }
