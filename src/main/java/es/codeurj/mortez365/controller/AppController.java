@@ -175,7 +175,7 @@ public class AppController {
     @GetMapping("/bets/json")
     @ResponseBody
     public List<Event> getEventsJson(@RequestParam(name = "start", defaultValue = "0") int start,
-                                     @RequestParam(name = "count", defaultValue = "9") int count) {
+                                     @RequestParam(name = "count", defaultValue = "10") int count) {
         return events.findAll(PageRequest.of(start, count)).getContent();
     }
 

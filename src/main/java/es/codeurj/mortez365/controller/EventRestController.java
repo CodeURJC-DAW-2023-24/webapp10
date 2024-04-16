@@ -5,6 +5,8 @@ import es.codeurj.mortez365.service.EventSevice;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.URI;
@@ -157,6 +160,32 @@ public class EventRestController {
         return ResponseEntity.noContent().build();
     }
     }
+
+    @PostMapping("/image/{id}")
+	public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+			throws IOException {
+
+		Event event = eventService.findById(id).orElseThrow();
+
+		URI location = fromCurrentRequest().build().toUri();
+
+		event.setImageFile(location.toString());
+		event.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+		eventService.save(event);
+
+		return ResponseEntity.created(location).build();
+	}
+
+    @DeleteMapping("/image/{id}")
+    public ResponseEntity<Object> deleteImage(@PathVariable long id)
+        throws IOException {
+        Event event = eventService.findById(id).orElseThrow();
+        event.setImageFile(null);
+        event.setImage(null);
+        eventService.save(event);
+        return ResponseEntity.noContent().build();
+}
+
 
 }
 
