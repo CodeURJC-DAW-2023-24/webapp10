@@ -63,7 +63,7 @@ public class UserController {
     @RequestParam String firstsurname, @RequestParam String secondsurname, @RequestParam Date birthdate,
     @RequestParam String nationality, @RequestParam String dni, @RequestParam String adress,
     @RequestParam String postcode, @RequestParam String telephone, @RequestParam String email,
-    @RequestParam String username, @RequestParam String password, @RequestParam byte[] image,
+    @RequestParam String username, @RequestParam String password, @RequestParam String imageFile,
     @RequestParam String card_number, @RequestParam String cvv, @RequestParam String expired_date) {
 
     User user = new User();
@@ -79,7 +79,7 @@ public class UserController {
     user.setEmail(email);
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
-    user.setImage(image);
+    user.setImageFile(imageFile);
 
     String real_date = expired_date.substring(5) + "/" + expired_date.substring(2,4);
     Wallet w = new Wallet(card_number, cvv, real_date, user);
@@ -95,7 +95,7 @@ public class UserController {
     public void initAdmin() {
         List<String> roles = Arrays.asList("USER", "ADMIN");
         byte[] false_image = new byte[8];
-        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131", roles, false_image);
+        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131", roles,"assets/img/laliga/leyenda.jpeg");
         Wallet wallet = new Wallet("123214", "980", "06/27", u);
         u.setWallet(wallet);
         userService.save(u);

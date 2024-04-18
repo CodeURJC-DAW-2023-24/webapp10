@@ -416,9 +416,8 @@ public class AppController {
             String name = request.getUserPrincipal().getName();
             log.info("USER NAME: " + name);
             User user = userRepository.findByUsername(name).orElseThrow();
-            byte[] imageBytes = user.getImage();
-            String imageBase64 = Base64.getEncoder().encodeToString(imageBytes);
-            model.addAttribute("image", imageBase64);
+          
+       
             model.addAttribute("user", user);
         } catch (Exception e) {
             // If the user is not logged in, redirect to the login page
@@ -540,15 +539,7 @@ public class AppController {
     }
 
 
-    @GetMapping("/user/{id}/image")
-    public String getUserImage(@PathVariable Long id) {
-        User user = userRepository.findById(id).orElseThrow();
-        byte[] image = user.getImage();
-
-        String imageBase64 = Base64.getEncoder().encodeToString(image);
-        return imageBase64;
-    }
-
+  
 }
 
     

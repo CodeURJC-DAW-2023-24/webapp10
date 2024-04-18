@@ -1,7 +1,10 @@
 package es.codeurj.mortez365.model;
 
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -99,8 +102,15 @@ public class User {
 
     @Setter
     @Getter
+    @Lob
+    @JsonIgnore
     @Column(name = "IMAGE", columnDefinition = "BLOB")
-    private byte[] image;
+    private Blob image;
+
+    @Setter
+    @Getter
+    @Column(name = "IMAGEFILE")
+    private String imageFile;
 
     @Setter
     @Getter
@@ -109,7 +119,7 @@ public class User {
     private List<String> roles;
 
     public User(String name, String firstsurname, String secondsurname, String email, Date birthdate, String nationality, String dni, String username, String password,
-                boolean admin, String adress, String postcode, String telephone, List <String> roles, byte[] image) {
+                boolean admin, String adress, String postcode, String telephone, List <String> roles, String imageFile) {
         super();
         this.name = name;
         this.firstsurname = firstsurname;
@@ -125,7 +135,7 @@ public class User {
         this.postcode = postcode;
         this.telephone = telephone;
         this.roles = roles;
-        this.image = image;
+        this.imageFile = imageFile;
     }
 
     public User() {
