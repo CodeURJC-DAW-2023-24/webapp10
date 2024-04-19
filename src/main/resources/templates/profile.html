@@ -84,12 +84,8 @@
 	<div class="checkout-section mt-150 mb-150">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="checkout-accordion-wrap">
-						<div class="user-profile">
-							<img id="profile-picture" src="{{user.imageFile}}" alt="User Profile Picture">
-							
-						</div>
                         <div class="accordion" id="accordionExample">
                           <div class="card single-accordion">
                             <div class="card-header" id="headingOne">
@@ -151,6 +147,27 @@
                                 </div>
                             </div>
 						    </div>
+							<div class="col-lg-5 align-items-center">
+								<img id="profile-picture" src="{{user.imageFile}}" alt="User Profile Picture" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 100px">
+								<div class="user-profile text-center">
+									<div class="align-items-center" style="margin-top: 380px">
+										<form action="/uploadProfilePicture" method="post" enctype="multipart/form-data" class="text-center">
+											<div class="form-group">
+												<label for="profile-picture">Selecciona una nueva imagen de perfil:</label>
+												<div class="input-group">
+													<div class="custom-file">
+														<input type="file" class="custom-file-input" id="profile-picture1" name="file" accept="image/*">
+														<label class="custom-file-label" for="profile-picture">Elegir archivo</label>
+													</div>
+													<div class="input-group-append">
+														<button class="btn btn-success" type="submit">Subir</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
 						  </div>
 						
 

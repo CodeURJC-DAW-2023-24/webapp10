@@ -94,7 +94,6 @@ public class UserController {
     @PostConstruct
     public void initAdmin() {
         List<String> roles = Arrays.asList("USER", "ADMIN");
-        byte[] false_image = new byte[8];
         User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131", roles,"assets/img/laliga/leyenda.jpeg");
         Wallet wallet = new Wallet("123214", "980", "06/27", u);
         u.setWallet(wallet);
