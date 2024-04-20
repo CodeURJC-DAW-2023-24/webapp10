@@ -3650,10 +3650,14 @@ html, body{
 /*chip end*/
 
 #profile-picture {
-    width: 150px; /* Aumenta el tamaño de la imagen */
-    height: 150px; /* Asegúrate de que el alto y el ancho sean iguales para obtener un círculo perfecto */
+    width: 150px; 
+    height: 150px; 
    
-    object-fit: cover; /* Esto asegura que la imagen cubra todo el espacio, incluso si su aspecto no es cuadrado */
-    float: right; /* Esto alinea la imagen a la derecha */
-    margin-left: 1000000px; /* Esto agrega espacio a la izquierda de la imagen, empujándola más a la derecha */
+    object-fit: cover; 
+    float: right; 
+    margin-left: 1000000px; 
+}
+
+#myChart {
+  background-color: #f5f5f5; 
 }

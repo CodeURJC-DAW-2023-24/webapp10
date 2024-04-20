@@ -103,6 +103,14 @@ public class WebSecurityConfig {
                     .requestMatchers(HttpMethod.PUT, "/api/wallets/").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.DELETE, "/api/wallets/").hasRole("ADMIN")
 
+                    //Security of BetRestController
+                    .requestMatchers(HttpMethod.GET, "/api/bets/").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/api/bets/*").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/api/bets/").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/api/bets/").authenticated()
+                    .requestMatchers(HttpMethod.PUT, "/api/bets/").authenticated()
+                    
+
 
                   .anyRequest().authenticated()
 

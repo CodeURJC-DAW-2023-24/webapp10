@@ -504,6 +504,7 @@ function setBet(e, n, t, o){
 				e.querySelector('.chip').setAttribute('class', 'chip ' + chipColour);
 				let chipSpan = e.querySelector('.chipSpan');
 				chipSpan.innerText = bet[i].amt;
+				console.log('bet[i].amt: ' + bet[i].amt);
 				return;
 			}
 		}

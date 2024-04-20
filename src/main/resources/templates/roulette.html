@@ -79,11 +79,50 @@
 		</div>
 	</div>
 	<!-- end breadcrumb section -->
+	<canvas id="myChart" width="30" height="5"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Rojo', 'Verde', 'Negro'],
+        datasets: [{
+            label: 'Números que han salido por color',
+            data: [7, 3, 5],
+            backgroundColor: [
+                'rgba(255, 0, 0, 0.2)',
+                'rgba(0, 255, 0, 0.2)',
+                'rgba(0, 0, 0, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 0, 0, 1)',
+                'rgba(0, 255, 0, 1)',
+                'rgba(0, 0, 0, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+		
+		
+
+    <script src="./assets/js/scriptroulette.js"></script>
+
 
 
 
 	
-	<script src="./assets/js/scriptroulette.js"></script>
+
 
 
 	
