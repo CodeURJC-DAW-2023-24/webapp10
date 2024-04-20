@@ -1,4 +1,4 @@
-package es.codeurj.mortez365.controller;
+package es.codeurj.mortez365.restController;
 
 import java.util.Collection;
 
