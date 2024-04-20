@@ -6,12 +6,19 @@ import es.codeurj.mortez365.service.UserSevice;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.net.URI;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -118,5 +125,44 @@ public class UserRestController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/image/{id}")
+    public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
+      Optional< User> user = userService.findById(id);
+      if (user.isPresent()) {
+          Blob blob = user.get().getImage();
+          int blobLength = (int) blob.length();
+          byte[] blobAsBytes = blob.getBytes(1, blobLength);
+          blob.free();
+          return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(blobAsBytes);
+      } else {
+          return ResponseEntity.noContent().build();
+      }
+      }
 
+
+      @PostMapping("/image/{id}")
+      public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+              throws IOException {
+  
+          User user = userService.findById(id).orElseThrow();
+  
+          URI location = fromCurrentRequest().build().toUri();
+  
+          user.setImageFile(location.toString());
+          user.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+          userService.save(user);
+  
+          return ResponseEntity.created(location).build();
+      }
+  
+      @DeleteMapping("/image/{id}")
+      public ResponseEntity<Object> deleteImage(@PathVariable long id)
+          throws IOException {
+          User user = userService.findById(id).orElseThrow();
+          user.setImageFile(null);
+          user.setImage(null);
+          userService.save(user);
+          return ResponseEntity.noContent().build();
+  }
+  
 }

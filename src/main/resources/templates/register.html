@@ -88,7 +88,7 @@
 
 									<div class="card-body">
 										<div class="billing-address-form">
-											<form action="/register" method="post">
+											<form action="/register" method="post" enctype="multipart/form-data">
 												<p><input id="name" name="name" type="text" placeholder="Nombre" required></p>
 												<p><input id="firstsurname" name="firstsurname" type="text" placeholder="Primer apellido" required></p>
 												<p><input id="secondsurname" name="secondsurname" type="text" placeholder="Segundo apellido" required></p>
@@ -148,7 +148,7 @@
 															<div class="billing-address-form">
 																<p><input id="username" name="username" type="text" placeholder="Usuario" required></p>
 																<p><input id="password" name="password" type="password" placeholder="Contraseña" required></p>
-																<p><input id="image" name="image" type="file" placeholder="Imagen" required></p>
+																<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
 																<div>
 																	<label for="age">Acepto que tengo la mayoría de edad</label><input style="margin-left: 15px" type="checkbox" id="age" name="age" required>
 																</div>

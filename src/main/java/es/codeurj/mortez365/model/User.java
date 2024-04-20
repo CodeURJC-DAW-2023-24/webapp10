@@ -104,7 +104,7 @@ public class User {
     @Getter
     @Lob
     @JsonIgnore
-    @Column(name = "IMAGE", columnDefinition = "BLOB")
+    @JoinColumn(name = "IMAGE")
     private Blob image;
 
     @Setter

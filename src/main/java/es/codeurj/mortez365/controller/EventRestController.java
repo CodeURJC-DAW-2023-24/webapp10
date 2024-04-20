@@ -147,6 +147,7 @@ public class EventRestController {
             @ApiResponse(responseCode = "404", description = "Event not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
+    
   @GetMapping("/image/{id}")
   public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
     Optional< Event> event = eventService.findById(id);
