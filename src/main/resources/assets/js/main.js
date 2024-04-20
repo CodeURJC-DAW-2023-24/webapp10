@@ -1,24 +1,11 @@
- let mapa = new Map();
-
-
-
-
 (function ($) {
     "use strict";
 
 
     $(document).ready(function($){
-
-        mapa.set("redCount", 0);
-        mapa.set("blackCount", 0);
-        mapa.set("greenCount", 0);
-
-      
-        
         
         var date = new Date();
         date.setDate(date.getDate() + 1);
-      
 
         var anyo = date.getFullYear();
         var mes = date.getMonth() + 1; // Se suma 1 porque los meses en JavaScript van de 0 a 11

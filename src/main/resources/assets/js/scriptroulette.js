@@ -33,7 +33,6 @@ async function updateBankValue(newBankValue) {
 
 
 fetchBankValue().then(() => {
-console.log("mapa"+mapa.get("redCount"));
 console.log("Valor:", bankValue);
 var myChart;
 let currentBet = 0;
@@ -594,17 +593,6 @@ function advancedRandomNum() {	//Generates a random from a complex seed (instead
 
 function spin(){
 	var winningSpin = advancedRandomNum();
-	if (numRed.includes(winningSpin)){
-		var redCount = localStorage.getItem("redCount") ? parseInt(localStorage.getItem("redCount")) : 0;
-        localStorage.setItem("redCount", redCount + 1);}
-	else if (numBlack.includes(winningSpin)){
-		var blackCount = localStorage.getItem("blackCount") ? parseInt(localStorage.getItem("blackCount")) : 0;
-		localStorage.setItem("blackCount", blackCount + 1);}
-	else{
-		var greenCount = localStorage.getItem("greenCount") ? parseInt(localStorage.getItem("greenCount")) : 0;
-		localStorage.setItem("greenCount", greenCount + 1);
-		
-	}
 	
 
 
@@ -645,10 +633,26 @@ function spin(){
 		if(bankValue == 0 && currentBet == 0){
 			gameOver();
 		}
+
+		if (numRed.includes(winningSpin)){
+			var redCount = localStorage.getItem("redCount") ? parseInt(localStorage.getItem("redCount")) : 0;
+			localStorage.setItem("redCount", redCount + 1);}
+		else if (numBlack.includes(winningSpin)){
+			var blackCount = localStorage.getItem("blackCount") ? parseInt(localStorage.getItem("blackCount")) : 0;
+			localStorage.setItem("blackCount", blackCount + 1);}
+		else{
+			var greenCount = localStorage.getItem("greenCount") ? parseInt(localStorage.getItem("greenCount")) : 0;
+			localStorage.setItem("greenCount", greenCount + 1);
+
+		}
+
+		myChart.data.datasets[0].data = [localStorage.getItem("redCount"), localStorage.getItem("greenCount"), localStorage.getItem("blackCount")];
+		myChart.update();
+		console.log("mapa"+localStorage.getItem("redCount")+" "+localStorage.getItem("greenCount")+" "+localStorage.getItem("blackCount")+" ");
 	}, 10000);
-	myChart.data.datasets[0].data = [localStorage.getItem("redCount"), localStorage.getItem("greenCount"), localStorage.getItem("blackCount")];
-    myChart.update();
-	console.log("mapa"+localStorage.getItem("redCount")+" "+localStorage.getItem("greenCount")+" "+localStorage.getItem("blackCount")+" ");
+
+
+
 }
 
 function win(winningSpin, winValue, betTotal){
