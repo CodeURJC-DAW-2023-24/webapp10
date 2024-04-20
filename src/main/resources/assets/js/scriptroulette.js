@@ -1,5 +1,6 @@
-let bankValue = 0;
 
+
+let bankValue = 0;
 async function fetchBankValue() {
     try {
         const response = await fetch("/getValue");
@@ -31,11 +32,10 @@ async function updateBankValue(newBankValue) {
 }
 
 
-
 fetchBankValue().then(() => {
-
+console.log("mapa"+mapa.get("redCount"));
 console.log("Valor:", bankValue);
-
+var myChart;
 let currentBet = 0;
 let wager = 5;
 let lastWager = 0;
@@ -43,7 +43,10 @@ let bet = [];
 let numbersBet = [];
 let previousNumbers = [];
 
+
+
 let numRed = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+let numBlack = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
 let wheelnumbersAC = [0, 26, 3, 35, 12, 28, 7, 29, 18, 22, 9, 31, 14, 20, 1, 33, 16, 24, 5, 10, 23, 8, 30, 11, 36, 13, 27, 6, 34, 17, 25, 2, 21, 4, 19, 15, 32];
 
 let container = document.createElement('div');
@@ -55,6 +58,42 @@ startGame();
 let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
+
+
+function createChart(){
+    var ctx = document.getElementById('myChart');
+    var redCount = localStorage.getItem("redCount") ? parseInt(localStorage.getItem("redCount")) : 0;
+    var greenCount = localStorage.getItem("greenCount") ? parseInt(localStorage.getItem("greenCount")) : 0;
+    var blackCount = localStorage.getItem("blackCount") ? parseInt(localStorage.getItem("blackCount")) : 0;
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Rojo', 'Verde', 'Negro'],
+            datasets: [{
+                label: 'Números que han salido por color',
+                data: [redCount, greenCount, blackCount],
+                backgroundColor: [
+                    'rgba(255, 0, 0, 0.2)',
+                    'rgba(0, 255, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(0, 0, 0, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 function resetGame(){
 	
 	
@@ -71,6 +110,7 @@ function resetGame(){
 function startGame(){
 	buildWheel();
 	buildBettingBoard();
+	createChart();
 }
 
 function gameOver(){
@@ -554,6 +594,21 @@ function advancedRandomNum() {	//Generates a random from a complex seed (instead
 
 function spin(){
 	var winningSpin = advancedRandomNum();
+	if (numRed.includes(winningSpin)){
+		var redCount = localStorage.getItem("redCount") ? parseInt(localStorage.getItem("redCount")) : 0;
+        localStorage.setItem("redCount", redCount + 1);}
+	else if (numBlack.includes(winningSpin)){
+		var blackCount = localStorage.getItem("blackCount") ? parseInt(localStorage.getItem("blackCount")) : 0;
+		localStorage.setItem("blackCount", blackCount + 1);}
+	else{
+		var greenCount = localStorage.getItem("greenCount") ? parseInt(localStorage.getItem("greenCount")) : 0;
+		localStorage.setItem("greenCount", greenCount + 1);
+		
+	}
+	
+
+
+	
 	spinWheel(winningSpin);
 	setTimeout(function(){
 		if(numbersBet.includes(winningSpin)){
@@ -591,6 +646,9 @@ function spin(){
 			gameOver();
 		}
 	}, 10000);
+	myChart.data.datasets[0].data = [localStorage.getItem("redCount"), localStorage.getItem("greenCount"), localStorage.getItem("blackCount")];
+    myChart.update();
+	console.log("mapa"+localStorage.getItem("redCount")+" "+localStorage.getItem("greenCount")+" "+localStorage.getItem("blackCount")+" ");
 }
 
 function win(winningSpin, winValue, betTotal){
@@ -700,5 +758,7 @@ function removeChips(){
 		removeChips();
 	}
 }});
+
+
 
 
