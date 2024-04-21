@@ -163,6 +163,7 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
                         .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
                         .requestMatchers(HttpMethod.POST, "/uploadProfilePicture").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/uploadProfilePicture").permitAll()
 
                   
 

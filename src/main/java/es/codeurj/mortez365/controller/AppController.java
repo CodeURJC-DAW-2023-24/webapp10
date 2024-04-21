@@ -571,28 +571,6 @@ public String profile(Model model, HttpServletRequest request) {
         return "/roulette";
     }
 
-    @PutMapping("/uploadProfilePicture")
-    public String uploadProfilePicture(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-        if (file.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Por favor seleccione un archivo.");
-            return "redirect:/profile";
-        }
-
-        String fileName = file.getOriginalFilename();
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUserName = authentication.getName();
-        Optional<User> currentUser = userRepository.findByUsername(currentUserName);
-        if (currentUser.isPresent()) {
-            currentUser.get().setImageFile(fileName);
-            userService.save(currentUser.get());
-        }
-
-        return "redirect:/profile"; // Reload the page
-    }
-  
-  
-  
 }
 
     
