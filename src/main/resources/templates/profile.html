@@ -156,8 +156,8 @@
 												<label for="profile-picture">Selecciona una nueva imagen de perfil:</label>
 												<div class="input-group">
 													<div class="custom-file">
-														<input type="file" class="custom-file-input" id="profile-picture1" name="file" accept="image/*">
-														<label class="custom-file-label" for="profile-picture">Elegir archivo</label>
+														<input type="file" class="custom-file-input" id="profile-picture1" name="file" accept="image/*" onchange="updateFileName()" required>
+														<label class="custom-file-label" for="profile-picture" id="file-label">Elegir archivo</label>
 													</div>
 													<div class="input-group-append">
 														<button class="btn btn-success" type="submit">Subir</button>
@@ -213,6 +213,15 @@
 	<script src="assets/js/sticker.js"></script>
 	<!-- main js -->
 <script src="assets/js/main.js"></script>
+
+<script>
+	function updateFileName() {
+		var input = document.getElementById('profile-picture1');
+		var fileName = input.files[0].name;
+		var label = document.getElementById('file-label');
+		label.innerHTML = fileName;
+	}
+</script>
 
 
 </body>

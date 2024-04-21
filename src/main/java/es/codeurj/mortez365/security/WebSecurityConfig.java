@@ -137,7 +137,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.csrf((csrf) -> csrf
-                .ignoringRequestMatchers("/updateValue", "getValue")
+                .ignoringRequestMatchers("/updateValue", "/getValue", "/uploadProfilePicture")
         );
 
         http.authenticationProvider(authenticationProvider());
@@ -162,6 +162,7 @@ public class WebSecurityConfig {
                        
                         .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
                         .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/uploadProfilePicture").permitAll()
 
                   
 
