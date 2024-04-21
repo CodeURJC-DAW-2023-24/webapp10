@@ -136,5 +136,8 @@ public class Event {
     public Event() {
     }
 
-    
+
+    public void addComments(Comment comment) {
+        comments.add(comment);
+    }
 }

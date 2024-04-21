@@ -146,6 +146,32 @@
 			<input type="hidden" name="_csrf" value="{{token}}"/>
 		</form>
 
+		<div class="comment-container">
+			{{#event.comments}}
+			<div class="comment">
+				{{#isEditing}}
+				<form action="/editComment/{{eventId}}/{{id}}" method="post" class="comment-form">
+					<textarea name="text" placeholder="Write your comment here...">{{content}}</textarea>
+					<button type="submit">Send</button>
+				</form>
+				{{/isEditing}}
+
+				{{^isEditing}}
+				<h5>{{user.name}}</h5>
+				<div class="comment-text">{{content}}</div>
+				{{#privileged}}
+				<div class="button-container">
+					<a class="btn-light" href="/editComment/{{event.id}}/{{id}}">Edit</a>
+					<a class="btn-danger" href="/comment/{{event.id}}/{{id}}/delete" >Delete</a>
+				</div>
+				{{/privileged}}
+				{{/isEditing}}
+
+			</div>
+			{{/event.comments}}
+			<!-- More comments go here -->
+		</div>
+
 	</div>
 
 	<!-- logo carousel -->

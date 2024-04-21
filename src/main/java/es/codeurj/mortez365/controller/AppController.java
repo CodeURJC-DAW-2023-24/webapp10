@@ -187,12 +187,21 @@ public class AppController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @GetMapping("/single-product")
-    public String getSingleProduct(@RequestParam("id") Long id, Model model) {
+    public String getSingleProduct(@RequestParam("id") Long id, Model model, HttpServletRequest request) {
         Event event = events.findById(id).orElse(null);
         assert event != null;
         model.addAttribute("event", event);
         model.addAttribute("feeT", 1.7);
         model.addAttribute("feeL", Math.round((3.5 - event.getFee()) * 100.0)/ 100.0);
+
+        if (request.isUserInRole("USER")){
+            if (request.isUserInRole("ADMIN")) {
+                // Verifica si el usuario actual tiene permisos para editar el evento
+                model.addAttribute("privileged", true);
+            }
+            model.addAttribute("isEditing", false);
+        }
+
         return "single-product";
     }
 
@@ -262,10 +271,20 @@ public class AppController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
+        System.out.println(commentText);
+        Optional<Event> currentEvent = eventService.findById(id);
+        if(currentEvent.isPresent()){
+            Event event = currentEvent.get();
+            Comment newComment = new Comment(currentUser, commentText, event);
+            event.addComments(newComment);
+            eventService.save(event);
+            commentService.save(newComment);
+            return "redirect:/single-product?id=" + id;
+        } else{
+            return "redirect:/error";
+        }
 
-        Event currentEvent = eventService.findById(id).get();
-        commentService.save(new Comment(currentUser, commentText, currentEvent));
-        return "redirect:/single-product";
+
     }
 
     @GetMapping("/login")
