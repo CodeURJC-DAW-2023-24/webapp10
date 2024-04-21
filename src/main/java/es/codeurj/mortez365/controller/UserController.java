@@ -80,10 +80,11 @@ public class UserController {
     user.setEmail(email);
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
-    user.setImageFile("assets/img/laliga/"+imageFile.getOriginalFilename());
+    user.setImageFile(imageFile.getOriginalFilename());
     logger.info("archivo: " + imageFile.getOriginalFilename());
     Resource image = new ClassPathResource(user.getImageFile());
-    user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    user.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+  
     logger.info("archivo: " + image.getFilename() );
     String real_date = expired_date.substring(5) + "/" + expired_date.substring(2,4);
     Wallet w = new Wallet(card_number, cvv, real_date, user);

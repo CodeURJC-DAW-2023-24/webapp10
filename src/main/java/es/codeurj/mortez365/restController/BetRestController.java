@@ -24,12 +24,14 @@ public class BetRestController {
     @Autowired
     private BetService betService;
 
- 
 
+    @GetMapping("/")
+    public ResponseEntity<Collection<Bet>> getBets() {
+        Collection<Bet> bets = betService.findAllBets();
+        return new ResponseEntity<Collection<Bet>>(bets, HttpStatus.OK);
 
-
-    
     }
     
+}
     
 

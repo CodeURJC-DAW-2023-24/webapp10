@@ -5,6 +5,7 @@ import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.CommentService;
 import es.codeurj.mortez365.service.EventSevice;
+import es.codeurj.mortez365.service.UserSevice;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -60,6 +61,9 @@ public class AppController {
 
     @Autowired
     private EventSevice eventService;
+
+    @Autowired
+    private UserSevice userService;
 
     @Autowired
     private EventRepository events;
@@ -428,22 +432,32 @@ public class AppController {
     return "betsadmin";
 }
 
-    @GetMapping("/profile")
-    public String profile(Model model, HttpServletRequest request) {
-        try {
-            // If the user is logged in, we get the user from the database
-            String name = request.getUserPrincipal().getName();
-            log.info("USER NAME: " + name);
-            User user = userRepository.findByUsername(name).orElseThrow();
-          
-       
-            model.addAttribute("user", user);
-        } catch (Exception e) {
-            // If the user is not logged in, redirect to the login page
-            return "redirect:/login";
+@GetMapping("/profile")
+public String profile(Model model, HttpServletRequest request) {
+    try {
+        // If the user is logged in, we get the user from the database
+        String name = request.getUserPrincipal().getName();
+        log.info("USER NAME: " + name);
+        User user = userRepository.findByUsername(name).orElseThrow();
+
+        String imageBase64 = null;
+        if (user.getImage() != null) {
+            try {
+                byte[] bytes = user.getImage().getBytes(1, (int) user.getImage().length());
+                imageBase64 = Base64.getEncoder().encodeToString(bytes);
+            } catch (SQLException e) {
+                // handle exception
+            }
         }
-        return "profile";
+
+        model.addAttribute("user", user);
+        model.addAttribute("imageBase64", imageBase64);
+    } catch (Exception e) {
+        // If the user is not logged in, redirect to the login page
+        return "redirect:/login";
     }
+    return "profile";
+}
 
     @GetMapping("/loginerror")
     public String loginError() {
@@ -557,7 +571,7 @@ public class AppController {
         return "/roulette";
     }
 
-    @PostMapping("/uploadProfilePicture")
+    @PutMapping("/uploadProfilePicture")
     public String uploadProfilePicture(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Por favor seleccione un archivo.");
@@ -571,11 +585,13 @@ public class AppController {
         Optional<User> currentUser = userRepository.findByUsername(currentUserName);
         if (currentUser.isPresent()) {
             currentUser.get().setImageFile(fileName);
-            userRepository.save(currentUser.get());
+            userService.save(currentUser.get());
         }
 
         return "redirect:/profile"; // Reload the page
     }
+  
+  
   
 }
 

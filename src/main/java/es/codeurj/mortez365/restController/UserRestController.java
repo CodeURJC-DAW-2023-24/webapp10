@@ -14,9 +14,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -143,7 +147,8 @@ public class UserRestController {
       @PostMapping("/image/{id}")
       public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
               throws IOException {
-  
+
+                
           User user = userService.findById(id).orElseThrow();
   
           URI location = fromCurrentRequest().build().toUri();
@@ -153,6 +158,7 @@ public class UserRestController {
           userService.save(user);
   
           return ResponseEntity.created(location).build();
+      
       }
   
       @DeleteMapping("/image/{id}")
@@ -164,5 +170,22 @@ public class UserRestController {
           userService.save(user);
           return ResponseEntity.noContent().build();
   }
+
+
+    @PutMapping("/image/{id}")
+    public ResponseEntity<Object> updateImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+            throws IOException {
+
+            User user = userService.findById(id).orElseThrow();
+
+            URI location = fromCurrentRequest().build().toUri();
+
+            user.setImageFile(location.toString());
+            user.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+            userService.save(user);
+
+            return ResponseEntity.created(location).build();
+        
+    }
   
 }
