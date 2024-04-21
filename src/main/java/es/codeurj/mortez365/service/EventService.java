@@ -3,7 +3,6 @@ package es.codeurj.mortez365.service;
 
 
 import org.hibernate.engine.jdbc.BlobProxy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
@@ -18,24 +17,21 @@ import es.codeurj.mortez365.repository.EventRepository;
 import jakarta.annotation.PostConstruct;
 
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.Collection;
 
 import javax.sql.rowset.serial.SerialException;
 
 
 @Service
-public class EventSevice {
+public class EventService {
    
     private EventRepository events;
 //The EventSevice class is used to save the event in the database.
-    public EventSevice(EventRepository events) {
+    public EventService(EventRepository events) {
         super();
         this.events = events;
     }

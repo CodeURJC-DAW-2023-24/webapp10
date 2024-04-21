@@ -1,5 +1,9 @@
 package es.codeurj.mortez365.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import es.codeurj.mortez365.serialize.EventSerializer;
+import es.codeurj.mortez365.serialize.UserSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -21,13 +25,8 @@ public class Bet {
 
     @Setter
     @Getter
-    @Column(name = "DESCRIPTION")
-    private String description;
-
-    @Setter
-    @Getter
     @Column(name = "BET_AMOUNT")
-    private double bet_amount;
+    private Double bet_amount;
 
     @Setter
     @Getter
@@ -43,6 +42,7 @@ public class Bet {
     @Getter
     @ManyToOne
     @JoinColumn(name = "EVENT")
+    @JsonSerialize(using = EventSerializer.class)
     private Event event;
 
     @Setter
@@ -59,6 +59,7 @@ public class Bet {
     @Getter
     @JoinColumn(name = "USER")
     @ManyToOne
+    @JsonSerialize(using = UserSerializer.class)
     private User user;
 
     public Bet() {
@@ -74,3 +75,4 @@ public class Bet {
         this.user = user;
     }
 }
+

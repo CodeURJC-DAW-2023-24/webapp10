@@ -1,7 +1,7 @@
 package es.codeurj.mortez365.restController;
 
 import es.codeurj.mortez365.model.Event;
-import es.codeurj.mortez365.service.EventSevice;
+import es.codeurj.mortez365.service.EventService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -33,7 +33,7 @@ public class EventRestController {
   
 
     @Autowired
-    private EventSevice eventService;
+    private EventService eventService;
 
 
     @Operation(summary = "Get All Events", description = "Retrieve all events paginated")

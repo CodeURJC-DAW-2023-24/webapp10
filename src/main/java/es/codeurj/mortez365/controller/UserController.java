@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import es.codeurj.mortez365.model.User;
-import es.codeurj.mortez365.service.UserSevice;
+import es.codeurj.mortez365.service.UserService;
 import jakarta.annotation.PostConstruct;
 
 
@@ -37,10 +37,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserRestController.class);
-    private UserSevice userService;
+    private UserService userService;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserSevice userService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         super();
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;

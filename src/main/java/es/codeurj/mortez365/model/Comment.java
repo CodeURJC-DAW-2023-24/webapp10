@@ -1,6 +1,9 @@
 package es.codeurj.mortez365.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import es.codeurj.mortez365.serialize.EventSerializer;
+import es.codeurj.mortez365.serialize.UserSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -24,12 +27,10 @@ public class Comment {
     @Setter
     @JoinColumn(name = "AUTHOR")
     @ManyToOne
-    @JsonIgnore
+    @JsonSerialize(using = UserSerializer.class)
     private User user;
 
-    @Getter
-    @Setter
-    private String userName;
+
 
     @Getter
     @Setter
@@ -40,12 +41,9 @@ public class Comment {
     @Setter
     @JoinColumn(name = "EVENT")
     @ManyToOne
-    @JsonIgnore
+    @JsonSerialize(using = EventSerializer.class)
     private Event event;
 
-    @Getter
-    @Setter
-    private String eventName;
 
     public Comment() {
         super();

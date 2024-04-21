@@ -37,9 +37,11 @@ public class BetService {
         return betRepository.findById(id);
     }
 
-    public Collection <Bet> findAllBets() {
+    public Collection<Bet> findAllBets() {
         return betRepository.findAll();
     }
+
+    public Collection<Bet> findBetsByUser(long id) {return betRepository.getBetByUser(id);}
 
 
     

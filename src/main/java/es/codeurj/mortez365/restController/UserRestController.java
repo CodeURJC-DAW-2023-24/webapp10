@@ -2,7 +2,7 @@ package es.codeurj.mortez365.restController;
 
 import es.codeurj.mortez365.DTO.UserDataDTO;
 import es.codeurj.mortez365.model.User;
-import es.codeurj.mortez365.service.UserSevice;
+import es.codeurj.mortez365.service.UserService;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,13 +14,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,7 +34,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 public class UserRestController {
 
     @Autowired
-    private UserSevice userService;
+    private UserService userService;
 
 
     @Operation(summary = "Get All Users", description = "Retrieve all users")

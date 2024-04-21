@@ -1,15 +1,11 @@
 package es.codeurj.mortez365.restController;
 
 import es.codeurj.mortez365.model.Comment;
-import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.repository.CommentRepository;
 import es.codeurj.mortez365.service.CommentService;
-import es.codeurj.mortez365.service.EventSevice;
-import es.codeurj.mortez365.service.UserSevice;
+import es.codeurj.mortez365.service.EventService;
+import es.codeurj.mortez365.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +25,10 @@ public class CommentRestController {
     private CommentRepository commentRepository;
 
     @Autowired
-    private UserSevice userService;
+    private UserService userService;
 
     @Autowired
-    private EventSevice eventService;
+    private EventService eventService;
 
 
     @GetMapping("/{id}")
@@ -70,7 +66,6 @@ public class CommentRestController {
             return ResponseEntity.badRequest().build();
         } else{
             comment.setEvent(eventService.findById(idE).get());
-            comment.setEventName(eventService.findById(idE).get().getName());
             if(eventService.findById(comment.getEvent().getId()).isEmpty()){
                 return ResponseEntity.notFound().build();
             }
@@ -78,7 +73,6 @@ public class CommentRestController {
         if(userService.findById(idU).isEmpty()){
             return ResponseEntity.badRequest().build();
         } else{
-            comment.setUserName(userService.findById(idU).get().getName());
             comment.setUser(userService.findById(idU).get());
         }
         commentService.save(comment);
@@ -105,9 +99,7 @@ public class CommentRestController {
         if (comment!=null) {
             newComment.setId(id);
             newComment.setEvent(comment.getEvent());
-            newComment.setEventName(comment.getEventName());
             newComment.setUser(comment.getUser());
-            newComment.setUserName(comment.getUserName());
             commentService.save(newComment);
             URI location = fromCurrentRequest().path("/{id}").buildAndExpand(newComment.getId()).toUri();
             return ResponseEntity.ok().location(location).body(newComment);

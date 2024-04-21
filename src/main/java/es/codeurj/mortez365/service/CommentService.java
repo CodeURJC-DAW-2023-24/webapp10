@@ -3,7 +3,6 @@ package es.codeurj.mortez365.service;
 
 import es.codeurj.mortez365.model.Comment;
 import es.codeurj.mortez365.repository.CommentRepository;
-import es.codeurj.mortez365.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ import java.util.Optional;
 public class CommentService {
 
     @Autowired
-    private EventSevice events;
+    private EventService events;
 
     @Autowired
     private CommentRepository commentRepository;

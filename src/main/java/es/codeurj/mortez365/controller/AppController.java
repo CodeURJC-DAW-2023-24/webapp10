@@ -4,15 +4,13 @@ import es.codeurj.mortez365.model.*;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.CommentService;
-import es.codeurj.mortez365.service.EventSevice;
-import es.codeurj.mortez365.service.UserSevice;
+import es.codeurj.mortez365.service.EventService;
+import es.codeurj.mortez365.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
 
-import jdk.jfr.Timespan;
-import org.apache.tomcat.util.http.parser.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,15 +25,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import es.codeurj.mortez365.repository.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.InputStreamResource;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -60,10 +55,10 @@ public class AppController {
     private UserRepository userRepository;
 
     @Autowired
-    private EventSevice eventService;
+    private EventService eventService;
 
     @Autowired
-    private UserSevice userService;
+    private UserService userService;
 
     @Autowired
     private EventRepository events;
