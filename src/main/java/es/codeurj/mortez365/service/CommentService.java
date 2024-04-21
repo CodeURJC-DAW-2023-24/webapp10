@@ -33,7 +33,7 @@ public class CommentService {
     public Collection<Comment> findByEvent(Long id) {
         Collection<Comment> commentsByEvent = new ArrayList<>();
         if(events.findById(id).isPresent()){
-            return events.findById(id).get().getComments();
+            return commentRepository.getCommentByEvent(id);
         }
         return commentsByEvent;
     }

@@ -2,6 +2,7 @@ package es.codeurj.mortez365.restController;
 
 import es.codeurj.mortez365.model.Comment;
 import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.repository.CommentRepository;
 import es.codeurj.mortez365.service.CommentService;
 import es.codeurj.mortez365.service.EventSevice;
 import es.codeurj.mortez365.service.UserSevice;
@@ -25,13 +26,16 @@ public class CommentRestController {
     private CommentService commentService;
 
     @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
     private UserSevice userService;
 
     @Autowired
     private EventSevice eventService;
 
 
-    @GetMapping("/comment/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Comment> getComment(@PathVariable long id) {
         Comment comment = commentService.findById(id);
         if (comment != null) {
@@ -46,7 +50,7 @@ public class CommentRestController {
         return ResponseEntity.ok(commentService.findAll());
     }
 
-    @GetMapping("/event/{idE}/comments")
+    @GetMapping("/event/{idE}")
     public ResponseEntity<Collection<Comment>> getCommentsByEvents(@PathVariable long idE) {
         Collection<Comment> comment = commentService.findByEvent(idE);
         if (comment != null) {
@@ -56,7 +60,7 @@ public class CommentRestController {
         }
     }
 
-    @PostMapping("/comment/{idE}/{idU}")
+    @PostMapping("/{idE}/{idU}")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment, @PathVariable Long idE, @PathVariable Long idU) {
 
         if(comment.getContent()==null){
@@ -66,6 +70,7 @@ public class CommentRestController {
             return ResponseEntity.badRequest().build();
         } else{
             comment.setEvent(eventService.findById(idE).get());
+            comment.setEventName(eventService.findById(idE).get().getName());
             if(eventService.findById(comment.getEvent().getId()).isEmpty()){
                 return ResponseEntity.notFound().build();
             }
@@ -73,6 +78,7 @@ public class CommentRestController {
         if(userService.findById(idU).isEmpty()){
             return ResponseEntity.badRequest().build();
         } else{
+            comment.setUserName(userService.findById(idU).get().getName());
             comment.setUser(userService.findById(idU).get());
         }
         commentService.save(comment);
@@ -81,7 +87,7 @@ public class CommentRestController {
         return ResponseEntity.created(location).body(comment);
     }
 
-    @DeleteMapping("/comment/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Comment> deleteComment(@PathVariable long id) {
         Comment post = commentService.findById(id);
         if (post != null) {
@@ -99,7 +105,9 @@ public class CommentRestController {
         if (comment!=null) {
             newComment.setId(id);
             newComment.setEvent(comment.getEvent());
+            newComment.setEventName(comment.getEventName());
             newComment.setUser(comment.getUser());
+            newComment.setUserName(comment.getUserName());
             commentService.save(newComment);
             URI location = fromCurrentRequest().path("/{id}").buildAndExpand(newComment.getId()).toUri();
             return ResponseEntity.ok().location(location).body(newComment);
