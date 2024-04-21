@@ -282,8 +282,58 @@ public class AppController {
         } else{
             return "redirect:/error";
         }
+    }
 
+    @GetMapping("/editComment/{eventId}/{id}")
+    String editComment(@PathVariable Long id, @PathVariable Long eventId,  Model model){
+        System.out.println("LLEGA");
+        Optional<Event> event = eventService.findById(eventId);
+        Comment comment = commentService.findById(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
+        if(comment!=null  && event.isPresent()  && currentUser.isAdmin()){
+            System.out.println("LLEGA");
+            model.addAttribute("isEditing", true);
+            model.addAttribute("comment", comment);
+            model.addAttribute("privileged",true);
+            model.addAttribute("event", event);
+            model.addAttribute("id", id);
+            return "single-product";
+            }
 
+        return "redirect:/error";
+
+    }
+
+    @PostMapping("/editComment/{eventId}/{id}")
+    public String replaceComment(@PathVariable long id, @PathVariable long eventId, Comment newComment) {
+        Comment comment = commentService.findById(id);
+        if (comment!=null) {
+            comment.setContent(newComment.getContent());
+        }
+        commentService.save(comment);
+
+        return "redirect:/single-product?id=" + eventId;
+    }
+
+    @GetMapping("/comment/{eventId}/{id}/delete")
+    String deleteComment(@PathVariable Long id, @PathVariable Long eventId){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
+        Comment checkComment = commentService.findById(id);
+        if (checkComment == null)
+            return "redirect:/error-page";
+        Optional<Event> checkEvent = eventService.findById(eventId);
+        if (checkEvent.isEmpty())
+            return "redirect:/error-page";
+
+        if (currentUser.isAdmin() /*comprobar usuario */){
+            eventService.deleteComment(checkEvent.get(), checkComment);
+        }
+
+        return "redirect:/single-product?id=" + eventId;
     }
 
     @GetMapping("/login")

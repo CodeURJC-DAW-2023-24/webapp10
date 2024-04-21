@@ -2,7 +2,10 @@ package es.codeurj.mortez365.service;
 
 
 
+import es.codeurj.mortez365.model.Comment;
+import es.codeurj.mortez365.repository.CommentRepository;
 import org.hibernate.engine.jdbc.BlobProxy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
@@ -28,8 +31,12 @@ import javax.sql.rowset.serial.SerialException;
 
 @Service
 public class EventService {
-   
+
+    @Autowired
     private EventRepository events;
+
+    @Autowired
+    private CommentRepository commentRepository;
 //The EventSevice class is used to save the event in the database.
     public EventService(EventRepository events) {
         super();
@@ -96,5 +103,10 @@ public void deleteById(Long id) {
             }
         }
         return finalizedEvents;
+    }
+
+    public void deleteComment(Event checkEvent, Comment comment) {
+        checkEvent.deleteComment(comment);
+        commentRepository.deleteById(comment.getId());
     }
 }

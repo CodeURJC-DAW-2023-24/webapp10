@@ -140,4 +140,8 @@ public class Event {
     public void addComments(Comment comment) {
         comments.add(comment);
     }
+
+    public void deleteComment(Comment comment){
+        comments.remove(comment);
+    }
 }
