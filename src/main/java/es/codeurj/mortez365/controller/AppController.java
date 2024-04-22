@@ -286,7 +286,6 @@ public class AppController {
 
     @GetMapping("/editComment/{eventId}/{id}")
     String editComment(@PathVariable Long id, @PathVariable Long eventId,  Model model){
-        System.out.println("LLEGA");
         Optional<Event> event = eventService.findById(eventId);
         Comment comment = commentService.findById(id);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -297,8 +296,10 @@ public class AppController {
             model.addAttribute("isEditing", true);
             model.addAttribute("comment", comment);
             model.addAttribute("privileged",true);
-            model.addAttribute("event", event);
-            model.addAttribute("id", id);
+            model.addAttribute("event", event.get());
+            model.addAttribute("feeT", 1.7);
+            model.addAttribute("feeL", Math.round((3.5 - event.get().getFee()) * 100.0)/ 100.0);
+
             return "single-product";
             }
 
