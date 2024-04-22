@@ -7,6 +7,7 @@ import java.util.Optional;
 import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.model.Comment;
 import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
 import es.codeurj.mortez365.service.BetService;
@@ -14,6 +15,8 @@ import es.codeurj.mortez365.service.BetService;
 
 import es.codeurj.mortez365.service.EventService;
 import es.codeurj.mortez365.service.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,9 +62,13 @@ public class BetRestController {
         }
     }
 
-    @PostMapping("/event/{idE}/user/{idU}")
-    public ResponseEntity<Bet> createBet(@RequestBody Bet bet, @PathVariable Long idE, @PathVariable Long idU) {
+    @PostMapping("/event/{idE}")
+    public ResponseEntity<Bet> createBet(@RequestBody Bet bet, @PathVariable Long idE) {
         Double fee;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Optional<User> currentUser = userService.findByUsername(currentUserName);
+
         if(eventService.findById(idE).isEmpty()){
             return ResponseEntity.badRequest().build();
         } else{
@@ -82,10 +89,10 @@ public class BetRestController {
         bet.setWinning_amount(fee * bet.getBet_amount());
         bet.setProfit(bet.getWinning_amount() - bet.getBet_amount());
 
-        if(userService.findById(idU).isEmpty()){
+        if(currentUser.isEmpty()){
             return ResponseEntity.badRequest().build();
         } else{
-            bet.setUser(userService.findById(idU).get());
+            bet.setUser(currentUser.get());
         }
         betService.saveBet(bet);
         URI location = fromCurrentRequest().path("/{id}")

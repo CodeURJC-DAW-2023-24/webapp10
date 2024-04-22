@@ -1,8 +1,11 @@
 package es.codeurj.mortez365.model;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import es.codeurj.mortez365.serialize.UserSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,6 +52,7 @@ public class Wallet {
     @OneToOne(mappedBy = "wallet")
     @Setter
     @Getter
+    @JsonSerialize(using = UserSerializer.class)
     private User user;
 
     public Wallet(String card_number, String cvv, String expired_date, User user) {
@@ -65,5 +69,17 @@ public class Wallet {
 
     public void addMoney(double profit) {
         this.money += profit;
+    }
+
+    @Override
+    public String toString() {
+        return "Wallet{" +
+                "id=" + id +
+                ", card_number='" + card_number + '\'' +
+                ", expired_date='" + expired_date + '\'' +
+                ", cvv='" + cvv + '\'' +
+                ", owner='" + owner + '\'' +
+                ", money=" + money +
+                '}';
     }
 }

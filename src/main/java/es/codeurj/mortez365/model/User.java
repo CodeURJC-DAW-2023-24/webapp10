@@ -6,6 +6,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import es.codeurj.mortez365.serialize.CommentSerializer;
+import es.codeurj.mortez365.serialize.WalletSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -27,6 +30,7 @@ public class User {
     @Getter
     @PrimaryKeyJoinColumn(name = "WALLET")
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonSerialize(using = WalletSerializer.class)
     private Wallet wallet;
 
     @Setter

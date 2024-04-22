@@ -1,5 +1,8 @@
 package es.codeurj.mortez365.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import es.codeurj.mortez365.serialize.CommentSerializer;
+import es.codeurj.mortez365.serialize.EventSerializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -104,6 +107,7 @@ public class Event {
     @Getter
     @Setter
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonSerialize(using = CommentSerializer.class)
     private List<Comment> comments;
 /*
     @Getter
@@ -124,6 +128,7 @@ public class Event {
         this.fee = generateFee();
         this.finished = false;
         this.deadline = deadline;
+        this.comments = new ArrayList<>();
 
     }
 

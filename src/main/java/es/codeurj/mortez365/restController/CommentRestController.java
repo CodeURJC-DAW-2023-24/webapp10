@@ -1,16 +1,20 @@
 package es.codeurj.mortez365.restController;
 
 import es.codeurj.mortez365.model.Comment;
+import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.CommentRepository;
 import es.codeurj.mortez365.service.CommentService;
 import es.codeurj.mortez365.service.EventService;
 import es.codeurj.mortez365.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -56,8 +60,11 @@ public class CommentRestController {
         }
     }
 
-    @PostMapping("/{idE}/{idU}")
-    public ResponseEntity<Comment> createComment(@RequestBody Comment comment, @PathVariable Long idE, @PathVariable Long idU) {
+    @PostMapping("/{idE}")
+    public ResponseEntity<Comment> createComment(@RequestBody Comment comment, @PathVariable Long idE) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Optional<User> currentUser = userService.findByUsername(currentUserName);
 
         if(comment.getContent()==null){
             return ResponseEntity.badRequest().build();
@@ -70,10 +77,10 @@ public class CommentRestController {
                 return ResponseEntity.notFound().build();
             }
         }
-        if(userService.findById(idU).isEmpty()){
+        if(currentUser.isEmpty()){
             return ResponseEntity.badRequest().build();
         } else{
-            comment.setUser(userService.findById(idU).get());
+            comment.setUser(currentUser.get());
         }
         commentService.save(comment);
         URI location = fromCurrentRequest().path("/{id}")
