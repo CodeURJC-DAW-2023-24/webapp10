@@ -137,32 +137,34 @@
 	</div>
 	<!-- end single product -->
 
-	<div class="comments-section">
-		<h2>Comments</h2>
+	<!-- comment section -->
+	<div class="comments-section container">
+		<h2>Comentarios</h2>
 
-		<form action="/single-product/{{event.id}}/comment" method="post" class="comment-form">
-			<textarea name="text" placeholder="Write your comment here..."></textarea>
-			<button type="submit">Send</button>
+		<form action="/single-product/{{event.id}}/comment" method="post" class="comment-form" style="margin-bottom: 20px">
+			<label for="textArea1">Escribe tus opiniones!</label>
+			<textarea class="form-control" id="textArea1" name="text" rows="3" placeholder="Write your comment here..." style="margin-bottom: 15px"></textarea>
+			<button class="btn btn-primary" type="submit">Send</button>
 			<input type="hidden" name="_csrf" value="{{token}}"/>
 		</form>
 
 		<div class="comment-container">
 			{{#event.comments}}
-			<div class="comment">
+			<div class="comment" style="margin-bottom: 20px">
 				{{#isEditing}}
 				<form action="/editComment/{{eventId}}/{{id}}" method="post" class="comment-form">
-					<textarea name="text" placeholder="Write your comment here...">{{content}}</textarea>
-					<button type="submit">Send</button>
+					<textarea class="form-control" name="text" rows="3" placeholder="Write your comment here..." style="margin-bottom: 12.5px"></textarea>
+					<button class="btn btn-primary" type="submit">Enviar</button>
 				</form>
 				{{/isEditing}}
 
 				{{^isEditing}}
-				<h5>{{user.name}}</h5>
-				<div class="comment-text">{{content}}</div>
+				<h5>{{user.name}} dice...</h5>
+				<div class="comment-text" style="margin-left: 20px; margin-bottom: 10px">"{{content}}"</div>
 				{{#privileged}}
-				<div class="button-container">
-					<a class="btn-light" href="/editComment/{{event.id}}/{{id}}">Edit</a>
-					<a class="btn-danger" href="/comment/{{event.id}}/{{id}}/delete" >Delete</a>
+				<div style="gap: 10px; margin-left: 20px">
+					<a class="btn btn-light" href="/editComment/{{event.id}}/{{id}}">Editar</a>
+					<a class="btn btn-danger" href="/comment/{{event.id}}/{{id}}/delete" >Borrar</a>
 				</div>
 				{{/privileged}}
 				{{/isEditing}}
@@ -173,6 +175,7 @@
 		</div>
 
 	</div>
+	<!-- end comment section -->
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">

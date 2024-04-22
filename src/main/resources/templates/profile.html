@@ -221,6 +221,14 @@
 		var label = document.getElementById('file-label');
 		label.innerHTML = fileName;
 	}
+
+	function checkFile() {
+		var fileName = document.getElementById("profile-picture1").value;
+		if (fileName === "") {
+			document.getElementById("file-label").innerHTML = "Elegir archivo";
+		}
+		return true; // Continuar con la subida de archivos
+	}
 </script>
 
 
