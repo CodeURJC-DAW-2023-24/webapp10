@@ -4,8 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-    { path: 'header', component: HeaderComponent },
-    { path : 'footer', component: FooterComponent }
+   
 ];
 
 @NgModule({
