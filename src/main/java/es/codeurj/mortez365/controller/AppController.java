@@ -140,8 +140,6 @@ public class AppController {
    
      eventsPage = events.findAll(pageable);
      List<Event> notFinalizedEvents = eventService.filterFinalizedEvents(eventsPage.getContent());
-     System.out.println(eventsPage);
-     System.out.println(notFinalizedEvents);
 
     model.addAttribute("events", notFinalizedEvents);
     model.addAttribute("currentPage", eventsPage.getNumber());
@@ -267,7 +265,6 @@ public class AppController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
-        System.out.println(commentText);
         Optional<Event> currentEvent = eventService.findById(id);
         if(currentEvent.isPresent()){
             Event event = currentEvent.get();
@@ -289,7 +286,6 @@ public class AppController {
         String currentUserName = authentication.getName();
         User currentUser = userRepository.findByUsername(currentUserName).orElseThrow();
         if(comment!=null  && event.isPresent()  && (currentUser.isAdmin() || currentUser.equals(comment.getUser()))){
-            System.out.println("LLEGA");
             model.addAttribute("isEditing", true);
             model.addAttribute("comment", comment);
             model.addAttribute("privileged",true);
@@ -307,13 +303,10 @@ public class AppController {
     @PostMapping("/editComment/{eventId}/{id}")
     public String replaceComment(@PathVariable long id, @PathVariable long eventId, Comment newComment) {
         Comment comment = commentService.findById(id);
-        System.out.println("LLEGA");
         if (comment!=null) {
             comment.setContent(newComment.getContent());
             commentService.save(comment);
         }
-        System.out.println("LLEGA");
-        System.out.println(eventId);
         return "redirect:/single-product?id=" + eventId;
     }
 
@@ -328,11 +321,9 @@ public class AppController {
         Optional<Event> checkEvent = eventService.findById(eventId);
         if (checkEvent.isEmpty())
             return "redirect:/error-page";
-
         if ((currentUser.isAdmin() || currentUser.equals(checkComment.getUser()))){
             eventService.deleteComment(checkEvent.get(), checkComment);
         }
-
         return "redirect:/single-product?id=" + eventId;
     }
 
@@ -377,7 +368,6 @@ public class AppController {
         for(Event e: listEvents){
             if(!e.getFinished() && currentDate.after(e.getDeadline())){
                 Result result = generateRandomResult();
-                System.out.println(e.getName() + result);
                 List<Bet> bets = betRepository.findAll();
                 List<Bet> eventBets = new ArrayList<>();
                 for(Bet b: bets){
@@ -401,19 +391,13 @@ public class AppController {
                 }
                 e.setFinalResult(result);
 
-                System.out.println("ACA ESTAMOS");
-
                 for(Bet b: eventBets){
                     if(b.getResult() == result){
-                        System.out.println("LLEGA");
                         User user = userRepository.findByUsername(b.getUser().getName()).orElseThrow();
                         user.getWallet().addMoney(b.getProfit());
                         userRepository.save(user);
                     } else {
-                        System.out.println("PITON");
-                        System.out.println(b.getEvent().getName());
                         b.setWinning_amount(0);
-                        System.out.println(b.getWinning_amount());
                         betRepository.save(b);
                     }
                 }
