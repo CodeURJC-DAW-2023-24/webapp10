@@ -13,32 +13,28 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="../../assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="../../assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="../../assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="../../assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="../../assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../../assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
 <body>
 	<!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
+    
     <!--PreLoader Ends-->
 	<!-- header -->
-	{{> ../fragments/headerNoTransparent}}
+	<app-header></app-header>
 	<!-- end header -->
 	<!-- search area -->
 	<div class="search-area">
@@ -85,7 +81,7 @@
 												<p><input id="birthdate" name="birthdate" type="date" placeholder="Fecha de nacimiento" required></p>
 												<p><input id="nationality" name="nationality" type="text" placeholder="Nacionalidad" required></p>
 												<p><input id="dni" name="dni" type="text" placeholder="DNI" required></p>
-											</div>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -154,61 +150,41 @@
 							</div>
 							<div style="text-align: right;">
 								<input type="submit" class="boxed-btn">
-								<input type="hidden" name="_csrf" value="{{token}}"/>
+							<!--	<input type="hidden" name="_csrf" value="{{token}}"/> -->
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- end check out section -->
-<!-- footer -->
-{{> ../fragments/footer}}
-<!-- end footer -->
-<!-- copyright -->
-{{> ../fragments/copyright}}
-<!-- end copyright -->
-<!-- jquery -->
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<!-- bootstrap -->
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- count down -->
-<script src="assets/js/jquery.countdown.js"></script>
-<!-- isotope -->
-<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-<!-- waypoints -->
-<script src="assets/js/waypoints.js"></script>
-<!-- owl carousel -->
-<script src="assets/js/owl.carousel.min.js"></script>
-<!-- magnific popup -->
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<!-- mean menu -->
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<!-- sticker js -->
-<script src="assets/js/sticker.js"></script>
-<!-- main js -->
-<script src="assets/js/main.js"></script>
-<script src="assets/js/scriptapuestas.js"></script>
-
-<!--
-<script>
-	document.getElementById('birthdate').addEventListener('change', function () {
-		var birthdate = new Date(this.value);
-		var today = new Date();
-		var age = today.getFullYear() - birthdate.getFullYear();
-		var m = today.getMonth() - birthdate.getMonth();
-		if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
-			age--;
-		}
-		if (age < 18) {
-			alert('Debes ser mayor de 18 años.');
-			this.value = '';
-		}
-	});
-</script>
-
--->
+	<!-- end check out section -->
+	<!-- footer -->
+	<app-footer></app-footer>
+	<!-- end footer -->
+	<!-- copyright -->
+	<app-copyright></app-copyright>
+	<!-- end copyright -->
+	<!-- jquery -->
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="assets/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="assets/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="assets/js/sticker.js"></script>
+	<!-- main js -->
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/scriptapuestas.js"></script>
 </body>
 </html>
