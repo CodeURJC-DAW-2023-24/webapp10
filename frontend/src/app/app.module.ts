@@ -10,6 +10,11 @@ import { FooterComponent } from "./footer/footer.component";
 import { CopyrightComponent } from './copyright/copyright.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ResponsablegameComponent } from './responsablegame/responsablegame.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { HeaderNoTransparentComponent } from './header-no-transparent/header-no-transparent.component';
 
 @NgModule({
  declarations: [
@@ -19,7 +24,12 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     CopyrightComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ContactComponent,
+    AboutusComponent,
+    ResponsablegameComponent,
+    NotfoundComponent,
+    HeaderNoTransparentComponent
 
 ],
 
