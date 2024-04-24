@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Mortez365</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="">
+	<!-- owl carousel -->
+
+
+	
+
+
+
+</head>
+<body>
+	
+	<!--PreLoader-->
+    <!--
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+     -->
+    <!--PreLoader Ends-->
+   
+	<!-- header -->
+	<app-header></app-header>
+	<!-- end header -->
+	
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Quiero buscar:</h3>
+							<input type="text" placeholder="Palabra Clave">
+							<button type="submit">Buscar <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search area -->
+
+	<!-- hero area -->
+	<div class="hero-area hero-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="hero-text">
+						<div class="hero-text-tablecell">
+							<p class="subtitle">Gana a la Suerte</p>
+							<h1>Mortez365</h1>
+							<!--{{#currentUser}}-->
+							<div class="hero-btns">
+								<a href="/login" class="boxed-btn">Iniciar Sesión</a>
+								<a href="/register" class="bordered-btn">Registrarse</a>
+							</div>
+							<!--{{/currentUser}}-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end hero area -->
+
+	<!-- product section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Nuestros</span> Slots</h3>
+						<p>Disfruta de nuestros Slots más populares, con los que podrás ganar grandes premios.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="bets"><img src="assets/img/products/product-img-1.png" alt=""></a>
+						</div>
+						<h3>Aventuras en Luxor</h3>
+						<p class="product-price"><span>Adéntrate en el Antiguo Egipto y descubre los misterios que acechan en las sombras de las majestuosas pirámides</span></p>
+						<a href="bets" class="cart-btn"> Jugar</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="bets"><img src="assets/img/products/product-img-2.png" alt=""></a>
+						</div>
+						<h3>Tesoros de Tartaria</h3>
+						<p class="product-price"><span>En las profundidades de la selva tropical, un misterio aguarda ser revelado. ¿Encontrarás el tesoro?</span></p>
+						<a href="bets" class="cart-btn"> Jugar</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="bets"><img src="assets/img/products/product-img-3.png" alt=""></a>
+						</div>
+						<h3>En busca del Leprechaun</h3>
+						<p class="product-price"><span>
+							Entre los verdes prados de la tierra de los Leprechauns, se celebra una fiesta en honor al Día de San Patricio.</span></p>
+						<a href="bets" class="cart-btn"> Jugar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end product section -->
+
+	<!-- cart banner section -->
+	<section class="cart-banner pt-100 pb-100">
+    	<div class="container">
+        	<div class="row clearfix">
+            	<!--Image Column-->
+            	<div class="image-column col-lg-6">
+                	<div class="image">
+                    	<div class="price-box">
+                        	<div class="inner-price">
+                                <span class="price">
+                                    <strong>30%</strong> <br> Aumento de Cuota
+                                </span>
+                            </div>
+                        </div>
+                    	<img src="assets/img/quefoton.png" alt="">
+                    </div>
+                </div>
+                <!--Content Column-->
+                <div class="content-column col-lg-6">
+					<h3><span class="orange-text">Cuota</span> del día</h3>
+                    <h4>Apuesta deportiva combinada</h4>
+                    <div class="text">Durante las 24 horas del día, aumentamos la cuota de un partido hasta un 30% de su valor, con Mortez365 el que gana eres tú.</div>
+                    <!--Countdown Timer-->
+                    <div class="time-counter"><div id="contador" class="time-countdown clearfix" data-countdown=""><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
+                	<a href="/bets" class="cart-btn mt-3"> Apuesta Ahora </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end cart banner section -->
+
+	<!-- testimonail-section -->
+	<div class="testimonail-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1 text-center">
+					<div class="testimonial-sliders">
+						<div class="single-testimonial-slider">
+							<div class="client-avater">
+								<img src="assets/img/carletes.jpeg" alt="">
+							</div>
+							<div class="client-meta">
+								<h3>Don Carletes<span>La Cabra </span></h3>
+								<p class="testimonial-body">
+									" Esta app es impresionante. Se la he recomendado a mis amigos y cuando quedamos aprovechamos para apostar a unos cuantos eventos y ganar dinero fácil. Su ruleta es maravillosa y creo que soy un suertudo porque siempre que le echo gano "
+								</p>
+								<div class="last-icon">
+									<i class="fas fa-quote-right"></i>
+								</div>
+							</div>
+						</div>
+						<div class="single-testimonial-slider">
+							<div class="client-avater">
+								<img src="assets/img/internalpointer.png" alt="">
+							</div>
+							<div class="client-meta">
+								<h3>Juan Miguel<span>Youtuber de Pascal</span></h3>
+								<p class="testimonial-body">
+									" Apostar en Mortez365 te da la oportunidad de ganar mas gracias a sus cuotas competitivas. Es la mejor casa de apuestas online de España y con la que más dinero he ganado tanto con apuestas deportivas como con su impresionante ruleta "
+								</p>
+								<div class="last-icon">
+									<i class="fas fa-quote-right"></i>
+								</div>
+							</div>
+						</div>
+						<div class="single-testimonial-slider">
+							<div class="client-avater">
+								<img src="assets/img/canada.jpeg" alt="">
+							</div>
+							<div class="client-meta">
+								<h3>Sam Conley<span>Jugador de bolos profesional</span></h3>
+								<p class="testimonial-body">
+									" Las máquinas de slots siempre tocan! Mi salón de juegos preferido para cuando quiero descansar de una dura jornada como profesor. Aquí me siento como en casa, sin duda es mi aplicación favorito para apostar y jugar "
+								</p>
+								<div class="last-icon">
+									<i class="fas fa-quote-right"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end testimonail-section -->
+	
+	<!-- shop banner -->
+	<section class="shop-banner">
+    	<div class="container">
+        	<h3>Disfruta de nuestro Bono de Bienvenida <br> Comienza con <span class="orange-text">100$</span>, solo este mes</h3>
+            <p></p><a href="/register" class="cart-btn btn-lg">Registrate ahora</a>
+        </div>
+    </section>
+	<!-- end shop banner -->
+
+	<!-- latest news -->
+	<div class="latest-news pt-150 pb-150">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Nuestras</span> Noticias</h3>
+						<p>Mantente al tanto de las últimas novedades deportivas. Con nuestro Newsletter serás el primero en conocer nuestras actualizaciones</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<div class="latest-news-bg news-bg-1"></div>
+						<div class="news-text-box">
+							<h3>Definidos los grupos de la Nations League 24/25</h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 08 Febrero, 2024</span>
+							</p>
+							<p class="excerpt">Suerte para La Roja, que jugará contra Dinamarca, Suiza y Serbia. El grupo B enfrentará a Francia, Italia y Bélgica.</p>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<div class="latest-news-bg news-bg-2"></div>
+						<div class="news-text-box">
+							<h3>Alpine presenta su A524 en un mar de dudas</h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 7 Febrero, 2024</span>
+							</p>
+							<p class="excerpt">La escudería francesa arrastra problemas desde la negativa de la FIA a la prueba de colisiones. Domina la fibra de carbono.</p>
+						
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+					<div class="single-latest-news">
+						<div class="latest-news-bg news-bg-3"></div>
+						<div class="news-text-box">
+							<h3>Dallas, con un Doncic modo MVP, arrasan a los 76ers</h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 6 February, 2024</span>
+							</p>
+							<p class="excerpt">Los Dallas Mavericks vencen a los 76ers en un último cuarto frenético. Los tejanos, con un Doncic estelar, sueñan con los playoffs.</p>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 text-center">
+			
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
+
+	<!-- logo carousel -->
+	<div class="logo-carousel-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="logo-carousel-inner">
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/1.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/2.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/3.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/4.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/5.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end logo carousel -->
+
+	<!-- footer -->
+	<app-footer></app-footer>
+	<!-- end footer -->
+
+	<!-- copyright -->
+	<app-copyright></app-copyright>
+	<!-- end copyright -->
+	
+	<!-- jquery -->
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="assets/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="assets/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="assets/js/sticker.js"></script>
+	<!-- main js -->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
