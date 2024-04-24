@@ -9,6 +9,7 @@ import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { CopyrightComponent } from './copyright/copyright.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
  declarations: [
@@ -18,6 +19,7 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     CopyrightComponent,
     LoginComponent,
+    RegisterComponent
 
 ],
 

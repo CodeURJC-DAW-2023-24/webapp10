@@ -1657,15 +1657,15 @@ div.owl-controls, .owl-controls div {
 }
 
 .news-bg-4 {
-  background-image: url(../img/latest-news/news-bg-4.png);
+  background-image: url(../img/latest-news/news-bg-4.jpg);
 }
 
 .news-bg-5 {
-  background-image: url(../img/latest-news/news-bg-5.png);
+  background-image: url(../img/latest-news/news-bg-5.jpg);
 }
 
 .news-bg-6 {
-  background-image: url(../img/latest-news/news-bg-6.png);
+  background-image: url(../img/latest-news/news-bg-6.jpg);
 }
 
 .latest-news-bg {
@@ -1723,7 +1723,7 @@ p.excerpt {
 }
 
 .single-artcile-bg {
-  background-image: url(../img/latest-news/news-bg-3.jpg);
+  background-image: url(../img/latest-news/news-bg-3.png);
   height: 450px;
 }
 
@@ -2240,9 +2240,7 @@ a.video-play-btn {
   background-image: url(../img/team/team-3.jpg);
 }
 
-.team-bg-4 {
-  background-image: url(../img/team/team-4.jpg);
-}
+
 
 .team-bg {
   height: 400px;

@@ -1,1 +1,214 @@
-<p>register works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+	<!-- title -->
+	<title>Check Out</title>
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	<!-- header -->
+	{{> ../fragments/headerNoTransparent}}
+	<!-- end header -->
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search area -->
+	<!-- breadcrumb-section -->
+	<!-- end breadcrumb section -->
+	<!-- check out section -->
+	<div class="checkout-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="checkout-accordion-wrap">
+						<div class="accordion" id="accordionExample">
+							<div class="card single-accordion">
+								<div class="card-header" id="headingOne">
+									<h5 class="mb-0">
+										<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											Datos personales
+										</button>
+									</h5>
+								</div>
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+									<div class="card-body">
+										<div class="billing-address-form">
+											<form action="/register" method="post" enctype="multipart/form-data">
+												<p><input id="name" name="name" type="text" placeholder="Nombre" required></p>
+												<p><input id="firstsurname" name="firstsurname" type="text" placeholder="Primer apellido" required></p>
+												<p><input id="secondsurname" name="secondsurname" type="text" placeholder="Segundo apellido" required></p>
+												<p><input id="birthdate" name="birthdate" type="date" placeholder="Fecha de nacimiento" required></p>
+												<p><input id="nationality" name="nationality" type="text" placeholder="Nacionalidad" required></p>
+												<p><input id="dni" name="dni" type="text" placeholder="DNI" required></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card single-accordion">
+								<div class="card-header" id="headingTwo">
+									<h5 class="mb-0">
+										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+											Datos de contacto
+										</button>
+									</h5>
+								</div>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+									<div class="card-body">
+										<div class="billing-address-form">
+											<p><input id="adress" name="adress" type="text" placeholder="Dirección" required></p>
+											<p><input id="postcode" name="postcode" type="number" placeholder="Código postal" required></p>
+											<p><input id="telephone" name="telephone" type="number" placeholder="Teléfono" required></p>
+											<p><input id="email" name="email" type="email" placeholder="Email" required></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card single-accordion">
+								<div class="card-header" id="headingFour">
+									<h5 class="mb-0">
+										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+											Método de pago
+										</button>
+									</h5>
+								</div>
+								<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+									<div class="card-body">
+										<div class="billing-address-form">
+											<p><input id="card_number" name="card_number" type="number" placeholder="Número de tarjeta" required></p>
+											<p><input id="cvv" name="cvv" type="number" placeholder="CVV" required></p>
+											<p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" required></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card single-accordion">
+								<div class="card-header" id="headingThree">
+									<h5 class="mb-0">
+										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+											Datos de usuario
+										</button>
+									</h5>
+								</div>
+								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+									<div class="card-body">
+										<div class="billing-address-form">
+											<p><input id="username" name="username" type="text" placeholder="Usuario" required></p>
+											<p><input id="password" name="password" type="password" placeholder="Contraseña" required></p>
+											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
+											<div>
+												<label for="age">Acepto que tengo la mayoría de edad</label><input style="margin-left: 15px" type="checkbox" id="age" name="age" required>
+											</div>
+											<div>
+												<label for="terms">Acepto los <a href="assets/pdf/CondicionesGeneralesMortez365.pdf" download>términos y condiciones</a></label>
+												<input type="checkbox" style="margin-left: 15px" id="terms" name="terms" required>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div style="text-align: right;">
+								<input type="submit" class="boxed-btn">
+								<input type="hidden" name="_csrf" value="{{token}}"/>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end check out section -->
+<!-- footer -->
+{{> ../fragments/footer}}
+<!-- end footer -->
+<!-- copyright -->
+{{> ../fragments/copyright}}
+<!-- end copyright -->
+<!-- jquery -->
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/scriptapuestas.js"></script>
+
+<!--
+<script>
+	document.getElementById('birthdate').addEventListener('change', function () {
+		var birthdate = new Date(this.value);
+		var today = new Date();
+		var age = today.getFullYear() - birthdate.getFullYear();
+		var m = today.getMonth() - birthdate.getMonth();
+		if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+			age--;
+		}
+		if (age < 18) {
+			alert('Debes ser mayor de 18 años.');
+			this.value = '';
+		}
+	});
+</script>
+
+-->
+</body>
+</html>
