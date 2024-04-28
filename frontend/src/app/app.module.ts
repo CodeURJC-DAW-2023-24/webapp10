@@ -18,9 +18,9 @@ import { HeaderNoTransparentComponent } from './header-no-transparent/header-no-
 
 @NgModule({
  declarations: [
-    AppComponent, 
+    AppComponent,
     HomeComponent,
-    HeaderComponent, 
+    HeaderComponent,
     FooterComponent,
     CopyrightComponent,
     LoginComponent,
@@ -34,9 +34,9 @@ import { HeaderNoTransparentComponent } from './header-no-transparent/header-no-
 ],
 
  imports: [
-    BrowserModule, 
+    BrowserModule,
     FormsModule,
-    AppRoutingModule 
+    AppRoutingModule
 ],
 
  bootstrap: [AppComponent]

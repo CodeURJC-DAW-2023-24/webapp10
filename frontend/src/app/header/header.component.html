@@ -5,7 +5,7 @@
                 <div class="main-menu-wrap">
                     <!-- logo -->
                     <div class="site-logo">
-                        <a href="/index">
+                        <a routerLink="/home">
                             <img src="assets/img/logo.png" alt="">
                         </a>
                     </div>
@@ -14,22 +14,22 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="/index">Inicio</a></li>
-                            <li><a href="/bets">Apuestas</a></li>
+                            <li class="current-list-item"><a routerLink="/home">Inicio</a></li>
+                            <li><a routerLink="/bets">Apuestas</a></li>
                             <!-- <li *ngIf="isAdmin"><a href="/betsadmin">Apuestas Administrador</a></li> -->
-                            <li><a href="/roulette">Ruleta</a></li>
-                            <li><a href="javascript:void(0)">Información</a>
+                            <li><a routerLink="/roulette">Ruleta</a></li>
+                            <li><a>Información</a>
                                 <ul class="sub-menu">
-                                    <li><a href="/contact">Contacto</a></li>
-                                    <li><a href="/responsablegame">Juego Responsable</a></li>
-                                    <li><a href="/aboutus">Sobre nosostros</a></li>
+                                    <li><a routerLink="/contact">Contacto</a></li>
+                                    <li><a routerLink="/responsablegame">Juego Responsable</a></li>
+                                    <li><a routerLink="/aboutus">Sobre nosostros</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="mobile-hide" href="/wallet"><i class="fas fa-wallet"></i></a>
-                                    <a class="shopping-cart" href="/cart"><i class="fas fa-receipt"></i></a>
-                                    <a class="mobile-hide" href="/profile"><i class="fas fa-user"></i></a>
+                                    <a class="mobile-hide" routerLink="/wallet"><i class="fas fa-wallet"></i></a>
+                                    <a class="shopping-cart" routerLink="/cart"><i class="fas fa-receipt"></i></a>
+                                    <a class="mobile-hide" routerLink="/profile"><i class="fas fa-user"></i></a>
                                     <!-- Search bar not implemented: <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
                                 </div>
                             </li>
