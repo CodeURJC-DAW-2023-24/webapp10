@@ -8,16 +8,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BetsComponent{
   constructor(private eventsService: EventsService) {}
-  events: any;
+  events: any [] = [];
+  currentPage = 0;
+  pageSize = 10;
   ngOnInit(): void {
-    this.eventsService.getEvents().subscribe((data) => {
-      this.events = data;
-      console.log(this.events);
+   this.loadEvents();
       
-    });
+    };
+    loadEvents() {
+      this.eventsService.getEvents(this.currentPage, this.pageSize).subscribe((data) => {
+        this.events = data.content;
+        console.log(this.events);
+      });
   }
 
+  loadMoreEvents() {
+    this.currentPage++;
+    this.loadEvents();
+  }
 
+   
   }
 
 

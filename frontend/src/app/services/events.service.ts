@@ -8,10 +8,10 @@ export class EventsService {
 
   constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}`);
+  getEvents(page: number, pageSize: number): Observable<any> {
+    const params = { page: page.toString(), pageSize: pageSize.toString() };
+    return this.http.get<any>(`${this.baseUrl}`, { params });
   }
-
   getEventById(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }

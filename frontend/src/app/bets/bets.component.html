@@ -90,7 +90,7 @@
 		<div class="container-fluid">
     <div class="row" id = "eventsContainer">
      
-			<div *ngFor="let event of events.content " class="col-lg-4 col-md-6 text-center">
+			<div *ngFor="let event of events  " class="col-lg-4 col-md-6 text-center">
 				<div class="single-product-item">
 					<div class="product-image">
 						<a [routerLink]="['/singlebet', event.id]"><img src="{{event.imageFile}}" alt=""></a>
@@ -113,7 +113,7 @@
 				<div class="col-lg-12 text-center">
 					<div class="pagination-wrap">
 						<ul>
-							<li><a id="loadMoreButton">Cargar más eventos</a></li>
+							<li><a (click)="loadMoreEvents()">Cargar más eventos</a></li>
 
 						</ul>
 					</div>
