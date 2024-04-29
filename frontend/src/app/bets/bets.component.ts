@@ -17,15 +17,17 @@ export class BetsComponent{
     };
     loadEvents() {
       this.eventsService.getEvents(this.currentPage, this.pageSize).subscribe((data) => {
-        this.events = data.content;
+        this.events = data.content.slice(0, this.pageSize);
         console.log(this.events);
+        console.log(data);
+        console.log(this.pageSize)
       });
   }
+loadMore() {
+  this.pageSize += 10;
+  this.loadEvents();
+}
 
-  loadMoreEvents() {
-    this.currentPage++;
-    this.loadEvents();
-  }
 
    
   }
