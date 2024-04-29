@@ -86,26 +86,27 @@
 		<div class="container">
 
 
-            <!--
+            
 		<div class="container-fluid">
     <div class="row" id = "eventsContainer">
-        {{#events}}
-        <div class="col-lg-4 col-md-6 text-center">
-            <div class="single-product-item">
-                <div class="product-image">
-                    <a href="/single-product?id={{id}}"><img src="{{imageFile}}" alt=""></a>
-                </div>
-                <h3>{{name}}</h3>
-                <p class="product-price">{{championship}} <span>{{sport}}</span></p>
-
-                <a href="single-product?id={{id}}" class="cart-btn"></i>Realizar apuesta</a>
-            </div>
-        </div>
-        {{/events}}
+     
+			<div *ngFor="let event of events?.content" class="col-lg-4 col-md-6 text-center">
+				<div class="single-product-item">
+					<div class="product-image">
+						<a href="/single-product?id={{event.id}}"><img src="{{event.imageFile}}" alt=""></a>
+					</div>
+					<h3>{{event.name}}</h3>
+					<p class="product-price">{{event.championship}} <span>{{event.sport}}</span></p>
+			
+					<a href="single-product?id={{event.id}}" class="cart-btn">Realizar apuesta</a>
+				</div>
+			</div>
+           
+       
     </div>
 </div>
 
--->
+
 			
 
 			<div class="row">
@@ -184,5 +185,4 @@
 
 	<script src= "assets/js/eventRouter.js"></script>
 
-</body>
-</html>
+
