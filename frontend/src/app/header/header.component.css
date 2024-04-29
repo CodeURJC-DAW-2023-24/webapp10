@@ -1,0 +1,15 @@
+.top-header-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.3s ease;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.top-header-area.active {
+  top: 0;
+  background-color: #051922;
+}
