@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ResponsablegameComponent } from './responsablegame/responsablegame.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { BetsComponent } from './bets/bets.component';
 
 
 export const routes: Routes = [
@@ -17,7 +18,9 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'aboutus', component: AboutusComponent },
     { path: 'responsablegame', component: ResponsablegameComponent },
+    { path: 'bets', component: BetsComponent},
     { path: '**', component: NotfoundComponent}
+
     
    
 ];

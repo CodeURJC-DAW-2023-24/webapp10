@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../services/events.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-bets',
-  standalone: true,
-  imports: [],
   templateUrl: './bets.component.html',
   styleUrl: './bets.component.css'
 })
-export class BetsComponent {
+export class BetsComponent{
+  constructor(private eventsService: EventsService) {}
+  events: any;
+  ngOnInit(): void {
+    this.eventsService.getEvents().subscribe((data) => {
+      this.events = data;
+    });
+  }
 
-}
+
+  }
+
+
+
+

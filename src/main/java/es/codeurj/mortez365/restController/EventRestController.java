@@ -28,6 +28,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 
 @RestController
+@CrossOrigin( methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/api/events")
 public class EventRestController {
   
