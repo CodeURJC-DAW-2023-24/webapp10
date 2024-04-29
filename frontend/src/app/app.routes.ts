@@ -8,6 +8,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { ResponsablegameComponent } from './responsablegame/responsablegame.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BetsComponent } from './bets/bets.component';
+import { SinglebetComponent } from './singlebet/singlebet.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'aboutus', component: AboutusComponent },
     { path: 'responsablegame', component: ResponsablegameComponent },
     { path: 'bets', component: BetsComponent},
+    { path: 'singlebet/:id', component: SinglebetComponent},
     { path: '**', component: NotfoundComponent}
 
     

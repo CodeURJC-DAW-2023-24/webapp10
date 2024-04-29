@@ -13,6 +13,7 @@ export class BetsComponent{
     this.eventsService.getEvents().subscribe((data) => {
       this.events = data;
       console.log(this.events);
+      
     });
   }
 

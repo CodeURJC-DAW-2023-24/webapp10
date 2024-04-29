@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Single Product</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="/assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="/assets/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="/assets/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="/assets/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="/assets/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="/assets/css/responsive.css">
+
+</head>
+<body>
+	
+	<!--PreLoader--
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    PreLoader Ends-->
+
+	<!-- header -->
+	<app-header></app-header>
+	<!-- end header -->
+
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search arewa -->
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Información del evento</p>
+						<h1>Realizar apuesta</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- single product -->
+	<div class="single-product mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img id="product-image" src="{{event.imageFile}}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3 id="product-name">{{event.name}}</h3>
+						<h3 id="product-championship">{{event.championship}}</h3>
+						<p>{{event.sport}}</p>
+						<h4>Cuotas</h4>
+
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-9 offset-lg-2 text-center">
+									<!-- Números y botones en la misma línea -->
+									<div class="numero-boton">
+										<h5>{{event.fee}}</h5>
+										<a onclick="select_bet(this)" class="bordered-btn-bets">Victoria</a>
+									</div>
+                                    <!--
+									<div class="numero-boton">
+										<h5>{{feeT}}</h5>
+										<a onclick="select_bet(this)" class="bordered-btn-bets">Empate</a>
+									</div>
+									<div class="numero-boton">
+										<h5>{{feeL}}</h5>
+										<a onclick="select_bet(this)" class="bordered-btn-bets">Derrota</a>
+									</div>
+								</div>
+                                -->
+							</div>
+						</div>
+						<p></p>
+                        <div class="single-product-form">
+                            <form name="form-bet" action="/single-product" method="post" onsubmit="return comprobarApuesta()">
+                                <input type="hidden" name="eventId" value="{{event.id}}">
+                                <input type="hidden" name="selected-bet" id="selected-bet">
+                                <input name="bet-amount" id="money-bet" type="number" step="0.1" placeholder="0"><p></p>
+                                <input class="cart-btn" type="submit" value="Apostar">
+							<!--	<input type="hidden" name="_csrf" value="{{token}}"/>-->
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+				
+	
+	<!-- end single product -->
+
+	<!-- comment section -->
+	<div class="comments-section container">
+		<h2>Comentarios</h2>
+
+		<form action="/single-product/{{event.id}}/comment" method="post" class="comment-form" style="margin-bottom: 20px">
+			<label for="textArea1">Escribe tus opiniones!</label>
+			<textarea class="form-control" id="textArea1" name="text" rows="3" placeholder="Write your comment here..." style="margin-bottom: 15px"></textarea>
+			<button class="btn btn-primary" type="submit">Send</button>
+		<!--	<input type="hidden" name="_csrf" value="{{token}}"/> -->
+		</form>
+<!--
+		<div class="comment-container">
+			{{#event.comments}}
+			<div class="comment" style="margin-bottom: 20px">
+				{{#isEditing}}
+				<form action="/editComment/{{eventId}}/{{id}}" method="post" class="comment-form">
+					<textarea class="form-control" name="content" rows="3" placeholder="Write your comment here..." style="margin-bottom: 12.5px">{{content}}</textarea>
+					<button class="btn btn-primary" type="submit">Enviar</button>
+					<input type="hidden" name="_csrf" value="{{token}}"/>
+				</form>
+				{{/isEditing}}
+
+				{{^isEditing}}
+				<h5>{{user.name}} dice...</h5>
+				<div class="comment-text" style="margin-left: 20px; margin-bottom: 10px">"{{content}}"</div>
+				{{#privileged}}
+				<div style="gap: 10px; margin-left: 20px">
+					<a class="btn btn-light" href="/editComment/{{event.id}}/{{id}}">Editar</a>
+					<a class="btn btn-danger" href="/comment/{{event.id}}/{{id}}/delete" >Borrar</a>
+				</div>
+				{{/privileged}}
+				{{/isEditing}}
+
+			</div>
+			{{/event.comments}}
+			More comments go here -->
+		</div>
+ 
+	
+	<!-- end comment section -->
+
+	<!-- logo carousel -->
+	<div class="logo-carousel-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="logo-carousel-inner">
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/1.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/2.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/3.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/4.png" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="assets/img/company-logos/5.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end logo carousel -->
+
+	<!-- footer -->
+	<app-footer></app-footer>
+	<!-- end footer -->
+
+	<!-- copyright -->
+	<app-copyright></app-copyright>
+	<!-- end copyright -->
+	
+	<!-- jquery -->
+	<script src="/assets/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="/assets/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="/assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="/assets/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="/assets/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="/assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="/assets/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="/assets/js/sticker.js"></script>
+	<!-- main js -->
+<script src="/assets/js/main.js"></script>
+
+	<script src="/assets/js/scriptapuestas.js"></script>
+<!---
+	{{#noMoney}}
+	<script>
+		setTimeout(function() {
+			alert("Saldo insuficiente!!\nRecarga tu monedero...");
+		}, 1100);
+	</script>
+	{{/noMoney}}
+-->
+

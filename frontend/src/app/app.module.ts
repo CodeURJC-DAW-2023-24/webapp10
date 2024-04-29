@@ -17,6 +17,7 @@ import { ResponsablegameComponent } from './responsablegame/responsablegame.comp
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HeaderNoTransparentComponent } from './header-no-transparent/header-no-transparent.component';
 import { BetsComponent } from './bets/bets.component';
+import { SinglebetComponent } from './singlebet/singlebet.component';
 
 @NgModule({
  declarations: [
@@ -32,7 +33,8 @@ import { BetsComponent } from './bets/bets.component';
     ResponsablegameComponent,
     NotfoundComponent,
     HeaderNoTransparentComponent,
-    BetsComponent
+    BetsComponent,
+    SinglebetComponent
 
 ],
 

@@ -90,15 +90,15 @@
 		<div class="container-fluid">
     <div class="row" id = "eventsContainer">
      
-			<div *ngFor="let event of events?.content" class="col-lg-4 col-md-6 text-center">
+			<div *ngFor="let event of events.content " class="col-lg-4 col-md-6 text-center">
 				<div class="single-product-item">
 					<div class="product-image">
-						<a href="/single-product?id={{event.id}}"><img src="{{event.imageFile}}" alt=""></a>
+						<a [routerLink]="['/singlebet', event.id]"><img src="{{event.imageFile}}" alt=""></a>
 					</div>
 					<h3>{{event.name}}</h3>
 					<p class="product-price">{{event.championship}} <span>{{event.sport}}</span></p>
 			
-					<a href="single-product?id={{event.id}}" class="cart-btn">Realizar apuesta</a>
+					<a [routerLink]="['/singlebet', event.id]" class="cart-btn">Realizar apuesta</a>
 				</div>
 			</div>
            
