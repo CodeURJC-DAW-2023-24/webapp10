@@ -54,7 +54,7 @@
 
 										</h5>
 									</div>
-									<form #walletForm="ngForm" (ngSubmit)="addMoney(walletForm)">
+									<form #walletForm="ngForm" (ngSubmit)="addMoney(walletForm.value.cvv, walletForm.value.amount)">
 									<div class="card-body">
 										<div class="billing-address-form">
 											<h3>Número de tarjeta: {{card_number}}</h3>
