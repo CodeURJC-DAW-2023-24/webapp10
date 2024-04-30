@@ -1,4 +1,4 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link routerLink="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="top-header-area" [ngClass]="{'active': scrolled}">
     <div class="container">
         <div class="row">
@@ -17,7 +17,7 @@
                         <ul>
                             <li class="current-list-item"><a routerLink="/home">Inicio</a></li>
                             <li><a routerLink="/bets">Apuestas</a></li>
-                            <!-- <li *ngIf="isAdmin"><a href="/betsadmin">Apuestas Administrador</a></li> -->
+                            <!-- <li *ngIf="isAdmin"><a routerLink="/betsadmin">Apuestas Administrador</a></li> -->
                             <li><a routerLink="/roulette">Ruleta</a></li>
                             <li><a>Información</a>
                                 <ul class="sub-menu">
@@ -31,13 +31,13 @@
                                     <a class="mobile-hide" routerLink="/wallet"><i class="material-icons">account_balance_wallet</i></a>
                                     <a class="shopping-cart" routerLink="/cart"><i class="material-icons">receipt</i></a>
                                     <a class="mobile-hide" routerLink="/profile"><i class="material-icons">account_circle</i></a>
-                                    <!-- Search bar not implemented: <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
+                                    <!-- Search bar not implemented: <a class="mobile-hide search-bar-icon" routerLink="#"><i class="fas fa-search"></i></a> -->
                                 </div>
                             </li>
                         </ul>
                     </nav>
                     <!-- Search bar icon disabled for now
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <a class="mobile-show search-bar-icon" routerLink="#"><i class="fas fa-search"></i></a>
                     <div class="mobile-menu"></div> -->
                     <!-- menu end -->
 

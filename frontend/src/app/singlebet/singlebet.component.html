@@ -129,8 +129,8 @@
 				<div class="comment-text" style="margin-left: 20px; margin-bottom: 10px">"{{content}}"</div>
 				{{#privileged}}
 				<div style="gap: 10px; margin-left: 20px">
-					<a class="btn btn-light" href="/editComment/{{event.id}}/{{id}}">Editar</a>
-					<a class="btn btn-danger" href="/comment/{{event.id}}/{{id}}/delete" >Borrar</a>
+					<a class="btn btn-light" routerLink="/editComment/{{event.id}}/{{id}}">Editar</a>
+					<a class="btn btn-danger" routerLink="/comment/{{event.id}}/{{id}}/delete" >Borrar</a>
 				</div>
 				{{/privileged}}
 				{{/isEditing}}

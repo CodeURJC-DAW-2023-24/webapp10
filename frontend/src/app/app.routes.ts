@@ -9,6 +9,7 @@ import { ResponsablegameComponent } from './responsablegame/responsablegame.comp
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BetsComponent } from './bets/bets.component';
 import { SinglebetComponent } from './singlebet/singlebet.component';
+import { WalletComponent } from './wallet/wallet.component';
 
 
 export const routes: Routes = [
@@ -21,10 +22,11 @@ export const routes: Routes = [
     { path: 'responsablegame', component: ResponsablegameComponent },
     { path: 'bets', component: BetsComponent},
     { path: 'singlebet/:id', component: SinglebetComponent},
+    { path: 'wallet', component: WalletComponent},
     { path: '**', component: NotfoundComponent}
 
-    
-   
+
+
 ];
 
 @NgModule({

@@ -18,6 +18,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { HeaderNoTransparentComponent } from './header-no-transparent/header-no-transparent.component';
 import { BetsComponent } from './bets/bets.component';
 import { SinglebetComponent } from './singlebet/singlebet.component';
+import { WalletComponent } from './wallet/wallet.component';
 
 @NgModule({
  declarations: [
@@ -34,7 +35,8 @@ import { SinglebetComponent } from './singlebet/singlebet.component';
     NotfoundComponent,
     HeaderNoTransparentComponent,
     BetsComponent,
-    SinglebetComponent
+    SinglebetComponent,
+    WalletComponent
 
 ],
 
