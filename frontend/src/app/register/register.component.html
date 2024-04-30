@@ -43,14 +43,36 @@
 								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="billing-address-form">
-											<form action="/register" method="post" enctype="multipart/form-data">
-												<p><input id="name" name="name" type="text" placeholder="Nombre" required></p>
-												<p><input id="firstsurname" name="firstsurname" type="text" placeholder="Primer apellido" required></p>
-												<p><input id="secondsurname" name="secondsurname" type="text" placeholder="Segundo apellido" required></p>
-												<p><input id="birthdate" name="birthdate" type="date" placeholder="Fecha de nacimiento" required></p>
-												<p><input id="nationality" name="nationality" type="text" placeholder="Nacionalidad" required></p>
-												<p><input id="dni" name="dni" type="text" placeholder="DNI" required></p>
+											<form (ngSubmit)="registerUser()">
+												<p><input id="name" name="name" type="text" placeholder="Nombre" [(ngModel)]="user.name" required></p>
+												<p><input id="firstsurname" name="firstsurname" type="text" placeholder="Primer apellido" [(ngModel)]="user.firstsurname" required></p>
+												<p><input id="secondsurname" name="secondsurname" type="text" placeholder="Segundo apellido" [(ngModel)]="user.secondsurname" required></p>
+												<p><input id="birthdate" name="birthdate" type="date" placeholder="Fecha de nacimiento" [(ngModel)]="user.birthdate" required></p>
+												<p><input id="nationality" name="nationality" type="text" placeholder="Nacionalidad" [(ngModel)]="user.nationality" required></p>
+												<p><input id="dni" name="dni" type="text" placeholder="DNI" [(ngModel)]="user.dni" required></p>
+												<p><input id="adress" name="adress" type="text" placeholder="Dirección" [(ngModel)]="user.adress" required></p>
+												<p><input id="postcode" name="postcode" type="number" placeholder="Código postal" [(ngModel)]="user.postcode" required></p>
+												<p><input id="telephone" name="telephone" type="number" placeholder="Teléfono" [(ngModel)]="user.telephone" required></p>
+												<p><input id="email" name="email" type="email" placeholder="Email" [(ngModel)]="user.email" required></p>
+											<!---
+												<p><input id="card_number" name="card_number" type="number" placeholder="Número de tarjeta" [(ngModel)]="card_number" required></p>
+												<p><input id="cvv" name="cvv" type="number" placeholder="CVV" [(ngModel)]="cvv" required></p>
+											
+												<p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" [(ngModel)]="expired_date" required></p> -->
+												<p><input id="username" name="username" type="text" placeholder="Usuario" [(ngModel)]="user.username" required></p>
+												<p><input id="password" name="password" type="password" placeholder="Contraseña" [(ngModel)]="user.password" required></p>
+											
+				
+												
+												<div style="text-align: right;">
+													<input type="submit" class="boxed-btn">
+												</div>
 											</form>
+											<div>
+												<label for="age">Acepto que tengo la mayoría de edad</label><input style="margin-left: 15px" type="checkbox" id="age" name="age" >
+												<label for="terms">Acepto los <a routerLink="assets/pdf/CondicionesGeneralesMortez365.pdf" download>términos y condiciones</a></label>
+												<input type="checkbox" style="margin-left: 15px" id="terms" name="terms"  >
+											</div>
 										</div>
 									</div>
 								</div>
@@ -66,10 +88,7 @@
 								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="billing-address-form">
-											<p><input id="adress" name="adress" type="text" placeholder="Dirección" required></p>
-											<p><input id="postcode" name="postcode" type="number" placeholder="Código postal" required></p>
-											<p><input id="telephone" name="telephone" type="number" placeholder="Teléfono" required></p>
-											<p><input id="email" name="email" type="email" placeholder="Email" required></p>
+											
 										</div>
 									</div>
 								</div>
@@ -103,8 +122,7 @@
 								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="billing-address-form">
-											<p><input id="username" name="username" type="text" placeholder="Usuario" required></p>
-											<p><input id="password" name="password" type="password" placeholder="Contraseña" required></p>
+										
 											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
 											<div>
 												<label for="age">Acepto que tengo la mayoría de edad</label><input style="margin-left: 15px" type="checkbox" id="age" name="age" required>

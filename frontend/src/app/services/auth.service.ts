@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
+import { catchError, throwError } from 'rxjs';
 
 const BASE_URL = '/api/auth';
+const BASE_URL_USERS = '/api/users/';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  logged: boolean;
-  user: User;
+  logged: boolean = false;
+  user: User | undefined;
 
   constructor(private http: HttpClient) {
       this.reqIsLogged();
@@ -62,4 +64,13 @@ export class AuthService {
   currentUser() {
       return this.user;
   }
+
+  register(user: User) {
+        return this.http.post(BASE_URL_USERS, user).pipe(
+            catchError(error => {
+                console.error('Error registering user: ' + JSON.stringify(error));
+                return throwError('Error registering user');
+            })
+        );
+    }
 }
