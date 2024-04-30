@@ -1,24 +1,65 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { User } from '../models/user.model';
+
+const BASE_URL = '/api/auth';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-private baseUrl = '/api/auth/';
+  logged: boolean;
+  user: User;
 
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+      this.reqIsLogged();
+  }
 
-login(loginRequest: any, accessToken: string, refreshToken: string): Observable<any> {
-  return this.http.post<any>(`${this.baseUrl}/login`, loginRequest, { headers: { 'accessToken': accessToken, 'refreshToken': refreshToken } });
-}
+  reqIsLogged() {
 
-refreshToken(refreshToken: string): Observable<any> {
-  return this.http.post<any>(`${this.baseUrl}/refresh`, null, { headers: { 'refreshToken': refreshToken } });
-}
+      this.http.get('/api/users/me', { withCredentials: true }).subscribe(
+          response => {
+              this.user = response as User;
+              this.logged = true;
+          },
+          error => {
+              if (error.status != 404) {
+                  console.error('Error when asking if logged: ' + JSON.stringify(error));
+              }
+          }
+      );
 
-logout(): Observable<any> {
-  return this.http.post<any>(`${this.baseUrl}/logout`, null);
-}
+  }
 
+  logIn(user: string, pass: string) {
+
+      this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
+          .subscribe(
+              (response) => this.reqIsLogged(),
+              (error) => alert("Wrong credentials")
+          );
+
+  }
+
+  logOut() {
+
+      return this.http.post(BASE_URL + '/logout', { withCredentials: true })
+          .subscribe((resp: any) => {
+              console.log("LOGOUT: Successfully");
+              this.logged = false;
+              this.user = undefined;
+          });
+
+  }
+
+  isLogged() {
+      return this.logged;
+  }
+
+  isAdmin() {
+      return this.user && this.user.roles.indexOf('ADMIN') !== -1;
+  }
+
+  currentUser() {
+      return this.user;
+  }
 }
