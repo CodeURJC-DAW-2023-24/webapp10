@@ -79,7 +79,8 @@ public class WebSecurityConfig {
             .requestMatchers("/api/auth/login").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/championship/*").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/sport/*").permitAll()
-            .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
+            //Cambiar esto para que solo pueda el admin que ahora lo estoy probando
+            .requestMatchers(HttpMethod.POST, "/api/events/").permitAll()
             .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
             .requestMatchers (HttpMethod.PUT, "/api/events/").hasRole("ADMIN")
             .requestMatchers(HttpMethod.GET, "/api/events/*").permitAll()

@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { BetsComponent } from './bets/bets.component';
 import { SinglebetComponent } from './singlebet/singlebet.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { BetsadminComponent } from './betsadmin/betsadmin.component';
 
 
 export const routes: Routes = [
@@ -23,6 +24,7 @@ export const routes: Routes = [
     { path: 'bets', component: BetsComponent},
     { path: 'singlebet/:id', component: SinglebetComponent},
     { path: 'wallet', component: WalletComponent},
+    { path: 'betsadmin', component: BetsadminComponent},
     { path: '**', component: NotfoundComponent}
 
 

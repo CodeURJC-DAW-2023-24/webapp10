@@ -19,6 +19,7 @@ import { HeaderNoTransparentComponent } from './header-no-transparent/header-no-
 import { BetsComponent } from './bets/bets.component';
 import { SinglebetComponent } from './singlebet/singlebet.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { BetsadminComponent } from './betsadmin/betsadmin.component';
 
 @NgModule({
  declarations: [
@@ -36,7 +37,8 @@ import { WalletComponent } from './wallet/wallet.component';
     HeaderNoTransparentComponent,
     BetsComponent,
     SinglebetComponent,
-    WalletComponent
+    WalletComponent,
+    BetsadminComponent
 
 ],
 
