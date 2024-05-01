@@ -12,15 +12,25 @@ import { WalletService } from '../services/wallet.service';
 })
 export class WalletComponent {
 
-  card_number : string = '';
-  expired_date : string = '';
-  money : number = 0;
-  cvv : string = '';
+  card_number : string;
+  expired_date : string;
+  money : number;
+  cvv : string;
 
-  constructor(private walletService: WalletService) { }
+  constructor(private walletService: WalletService) {
+    this.card_number = walletService.getCardNumber();
+    this.expired_date = walletService.getExpiredDate();
+    this.money = walletService.getMoney();
+    this.cvv = walletService.getCvv();
+  }
 
   addMoney(input_cvv: string, amount: number): void {
     console.log('CVV:', input_cvv);
     console.log('Cantidad a añadir:', amount);
+
+    if (input_cvv == this.cvv) {
+      this.money += amount;
+      console.log('Se ha completado la operacion');
+    }
   }
 }

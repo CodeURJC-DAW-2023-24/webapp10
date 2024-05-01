@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   isAdmin() {
-      return this.user && this.user.roles.indexOf('ADMIN') !== -1;
+      return this.user && (this.user?.roles?.includes('ADMIN') ?? false);
   }
 
   currentUser() {
