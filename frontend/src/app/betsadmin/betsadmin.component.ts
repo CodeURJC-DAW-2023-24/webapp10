@@ -7,7 +7,7 @@ import { Event } from '../models/event.model';
   styleUrl: './betsadmin.component.css'
 })
 export class BetsadminComponent {
-    event!: Event;
+    event : Event = {} as Event;
     constructor(private eventsService: EventsService) {}
     events: any [] = [];
     currentPage = 0;
