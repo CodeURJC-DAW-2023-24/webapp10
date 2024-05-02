@@ -12,6 +12,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UserDataDTO {
+    
+    @Column(name = "ID")
+    private Long id;
 
     @Column(name = "NAME")
     private String name;
@@ -30,13 +33,14 @@ public class UserDataDTO {
 
 
 
-    public UserDataDTO(String name, String firstsurname, String secondsurname, String email, String username) {
+    public UserDataDTO(Long id, String name, String firstsurname, String secondsurname, String email, String username) {
         super();
         this.name = name;
         this.firstsurname = firstsurname;
         this.secondsurname = secondsurname;
         this.email = email;
         this.username = username;
+        this.id = id;
     }
 
     public UserDataDTO() {

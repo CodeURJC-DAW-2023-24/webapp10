@@ -17,19 +17,22 @@ export class AuthService {
   }
 
   reqIsLogged() {
-
-      this.http.get('/api/users/me', { withCredentials: true }).subscribe(
+    this.http.get('/api/users/me', { withCredentials: true }).subscribe(
           response => {
+            if (response) {
               this.user = response as User;
               this.logged = true;
+            }else {
+              this.user = undefined;
+              this.logged = false;
+            }
           },
           error => {
               if (error.status != 404) {
                   console.error('Error when asking if logged: ' + JSON.stringify(error));
               }
           }
-      );
-
+    );
   }
 
   logIn(user: string, pass: string) {
