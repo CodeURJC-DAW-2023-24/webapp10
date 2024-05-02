@@ -32,7 +32,7 @@ export class BetsService {
   }
 
   createBet(bet: Bet, eventId: Number): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/event/${eventId}`, bet);
+    return this.http.post<any>(`${this.baseUrl}event/${eventId}`, bet);
   }
 
 }
