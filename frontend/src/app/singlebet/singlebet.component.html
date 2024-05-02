@@ -62,26 +62,27 @@
 						<h4>Cuotas</h4>
 
 						<div class="container">
-							<div class="row">
-								<div class="col-lg-9 offset-lg-2 text-center">
-									<!-- Números y botones en la misma línea -->
-									<div class="numero-boton">
-										<h5>{{event.fee}}</h5>
-										<a onclick="select_bet(this)" class="bordered-btn-bets">Victoria</a>
-									</div>
-                                    <!--
-									<div class="numero-boton">
-										<h5>{{feeT}}</h5>
-										<a onclick="select_bet(this)" class="bordered-btn-bets">Empate</a>
-									</div>
-									<div class="numero-boton">
-										<h5>{{feeL}}</h5>
-										<a onclick="select_bet(this)" class="bordered-btn-bets">Derrota</a>
-									</div>
-								</div>
-                                -->
-							</div>
-						</div>
+              <div class="row">
+                <div class="col-lg-9 offset-lg-2 text-center">
+                  <!-- Números y botones en la misma línea -->
+                  <div class="numero-boton">
+                    <h5>{{event.fee}}</h5>
+                    <a (click)="selectBet('Victoria', $event)" class="bordered-btn-bets">Victoria</a>
+                  </div>
+
+                  <div class="numero-boton">
+                    <h5>{{feeT}}</h5>
+                    <a (click)="selectBet('Empate', $event)" class="bordered-btn-bets">Empate</a>
+                  </div>
+                  <div class="numero-boton">
+                    <h5>{{feeL}}</h5>
+                    <a (click)="selectBet('Derrota', $event)" class="bordered-btn-bets">Derrota</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" id="selected-bet" #selectedBetInput>
+
 						<p></p>
                         <div class="single-product-form">
                             <form name="form-bet" action="/single-product" method="post" onsubmit="return comprobarApuesta()">
