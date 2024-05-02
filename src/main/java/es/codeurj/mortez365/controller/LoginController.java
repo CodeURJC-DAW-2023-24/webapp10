@@ -33,6 +33,7 @@ public class LoginController {
             @RequestBody LoginRequest loginRequest) {
         return userService.login(loginRequest, accessToken, refreshToken);
     }
+
     @Operation(summary = "Refresh Access Token", description = "Refresh the access token using the refresh token")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Access token successfully refreshed", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
@@ -44,6 +45,7 @@ public class LoginController {
             @CookieValue(name = "refreshToken", required = false) String refreshToken) {
         return userService.refresh(refreshToken);
     }
+    
     @Operation(summary = "User Logout", description = "Logout the current user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User successfully logged out", content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),

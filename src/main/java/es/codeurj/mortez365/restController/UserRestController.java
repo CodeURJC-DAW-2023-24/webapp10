@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,7 +54,7 @@ public class UserRestController {
         }
         Collection<UserDataDTO> usersList = new ArrayList<>();
         for (User user : users) {
-            UserDataDTO dto = new UserDataDTO(user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername());
+            UserDataDTO dto = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername());
             usersList.add(dto);
         }
         return new ResponseEntity<>(usersList, HttpStatus.OK);
@@ -68,7 +70,7 @@ public class UserRestController {
     public ResponseEntity<UserDataDTO> getUser(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()) {
-            UserDataDTO dto = new UserDataDTO(user.get().getName(), user.get().getFirstsurname(), user.get().getSecondsurname(), user.get().getEmail(), user.get().getUsername());
+            UserDataDTO dto = new UserDataDTO(user.get().getId(), user.get().getName(), user.get().getFirstsurname(), user.get().getSecondsurname(), user.get().getEmail(), user.get().getUsername());
             return ResponseEntity.ok(dto);
         } else {
             return ResponseEntity.notFound().build();
@@ -183,6 +185,20 @@ public class UserRestController {
 
             return ResponseEntity.created(location).build();
         
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserDataDTO> getUserMe() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Optional<User> currentUser = userService.findByUsername(currentUserName);
+        if (currentUser.isPresent()) {
+            User user = currentUser.get();
+            UserDataDTO userDTO = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername());
+            return ResponseEntity.ok().body(userDTO);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
   
 }

@@ -16,6 +16,8 @@ export class LoginComponent {
     event.preventDefault();
 
     this.authService.logIn(user, pass);
+    console.log("ESTA AUTENTICADO: ", this.authService.isLogged());
+    console.log("USUARIO Y CONTRASEÑA: ", this.authService.currentUser()?.username, this.authService.currentUser()?.password);
   }
 
   logOut() {

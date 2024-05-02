@@ -50,14 +50,14 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="billing-address-form">
-                                            <form action="/login" method="POST">
+                                            <form #loginForm="ngForm" (ngSubmit)="logIn($event, username.value, password.value)">
                                                 <label>Nombre de usuario:</label>
-                                                <p><input type="text" name="username" required></p>
+                                                <p><input type="text" name="username" ngModel #username="ngModel" required></p>
                                                 <label>Contraseña:</label>
-                                                <p><input type="password" name="password" required></p>
+                                                <p><input type="password" name="password" ngModel #password="ngModel" required></p>
 
                                                 <div class="d-flex align-items-center">
-                                                    <input type="submit" class="boxed-btn" value="Iniciar Sesión">
+                                                    <input type="submit" class="boxed-btn" [disabled]="!loginForm.valid" value="Iniciar Sesión">
                                                     <h6 style="margin-left: 20px">¿No tienes cuenta? Regístrate <a routerLink="/register">Aquí</a></h6>
                                                 </div>
                                               <!---  <input type="hidden" name="_csrf" value="{{token}}"/> -->
