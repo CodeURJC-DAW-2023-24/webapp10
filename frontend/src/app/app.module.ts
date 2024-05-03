@@ -20,6 +20,7 @@ import { BetsComponent } from './bets/bets.component';
 import { SinglebetComponent } from './singlebet/singlebet.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { BetsadminComponent } from './betsadmin/betsadmin.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
  declarations: [
@@ -38,7 +39,8 @@ import { BetsadminComponent } from './betsadmin/betsadmin.component';
     BetsComponent,
     SinglebetComponent,
     WalletComponent,
-    BetsadminComponent
+    BetsadminComponent,
+    ProfileComponent
 
 ],
 

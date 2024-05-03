@@ -11,6 +11,7 @@ import { BetsComponent } from './bets/bets.component';
 import { SinglebetComponent } from './singlebet/singlebet.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { BetsadminComponent } from './betsadmin/betsadmin.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
     { path: 'singlebet/:id', component: SinglebetComponent},
     { path: 'wallet', component: WalletComponent},
     { path: 'betsadmin', component: BetsadminComponent},
+    { path: 'profile', component: ProfileComponent},
     { path: '**', component: NotfoundComponent}
 
 

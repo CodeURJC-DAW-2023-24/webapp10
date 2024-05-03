@@ -76,4 +76,10 @@ export class AuthService {
             })
         );
     }
+
+    getUserDetails (){
+        return this.user;
+
+
+    }
 }

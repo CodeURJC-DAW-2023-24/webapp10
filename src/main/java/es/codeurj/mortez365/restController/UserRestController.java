@@ -54,7 +54,7 @@ public class UserRestController {
         }
         Collection<UserDataDTO> usersList = new ArrayList<>();
         for (User user : users) {
-            UserDataDTO dto = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername());
+            UserDataDTO dto = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername(), user.getAdress(), user.getPostcode(), user.getTelephone(), user.getDni(), user.getBirthdate());
             usersList.add(dto);
         }
         return new ResponseEntity<>(usersList, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class UserRestController {
     public ResponseEntity<UserDataDTO> getUser(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()) {
-            UserDataDTO dto = new UserDataDTO(user.get().getId(), user.get().getName(), user.get().getFirstsurname(), user.get().getSecondsurname(), user.get().getEmail(), user.get().getUsername());
+            UserDataDTO dto = new UserDataDTO(user.get().getId(), user.get().getName(), user.get().getFirstsurname(), user.get().getSecondsurname(), user.get().getEmail(), user.get().getUsername(), user.get().getAdress(), user.get().getPostcode(), user.get().getTelephone(), user.get().getDni(), user.get().getBirthdate());
             return ResponseEntity.ok(dto);
         } else {
             return ResponseEntity.notFound().build();
@@ -194,7 +194,7 @@ public class UserRestController {
         Optional<User> currentUser = userService.findByUsername(currentUserName);
         if (currentUser.isPresent()) {
             User user = currentUser.get();
-            UserDataDTO userDTO = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername());
+            UserDataDTO userDTO = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername(), user.getAdress(), user.getPostcode(), user.getTelephone(), user.getDni(), user.getBirthdate());
             return ResponseEntity.ok().body(userDTO);
         } else {
             return ResponseEntity.noContent().build();
