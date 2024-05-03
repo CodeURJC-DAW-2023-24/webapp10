@@ -81,6 +81,7 @@
 	<!-- end breadcrumb section -->
 
 	<!-- check out section -->
+	<div *ngIf="user">
 	<div class="checkout-section mt-150 mb-150">
         <div class="container">
             <div class="row">
@@ -97,7 +98,7 @@
                               </h5>
                             </div>
                             <div class="card-body">
-								<div *ngIf="user">
+							
                                 <div class="billing-address-form">
                                     <div class="user-profile">
 										
@@ -144,7 +145,7 @@
 											<!--<input type="hidden" name="_csrf" value="{{token}}"/> -->	
 											</form>
                                     </div>
-									</div>
+								
 									<div *ngIf="!user"> 
 
 										<p>No estás logueado. Por favor, inicia sesión para ver tus detalles.</p>
@@ -179,6 +180,26 @@
 						</div>
 
 					</div>
+					</div>
+					<div *ngIf="!user"> 
+						<div class="full-height-section error-section">
+							<div class="full-height-tablecell">
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-8 offset-lg-2 text-center">
+											<div class="error-text">
+												<i class="far fa-sad-cry"></i>
+												<h1>No esta logeado</h1>
+												<p>Inicie sesión para ver sus datos</p>
+												<a routerLink="/login" class="boxed-btn">Iniciar sesión</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					  </div>
+
 				
                 
 			

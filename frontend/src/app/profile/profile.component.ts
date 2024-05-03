@@ -17,12 +17,12 @@ export class ProfileComponent {
   ngOnInit() {
     if (this.authService.isLogged()) {
       this.user = this.authService.getUserDetails(); 
-   
-    }
-   
-  }
+    
 
-  logOut() {
+    }
+    
+  }
+    logOut() {
     this.authService.logOut();
     this.router.navigate(['/home']);
   }
