@@ -1,6 +1,8 @@
+import { BetsService } from './../services/bets.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { EventsService } from '../services/events.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Result } from '../models/result.model';
 
 @Component({
   selector: 'app-singlebet',
@@ -11,11 +13,13 @@ export class SinglebetComponent {
   event: any;
   feeT:number = 0;
   feeL:number = 0;
+  betAmount: number = 0;
 
   @ViewChild('selectedBetInput') selectedBetInput!: ElementRef;
 
-  constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService) {
+  constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService, private betsService: BetsService) {
     let id = activatedRoute.snapshot.params['id'];
+
 
     eventsService.getEventById(id).subscribe(
       event => {
@@ -29,7 +33,6 @@ export class SinglebetComponent {
   }
 
   selectBet(betType: string, event: Event) {
-    console.log("LLEGA");
     const betButtons = document.querySelectorAll('.bordered-btn-bets');
 
     // Deseleccionar todos los botones
@@ -45,6 +48,49 @@ export class SinglebetComponent {
     this.selectedBetInput.nativeElement.value = betType;
   }
 
+  comprobarApuesta(): boolean {
+    if (!this.isBetSelected()) {
+      alert('Debes seleccionar una apuesta.');
+      return false;
+    }
+    if (this.betAmount <= 0) {
+      alert('La apuesta debe ser mayor que 0.');
+      return false;
+    }
+    console.log("LLEGA");
+    const r: Result = this.selectResult();
+    console.log("LLEGA");
+    this.betsService.createBet({
+      bet_amount: this.betAmount,
+      result: r,
+      event: this.event.id,
+    }, this.event.id).subscribe(() => {
+      alert('Apuesta creada');
+      this.router.navigate(['/home']);
+      return true;
+    }, error => {
+      console.error('Error al crear la apuesta: ', error);
+      return false;
+    });
+    return true;
+  }
+
+  isBetSelected(): boolean {
+    // Comprueba si se ha seleccionado una apuesta
+    const selectedBet = document.getElementById('selected-bet') as HTMLInputElement;
+
+    return selectedBet.value !== '';
+  }
+
+  selectResult(): Result {
+    if(this.selectedBetInput.nativeElement.value == "Victoria"){
+      return Result.WIN;
+    } else if(this.selectedBetInput.nativeElement.value == "Empate"){
+      return Result.TIE;
+    } else{
+      return Result.LOSE;
+    }
+  }
 }
 
 
