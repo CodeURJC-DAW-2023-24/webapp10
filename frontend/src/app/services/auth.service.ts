@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 const BASE_URL = '/api/auth';
 const BASE_URL_USERS = '/api/users/';
@@ -82,4 +82,9 @@ export class AuthService {
 
 
     }
+  
+    getUserImage(id: number) {
+    
+        return this.http.get( `${BASE_URL_USERS}image/${id}`, { responseType: 'blob' });
+      }
 }

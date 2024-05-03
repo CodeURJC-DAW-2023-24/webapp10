@@ -28,4 +28,8 @@ getEvents(page: number, pageSize: number): Observable<any> {
   deleteEvent(id: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
+
+  getEventImage(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/image/${id}`);
+  }
 }

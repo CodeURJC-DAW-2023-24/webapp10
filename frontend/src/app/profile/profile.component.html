@@ -154,7 +154,8 @@
                             </div>
 						    </div>
 							<div class="col-lg-5 align-items-center">
-						<!---	<img id="profile-picture" src="data:image/jpeg;base64,{{imageBase64}}" alt="User Profile Picture" onerror="this.onerror=null; this.src='/assets/img/default-profile.png'" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 80px">-->	
+								<img id="profile-picture" [src]="image" alt="User image" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 80px">
+					
 								<div class="user-profile text-center">
 									<div class="align-items-center" style="margin-top: 360px">
 										<form action="/uploadProfilePicture" method="post" enctype="multipart/form-data" class="text-center">
