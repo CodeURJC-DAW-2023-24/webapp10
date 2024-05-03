@@ -97,6 +97,8 @@ public class WebSecurityConfig {
                   .requestMatchers(HttpMethod.GET, "/api/users/image/*").permitAll()
                   .requestMatchers(HttpMethod.POST, "/api/users/image/*").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").hasRole("ADMIN")
+                  //Cambiar luego
+                  .requestMatchers(HttpMethod.PUT, "/api/users/image/*").permitAll()
 
                   //Security of WalletRestController
                     .requestMatchers(HttpMethod.GET, "/api/wallets/").hasRole("ADMIN")

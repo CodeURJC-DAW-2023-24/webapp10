@@ -77,14 +77,22 @@ export class AuthService {
         );
     }
 
-    getUserDetails (){
+    getId(): number {
+        return this.user?.id ?? 1;
+    }
+
+    getUserDetails() {
         return this.user;
-
-
     }
   
     getUserImage(id: number) {
     
         return this.http.get( `${BASE_URL_USERS}image/${id}`, { responseType: 'blob' });
+      }
+
+    updateUserImage(id: number, image: File) {
+        const formData = new FormData();
+        formData.append('image', image);
+        return this.http.put(`${BASE_URL_USERS}image/${id}`, formData);
       }
 }
