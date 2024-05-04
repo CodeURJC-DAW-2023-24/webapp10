@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
+import { Comment } from '../models/comment.model';
 
 
 @Injectable({
@@ -9,21 +9,31 @@ import { Observable } from 'rxjs';
 })
 export class CommentService {
 
-  private baseUrl = '/api';
+  private baseUrl = '/api/comment';
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
-  addComment(id: number, commentText: string): Observable<any> {
-    const body = new URLSearchParams();
-    body.set('text', commentText);
-    return this.http.post<any>(`${this.baseUrl}/single-product/${id}/comment`, body.toString());
+  getComment(id: number): Observable<Comment> {
+    return this.http.get<Comment>(`${this.baseUrl}/${id}`);
   }
 
-  editComment(eventId: number, id: number, newComment: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/editComment/${eventId}/${id}`, { content: newComment });
+  getAllComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.baseUrl}/`);
   }
 
-  deleteComment(eventId: number, id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/comment/${eventId}/${id}/delete`);
+  getCommentsByEvent(eventId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.baseUrl}/event/${eventId}`);
+  }
+
+  createComment(comment: Comment, eventId: number): Observable<Comment> {
+    return this.http.post<Comment>(`${this.baseUrl}/${eventId}`, comment);
+  }
+
+  deleteComment(id: number): Observable<Comment> {
+    return this.http.delete<Comment>(`${this.baseUrl}/${id}`);
+  }
+
+  replaceComment(id: number, newComment: Comment): Observable<Comment> {
+    return this.http.put<Comment>(`${this.baseUrl}/${id}`, newComment);
   }
 }
