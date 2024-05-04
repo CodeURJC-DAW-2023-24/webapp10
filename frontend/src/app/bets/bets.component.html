@@ -45,32 +45,34 @@
 	<!-- end breadcrumb section -->
 
 	<!-- products -->
-	<div class="product-section mt-150 mb-150">
-		<div class="container">
-
-
-
-		<div class="container-fluid">
-    <div class="row" id = "eventsContainer">
-
-			<div *ngFor="let event of events  " class="col-lg-4 col-md-6 text-center">
-				<div class="single-product-item">
-					<div class="product-image">
-						<a [routerLink]="['/singlebet', event.id]"><img src="{{event.imageFile}}" alt=""></a>
-					</div>
-					<h3>{{event.name}}</h3>
-					<p class="product-price">{{event.championship}} <span>{{event.sport}}</span></p>
-
-					<a [routerLink]="['/singlebet', event.id]" class="cart-btn">Realizar apuesta</a>
-				</div>
-			</div>
-
-
-    </div>
-</div>
-
-
-
+  <div>
+    <div>
+      <div class="product-section mt-50 mb-100">
+        <div class="container">
+            <ng-container *ngIf="events.length > 0; else noEvents">
+                <div class="container-fluid">
+                    <div class="row" id="eventsContainer">
+                        <ng-container *ngFor="let event of events">
+                            <div *ngIf="!event.finished" class="col-lg-4 col-md-6 text-center">
+                                <div class="single-product-item">
+                                    <div class="product-image">
+                                        <a [routerLink]="['/singlebet', event.id]"><img src="{{event.imageFile}}" alt=""></a>
+                                    </div>
+                                    <h3>{{event.name}}</h3>
+                                    <p class="product-price">{{event.championship}} <span>{{event.sport}}</span></p>
+                                    <a [routerLink]="['/singlebet', event.id]" class="cart-btn">Realizar apuesta</a>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #noEvents>
+                <div class="text-center">
+                    <p>No hay eventos disponibles en este momento.</p>
+                </div>
+            </ng-template>
+        </div>
 
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -84,6 +86,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!-- end products -->
 
