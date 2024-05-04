@@ -23,6 +23,7 @@ export class LoginComponent {
     }
     console.log("ESTA AUTENTICADO: ", this.authService.isLogged());
     console.log("USUARIO Y CONTRASEÑA: ", this.authService.currentUser()?.username, this.authService.currentUser()?.password);
+    console.log("ES ADMIN: ", this.authService.isAdmin());
   }
 
   logOut() {

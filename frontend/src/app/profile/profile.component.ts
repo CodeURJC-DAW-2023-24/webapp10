@@ -36,33 +36,26 @@ export class ProfileComponent {
     this.router.navigate(['/home']);
   }
  
-  selectedFile!: File;
+  selectedImage!: File;
 
-  onFileSelected(event: any) {
-    if (event.target.files && event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-    }
-  }
   
-  onSubmit() {
-    if (this.selectedFile) {
-      this.authService.updateUserImage(this.user._id, this.selectedFile).subscribe(
-        () => {
-        
-          this.authService.getUserImage(this.user._id).subscribe(
-            (imageBlob: Blob) => {
-              const objectUrl = URL.createObjectURL(imageBlob);
-              this.image = objectUrl;
-            },
-            (error) => {
-              console.error('Error getting user image', error);
-            }
-          );
-        },
-        (error) => {
-          console.error('Error updating user image', error);
-        }
-      );
+  onFileSelected(event: any): void {
+    this.selectedImage = event.target.files[0];
+  }
+
+  uploadImage(): void {
+    const userId = 1;
+    if (this.selectedImage) {
+      this.authService.updateUserImage(userId, this.selectedImage)
+        .subscribe(
+          (          response: any) => {
+            console.log('Image uploaded', response);
+           
+          },
+          (          error: any) => {
+            console.error('Error uploading image', error);
+          }
+        );
     }
   }
 }

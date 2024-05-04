@@ -40,6 +40,7 @@ export class AuthService {
       this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
           .subscribe(
               (response) => this.reqIsLogged(),
+   
               (error) => alert("Wrong credentials")
           );
 
@@ -59,22 +60,30 @@ export class AuthService {
   isLogged() {
       return this.logged;
   }
-
-  isAdmin() {
-      return this.user && (this.user?.roles?.includes('ADMIN') ?? false);
+  isAdmin(): boolean {
+   
+    return this.user && this.user.roles?.includes('ADMIN') ? true : false;
   }
-
+ 
   currentUser() {
       return this.user;
   }
 
   register(user: User) {
+    if (user.roles) {
+        user.roles.push('USER');
+    } else {
+        user.roles = ['USER'];
+    }
         return this.http.post(BASE_URL_USERS, user).pipe(
             catchError(error => {
                 console.error('Error registering user: ' + JSON.stringify(error));
                 return throwError('Error registering user');
             })
         );
+    }
+    setRole(user: User){
+        user.roles.push("USER");
     }
 
     getId(): number {
@@ -92,7 +101,8 @@ export class AuthService {
 
     updateUserImage(id: number, image: File) {
         const formData = new FormData();
-        formData.append('image', image);
-        return this.http.put(`${BASE_URL_USERS}image/${id}`, formData);
-      }
+        formData.append('file', image);
+        return this.http.post(`${BASE_URL_USERS}image/${id}`, formData);
+ 
+}
 }

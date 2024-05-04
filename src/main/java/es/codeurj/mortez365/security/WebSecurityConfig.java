@@ -23,6 +23,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -63,7 +65,20 @@ public class WebSecurityConfig {
     
     }
 
-
+    @Bean
+public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("http://localhost:4200")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
+                    .allowedHeaders("*")
+                    .allowCredentials(true);
+        }
+    };
+}
+        
     @Bean 
     @Order(1)
     public SecurityFilterChain apFilterChain (HttpSecurity http ) throws Exception {
@@ -79,8 +94,8 @@ public class WebSecurityConfig {
             .requestMatchers("/api/auth/login").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/championship/*").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/sport/*").permitAll()
-            //Cambiar esto para que solo pueda el admin que ahora lo estoy probando
-            .requestMatchers(HttpMethod.POST, "/api/events/").permitAll()
+          
+            .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
             .requestMatchers (HttpMethod.PUT, "/api/events/").hasRole("ADMIN")
             .requestMatchers(HttpMethod.GET, "/api/events/*").permitAll()
@@ -95,8 +110,9 @@ public class WebSecurityConfig {
                   .requestMatchers(HttpMethod.POST, "/api/users/").permitAll()
                   .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.GET, "/api/users/image/*").permitAll()
-                  .requestMatchers(HttpMethod.POST, "/api/users/image/*").hasRole("ADMIN")
-                  .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.POST, "/api/users/image/*").permitAll()
+                  .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").permitAll()
+                  .requestMatchers(HttpMethod.PUT, "/api/users/image/*").permitAll()
                   //Cambiar luego
                   .requestMatchers(HttpMethod.PUT, "/api/users/image/*").permitAll()
 

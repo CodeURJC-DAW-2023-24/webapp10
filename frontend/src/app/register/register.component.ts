@@ -20,8 +20,11 @@ export class RegisterComponent {
     
 
     this.authService.register(this.user)
+    
     .subscribe(
       user => {
+        
+      
         console.log(user);
       },
       error => {
