@@ -3,14 +3,19 @@
 #################################################
 FROM node:20 as angular_builder
 
+# Define el directorio de trabajo donde ejecutar comandos
 WORKDIR /ang
 
+# Copia las dependencias del proyecto
 COPY frontend/* /ang/
 
+# Compila proyecto y descarga librerías
 RUN npm install
 
+# Copia el contenido de src de frontend a ang
 COPY frontend/src /ang/src
 
+# Compila el proyecto
 RUN npm run build
 
 #################################################
