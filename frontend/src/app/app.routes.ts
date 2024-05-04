@@ -13,6 +13,7 @@ import { WalletComponent } from './wallet/wallet.component';
 import { BetsadminComponent } from './betsadmin/betsadmin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
+import { CartComponent } from './cart/cart.component';
 
 
 export const routes: Routes = [
@@ -29,6 +30,7 @@ export const routes: Routes = [
     { path: 'betsadmin', component: BetsadminComponent},
     { path: 'profile', component: ProfileComponent},
     { path: 'edit-event/:id', component: EditEventComponent},
+    { path: 'cart', component: CartComponent},
     { path: '**', component: NotfoundComponent}
 
 

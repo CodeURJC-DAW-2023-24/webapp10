@@ -22,6 +22,7 @@ import { WalletComponent } from './wallet/wallet.component';
 import { BetsadminComponent } from './betsadmin/betsadmin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
  declarations: [
@@ -42,7 +43,8 @@ import { EditEventComponent } from './edit-event/edit-event.component';
     WalletComponent,
     BetsadminComponent,
     ProfileComponent,
-    EditEventComponent
+    EditEventComponent,
+    CartComponent
 
 ],
 

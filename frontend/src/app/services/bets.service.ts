@@ -35,4 +35,8 @@ export class BetsService {
     return this.http.post<any>(`${this.baseUrl}event/${eventId}`, bet);
   }
 
+  getBets(): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}`);
+  }
+
 }
