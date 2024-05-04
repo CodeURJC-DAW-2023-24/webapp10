@@ -104,8 +104,9 @@ public class EventRestController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<Event> replaceEvent(@RequestBody Event newEvent, @PathVariable Long id) {
+        System.out.println("LLEGA");
         Optional<Event> event = eventService.findById(id);
-        
+        newEvent.setComments(event.get().getComments());
         if (event.isPresent()) {
             newEvent.setId(id);
             eventService.save(newEvent);

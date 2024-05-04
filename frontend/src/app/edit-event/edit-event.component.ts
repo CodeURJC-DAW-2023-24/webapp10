@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EventsService } from '../services/events.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class EditEventComponent {
   event: any;
 
-  constructor(activatedRoute: ActivatedRoute, private eventsService: EventsService) {
+  constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService) {
     let id = activatedRoute.snapshot.params['id'];
     if (id) {
       eventsService.getEventById(id).subscribe(
@@ -21,7 +21,7 @@ export class EditEventComponent {
       );
     }
 
-    
+
   }
 
   save (){
@@ -29,7 +29,8 @@ export class EditEventComponent {
       event => console.log(event),
       error => console.error(error)
     );
+    this.router.navigate(['/betsadmin']);
   }
 
- 
+
 }
