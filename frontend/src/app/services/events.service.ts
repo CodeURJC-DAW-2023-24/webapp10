@@ -22,7 +22,7 @@ getEvents(page: number, pageSize: number): Observable<any> {
   }
 
   updateEvent(id: number, event: Event): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}${id}`, event);
+    return this.http.put<any>(`${this.baseUrl}/${id}`, event);
   }
 
   deleteEvent(id: number): Observable<any> {

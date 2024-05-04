@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="../../assets/css/responsive.css">
 
 </head>
-<body>
+.<body>
 
 <!--PreLoader
 <div class="loader">
@@ -87,17 +87,17 @@ PreLoader Ends-->
             <form name="edit-event" (ngSubmit)="save()" method="post">
             <div class="col-md-5">
                 <div class="single-product-img">
-                    <img id="product-image" src="{{event.image}}" alt=""><input type="file">
+                <!---  <img id="product-image" src="{{event.image}}" alt=""><input type="file"> -->  
                 </div>
             </div><p></p>
             <div class="col-md-7">
                 <div class="single-product-content">
                     <h3 id="product-name">Nombre: <label>
-                        <input name="event-name" value="{{event.name}}">
+                        <input [(ngModel)] ="event.name" name="event-name" value="{{event.name}}">
                     </label></h3>
-                    <h3>Campeonato: <input name="event-championship" value="{{event.championship}}"></h3>
-                    <p>Deporte: <input name="event-sport" value="{{event.sport}}"></p>
-                    <h4>Cuota: <input name="event-fee" value="{{event.fee}}"></h4>
+                    <h3>Campeonato: <input [(ngModel)] ="event.championship" name="event-championship" value="{{event.championship}}"></h3>
+                    <p>Deporte: <input [(ngModel)] ="event.sport" name="event-sport" value="{{event.sport}}"></p>
+                   <!--- <h4>Cuota: <input [[(ngModel)] ="event.fee" name="event-fee" value="{{event.fee}}"></h4> -->
                     <p></p>
                     <div class="single-product-form">
                             <input type="hidden" name="eventId" value="{{event.id}}">

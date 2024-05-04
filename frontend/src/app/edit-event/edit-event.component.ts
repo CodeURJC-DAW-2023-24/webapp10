@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EventsService } from '../services/events.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-event',
@@ -19,7 +20,7 @@ export class EditEventComponent {
         error => console.error(error)
       );
     }
-0
+
     
   }
 
