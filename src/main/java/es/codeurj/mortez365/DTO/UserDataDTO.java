@@ -49,12 +49,16 @@ public class UserDataDTO {
     @Column(name = "POSTCODE")
     private String postcode;
 
+    @Column(name = "ROLE")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
+
     @PrimaryKeyJoinColumn(name = "USERNAME")
     private String username;
 
 
 
-    public UserDataDTO(Long id, String name, String firstsurname, String secondsurname, String email, String username, String adress, String postcode, String telephone, String dni , Date birthdate) {
+    public UserDataDTO(Long id, String name, String firstsurname, String secondsurname, String email, String username, String adress, String postcode, String telephone, String dni , Date birthdate, List<String> roles) { 
         super();
         this.name = name;
         this.firstsurname = firstsurname;
@@ -66,6 +70,7 @@ public class UserDataDTO {
         this.telephone = telephone;
         this.dni = dni;
         this.birthdate = birthdate;
+        this.roles = roles;
         this.id = id;
     }
 

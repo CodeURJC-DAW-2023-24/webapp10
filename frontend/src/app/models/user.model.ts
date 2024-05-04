@@ -13,6 +13,7 @@ export interface User {
   adress: string;
   postcode: number;
   telephone: number;
+  
 
 
 
