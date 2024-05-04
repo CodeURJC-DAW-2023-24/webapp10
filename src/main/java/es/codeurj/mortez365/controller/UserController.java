@@ -99,7 +99,7 @@ public class UserController {
     @PostConstruct
     public void initAdmin() throws IOException {
         List<String> roles = Arrays.asList("USER", "ADMIN");
-        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", passwordEncoder.encode("adminpass"), true, "Calle", "2313", "1232131", roles,"assets/img/laliga/leyenda.jpeg");
+        User u = new User("admin", "Admin", "PorDefecto", "admin@gmail.com", new java.util.Date(), "Sierra Leona", "459087S", "admin", "adminpass", true, "Calle", "2313", "1232131", roles,"assets/img/laliga/leyenda.jpeg");
         Resource image = new ClassPathResource(u.getImageFile());
         u.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         Wallet wallet = new Wallet("123214", "980", "06/27", u);
