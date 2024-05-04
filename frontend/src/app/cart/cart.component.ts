@@ -10,6 +10,7 @@ interface Bet {
   result: string;
   bet_amount: number;
   winning_amount: number;
+  fee: number;
   event: {
     id: number;
     name: string;
@@ -36,18 +37,24 @@ export class CartComponent implements OnInit {
   constructor(private router: Router, private eventsService: EventsService, private betsService: BetsService) {}
 
   ngOnInit(): void {
-    this.betsService.getBets().subscribe((bets: any) => {
+    this.loadBetsData();
+  }
+
+  private loadBetsData(): void {
+    this.betsService.getBets().subscribe((bets: Bet[]) => {
+      console.log(bets);
       this.bets = bets.filter((bet: any) => !bet.event.finished);
       this.betsFinished = bets.filter((bet: any) => bet.event.finished);
       this.hasBets = this.bets.length > 0;
       this.hasBetsFinished = this.betsFinished.length > 0;
       this.calculateTotals();
     });
-}
+  }
+
 
   private calculateTotals(): void {
-    this.totalWinningAmount = this.bets.reduce((acc, bet) => acc + bet.winning_amount, 0);
+    this.totalWinningAmount = this.betsFinished.reduce((acc, bet) => acc + bet.winning_amount, 0);
     this.totalBet = this.bets.reduce((acc, bet) => acc + bet.bet_amount, 0);
-    this.totalBenefit = this.bets.reduce((acc, bet) => acc + bet.winning_amount - bet.bet_amount, 0);
+    this.totalBenefit = this.betsFinished.reduce((acc, bet) => acc + bet.winning_amount - bet.bet_amount, 0);
   }
 }

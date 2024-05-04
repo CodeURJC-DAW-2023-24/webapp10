@@ -52,6 +52,11 @@ public class Bet {
 
     @Setter
     @Getter
+    @Column(name = "FEE")
+    private double fee;
+
+    @Setter
+    @Getter
     @Column(name = "TYPE_BET")
     private TypeBet typeBet;
 

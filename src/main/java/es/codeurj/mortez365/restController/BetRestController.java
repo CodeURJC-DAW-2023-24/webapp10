@@ -7,6 +7,7 @@ import java.util.Optional;
 import es.codeurj.mortez365.model.Bet;
 import es.codeurj.mortez365.model.Comment;
 import es.codeurj.mortez365.model.Event;
+import es.codeurj.mortez365.model.Result;
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.repository.EventRepository;
 import es.codeurj.mortez365.repository.UserRepository;
@@ -65,6 +66,7 @@ public class BetRestController {
     @PostMapping("/event/{idE}")
     public ResponseEntity<Bet> createBet(@RequestBody Bet bet, @PathVariable Long idE) {
         Double fee;
+        Event event;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         Optional<User> currentUser = userService.findByUsername(currentUserName);
@@ -72,8 +74,7 @@ public class BetRestController {
         if(eventService.findById(idE).isEmpty()){
             return ResponseEntity.badRequest().build();
         } else{
-            Event event = eventService.findById(idE).get();
-            fee = event.getFee();
+            event = eventService.findById(idE).get();
             bet.setEvent(event);
             if(eventService.findById(bet.getEvent().getId()).isEmpty()){
                 return ResponseEntity.notFound().build();
@@ -86,6 +87,14 @@ public class BetRestController {
         if(bet.getResult() == null){
             return ResponseEntity.badRequest().build();
         }
+        if(bet.getResult() == Result.WIN){
+            fee = event.getFee();
+        } else if(bet.getResult() == Result.TIE){
+            fee = 1.7;
+        } else {
+            fee = 3.5 - event.getFee();
+        }
+        bet.setFee(fee);
         bet.setWinning_amount(fee * bet.getBet_amount());
         bet.setProfit(bet.getWinning_amount() - bet.getBet_amount());
 
