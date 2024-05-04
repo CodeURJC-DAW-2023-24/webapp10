@@ -3,6 +3,7 @@ export interface Event {
     name : string;
     championship : string;
     sport: string;
+    fee: number;
     
     
 }

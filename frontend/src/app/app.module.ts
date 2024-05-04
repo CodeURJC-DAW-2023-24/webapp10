@@ -21,6 +21,7 @@ import { SinglebetComponent } from './singlebet/singlebet.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { BetsadminComponent } from './betsadmin/betsadmin.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 @NgModule({
  declarations: [
@@ -40,7 +41,8 @@ import { ProfileComponent } from './profile/profile.component';
     SinglebetComponent,
     WalletComponent,
     BetsadminComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditEventComponent
 
 ],
 

@@ -13,7 +13,7 @@ getEvents(page: number, pageSize: number): Observable<any> {
     const params = { page: page.toString(), pageSize: pageSize.toString() };
     return this.http.get<any>(`${this.baseUrl}`, { params });
   }
-  getEventById(id: string): Observable<any> {
+  getEventById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 
@@ -21,15 +21,25 @@ getEvents(page: number, pageSize: number): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, event);
   }
 
-  updateEvent(id: string, event: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${id}`, event);
+  updateEvent(id: number, event: Event): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}${id}`, event);
   }
 
-  deleteEvent(id: string): Observable<any> {
+  deleteEvent(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
 
   getEventImage(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/image/${id}`);
+  }
+
+  deleteEventImage(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/image/${id}`);
+  }
+
+  updateEventImage(id: string, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append("image", image);
+    return this.http.put<any>(`${this.baseUrl}/image/${id}`, formData);
   }
 }

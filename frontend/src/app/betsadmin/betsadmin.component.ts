@@ -36,6 +36,20 @@ export class BetsadminComponent {
       error => console.error(error)
     );
   }
+
+  deleteEvent(id: number) {
+    if (confirm('¿Estás seguro de que quieres borrar este evento?')) {
+        this.eventsService.deleteEvent(id).subscribe(
+            event =>{
+              console.log(event);
+              location.reload();
+            },
+            error => console.error(error)
+        );
+    }
+
+    
+}
      
 
 }

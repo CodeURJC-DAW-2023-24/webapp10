@@ -97,8 +97,10 @@
                             <h3>{{event.name}}</h3>
                             <p class="product-price">{{event.championship}} <span>{{event.sport}}</span></p>
         
-                            <a [routerLink]="['/singlebet', event.id]" class="cart-btn">Realizar apuesta</a>
-                        </div>
+                            <a (click) = deleteEvent(event.id) class="cart-btn">Eliminar</a>
+                        
+                            <a [routerLink]="['/edit-event', event.id]" class="cart-btn">Editar</a>
+						</div>
                     </div>
         
         
