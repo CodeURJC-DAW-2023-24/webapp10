@@ -1,4 +1,19 @@
 #################################################
+# Imagen base para el contenedor de Angular
+#################################################
+FROM node:20 as angular_builder
+
+WORKDIR /ang
+
+COPY frontend/* /ang/
+
+RUN npm install
+
+COPY frontend/src /ang/src
+
+RUN npm run build
+
+#################################################
 # Imagen base para el contenedor de compilación
 #################################################
 FROM maven:3.8.4-openjdk-17 as builder
