@@ -33,7 +33,7 @@
 
 </head>
 <body>
-	
+
 	<!--PreLoader
     <div class="loader">
         <div class="loader-inner">
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 	<!-- end search arewa -->
-	
+
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb2-bg">
 		<div class="container">
@@ -91,20 +91,20 @@
                           <div class="card single-accordion">
                             <div class="card-header" id="headingOne">
                               <h5 class="mb-0">
-								
+
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                   Datos personales
                                 </button>
                               </h5>
                             </div>
                             <div class="card-body">
-							
+
                                 <div class="billing-address-form">
                                     <div class="user-profile">
-										
+
                                         <p>Nombre: {{user.name}}<span id="user-name"></span></p>
                                         <p>Primer apellido: {{user.firstsurname}}<span id="user-first-surname"></span></p>
-										<p>Segundo apellido: {{user.secondsurname}} <span id="user-second-surname"></span></p>
+										                    <p>Segundo apellido: {{user.secondsurname}} <span id="user-second-surname"></span></p>
                                         <p>Fecha de nacimiento: {{user.birthdate}} <span id="user-birthdate"></span></p>
                                         <p>Nacionalidad: {{user.nationality}}<span id="user-nationality"></span></p>
                                         <p>DNI: {{user.dni}}<span id="user-dni"></span></p>
@@ -140,13 +140,13 @@
 
 											<form (ngSubmit) ="logOut()" >
 
-											
+
 												<input type="submit" class="boxed-btn" value="Cerrar sesión">
-											<!--<input type="hidden" name="_csrf" value="{{token}}"/> -->	
+											<!--<input type="hidden" name="_csrf" value="{{token}}"/> -->
 											</form>
                                     </div>
-								
-									<div *ngIf="!user"> 
+
+									<div *ngIf="!user">
 
 										<p>No estás logueado. Por favor, inicia sesión para ver tus detalles.</p>
 									  </div>
@@ -155,7 +155,7 @@
 						    </div>
 							<div class="col-lg-5 align-items-center">
 								<img id="profile-picture" [src]="image" alt="User image" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 80px">
-					
+
 								<div class="user-profile text-center">
 									<div class="align-items-center" style="margin-top: 360px">
 										<form (ngSubmit) = "uploadImage()" class="text-center" enctype="multipart/form-data">
@@ -176,13 +176,13 @@
 								</div>
 							</div>
 						  </div>
-						
+
 
 						</div>
 
 					</div>
 					</div>
-					<div *ngIf="!user"> 
+					<div *ngIf="!user">
 						<div class="full-height-section error-section">
 							<div class="full-height-tablecell">
 								<div class="container">
@@ -201,12 +201,12 @@
 						</div>
 					  </div>
 
-				
-                
-			
-			
-            
-	
+
+
+
+
+
+
 
 
 
@@ -219,7 +219,7 @@
 	<!-- copyright -->
 	<app-copyright></app-copyright>
 	<!-- end copyright -->
-	
+
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->

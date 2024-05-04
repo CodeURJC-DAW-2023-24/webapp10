@@ -8,17 +8,18 @@ import { Router } from '@angular/router';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-  
+
 
   user: any;
   image: any;
+  selectedFile!: File;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     if (this.authService.isLogged()) {
-      this.user = this.authService.getUserDetails(); 
-  
+      this.user = this.authService.getUserDetails();
+
       this.authService.getUserImage(this.authService.getId()).subscribe(
         (imageBlob: Blob) => {
           const objectUrl = URL.createObjectURL(imageBlob);
@@ -28,34 +29,51 @@ export class ProfileComponent {
           console.error('Error getting user image', error);
         }
       );
-  
+
     }
   }
     logOut() {
     this.authService.logOut();
     this.router.navigate(['/home']);
   }
- 
-  selectedImage!: File;
 
-  
   onFileSelected(event: any): void {
-    this.selectedImage = event.target.files[0];
+    if (event.target.files && event.target.files.length > 0) {
+      const fileInput = event.target;
+      const fileName = fileInput.files[0].name;
+      const fileLabel = document.getElementById('file-label');
+      if (fileLabel) {
+        fileLabel.innerText = fileName;
+      }
+      this.selectedFile = event.target.files[0];
+    }
+    console.log("SE HA CAMBIADO EL ARCHIVO A: ", this.selectedFile.name);
   }
 
-  uploadImage(): void {
-    const userId = 1;
-    if (this.selectedImage) {
-      this.authService.updateUserImage(userId, this.selectedImage)
-        .subscribe(
-          (          response: any) => {
-            console.log('Image uploaded', response);
-           
-          },
-          (          error: any) => {
-            console.error('Error uploading image', error);
-          }
-        );
+  uploadImage() {
+    if (this.selectedFile) {
+      this.authService.updateUserImage(this?.user?.id, this.selectedFile).subscribe(
+        response => {
+          this.authService.getUserImage(this.user.id).subscribe(
+            (imageBlob: Blob) => {
+              const objectUrl = URL.createObjectURL(imageBlob);
+              this.image = objectUrl;
+            },
+            (error) => {
+              console.error('Error getting user image', error);
+            }
+          );
+        },
+        error => {
+          console.log("Error en el put de imagen: ", error);
+        }
+      );
+
+      // After changing the image, keep the text intact as before
+      const fileLabel = document.getElementById('file-label');
+      if (fileLabel) {
+        fileLabel.innerText = "Elegir archivo";
+      }
     }
   }
 }
