@@ -19,6 +19,7 @@ export class LoginComponent {
     this.authService.logIn(user, pass);
     if (this.authService.isLogged()) {
       this.router.navigate(['/home']);
+      window.scrollTo(0, 0);
     }
     console.log("ESTA AUTENTICADO: ", this.authService.isLogged());
     console.log("USUARIO Y CONTRASEÑA: ", this.authService.currentUser()?.username, this.authService.currentUser()?.password);
