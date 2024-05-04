@@ -52,6 +52,11 @@ public class Bet {
 
     @Setter
     @Getter
+    @Column(name = "FEE")
+    private double fee;
+
+    @Setter
+    @Getter
     @Column(name = "TYPE_BET")
     private TypeBet typeBet;
 
@@ -65,10 +70,11 @@ public class Bet {
     public Bet() {
     }
 
-    public Bet(Event event, double bet_amount, Result result, double winning_amount, double profit, User user) {
+    public Bet(Event event, double bet_amount, Result result, double winning_amount, double fee, double profit, User user) {
         super();
         this.bet_amount = bet_amount;
         this.result = result;
+        this.fee = fee;
         this.winning_amount = winning_amount;
         this.profit = profit;
         this.event = event;

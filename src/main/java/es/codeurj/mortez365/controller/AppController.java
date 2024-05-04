@@ -228,6 +228,7 @@ public class AppController {
         
         if(currentUser.getWallet().getMoney() > money){
             // Generate the bet
+            Double fee;
             Double m = 0.0;
             Result result = null;
             switch (selectedBet){
@@ -246,12 +247,13 @@ public class AppController {
                 default:
                     break;
             }
+            fee = m;
             m = m * money;
             double userMoney = currentUser.getWallet().getMoney();
             userMoney = userMoney - money;
             currentUser.getWallet().setMoney(userMoney);
             Double p = m - money;
-            Bet bet = new Bet(event, money, result, m, p, currentUser);
+            Bet bet = new Bet(event, money, result, m, fee, p, currentUser);
             betRepository.save(bet);
             return "redirect:/index";
         }
