@@ -20,12 +20,11 @@ export class LoginComponent {
     event.preventDefault();
 
     this.authService.logIn(user, pass);
-    if (this.authService.isLogged()) {
-      this.router.navigate(['/home']);
-    }
+
     console.log("ESTA AUTENTICADO: ", this.authService.isLogged());
     console.log("USUARIO Y CONTRASEÑA: ", this.authService.currentUser()?.username, this.authService.currentUser()?.password);
     console.log("ES ADMIN: ", this.authService.isAdmin());
+    this.router.navigate(['/home']);
   }
 
   logOut() {
