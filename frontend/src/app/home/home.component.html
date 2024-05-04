@@ -42,7 +42,7 @@
 							<p class="subtitle">Gana a la Suerte</p>
 							<h1>Mortez365</h1>
 							<!--{{#currentUser}}-->
-							<div class="hero-btns">
+							<div class="hero-btns" *ngIf="!this.authServicer.isLogged()">
 								<a routerLink="/login" class="boxed-btn">Iniciar Sesión</a>
 								<a routerLink="/register" class="bordered-btn">Registrarse</a>
 							</div>
