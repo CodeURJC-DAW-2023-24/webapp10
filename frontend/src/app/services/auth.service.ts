@@ -38,16 +38,15 @@ export class AuthService {
   }
 
   logIn(user: string, pass: string) {
-
       this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
           .subscribe(
-              (response) => this.reqIsLogged(),
+              (response) => {
+                this.logged = true;
+                console.log("Se inicio correctamente sesion.");
+              },
 
               (error) => alert("Wrong credentials")
           );
-
-      console.log("ESTA AUTENTICADO: ", this.logged);
-      console.log("USUARIO Y CONTRASEÑA: ", this.user?.username, this.user?.password);
   }
 
   logOut() {
