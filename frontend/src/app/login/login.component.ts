@@ -13,6 +13,9 @@ export class LoginComponent {
   constructor(public authService: AuthService, private router: Router) { }
 
   logIn(event: any, user: string, pass: string) {
+    console.log("ENTRO A LOGIN");
+    console.log("USUARIO: ", user);
+    console.log("CONTRASEÑA: ", pass);
 
     event.preventDefault();
 
