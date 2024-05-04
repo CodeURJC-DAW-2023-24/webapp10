@@ -129,6 +129,7 @@ public class UserRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("/image/{id}")
     public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
       Optional< User> user = userService.findById(id);
@@ -141,7 +142,7 @@ public class UserRestController {
       } else {
           return ResponseEntity.noContent().build();
       }
-      }
+    }
 
 
       @PostMapping("/image/{id}")

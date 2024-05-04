@@ -11,12 +11,12 @@ export class HeaderComponent implements OnInit{
   constructor(private authService: AuthService) { }
 
   scrolled: boolean = false;
- 
+
 
   ngOnInit() {
     this.isAdmin = Boolean(this.authService.isAdmin());
     console.log("Es admin" +this.authService.isAdmin());
-    
+    window.scrollTo(0, 0);
   }
 
 

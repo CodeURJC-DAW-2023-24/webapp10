@@ -1,8 +1,10 @@
 package es.codeurj.mortez365.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -15,14 +17,18 @@ import java.util.Optional;
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
 //The UserSevice class is used to save the user in the database.
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         super();
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
     
     
     public User save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

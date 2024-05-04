@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, ReplaySubject, catchError, throwError } from 'rxjs';
 
 const BASE_URL = '/api/auth';
 const BASE_URL_USERS = '/api/users/';
@@ -20,9 +20,11 @@ export class AuthService {
     this.http.get('/api/users/me', { withCredentials: true }).subscribe(
           response => {
             if (response) {
+              console.log("Tenia contenido");
               this.user = response as User;
               this.logged = true;
             }else {
+              console.log("No tenía contenido");
               this.user = undefined;
               this.logged = false;
             }
@@ -36,14 +38,14 @@ export class AuthService {
   }
 
   logIn(user: string, pass: string) {
-
       this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
           .subscribe(
-              (response) => this.reqIsLogged(),
-   
+              (response) => 
+                this.reqIsLogged(),
+              
+
               (error) => alert("Wrong credentials")
           );
-
   }
 
   logOut() {
@@ -61,10 +63,10 @@ export class AuthService {
       return this.logged;
   }
   isAdmin(): boolean {
-   
+
     return this.user && this.user.roles?.includes('ADMIN') ? true : false;
   }
- 
+
   currentUser() {
       return this.user;
   }
@@ -93,16 +95,16 @@ export class AuthService {
     getUserDetails() {
         return this.user;
     }
-  
+
     getUserImage(id: number) {
-    
+
         return this.http.get( `${BASE_URL_USERS}image/${id}`, { responseType: 'blob' });
       }
 
     updateUserImage(id: number, image: File) {
+        console.log("HASTA ANTES DEL PUT SI");
         const formData = new FormData();
-        formData.append('file', image);
-        return this.http.post(`${BASE_URL_USERS}image/${id}`, formData);
- 
-}
+        formData.append('imageFile', image);
+        return this.http.put(`${BASE_URL_USERS}image/${id}`, formData);
+    }
 }
