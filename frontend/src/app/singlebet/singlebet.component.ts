@@ -20,7 +20,6 @@ export class SinglebetComponent {
   constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService, private betsService: BetsService) {
     let id = activatedRoute.snapshot.params['id'];
 
-
     eventsService.getEventById(id).subscribe(
       event => {
         this.event = event;
@@ -29,7 +28,32 @@ export class SinglebetComponent {
       },
       error => console.error(error)
     );
+  }
 
+  comprobarApuesta(): boolean {
+    if (!this.isBetSelected()) {
+      alert('Debes seleccionar una apuesta.');
+      return false;
+    }
+    if (this.betAmount <= 0) {
+      alert('La apuesta debe ser mayor que 0.');
+      return false;
+    }
+    console.log("LLEGA");
+    const r: Result = this.selectResult();
+    console.log("LLEGA");
+    this.betsService.createBet({
+      bet_amount: this.betAmount,
+      result: r,
+    }, this.event.id).subscribe(() => {
+      alert('Apuesta creada');
+      this.router.navigate(['/home']);
+      return true;
+    }, error => {
+      console.error('Error al crear la apuesta: ', error);
+      return false;
+    });
+    return true;
   }
 
   selectBet(betType: string, event: Event) {
@@ -48,32 +72,6 @@ export class SinglebetComponent {
     this.selectedBetInput.nativeElement.value = betType;
   }
 
-  comprobarApuesta(): boolean {
-    if (!this.isBetSelected()) {
-      alert('Debes seleccionar una apuesta.');
-      return false;
-    }
-    if (this.betAmount <= 0) {
-      alert('La apuesta debe ser mayor que 0.');
-      return false;
-    }
-    console.log("LLEGA");
-    const r: Result = this.selectResult();
-    console.log("LLEGA");
-    this.betsService.createBet({
-      bet_amount: this.betAmount,
-      result: r,
-      event: this.event.id,
-    }, this.event.id).subscribe(() => {
-      alert('Apuesta creada');
-      this.router.navigate(['/home']);
-      return true;
-    }, error => {
-      console.error('Error al crear la apuesta: ', error);
-      return false;
-    });
-    return true;
-  }
 
   isBetSelected(): boolean {
     // Comprueba si se ha seleccionado una apuesta
