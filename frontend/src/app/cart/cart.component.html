@@ -192,6 +192,21 @@
   </div>
 </div>
 
+<!-- cart.component.html -->
+<div *ngIf="user" style="display: flex; justify-content: center; align-items: center; height: 300px;">
+  <ngx-charts-pie-chart
+    [scheme]="colorScheme"
+    [results]="chartData"
+    [legend]="true"
+    [explodeSlices]="false"
+    [legendTitle]="'% por Apuestas'"
+    [maxLabelLength]="20"
+    [animations]="true"
+    [labels]="true">
+  </ngx-charts-pie-chart>
+</div>
+
+
   <!-- footer -->
   <app-footer></app-footer>
   <!-- end footer -->
