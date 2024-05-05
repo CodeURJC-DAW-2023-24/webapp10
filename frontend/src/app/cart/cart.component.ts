@@ -32,18 +32,14 @@ export class CartComponent implements OnInit {
   totalBet: number = 0;
   totalBenefit: number = 0;
   user: any;
-  wonPercentage: number | undefined;
-  lostPercentage: number | undefined;
-  pendingPercentage: number | undefined;
+  wonPercentage: number = 0;
+  lostPercentage: number = 0;
+  pendingPercentage: number = 0;
 
   // Add the following properties for chart data
   chartData: any[] = [];
   colorScheme: any = {
-    domain: [
-      { name: 'Ganadas', value: '#33FF57' },
-      { name: 'Perdidas', value: '#FF5733' },
-      { name: 'Pendientes', value: '#CCCCCC' }
-    ]
+    domain: ['#33FF57', '#FF5733', '#CCCCCC']
   };
 
   constructor(
@@ -88,8 +84,11 @@ export class CartComponent implements OnInit {
     const totalPending = this.bets.length;
 
     if (totalFinished > 0 || totalPending > 0) {
-      this.wonPercentage = (this.betsFinished.filter(bet => bet.result === 'ganado').length / totalFinished) * 100;
-      this.lostPercentage = (this.betsFinished.filter(bet => bet.result === 'perdido').length / totalFinished) * 100;
+      const wonCount = this.betsFinished.filter(bet => bet.winning_amount > 0).length;
+      const lostCount = totalFinished - wonCount;
+
+      this.wonPercentage = (wonCount / (totalFinished + totalPending)) * 100;
+      this.lostPercentage = (lostCount / (totalFinished + totalPending)) * 100;
       this.pendingPercentage = (totalPending / (totalFinished + totalPending)) * 100;
     } else {
       this.wonPercentage = 0;
