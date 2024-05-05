@@ -29,8 +29,15 @@ getEvents(page: number, pageSize: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
 
-  getEventImage(id: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/image/${id}`);
+
+  getEventImage(id: string): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}image/${id}`, { responseType: 'blob' });
+  }
+
+  addEventImage(id: string, image: File): Observable<Blob> {
+    const formData = new FormData();
+    formData.append("image", image);
+    return this.http.post<any>(`${this.baseUrl}image/${id}`, formData);
   }
 
   deleteEventImage(id: string): Observable<any> {

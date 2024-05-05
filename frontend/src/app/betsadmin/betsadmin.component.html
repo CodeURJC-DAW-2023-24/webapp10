@@ -92,7 +92,7 @@
                     <div *ngFor="let event of events  " class="col-lg-4 col-md-6 text-center">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a [routerLink]="['/singlebet', event.id]"><img src="{{event.imageFile}}" alt=""></a>
+                                <a [routerLink]="['/singlebet', event.id]"><img [src]="event.image" alt=""></a>
                             </div>
                             <h3>{{event.name}}</h3>
                             <p class="product-price">{{event.championship}} <span>{{event.sport}}</span></p>
@@ -143,7 +143,7 @@
 	<input type="text" id="eventChampionship" name="championship" placeholder="Liga"  [(ngModel)]="event.championship">
 	<input type="text" id="eventSport" name="sport" placeholder="Deporte"  [(ngModel)]="event.sport">
 <!---	<input type="datetime-local" id="eventDeadline" name="deadline" placeholder="Fecha límite"> -->
-<!--	<input type="file" id="eventImage" name="image"> -->.
+<input type="file" id="eventImage" name="image" (change)="onFileSelected($event)">
     <button type="submit">Add Event</button>
 	<!--<input type="hidden" name="_csrf" value="{{token}}"/> -->
 </form>

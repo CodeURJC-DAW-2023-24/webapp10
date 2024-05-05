@@ -4,6 +4,7 @@ export interface Event {
     championship : string;
     sport: string;
     fee: number;
+    image : Blob;
     
     
 }
