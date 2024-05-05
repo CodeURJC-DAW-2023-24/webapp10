@@ -1,9 +1,8 @@
-import { BetsService } from './../services/bets.service';
+import { BetsService } from '../services/bets.service';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { EventsService } from '../services/events.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subscription, interval } from 'rxjs';
+import {AuthService} from "../services/auth.service";
 
 interface Bet {
   id: number;
@@ -33,11 +32,15 @@ export class CartComponent implements OnInit {
   totalWinningAmount: number = 0;
   totalBet: number = 0;
   totalBenefit: number = 0;
+  user: any;
 
-  constructor(private router: Router, private eventsService: EventsService, private betsService: BetsService) {}
+  constructor(private authService: AuthService, private router: Router, private eventsService: EventsService, private betsService: BetsService) {}
 
   ngOnInit(): void {
-    this.loadBetsData();
+    this.user = this.authService.getUserDetails();
+    if (this.authService.isLogged()) {
+      this.loadBetsData();
+    }
   }
 
   private loadBetsData(): void {

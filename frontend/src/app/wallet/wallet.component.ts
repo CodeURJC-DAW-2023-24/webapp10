@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-
-import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
-import { CopyrightComponent } from '../copyright/copyright.component';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 import { WalletService } from '../services/wallet.service';
 
 @Component({
@@ -10,18 +8,23 @@ import { WalletService } from '../services/wallet.service';
   templateUrl: './wallet.component.html',
   styleUrl: './wallet.component.css'
 })
-export class WalletComponent {
+export class WalletComponent implements OnInit {
+  card_number: string | undefined;
+  expired_date: string | undefined;
+  money: number | undefined;
+  cvv: string | undefined;
+  user: any;
 
-  card_number : string;
-  expired_date : string;
-  money : number;
-  cvv : string;
+  constructor(private authService: AuthService, private router: Router, private walletService: WalletService) {}
 
-  constructor(private walletService: WalletService) {
-    this.card_number = walletService.getCardNumber();
-    this.expired_date = walletService.getExpiredDate();
-    this.money = walletService.getMoney();
-    this.cvv = walletService.getCvv();
+  ngOnInit(): void {
+    if (this.authService.isLogged()) {
+      this.card_number = this.walletService.getCardNumber();
+      this.expired_date = this.walletService.getExpiredDate();
+      this.money = this.walletService.getMoney();
+      this.cvv = this.walletService.getCvv();
+      this.user = this.authService.getUserDetails();
+    }
   }
 
   addMoney(input_cvv: string, amount: number): void {
@@ -29,6 +32,7 @@ export class WalletComponent {
     console.log('Cantidad a añadir:', amount);
 
     if (input_cvv == this.cvv) {
+      // @ts-ignore
       this.money += amount;
       console.log('Se ha completado la operacion');
     }
