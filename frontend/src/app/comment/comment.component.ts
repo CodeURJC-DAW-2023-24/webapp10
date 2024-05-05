@@ -11,15 +11,20 @@ import { AuthService } from '../services/auth.service';
 })
 export class CommentComponent implements OnInit {
 
+  comment: Comment | undefined;
   comments: Comment[] = [];
   commentText: string = '';
+  name: string = '';
+  isEditing: boolean = false;
+  privileged: boolean = false;
 
-  @Input()
-  eventId!: number;
+  @Input() eventId!: number;
 
-  constructor(private commentService: CommentService,private authservice: AuthService) { }
+
+  constructor(private commentService: CommentService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.privileged = this.authService.isAdmin();
     this.loadComments();
   }
 
@@ -30,17 +35,12 @@ export class CommentComponent implements OnInit {
       });
   }
 
-
-  addComment(content: string): void {
-    const newComment: Comment = {
-      id: 0, content, userId: 1, eventId: 1,
-      privileged: undefined,
-      user: undefined,
-      isEditing: undefined
-    };
-    this.commentService.createComment(newComment, 1)
+  addComment(): void {
+    const newComment: Comment = { id: 0, content: this.commentText, user: '', eventId: this.eventId };
+    this.commentService.createComment(newComment, this.eventId)
       .subscribe(comment => {
         this.comments.push(comment);
+        this.loadComments();
       });
   }
 
@@ -55,11 +55,8 @@ export class CommentComponent implements OnInit {
     const updatedComment: Comment = {
       id,
       content: newCommentText,
-      userId: this.authservice.getId(),
-      eventId: this.eventId,
-      privileged: undefined,
-      user: undefined,
-      isEditing: undefined
+      user: '',
+      eventId: this.eventId
     };
     this.commentService.replaceComment(id, updatedComment)
       .subscribe(updatedComment => {
@@ -69,5 +66,7 @@ export class CommentComponent implements OnInit {
         }
       });
   }
-
+  editComment() {
+    this.isEditing = true;
+  }
 }
