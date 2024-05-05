@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Comment } from '../models/comment.model';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Comment, C } from '../models/comment.model';
 import { CommentService } from '../services/comment.service';
 import { AuthService } from '../services/auth.service';
 
@@ -20,6 +20,7 @@ export class CommentComponent implements OnInit {
 
   @Input() eventId!: number;
 
+  @ViewChild('commentTex') commentTextRef: ElementRef | undefined;
 
   constructor(private commentService: CommentService, private authService: AuthService) { }
 
@@ -36,7 +37,7 @@ export class CommentComponent implements OnInit {
   }
 
   addComment(): void {
-    const newComment: Comment = { id: 0, content: this.commentText, user: '', eventId: this.eventId };
+    const newComment: C = { content: this.commentText };
     this.commentService.createComment(newComment, this.eventId)
       .subscribe(comment => {
         this.comments.push(comment);
@@ -58,11 +59,12 @@ export class CommentComponent implements OnInit {
   }
 
   replaceComment(id: number, newCommentText: string): void {
-    const updatedComment: Comment = {
-      id,
-      content: newCommentText,
-      user: '',
-      eventId: this.eventId
+    console.log(newCommentText);
+    console.log(this.commentTextRef?.nativeElement.value);
+    const updatedComment: C = {
+
+      content: this.commentTextRef?.nativeElement.value
+
     };
     this.commentService.replaceComment(id, updatedComment)
       .subscribe(updatedComment => {
@@ -71,8 +73,10 @@ export class CommentComponent implements OnInit {
           this.comments[index] = updatedComment;
         }
       });
+    this.isEditing = false;
   }
-  editComment() {
+
+  editComment(id: number) {
     this.isEditing = true;
   }
 }

@@ -103,7 +103,7 @@ public class CommentRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Comment> replaceEvent(@RequestBody Comment newComment, @PathVariable Long id) {
        Comment comment = commentService.findById(id);
-
+        System.out.println("LLEGA");
         if (comment!=null) {
             newComment.setId(id);
             newComment.setEvent(comment.getEvent());

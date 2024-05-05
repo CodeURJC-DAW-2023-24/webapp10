@@ -16,14 +16,14 @@
           "{{ comment.content }}"
         </div>
         <div *ngIf="privileged" style="gap: 10px; margin-left: 20px">
-          <button class="btn btn-light" (click)="editComment()">Editar</button>
+          <button class="btn btn-light" (click)="editComment(comment.id)">Editar</button>
           <button class="btn btn-danger" (click)="deleteComment(comment.id)">Borrar</button>
         </div>
       </div>
       <ng-template #editCommentBlock>
         <form class="comment-form" (ngSubmit)="replaceComment(comment.id, commentText)">
           <textarea class="form-control" name="content" rows="3" placeholder="Write your comment here..."
-                    style="margin-bottom: 12.5px" [(ngModel)]="comment.content"></textarea>
+                    style="margin-bottom: 12.5px" [(ngModel)]="comment.content" #commentTex></textarea>
           <button class="btn btn-primary" type="submit">Enviar</button>
         </form>
       </ng-template>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Comment } from '../models/comment.model';
+import { Comment, C } from '../models/comment.model';
 
 
 @Injectable({
@@ -25,9 +25,9 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.baseUrl}/event/${eventId}`);
   }
 
-  createComment(comment: Comment, eventId: number): Observable<Comment> {
-    console.log("LLEGA")
-    return this.http.post<Comment>(`${this.baseUrl}/${eventId}`, comment);
+  createComment(comment: C, eventId: number): Observable<any> {
+    console.log("LLEGA");
+    return this.http.post<any>(`${this.baseUrl}/${eventId}`, comment);
   }
 
   deleteComment(id: number): Observable<any> {
@@ -35,7 +35,7 @@ export class CommentService {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
 
-  replaceComment(id: number, newComment: Comment): Observable<Comment> {
-    return this.http.put<Comment>(`${this.baseUrl}/${id}`, newComment);
+  replaceComment(id: number, newComment: C): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`, newComment);
   }
 }
