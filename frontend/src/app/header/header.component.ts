@@ -7,15 +7,15 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['../../styles.css', 'header.component.css']
 })
 export class HeaderComponent implements OnInit{
-  isAdmin : boolean = false;
-  constructor(private authService: AuthService) { }
-
   scrolled: boolean = false;
+  isAdmin : boolean = false;
+  constructor(public authService: AuthService) { }
+
 
 
   ngOnInit() {
-    this.isAdmin = Boolean(this.authService.isAdmin());
-    console.log("Es admin" +this.authService.isAdmin());
+    this.isAdmin = this.authService.isLogged() && this.authService.isAdmin();
+    console.log("Es admin" + this.authService.isAdmin());
     window.scrollTo(0, 0);
   }
 

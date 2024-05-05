@@ -1,8 +1,7 @@
 import { BetsService } from '../services/bets.service';
-import { Component, Injectable, OnInit } from '@angular/core';
-import { EventsService } from '../services/events.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth.service";
+import { PdfGeneratorService } from '../services/pdfGenerator.service';
 
 interface Bet {
   id: number;
@@ -34,7 +33,11 @@ export class CartComponent implements OnInit {
   totalBenefit: number = 0;
   user: any;
 
-  constructor(private authService: AuthService, private router: Router, private eventsService: EventsService, private betsService: BetsService) {}
+  constructor(
+    private authService: AuthService,
+    private betsService: BetsService,
+    private pdfGeneratorService: PdfGeneratorService
+  ) {}
 
   ngOnInit(): void {
     this.user = this.authService.getUserDetails();
@@ -54,10 +57,16 @@ export class CartComponent implements OnInit {
     });
   }
 
-
   private calculateTotals(): void {
     this.totalWinningAmount = this.betsFinished.reduce((acc, bet) => acc + bet.winning_amount, 0);
     this.totalBet = this.bets.reduce((acc, bet) => acc + bet.bet_amount, 0);
     this.totalBenefit = this.betsFinished.reduce((acc, bet) => acc + bet.winning_amount - bet.bet_amount, 0);
+  }
+
+  downloadPdf(): void {
+    const userId = this.user.id;
+    const betData = this.bets;
+
+    this.pdfGeneratorService.generatePdf(userId, betData);
   }
 }
