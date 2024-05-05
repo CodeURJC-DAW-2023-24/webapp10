@@ -30,7 +30,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
+					<div class="checkout-accordion-wrap mt-150">
+            <h2 class="register-title">Registro de usuario:</h2>
 						<div class="accordion" id="accordionExample">
 							<div class="card single-accordion">
 								<div class="card-header" id="headingOne">
@@ -57,13 +58,18 @@
 											<!---
 												<p><input id="card_number" name="card_number" type="number" placeholder="Número de tarjeta" [(ngModel)]="card_number" required></p>
 												<p><input id="cvv" name="cvv" type="number" placeholder="CVV" [(ngModel)]="cvv" required></p>
-											
+
 												<p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" [(ngModel)]="expired_date" required></p> -->
 												<p><input id="username" name="username" type="text" placeholder="Usuario" [(ngModel)]="user.username" required></p>
 												<p><input id="password" name="password" type="password" placeholder="Contraseña" [(ngModel)]="user.password" required></p>
-											
-				
-												
+
+
+                        <p><input id="card_number" name="card_number" type="number" placeholder="Número de tarjeta" [(ngModel)]="wallet.card_number" required></p>
+                        <p><input id="cvv" name="cvv" type="number" placeholder="CVV" [(ngModel)]="wallet.cvv" required></p>
+                        <p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" [(ngModel)]="wallet.expired_date" required></p>
+
+  											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
+
 												<div style="text-align: right;">
 													<input type="submit" class="boxed-btn">
 												</div>
@@ -88,7 +94,7 @@
 								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="billing-address-form">
-											
+
 										</div>
 									</div>
 								</div>
@@ -103,10 +109,10 @@
 								</div>
 								<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
 									<div class="card-body">
-										<div class="billing-address-form">
+										<div class="billing-address-form"> <!--
 											<p><input id="card_number" name="card_number" type="number" placeholder="Número de tarjeta" required></p>
 											<p><input id="cvv" name="cvv" type="number" placeholder="CVV" required></p>
-											<p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" required></p>
+											<p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" required></p> -->
 										</div>
 									</div>
 								</div>
@@ -122,7 +128,7 @@
 								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="billing-address-form">
-										
+
 											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
 											<div>
 												<label for="age">Acepto que tengo la mayoría de edad</label><input style="margin-left: 15px" type="checkbox" id="age" name="age" required>
@@ -135,10 +141,10 @@
 									</div>
 								</div>
 							</div>
-							<div style="text-align: right;">
+							<!-- <div style="text-align: right;">
 								<input type="submit" class="boxed-btn">
-							<!--	<input type="hidden" name="_csrf" value="{{token}}"/> -->
-							</div>
+								<input type="hidden" name="_csrf" value="{{token}}"/>
+							</div> -->
 						</div>
 					</div>
 				</div>

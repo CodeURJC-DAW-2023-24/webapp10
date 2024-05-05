@@ -2,6 +2,7 @@ package es.codeurj.mortez365.restController;
 
 import es.codeurj.mortez365.DTO.UserDataDTO;
 import es.codeurj.mortez365.model.User;
+import es.codeurj.mortez365.model.Wallet;
 import es.codeurj.mortez365.service.UserService;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,6 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -102,7 +105,13 @@ public class UserRestController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/")
-    public ResponseEntity<User> newEvent(@RequestBody User newUser) {
+    public ResponseEntity<User> newEvent(@RequestBody User newUser, @RequestBody Wallet newWallet) throws IOException {
+        newWallet.setUser(newUser);
+        newUser.setWallet(newWallet);
+                
+        Resource image = new ClassPathResource(newUser.getImageFile());
+        newUser.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+
         User savedUser = userService.save(newUser);
         URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
         return ResponseEntity.created(location).body(savedUser);

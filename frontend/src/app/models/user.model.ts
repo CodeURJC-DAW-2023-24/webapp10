@@ -1,3 +1,5 @@
+import { Wallet } from "./wallet.model";
+
 export interface User {
   id?: number;
   name: string;
@@ -13,9 +15,5 @@ export interface User {
   adress: string;
   postcode: number;
   telephone: number;
-  
-
-
-
-
+  imageFile: File;
 }

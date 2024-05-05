@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable, ReplaySubject, catchError, throwError } from 'rxjs';
+import { Wallet } from '../models/wallet.model';
 
 const BASE_URL = '/api/auth';
 const BASE_URL_USERS = '/api/users/';
@@ -40,9 +41,9 @@ export class AuthService {
   logIn(user: string, pass: string) {
       this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
           .subscribe(
-              (response) => 
+              (response) =>
                 this.reqIsLogged(),
-              
+
 
               (error) => alert("Wrong credentials")
           );
@@ -71,18 +72,38 @@ export class AuthService {
       return this.user;
   }
 
-  register(user: User) {
+  register(user: User, wallet: Wallet) {
     if (user.roles) {
         user.roles.push('USER');
     } else {
         user.roles = ['USER'];
     }
-        return this.http.post(BASE_URL_USERS, user).pipe(
-            catchError(error => {
-                console.error('Error registering user: ' + JSON.stringify(error));
-                return throwError('Error registering user');
-            })
-        );
+
+    /*    DE MOMENTO PROBAMOS CON CONST DATA
+    let formData = new FormData();
+    Object.entries(user).forEach(([key, value]) => {
+      if (value instanceof Date) {
+        formData.append(key, value.toISOString());
+      } else {
+        formData.append(key, value.toString());
+      }
+    });
+
+    Object.entries(wallet).forEach(([key, value]) => {
+      formData.append(`wallet.${key}`, value.toString());
+    }); */
+
+    const data = {
+      user: user,
+      wallet: wallet
+    }
+
+      return this.http.post(BASE_URL_USERS, data).pipe(
+          catchError(error => {
+              console.error('Error registering user: ' + JSON.stringify(error));
+              return throwError('Error registering user');
+          })
+      );
     }
     setRole(user: User){
         user.roles.push("USER");
