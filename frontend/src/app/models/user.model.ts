@@ -1,6 +1,6 @@
 import { Wallet } from "./wallet.model";
 
-export interface User {
+export class User {
   id?: number;
   name: string;
   roles: string[];
@@ -15,5 +15,26 @@ export interface User {
   adress: string;
   postcode: number;
   telephone: number;
-  imageFile: File;
+  imageFile?: File;
+  wallet?: Wallet;
+
+  constructor() {
+    this.name = '';
+    this.roles = [];
+    this.username = '';
+    this.password = '';
+    this.firstsurname = '';
+    this.secondsurname = '';
+    this.email = '';
+    this.birthdate = new Date();
+    this.nationality = '';
+    this.dni = '';
+    this.adress = '';
+    this.postcode = 0;
+    this.telephone = 0;
+  }
+
+  setWallet(w: Wallet) {
+    this.wallet = w;
+  }
 }

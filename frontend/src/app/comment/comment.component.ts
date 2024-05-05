@@ -55,7 +55,7 @@ export class CommentComponent implements OnInit {
     const updatedComment: Comment = {
       id,
       content: newCommentText,
-      user: '', // Ajusta esto según tu lógica para obtener el usuario actual
+      user: '',
       eventId: this.eventId
     };
     this.commentService.replaceComment(id, updatedComment)

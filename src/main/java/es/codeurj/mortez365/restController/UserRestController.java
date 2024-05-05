@@ -1,6 +1,8 @@
 package es.codeurj.mortez365.restController;
 
+import es.codeurj.mortez365.DTO.RegistrationDataDTO;
 import es.codeurj.mortez365.DTO.UserDataDTO;
+import es.codeurj.mortez365.controller.AppController;
 import es.codeurj.mortez365.model.User;
 import es.codeurj.mortez365.model.Wallet;
 import es.codeurj.mortez365.service.UserService;
@@ -9,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.hibernate.engine.jdbc.BlobProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -42,6 +46,8 @@ public class UserRestController {
 
     @Autowired
     private UserService userService;
+
+    private static final Logger log = LoggerFactory.getLogger(AppController.class);
 
 
     @Operation(summary = "Get All Users", description = "Retrieve all users")
@@ -105,16 +111,22 @@ public class UserRestController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/")
-    public ResponseEntity<User> newEvent(@RequestBody User newUser, @RequestBody Wallet newWallet) throws IOException {
-        newWallet.setUser(newUser);
-        newUser.setWallet(newWallet);
-                
-        Resource image = new ClassPathResource(newUser.getImageFile());
-        newUser.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-
-        User savedUser = userService.save(newUser);
-        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
-        return ResponseEntity.created(location).body(savedUser);
+    public ResponseEntity<User> newEvent(@RequestBody User user) {
+        try {
+            log.info("ESTE ES EL NOMBRE DEL USUARIO: ", user.getName());
+            log.info("ESTE ES EL DINERO QUE TIENE LA WALLET: ", user.getWallet().getMoney());
+                    
+            Resource image = new ClassPathResource(user.getImageFile());
+            user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+            log.info("IMAGENES BIEN");
+    
+            User savedUser = userService.save(user);
+            URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
+            return ResponseEntity.created(location).body(savedUser);
+        } catch (Exception e) {
+            log.info("EL POST TIENE PROBLEMAS");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
 
