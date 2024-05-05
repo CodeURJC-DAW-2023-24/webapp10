@@ -3,6 +3,7 @@ import { Comment } from '../models/comment.model';
 import { CommentService } from '../services/comment.service';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
@@ -11,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class CommentComponent implements OnInit {
 
   comments: Comment[] = [];
+  commentText: string = '';
 
   @Input()
   eventId!: number;
@@ -22,13 +24,12 @@ export class CommentComponent implements OnInit {
   }
 
   loadComments(): void {
-    this.commentService.getAllComments()
+    this.commentService.getCommentsByEvent(this.eventId)
       .subscribe(comments => {
         this.comments = comments;
       });
   }
 
-//To do: adjust data.
 
   addComment(content: string): void {
     const newComment: Comment = { id: 0, content, userId: 1, eventId: 1 };
@@ -50,7 +51,6 @@ export class CommentComponent implements OnInit {
       id,
       content: newCommentText,
       userId: this.authservice.getId(),
-      //PEDIR AL PADRE
       eventId: this.eventId
     };
     this.commentService.replaceComment(id, updatedComment)
