@@ -97,7 +97,7 @@ public WebMvcConfigurer corsConfigurer() {
           
             .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
-            .requestMatchers (HttpMethod.PUT, "/api/events/*").permitAll()
+            .requestMatchers (HttpMethod.PUT, "/api/events/*").hasRole("ADMIN")
             .requestMatchers(HttpMethod.GET, "/api/events/*").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/image/*").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/events/image/*").hasRole("ADMIN")
@@ -105,15 +105,14 @@ public WebMvcConfigurer corsConfigurer() {
       
                   //Security of UserRestController
               
-                  .requestMatchers(HttpMethod.GET, "/api/users/*").permitAll()
+                  .requestMatchers(HttpMethod.GET, "/api/users/*").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.POST, "/api/users/").permitAll()
                   .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
-                  .requestMatchers(HttpMethod.GET, "/api/users/image/*").permitAll()
-                  .requestMatchers(HttpMethod.POST, "/api/users/image/*").permitAll()
-                  .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").permitAll()
-                  .requestMatchers(HttpMethod.PUT, "/api/users/image/*").permitAll()
-                  //Cambiar luego
+                  .requestMatchers(HttpMethod.GET, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.POST, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.PUT, "/api/users/image/*").authenticated()
                   .requestMatchers(HttpMethod.PUT, "/api/users/image/*").permitAll()
 
                   //Security of WalletRestController
@@ -188,6 +187,9 @@ public WebMvcConfigurer corsConfigurer() {
 
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
+                        .requestMatchers("/wallet").authenticated()
+                        .requestMatchers("/profile").authenticated()
+
                  
                         .anyRequest().authenticated()
                 )

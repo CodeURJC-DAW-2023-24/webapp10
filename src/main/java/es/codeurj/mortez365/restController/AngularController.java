@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AngularController {
-    @GetMapping({"/new/**"})
+    @GetMapping({"/new/**/{path:[^\\.]*}", "/{path:new[^\\.]*}"})
     public String redirect() {
         return "forward:/new/index.html";
     }
