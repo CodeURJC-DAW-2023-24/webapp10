@@ -23,6 +23,7 @@ import { BetsadminComponent } from './betsadmin/betsadmin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { CartComponent } from './cart/cart.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
  declarations: [
@@ -44,7 +45,8 @@ import { CartComponent } from './cart/cart.component';
     BetsadminComponent,
     ProfileComponent,
     EditEventComponent,
-    CartComponent
+    CartComponent,
+    CommentComponent
 
 ],
 
