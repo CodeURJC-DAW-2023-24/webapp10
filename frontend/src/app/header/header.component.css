@@ -4,9 +4,8 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  transition: top 0.3s ease;
+  transition: top 0.3s ease, background-color 0.3s ease;
   background-color: transparent;
-  transition: background-color 0.3s ease;
 }
 
 .top-header-area.active {
