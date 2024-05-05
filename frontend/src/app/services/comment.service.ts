@@ -26,10 +26,12 @@ export class CommentService {
   }
 
   createComment(comment: Comment, eventId: number): Observable<Comment> {
+    console.log("LLEGA")
     return this.http.post<Comment>(`${this.baseUrl}/${eventId}`, comment);
   }
 
   deleteComment(id: number): Observable<Comment> {
+    console.log(id);
     return this.http.delete<Comment>(`${this.baseUrl}/${id}`);
   }
 

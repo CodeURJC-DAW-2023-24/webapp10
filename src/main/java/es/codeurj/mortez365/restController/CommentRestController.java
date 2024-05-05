@@ -66,6 +66,7 @@ public class CommentRestController {
         String currentUserName = authentication.getName();
         Optional<User> currentUser = userService.findByUsername(currentUserName);
 
+        System.out.println("LLEGA");
         if(comment.getContent()==null){
             return ResponseEntity.badRequest().build();
         }
