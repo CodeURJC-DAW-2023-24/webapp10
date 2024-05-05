@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatIconModule } from '@angular/material/icon'; // Importa MatIconModule desde Angular Material
+import { MatIconModule } from '@angular/material/icon';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
@@ -25,7 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { CartComponent } from './cart/cart.component';
 import { CommentComponent } from './comment/comment.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    NgxChartsModule
   ],
   bootstrap: [AppComponent],
   providers: [

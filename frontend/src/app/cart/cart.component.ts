@@ -32,6 +32,9 @@ export class CartComponent implements OnInit {
   totalBet: number = 0;
   totalBenefit: number = 0;
   user: any;
+  wonPercentage: number | undefined;
+  lostPercentage: number | undefined;
+  pendingPercentage: number | undefined;
 
   constructor(
     private authService: AuthService,
@@ -54,6 +57,7 @@ export class CartComponent implements OnInit {
       this.hasBets = this.bets.length > 0;
       this.hasBetsFinished = this.betsFinished.length > 0;
       this.calculateTotals();
+      this.calculatePercentages();
     });
   }
 
@@ -61,6 +65,22 @@ export class CartComponent implements OnInit {
     this.totalWinningAmount = this.betsFinished.reduce((acc, bet) => acc + bet.winning_amount, 0);
     this.totalBet = this.bets.reduce((acc, bet) => acc + bet.bet_amount, 0);
     this.totalBenefit = this.betsFinished.reduce((acc, bet) => acc + bet.winning_amount - bet.bet_amount, 0);
+  }
+
+  private calculatePercentages(): void {
+    const totalFinished = this.betsFinished.length;
+    const totalPending = this.bets.length;
+
+    if (totalFinished > 0 || totalPending > 0) {
+      this.wonPercentage = (this.betsFinished.filter(bet => bet.result === 'ganado').length / totalFinished) * 100;
+      this.lostPercentage = (this.betsFinished.filter(bet => bet.result === 'perdido').length / totalFinished) * 100;
+      this.pendingPercentage = (totalPending / (totalFinished + totalPending)) * 100;
+    } else {
+
+      this.wonPercentage = 0;
+      this.lostPercentage = 0;
+      this.pendingPercentage = 0;
+    }
   }
 
   downloadPdf(): void {

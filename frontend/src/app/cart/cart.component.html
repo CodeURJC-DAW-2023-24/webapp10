@@ -191,6 +191,14 @@
     </div>
   </div>
 </div>
+<ngx-charts-pie-chart>
+  [view]="[400,300]"
+  [scheme]="&#123; domain: ['#28a745', '#dc3545', '#6c757d'] &#125;"
+  [results]=""[&#123; name: 'Ganado', value: wonPercentage&#125;, &#123; name: 'Perdido', value: lostPercentage &#125;, &#123; name: 'En espera', value: pendingPercentage &#125;]""
+  [legend]="true"
+  [labels]="true"
+  (select)="onSelect($event)"
+</ngx-charts-pie-chart>
 
   <!-- footer -->
   <app-footer></app-footer>
