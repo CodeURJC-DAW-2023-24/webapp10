@@ -105,7 +105,7 @@ public WebMvcConfigurer corsConfigurer() {
       
                   //Security of UserRestController
               
-                  .requestMatchers(HttpMethod.GET, "/api/users/*").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.GET, "/api/users/*").permitAll()
                   .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.POST, "/api/users/").permitAll()
                   .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
