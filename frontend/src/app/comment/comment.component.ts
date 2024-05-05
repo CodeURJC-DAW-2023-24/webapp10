@@ -45,10 +45,16 @@ export class CommentComponent implements OnInit {
   }
 
   deleteComment(id: number): void {
-    this.commentService.deleteComment(id)
-      .subscribe(() => {
+    if (confirm('¿Estás seguro de que quieres borrar este comentario?')) {
+    this.commentService.deleteComment(id).subscribe(
+      c => {
+        console.log(c);
         this.comments = this.comments.filter(comment => comment.id !== id);
-      });
+      },
+      error => console.error(error)
+    );
+      this.loadComments();
+    }
   }
 
   replaceComment(id: number, newCommentText: string): void {

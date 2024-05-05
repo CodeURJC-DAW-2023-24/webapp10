@@ -91,9 +91,13 @@ public class CommentRestController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Comment> deleteComment(@PathVariable long id) {
+        System.out.println("LLEGa");
+        System.out.println(id);
         Comment post = commentService.findById(id);
         if (post != null) {
+            System.out.println("LLEGAA");
             commentService.deleteById(id);
+            System.out.println("LLEGAA");
             return ResponseEntity.ok(post);
         } else {
             return ResponseEntity.notFound().build();

@@ -30,9 +30,9 @@ export class CommentService {
     return this.http.post<Comment>(`${this.baseUrl}/${eventId}`, comment);
   }
 
-  deleteComment(id: number): Observable<Comment> {
+  deleteComment(id: number): Observable<any> {
     console.log(id);
-    return this.http.delete<Comment>(`${this.baseUrl}/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
 
   replaceComment(id: number, newComment: Comment): Observable<Comment> {
