@@ -93,7 +93,7 @@ public class CommentRestController {
     public ResponseEntity<Comment> deleteComment(@PathVariable long id) {
         Comment post = commentService.findById(id);
         if (post != null) {
-            commentService.deleteById(id);
+            eventService.deleteComment(post.getEvent(), post);
             return ResponseEntity.ok(post);
         } else {
             return ResponseEntity.notFound().build();
