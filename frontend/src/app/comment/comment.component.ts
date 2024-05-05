@@ -13,7 +13,7 @@ export class CommentComponent implements OnInit {
   comments: Comment[] = [];
 
   @Input()
-  eventId: number;
+  eventId!: number;
 
   constructor(private commentService: CommentService,private authservice: AuthService) { }
 
