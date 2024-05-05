@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon'; // Importa MatIconModule desde Angular Material
 
+import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from "./header/header.component";
@@ -26,7 +27,7 @@ import { CartComponent } from './cart/cart.component';
 import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
- declarations: [
+  declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
@@ -47,16 +48,15 @@ import { CommentComponent } from './comment/comment.component';
     EditEventComponent,
     CartComponent,
     CommentComponent
-
-],
-
- imports: [
+  ],
+  imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
-],
-
- bootstrap: [AppComponent]
+    HttpClientModule,
+    MatIconModule
+  ],
+  bootstrap: [AppComponent],
+  providers: []
 })
 export class AppModule {}

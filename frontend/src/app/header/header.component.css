@@ -6,9 +6,26 @@
   z-index: 1000;
   transition: top 0.3s ease, background-color 0.3s ease;
   background-color: transparent;
+  margin-bottom: 0;
 }
 
 .top-header-area.active {
   top: 0;
   background-color: #051922;
+}
+
+.top-header-area .container,
+.top-header-area .row,
+.top-header-area .col-lg-12,
+.top-header-area .main-menu-wrap,
+.top-header-area .site-logo {
+  margin-bottom: 0;
+}
+
+.top-header-area .container,
+.top-header-area .row,
+.top-header-area .col-lg-12,
+.top-header-area .main-menu-wrap,
+.top-header-area .site-logo {
+  padding-bottom: 0;
 }
