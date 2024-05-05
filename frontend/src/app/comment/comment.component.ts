@@ -32,7 +32,12 @@ export class CommentComponent implements OnInit {
 
 
   addComment(content: string): void {
-    const newComment: Comment = { id: 0, content, userId: 1, eventId: 1 };
+    const newComment: Comment = {
+      id: 0, content, userId: 1, eventId: 1,
+      privileged: undefined,
+      user: undefined,
+      isEditing: undefined
+    };
     this.commentService.createComment(newComment, 1)
       .subscribe(comment => {
         this.comments.push(comment);
@@ -51,7 +56,10 @@ export class CommentComponent implements OnInit {
       id,
       content: newCommentText,
       userId: this.authservice.getId(),
-      eventId: this.eventId
+      eventId: this.eventId,
+      privileged: undefined,
+      user: undefined,
+      isEditing: undefined
     };
     this.commentService.replaceComment(id, updatedComment)
       .subscribe(updatedComment => {

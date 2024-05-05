@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable, ReplaySubject, catchError, throwError } from 'rxjs';
 import { Wallet } from '../models/wallet.model';
+import { RegistrationDataDTO } from '../models/registrationDataDTO';
 
 const BASE_URL = '/api/auth';
 const BASE_URL_USERS = '/api/users/';
@@ -73,32 +74,26 @@ export class AuthService {
   }
 
   register(user: User, wallet: Wallet) {
+
+    const registrationData: RegistrationDataDTO = {
+      user: user,
+      wallet: wallet
+    }
+
     if (user.roles) {
         user.roles.push('USER');
     } else {
         user.roles = ['USER'];
     }
 
-    /*    DE MOMENTO PROBAMOS CON CONST DATA
-    let formData = new FormData();
-    Object.entries(user).forEach(([key, value]) => {
-      if (value instanceof Date) {
-        formData.append(key, value.toISOString());
-      } else {
-        formData.append(key, value.toString());
-      }
-    });
+    console.log("EL USUARIO ES: ", user.username);
+    console.log("LA WALLET TIENE: ", user.wallet?.money);
 
-    Object.entries(wallet).forEach(([key, value]) => {
-      formData.append(`wallet.${key}`, value.toString());
-    }); */
 
-    const data = {
-      user: user,
-      wallet: wallet
-    }
+    console.log("DTO USER: ", registrationData.user.username);
+    console.log("LA WALLET TIENE: ", registrationData.wallet.money);
 
-      return this.http.post(BASE_URL_USERS, data).pipe(
+      return this.http.post(BASE_URL_USERS, user).pipe(
           catchError(error => {
               console.error('Error registering user: ' + JSON.stringify(error));
               return throwError('Error registering user');

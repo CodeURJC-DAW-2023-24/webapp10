@@ -12,29 +12,22 @@ import { Wallet } from '../models/wallet.model';
 })
 export class RegisterComponent {
 
-  user : User = {} as User;
+  user : User;
   wallet : Wallet;
 
   constructor(private authService: AuthService) {
-    this.wallet = {
-      card_number: '',
-      expired_date: '',
-      cvv: '',
-      owner: '',
-      money: 100
-    };
+    this.user = new User();
+    this.wallet = new Wallet();
   }
-
 
   registerUser(){
 
     this.wallet.owner = this.user.name;
-    this.authService.register(this.user, this.wallet)
+    this.user.setWallet(this.wallet);
+    this.wallet.setUser(this.user);
 
-    .subscribe(
+    this.authService.register(this.user, this.wallet).subscribe(
       user => {
-
-
         console.log(user);
       },
       error => {
