@@ -1,6 +1,6 @@
 import { BetsService } from '../services/bets.service';
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../services/auth.service";
+import { AuthService } from '../services/auth.service';
 import { PdfGeneratorService } from '../services/pdfGenerator.service';
 
 interface Bet {
@@ -36,6 +36,16 @@ export class CartComponent implements OnInit {
   lostPercentage: number | undefined;
   pendingPercentage: number | undefined;
 
+  // Add the following properties for chart data
+  chartData: any[] = [];
+  colorScheme: any = {
+    domain: [
+      { name: 'Ganadas', value: '#33FF57' },
+      { name: 'Perdidas', value: '#FF5733' },
+      { name: 'Pendientes', value: '#CCCCCC' }
+    ]
+  };
+
   constructor(
     private authService: AuthService,
     private betsService: BetsService,
@@ -51,13 +61,19 @@ export class CartComponent implements OnInit {
 
   private loadBetsData(): void {
     this.betsService.getBets().subscribe((bets: Bet[]) => {
-      console.log(bets);
       this.bets = bets.filter((bet: any) => !bet.event.finished);
       this.betsFinished = bets.filter((bet: any) => bet.event.finished);
       this.hasBets = this.bets.length > 0;
       this.hasBetsFinished = this.betsFinished.length > 0;
       this.calculateTotals();
       this.calculatePercentages();
+
+      // Update chart data
+      this.chartData = [
+        { name: 'Ganadas', value: this.wonPercentage },
+        { name: 'Perdidas', value: this.lostPercentage },
+        { name: 'Pendientes', value: this.pendingPercentage }
+      ];
     });
   }
 
@@ -76,7 +92,6 @@ export class CartComponent implements OnInit {
       this.lostPercentage = (this.betsFinished.filter(bet => bet.result === 'perdido').length / totalFinished) * 100;
       this.pendingPercentage = (totalPending / (totalFinished + totalPending)) * 100;
     } else {
-
       this.wonPercentage = 0;
       this.lostPercentage = 0;
       this.pendingPercentage = 0;
