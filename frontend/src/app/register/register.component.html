@@ -68,8 +68,7 @@
                         <p><input id="cvv" name="cvv" type="number" placeholder="CVV" [(ngModel)]="wallet.cvv" required></p>
                         <p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" [(ngModel)]="wallet.expired_date" required></p>
 
-  											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" (change)="onFileSelected($event)" required></p>
-
+  								
 												<div style="text-align: right;">
 													<input type="submit" class="boxed-btn">
 												</div>
@@ -83,63 +82,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="card single-accordion">
-								<div class="card-header" id="headingTwo">
-									<h5 class="mb-0">
-										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-											Datos de contacto
-										</button>
-									</h5>
-								</div>
-								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-									<div class="card-body">
-										<div class="billing-address-form">
-
-										</div>
-									</div>
-								</div>
+							
+							
 							</div>
-							<div class="card single-accordion">
-								<div class="card-header" id="headingFour">
-									<h5 class="mb-0">
-										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-											Método de pago
-										</button>
-									</h5>
-								</div>
-								<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-									<div class="card-body">
-										<div class="billing-address-form"> <!--
-											<p><input id="card_number" name="card_number" type="number" placeholder="Número de tarjeta" required></p>
-											<p><input id="cvv" name="cvv" type="number" placeholder="CVV" required></p>
-											<p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" required></p> -->
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card single-accordion">
-								<div class="card-header" id="headingThree">
-									<h5 class="mb-0">
-										<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-											Datos de usuario
-										</button>
-									</h5>
-								</div>
-								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-									<div class="card-body">
-										<div class="billing-address-form">
-
-											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
-											<div>
-												<label for="age">Acepto que tengo la mayoría de edad</label><input style="margin-left: 15px" type="checkbox" id="age" name="age" required>
-											</div>
-											<div>
-												<label for="terms">Acepto los <a routerLink="assets/pdf/CondicionesGeneralesMortez365.pdf" download>términos y condiciones</a></label>
-												<input type="checkbox" style="margin-left: 15px" id="terms" name="terms" required>
-											</div>
-										</div>
-									</div>
-								</div>
+							
 							</div>
 							<!-- <div style="text-align: right;">
 								<input type="submit" class="boxed-btn">
@@ -149,8 +95,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+	
+
 	<!-- end check out section -->
 	<!-- footer -->
 	<app-footer></app-footer>

@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { EventsService } from '../services/events.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Result } from '../models/result.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-singlebet',
@@ -15,10 +16,11 @@ export class SinglebetComponent {
   feeL:number = 0;
   betAmount: number = 0;
   id!: number;
+  user: any;
 
   @ViewChild('selectedBetInput') selectedBetInput!: ElementRef;
 
-  constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService, private betsService: BetsService) {
+  constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService, private betsService: BetsService, private authService: AuthService) {
     this.id = activatedRoute.snapshot.params['id'];
 
     eventsService.getEventById(this.id).subscribe(
@@ -31,10 +33,15 @@ export class SinglebetComponent {
     );
   }
 
-  ngOnInit() {
-    console.log(this.id);
-  }
 
+    ngOnInit() {
+      if (this.authService.isLogged()) {
+        this.user = this.authService.getUserDetails();
+        console.log("USUARIO: ", this.user);
+  
+   
+  }
+    }
   comprobarApuesta(): boolean {
     if (!this.isBetSelected()) {
       alert('Debes seleccionar una apuesta.');
