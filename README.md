@@ -449,3 +449,44 @@ ___
     [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/service/EventSevice.java)
     [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/DTO/UserDataDTO.java)
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)
+
+
+## Phase 4
+___
+  ## HOW TO DEPLOY THE WEB APPLICATION
+
+### 1. Install Node.js and npm:
+
+- Visit the official Node.js website.
+- Download the recommended version of Node.js for your operating system.
+- Follow the installation instructions provided by the installer.
+- npm (Node Package Manager) will be installed automatically as part of Node.js.
+
+### 2. Install Angular CLI:
+
+- Open a terminal or command prompt.
+- Run the following command to install Angular CLI globally on your system: npm install -g @angular/cli
+
+### 3. Clone the Angular Project Repository:
+
+- Clone the existing Angular project repository from the version control system (e.g., Git).
+
+### 4. Navigate to the Project Directory:
+
+- Open a terminal or command prompt.
+- Navigate to the directory where your existing Angular project is located.
+
+### 5. Install Project Dependencies:
+
+- Once in the project directory, run the following command to install project dependencies listed in the `package.json` file: npm install
+
+### 6. Serve the Angular Application:
+
+- After installing dependencies, serve the Angular application locally: ng serve
+
+### 7. Open the Application in a Browser:
+
+- Open your web browser and navigate to `https://localhost:4200/`.
+- You should see the existing Angular application running.
+
+  
