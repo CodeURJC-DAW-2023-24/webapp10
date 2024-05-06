@@ -3,6 +3,7 @@ package es.codeurj.mortez365.model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import es.codeurj.mortez365.serialize.CommentSerializer;
 import es.codeurj.mortez365.serialize.EventSerializer;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -22,6 +23,7 @@ import java.util.Random;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Data
@@ -107,7 +109,9 @@ public class Event {
     @Getter
     @Setter
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonSerialize(using = CommentSerializer.class)
+    @JsonSerialize(using = CommentSerializer.class) 
+    @JsonIgnore
+    
     private List<Comment> comments;
 /*
     @Getter

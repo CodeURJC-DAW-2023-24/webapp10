@@ -1,0 +1,108 @@
+<div class="comments-section container">
+  <h2>Comentarios</h2>
+
+  <form class="comment-form" style="margin-bottom: 20px" (ngSubmit)="addComment()">
+    <label for="textArea1">Escribe tus opiniones!</label>
+    <textarea class="form-control" id="textArea1" name="text" rows="3"
+              placeholder="Write your comment here..." style="margin-bottom: 15px" [(ngModel)]="commentText"></textarea>
+    <button class="btn btn-primary" type="submit">Send</button>
+  </form>
+
+  <div class="comment-container">
+    <div *ngFor="let comment of comments" class="comment" style="margin-bottom: 20px">
+      <div *ngIf="!isEditing; else editCommentBlock">
+        <h5>{{ comment.user }} dice...</h5>
+        <div class="comment-text" style="margin-left: 20px; margin-bottom: 10px">
+          "{{ comment.content }}"
+        </div>
+        <div *ngIf="privileged" style="gap: 10px; margin-left: 20px">
+          <button class="btn btn-light" (click)="editComment(comment.id)">Editar</button>
+          <button class="btn btn-danger" (click)="deleteComment(comment.id)">Borrar</button>
+        </div>
+      </div>
+      <ng-template #editCommentBlock>
+        <form class="comment-form" (ngSubmit)="replaceComment(comment.id, commentText)">
+          <textarea class="form-control" name="content" rows="3" placeholder="Write your comment here..."
+                    style="margin-bottom: 12.5px" [(ngModel)]="comment.content" #commentTex></textarea>
+          <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--
+<div class="comments-section container">
+  <h2>Comentarios</h2>
+
+  <form
+    action="/single-product/{{ event.id }}/comment"
+    method="post"
+    class="comment-form"
+    style="margin-bottom: 20px"
+  >
+    <label for="textArea1">Escribe tus opiniones!</label>
+    <textarea
+      class="form-control"
+      id="textArea1"
+      name="text"
+      rows="3"
+      placeholder="Write your comment here..."
+      style="margin-bottom: 15px"
+    ></textarea>
+    <button class="btn btn-primary" type="submit">Send</button>
+    	<input type="hidden" name="_csrf" value="{{token}}"/>
+  </form>
+</div>
+
+<div class="comment-container">
+  {{#event.comments}}
+  <div class="comment" style="margin-bottom: 20px">
+    {{#isEditing}}
+    <form
+      action="/editComment/{{ eventId }}/{{ id }}"
+      method="post"
+      class="comment-form"
+    >
+      <textarea
+        class="form-control"
+        name="content"
+        rows="3"
+        placeholder="Write your comment here..."
+        style="margin-bottom: 12.5px"
+        >{{ content }}</textarea
+      >
+      <button class="btn btn-primary" type="submit">Enviar</button>
+      <input type="hidden" name="_csrf" value="{{ token }}" />
+    </form>
+    {{/isEditing}}
+
+    {{^isEditing}}
+    <h5>{{ user.name }} dice...</h5>
+    <div class="comment-text" style="margin-left: 20px; margin-bottom: 10px">
+      "{{ content }}"
+    </div>
+    {{#privileged}}
+    <div style="gap: 10px; margin-left: 20px">
+      <a class="btn btn-light" routerLink="/editComment/{{ event.id }}/{{ id }}"
+        >Editar</a
+      >
+      <a
+        class="btn btn-danger"
+        routerLink="/comment/{{ event.id }}/{{ id }}/delete"
+        >Borrar</a
+      >
+    </div>
+    {{/privileged}}
+    {{/isEditing}}
+  </div>
+  {{/event.comments}}
+</div>
+
+
+
+
+-->

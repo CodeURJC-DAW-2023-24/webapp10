@@ -1,27 +1,46 @@
 #################################################
-# Imagen base para el contenedor de compilación
+# Imagen base para el contenedor de Angular
 #################################################
-FROM maven:3.8.4-openjdk-17 as builder
+FROM node:20 as angular_builder
 
 # Define el directorio de trabajo donde ejecutar comandos
-WORKDIR /project
+WORKDIR /ang
 
 # Copia las dependencias del proyecto
-COPY pom.xml .
+COPY frontend/* /ang/
 
 # Compila proyecto y descarga librerías
-RUN mvn clean verify
+RUN npm install
 
-# Copia el código del proyecto
-COPY src /project/src
+# Copia el contenido de src de frontend a ang
+COPY frontend/src /ang/src
 
-# Compila proyecto y descarga librerías
-RUN mvn package -Dmaven.test.skip=true
+# Compila el proyecto
+RUN npm run build
+
+#################################################
+# Imagen base para el contenedor de compilación
+#################################################
+FROM --platform=linux/amd64 ubuntu:jammy
+FROM maven:3.9.6-amazoncorretto-21 as builder
+
+WORKDIR /project
+
+COPY ./pom.xml /project/
+
+#RUN mvn clean verify
+
+COPY /src /project/src
+
+COPY --from=angular_builder /ang/dist/frontend/browser/ /project/src/main/resources/static/new
+
+RUN mvn clean package -DskipTests=true
+#RUN mvn clean verify -DskipTests=true
 
 #################################################
 # Imagen base para el contenedor de la aplicación
 #################################################
-FROM openjdk:17
+FROM openjdk:21
 
 # Define el directorio de trabajo donde se encuentra el JAR
 WORKDIR /usr/src/app/

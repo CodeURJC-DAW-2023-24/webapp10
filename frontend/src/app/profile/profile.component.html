@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Profile</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="../../assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="../../assets/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="../../assets/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="../../assets/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="../../assets/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="../../assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="../../assets/css/responsive.css">
+
+</head>
+<body>
+
+	<!--PreLoader
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+     Ends-->
+
+	<!-- header -->
+    <app-header></app-header>
+	<!-- end header -->
+
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search area -->
+
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb2-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Datos personales</p>
+						<h1>Perfil</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- check out section -->
+	<div *ngIf="user">
+	<div class="checkout-section mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="checkout-accordion-wrap">
+                        <div class="accordion" id="accordionExample">
+                          <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                              <h5 class="mb-0">
+
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  Datos personales
+                                </button>
+                              </h5>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="billing-address-form">
+                                    <div class="user-profile">
+
+                                        <p>Nombre: {{user.name}}<span id="user-name"></span></p>
+                                        <p>Primer apellido: {{user.firstsurname}}<span id="user-first-surname"></span></p>
+										                    <p>Segundo apellido: {{user.secondsurname}} <span id="user-second-surname"></span></p>
+                                        <p>Fecha de nacimiento: {{user.birthdate}} <span id="user-birthdate"></span></p>
+                                        <p>Nacionalidad: {{user.nationality}}<span id="user-nationality"></span></p>
+                                        <p>DNI: {{user.dni}}<span id="user-dni"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                                        Datos de contacto
+                                    </button>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Dirección: {{user.adress}}<span id="user-address"></span></p>
+                                <p>Código postal: {{user.postcode}}<span id="user-postal-code"></span></p>
+                                <p>Teléfono:{{user.telephone}} <span id="user-phone"></span></p>
+                                <p>Email: {{user.email}}<span id="user-contact-email"></span></p>
+                            </div>
+
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+
+									Datos de usuario
+                                    </button>
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Usuario: {{user.username}}<span id="user-username"></span></p>
+                            </div>
+
+											<form (ngSubmit) ="logOut()" >
+
+
+												<input type="submit" class="boxed-btn" value="Cerrar sesión">
+											<!--<input type="hidden" name="_csrf" value="{{token}}"/> -->
+											</form>
+                                    </div>
+
+									<div *ngIf="!user">
+
+										<p>No estás logueado. Por favor, inicia sesión para ver tus detalles.</p>
+									  </div>
+                                </div>
+                            </div>
+						    </div>
+							<div class="col-lg-5 align-items-center">
+								<img [src]="image ? image : '../../assets/img/default-profile.png'" id="profile-picture" alt="" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 80px">
+								
+								<div class="user-profile text-center">
+									<div class="align-items-center" style="margin-top: 360px">
+										<form (ngSubmit) = "uploadImage()" class="text-center" enctype="multipart/form-data">
+											<div class="form-group">
+												<label for="profile-picture">Selecciona una nueva imagen de perfil:</label>
+												<div class="input-group">
+													<div class="custom-file">
+														<input type="file"  (change)="onFileSelected($event)"class="custom-file-input" id="profile-picture1" name="file" accept="image/*"  required>
+														<label class="custom-file-label" for="profile-picture" id="file-label">Elegir archivo</label>
+													</div>
+													<div class="input-group-append">
+														<button class="btn btn-success" type="submit">Subir</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						  </div>
+
+
+						</div>
+
+					</div>
+					</div>
+          <div *ngIf="!user">
+            <div class="full-height-section error-section" style="margin-top: 50px; margin-bottom: 50px;">
+              <div class="full-height-tablecell">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 offset-lg-2 text-center">
+                      <div class="error-text">
+                        <i class="far fa-sad-cry"></i>
+                        <h1>No está logueado</h1>
+                        <p>Inicie sesión para ver sus datos</p>
+                        <a routerLink="/login" class="boxed-btn">Iniciar sesión</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+	<!-- end check out section -->
+
+	<!-- footer -->
+	<app-footer></app-footer>
+	<!-- end footer -->
+
+	<!-- copyright -->
+	<app-copyright></app-copyright>
+	<!-- end copyright -->
+
+	<!-- jquery -->
+	<script src="assets/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="assets/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="assets/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="assets/js/sticker.js"></script>
+	<!-- main js -->
+<script src="assets/js/main.js"></script>
+<!--
+<script>
+	function updateFileName() {
+		var input = document.getElementById('profile-picture1');
+		var fileName = input.files[0].name;
+		var label = document.getElementById('file-label');
+		label.innerHTML = fileName;
+	}
+
+	function checkFile() {
+		var fileName = document.getElementById("profile-picture1").value;
+		if (fileName === "") {
+			document.getElementById("file-label").innerHTML = "Elegir archivo";
+		}
+		return true; // Continuar con la subida de archivos
+	}
+</script>
+-->
+
+
+</body>
+</html>

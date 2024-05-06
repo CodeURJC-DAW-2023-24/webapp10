@@ -66,6 +66,7 @@ public class CommentRestController {
         String currentUserName = authentication.getName();
         Optional<User> currentUser = userService.findByUsername(currentUserName);
 
+        System.out.println("LLEGA");
         if(comment.getContent()==null){
             return ResponseEntity.badRequest().build();
         }
@@ -92,7 +93,7 @@ public class CommentRestController {
     public ResponseEntity<Comment> deleteComment(@PathVariable long id) {
         Comment post = commentService.findById(id);
         if (post != null) {
-            commentService.deleteById(id);
+            eventService.deleteComment(post.getEvent(), post);
             return ResponseEntity.ok(post);
         } else {
             return ResponseEntity.notFound().build();
@@ -102,7 +103,7 @@ public class CommentRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Comment> replaceEvent(@RequestBody Comment newComment, @PathVariable Long id) {
        Comment comment = commentService.findById(id);
-
+        System.out.println("LLEGA");
         if (comment!=null) {
             newComment.setId(id);
             newComment.setEvent(comment.getEvent());

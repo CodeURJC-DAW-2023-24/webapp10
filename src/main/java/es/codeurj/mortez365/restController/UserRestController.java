@@ -1,17 +1,26 @@
 package es.codeurj.mortez365.restController;
 
+import es.codeurj.mortez365.DTO.RegistrationDataDTO;
 import es.codeurj.mortez365.DTO.UserDataDTO;
+import es.codeurj.mortez365.controller.AppController;
 import es.codeurj.mortez365.model.User;
+import es.codeurj.mortez365.model.Wallet;
 import es.codeurj.mortez365.service.UserService;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.hibernate.engine.jdbc.BlobProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,11 +39,15 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
+@CrossOrigin( methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+
 @RequestMapping("/api/users")
 public class UserRestController {
 
     @Autowired
     private UserService userService;
+
+    private static final Logger log = LoggerFactory.getLogger(AppController.class);
 
 
     @Operation(summary = "Get All Users", description = "Retrieve all users")
@@ -51,7 +64,7 @@ public class UserRestController {
         }
         Collection<UserDataDTO> usersList = new ArrayList<>();
         for (User user : users) {
-            UserDataDTO dto = new UserDataDTO(user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername());
+            UserDataDTO dto = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername(), user.getAdress(), user.getPostcode(), user.getTelephone(), user.getDni(), user.getBirthdate(),user.getRoles());
             usersList.add(dto);
         }
         return new ResponseEntity<>(usersList, HttpStatus.OK);
@@ -67,7 +80,7 @@ public class UserRestController {
     public ResponseEntity<UserDataDTO> getUser(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()) {
-            UserDataDTO dto = new UserDataDTO(user.get().getName(), user.get().getFirstsurname(), user.get().getSecondsurname(), user.get().getEmail(), user.get().getUsername());
+            UserDataDTO dto = new UserDataDTO(user.get().getId(), user.get().getName(), user.get().getFirstsurname(), user.get().getSecondsurname(), user.get().getEmail(), user.get().getUsername(), user.get().getAdress(), user.get().getPostcode(), user.get().getTelephone(), user.get().getDni(), user.get().getBirthdate(), user.get().getRoles());
             return ResponseEntity.ok(dto);
         } else {
             return ResponseEntity.notFound().build();
@@ -98,10 +111,21 @@ public class UserRestController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/")
-    public ResponseEntity<User> newEvent(@RequestBody User newUser) {
-        User savedUser = userService.save(newUser);
-        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
-        return ResponseEntity.created(location).body(savedUser);
+    public ResponseEntity<User> newUser(@RequestBody User user) {
+        try {/* 
+            log.info("ESTE ES EL NOMBRE DEL USUARIO: ", user.getName());
+            log.info("ESTE ES EL DINERO QUE TIENE LA WALLET: ", user.getWallet().getMoney());
+             
+            
+            log.info("IMAGENES BIEN");*/
+    
+            User savedUser = userService.save(user);
+            URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
+            return ResponseEntity.created(location).body(savedUser);
+        } catch (Exception e) {
+            log.info("EL POST TIENE PROBLEMAS");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
 
@@ -125,6 +149,7 @@ public class UserRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("/image/{id}")
     public ResponseEntity<byte[]> getImageById(@PathVariable Long id) throws IOException, SQLException {
       Optional< User> user = userService.findById(id);
@@ -137,7 +162,7 @@ public class UserRestController {
       } else {
           return ResponseEntity.noContent().build();
       }
-      }
+    }
 
 
       @PostMapping("/image/{id}")
@@ -182,6 +207,20 @@ public class UserRestController {
 
             return ResponseEntity.created(location).build();
         
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserDataDTO> getUserMe() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Optional<User> currentUser = userService.findByUsername(currentUserName);
+        if (currentUser.isPresent()) {
+            User user = currentUser.get();
+            UserDataDTO userDTO = new UserDataDTO(user.getId(), user.getName(), user.getFirstsurname(), user.getSecondsurname(), user.getEmail(), user.getUsername(), user.getAdress(), user.getPostcode(), user.getTelephone(), user.getDni(), user.getBirthdate(),user.getRoles());
+            return ResponseEntity.ok().body(userDTO);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
   
 }

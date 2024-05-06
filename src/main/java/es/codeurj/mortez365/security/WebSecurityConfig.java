@@ -23,6 +23,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -63,7 +65,20 @@ public class WebSecurityConfig {
     
     }
 
-
+    @Bean
+public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("http://localhost:4200")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
+                    .allowedHeaders("*")
+                    .allowCredentials(true);
+        }
+    };
+}
+        
     @Bean 
     @Order(1)
     public SecurityFilterChain apFilterChain (HttpSecurity http ) throws Exception {
@@ -79,9 +94,10 @@ public class WebSecurityConfig {
             .requestMatchers("/api/auth/login").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/championship/*").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/sport/*").permitAll()
+          
             .requestMatchers(HttpMethod.POST, "/api/events/").hasRole("ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/api/events/").hasRole("ADMIN")
-            .requestMatchers (HttpMethod.PUT, "/api/events/").hasRole("ADMIN")
+            .requestMatchers (HttpMethod.PUT, "/api/events/*").hasRole("ADMIN")
             .requestMatchers(HttpMethod.GET, "/api/events/*").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/events/image/*").permitAll()
             .requestMatchers(HttpMethod.POST, "/api/events/image/*").hasRole("ADMIN")
@@ -89,13 +105,15 @@ public class WebSecurityConfig {
       
                   //Security of UserRestController
               
-                  .requestMatchers(HttpMethod.GET, "/api/users/").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.GET, "/api/users/*").permitAll()
                   .requestMatchers(HttpMethod.DELETE,"/api/users/").hasRole("ADMIN")
                   .requestMatchers(HttpMethod.POST, "/api/users/").permitAll()
                   .requestMatchers(HttpMethod.PUT, "/api/users/").hasRole("ADMIN")
-                  .requestMatchers(HttpMethod.GET, "/api/users/image/*").hasRole("ADMIN")
-                  .requestMatchers(HttpMethod.POST, "/api/users/image/*").hasRole("ADMIN")
-                  .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").hasRole("ADMIN")
+                  .requestMatchers(HttpMethod.GET, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.POST, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.DELETE, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.PUT, "/api/users/image/*").authenticated()
+                  .requestMatchers(HttpMethod.PUT, "/api/users/image/*").permitAll()
 
                   //Security of WalletRestController
                     .requestMatchers(HttpMethod.GET, "/api/wallets/").hasRole("ADMIN")
@@ -159,6 +177,11 @@ public class WebSecurityConfig {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
+
+                        
+
+                        .requestMatchers("/new/**").permitAll()
+                        .requestMatchers("/new").permitAll()
                        
                         .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
                         .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
@@ -169,6 +192,9 @@ public class WebSecurityConfig {
 
                         // PRIVATE PAGES
                         .requestMatchers("/betsadmin").hasRole("ADMIN")
+                        .requestMatchers("/wallet").authenticated()
+                        .requestMatchers("/profile").authenticated()
+
                  
                         .anyRequest().authenticated()
                 )
