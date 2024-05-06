@@ -453,6 +453,10 @@ ___
 
 ## Phase 4
 ___
+  ## Diagram of SPA clases and Templates
+  ![image](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/1e7e52ed-7be4-4947-b2f4-c96ce65fee4e)
+
+
   ## HOW TO DEPLOY THE WEB APPLICATION
 
 ### 1. Install Node.js and npm:
@@ -490,7 +494,7 @@ ___
 - You should see the existing Angular application running.
 
 
-  ## Phase 4 MEMBERS' PARTICIPATION
+MEMBERS' PARTICIPATION
   - **Vicente Navarro Raboso**:
  In this phase I made the miigration to all the html pages to Angular components. I created the signup function and the operations for the admin. I also fixed some errors and helped my teamates with other tasks.
     My most inmportant commits:
