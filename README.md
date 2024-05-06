@@ -525,21 +525,21 @@ ___
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/CSRFHandlerConfiguration.java)  
 
   - **Alberto Roldán Nieto**:
-    In this phase I helped the rest of the team and implemented the roulette algorithm and https  
-    My most important commits:  
+    In this phase I implemented the graphics, helped doing Dockerfile and angularDockerfile, solved some visual errors such as icons and fixed errors related to
+    profile, wallet and cart so now redirects to login if not logged in:
     [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/8069106ab74e0653aa14aa89deb3447beb72aeef)
-    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5ce73fe0a9d4e886852e9180c49ef527016ab785) 
-    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c7fb5e3eb955de8ae696892e9684c7db05d14617)
-    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5773574b4f40cb106e7b9694089d4d23efbf1448)
-    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/34054be3e905502a77b007f8ddc0be31a1c57848)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/880ee0c7a6a5de489edf94aad9681c0cc586aab2)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/1f4914b79c8818eee463273f412af56e997d030a)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/f9d43e35576b6b6a3437a63be27052c2e2f4e1d0)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/ea65f672409055559d9d40943b9b794c5ff59b2a)
 
    
     The files I worked in the most:
-    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/advice/BaseControllerAdvice.java)  
-    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/assets/js/scriptroulette.js)  
-    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/fragments/header.html)  
-    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
-    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/application.properties)  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase_4/frontend/src/app/cart/cart.component.html) 
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase_4/frontend/src/app/cart/cart.component.ts)
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase_4/frontend/src/app/wallet/wallet.component.ts)
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase_4/frontend/src/app/header/header.component.html)
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase_4/angular.Dockerfile)
     
   - **José Villagrán Robles**:
     In this phase I connected the database on MySQL to the application, and also helped with the login, create
