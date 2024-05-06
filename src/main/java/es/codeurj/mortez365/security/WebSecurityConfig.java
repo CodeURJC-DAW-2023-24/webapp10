@@ -177,6 +177,11 @@ public WebMvcConfigurer corsConfigurer() {
                         .requestMatchers("/responsablegame").permitAll()
                         .requestMatchers("/games").permitAll()
                         .requestMatchers("/slots").permitAll()
+
+                        
+
+                        .requestMatchers("/new/**").permitAll()
+                        .requestMatchers("/new").permitAll()
                        
                         .requestMatchers(HttpMethod.POST, "/updateValue").permitAll()
                         .requestMatchers(HttpMethod.GET, "/getValue").permitAll()

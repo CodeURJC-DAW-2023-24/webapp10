@@ -27,6 +27,7 @@ export class CommentComponent implements OnInit {
   ngOnInit(): void {
     this.privileged = this.authService.isAdmin();
     this.loadComments();
+    console.log(this.eventId);
   }
 
   loadComments(): void {
@@ -37,6 +38,7 @@ export class CommentComponent implements OnInit {
   }
 
   addComment(): void {
+    console.log("EVENTO ID: ", this.eventId);
     const newComment: C = { content: this.commentText };
     this.commentService.createComment(newComment, this.eventId)
       .subscribe(comment => {

@@ -14,13 +14,14 @@ export class SinglebetComponent {
   feeT:number = 0;
   feeL:number = 0;
   betAmount: number = 0;
+  id!: number;
 
   @ViewChild('selectedBetInput') selectedBetInput!: ElementRef;
 
   constructor(private router: Router,activatedRoute: ActivatedRoute, private eventsService: EventsService, private betsService: BetsService) {
-    let id = activatedRoute.snapshot.params['id'];
+    this.id = activatedRoute.snapshot.params['id'];
 
-    eventsService.getEventById(id).subscribe(
+    eventsService.getEventById(this.id).subscribe(
       event => {
         this.event = event;
         this.feeT = 1.7;
@@ -28,6 +29,10 @@ export class SinglebetComponent {
       },
       error => console.error(error)
     );
+  }
+
+  ngOnInit() {
+    console.log(this.id);
   }
 
   comprobarApuesta(): boolean {

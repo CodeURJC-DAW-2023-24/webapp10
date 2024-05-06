@@ -21,22 +21,21 @@ RUN npm run build
 #################################################
 # Imagen base para el contenedor de compilación
 #################################################
-FROM maven:3.8.4-openjdk-17 as builder
+FROM --platform=linux/amd64 ubuntu:jammy
+FROM maven:3.9.6-amazoncorretto-21 as builder
 
-# Define el directorio de trabajo donde ejecutar comandos
 WORKDIR /project
 
-# Copia las dependencias del proyecto
-COPY pom.xml .
+COPY ./pom.xml /project/
 
-# Compila proyecto y descarga librerías
-RUN mvn clean verify
+#RUN mvn clean verify
 
-# Copia el código del proyecto
-COPY src /project/src
+COPY /src /project/src
 
-# Compila proyecto y descarga librerías
-RUN mvn package -Dmaven.test.skip=true
+COPY --from=angular_builder /ang/dist/frontend/browser/ /project/src/main/resources/static/new
+
+RUN mvn clean package -DskipTests=true
+#RUN mvn clean verify -DskipTests=true
 
 #################################################
 # Imagen base para el contenedor de la aplicación

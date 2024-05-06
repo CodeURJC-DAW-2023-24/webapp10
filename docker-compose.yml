@@ -2,13 +2,12 @@ services:
   web:
     #image: josrob13/mortez365:1.0
     build:
-      context: ..
       dockerfile: Dockerfile
     ports:
       - 4200:4200
       - 8443:8443
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/mortez365
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/mortez365?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=password
     restart: on-failure
@@ -18,6 +17,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=mortez365
-    volumes:
-      - ./mysql:/var/lib/mysql
+    #volumes:
+    #  - ./mysql:/var/lib/mysql
 
