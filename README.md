@@ -546,22 +546,21 @@ MEMBERS' PARTICIPATION
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase_4/angular.Dockerfile)
     
   - **José Villagrán Robles**:
-    In this phase I connected the database on MySQL to the application, and also helped with the login, create
-    the PDFGenerator and some little details.
+    In this phase I made the docker part , I make all the operations for the images and I helped with other tasks 
     My most important commits:  
-    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/2e8cd7a33aec06720c11ce484575e3d6545eca3b)
-    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d7dea2ca11ffd50fde0d8970623e8692c5773e69) 
-    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/f3a928148a07e8c5c8da881cbde431d455c2ab2c)
-    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/91aabd4b4756bad393e1f585a5673abdc6ec7053)
-    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/6aaade018285ffb072eca7a37644c73618205753)
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/0b23232c05629aba1708f3554b0e459f06db024a)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/b0c0a7fd7a6a172ccf04d7b4962ab63073d2b1d7) 
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/a6133dfdb5496bc149f5aa620c9176967e322774)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d3c94245b2a75238c1fce44c68b10f22fefde7ce)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/ca87c45319f9dc3fe7889fbfab929f4ab9904180)
 
     
     The files I worked in the most:
-    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/PDFExportController.java)  
-    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/MainController.java)  
-    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/PDFGeneratorService.java)  
-    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/User.java)  
-    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/a6133dfdb5496bc149f5aa620c9176967e322774)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d3c94245b2a75238c1fce44c68b10f22fefde7ce)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/ca87c45319f9dc3fe7889fbfab929f4ab9904180)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/Dockerfile)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/angular.Dockerfile)  
 
  - **Guillermo Romero Almazan**:
     In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also I helped with the register and fixing some errors.
