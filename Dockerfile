@@ -41,7 +41,7 @@ RUN mvn package -Dmaven.test.skip=true
 #################################################
 # Imagen base para el contenedor de la aplicación
 #################################################
-FROM openjdk:17
+FROM openjdk:21
 
 # Define el directorio de trabajo donde se encuentra el JAR
 WORKDIR /usr/src/app/

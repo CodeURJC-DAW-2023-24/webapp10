@@ -1,10 +1,11 @@
 services:
   web:
-    image: josrob13/mortez365:1.0
+    #image: josrob13/mortez365:1.0
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
     ports:
+      - 4200:4200
       - 8443:8443
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/mortez365
