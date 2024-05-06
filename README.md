@@ -327,20 +327,20 @@ ___
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
 
  - **Guillermo Romero Almazan**:
-    In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also I helped with the register and fixing some errors.
+    In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also with the comments.
     My most important commits:  
-    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/78145be0f0f32b3d3a02a8a47630ce6fc93089ec)
-    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/33c7b9b8f4f4ecb75a94b0ab7877f67828c33292)
-    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/bdae85457ed73644d6e900c299fea9cfc8f1fef1#diff-9d3d6d342c0eb97140c741512078e2f8b5265e892d5f3850800febb86b583ec3)
-    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/a318818d121d2e08c06d53c00d09646ba7e13f76)
-    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/60f394bfa50cbf1fdaada632b22a4cc49bf2a45a#diff-94076bacca6130783ae9057d5e04863a29cc29cd6978d236b2112dd03900ae38)
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/3ae39c663e75022d3c213fe44e7c4a9d3405622e)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c350c2072acbec14ae9091109ca1592d1682e631)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/f95297b90d41dc6f26868fd0bbbeadbaf2163938)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/df45cd1c3e1824c19cd53530db6662df6ffa07eb)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/340be624febf2450906b19815a92b8862c786ba7)
     
 The files I worked in the most:
-    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
-    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Bet.java)  
-    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/resources/assets/js/scriptapuestas.js)  
-    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/resources/templates/single-product.html)  
-    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/comment/comment.component.ts)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/tree/main/frontend/src/app/cart)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/tree/main/frontend/src/app/comment)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/docker-compose.yml)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/tree/main/frontend/src/app/bets)  
 
 
 ## Phase 3
