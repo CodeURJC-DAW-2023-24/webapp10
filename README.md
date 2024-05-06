@@ -513,20 +513,20 @@ MEMBERS' PARTICIPATION
     [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/edit-event/edit-event.component.ts)  
 
   - **Álvaro Pindado Castiñeira**:
-    In this phase I developed the security and updated it to SpringBoot 3 and helped the rest of the team with the controllers and mustache implementation.  
+    In this phase I developed the angular implementation of login and comments and fixed somre errors.  
     My most important commits:  
-    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/b869be16353d81762850031839ee3e4d26f34282)  
-    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/7f409f2d70d048c38b19bb2ac706fc3d2794a04e)  
-    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/9081a740f1e707c9c6726814e282c5f81e187772)  
-    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d17f53e6b3531f5e92bcaa81d91561951a3b7786)  
-    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/befb2ea13779b402c24d795ac6960122f47de9e9)  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/1397c10d8b3e7a2f2328e59669eb62d5742b4949)  
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/3e37388c4bc0c2232e9d649f71f160db6c78eea9)  
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/2ec0dd3d8f2a5a928082d474e0432d726cc77ed1)  
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/e2765ae533d708e5995809ce85e4e5b4eda62413)  
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/e332d166da737f118d017de13e41fa0b7fab2c60)  
 
     The files I worked in the most:  
-    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/WebSecurityConfig.java)  
-    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
-    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/templates/login.html)  
-    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/RepositoryUserDetailsService.java)  
-    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/CSRFHandlerConfiguration.java)  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/comment/comment.component.ts)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/comment/comment.component.html)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/login/login.component.ts)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/services/auth.service.ts)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/services/comment.service.ts)  
 
   - **Alberto Roldán Nieto**:
     In this phase I implemented the graphics, helped doing Dockerfile and angularDockerfile, solved some visual errors such as icons and fixed errors related to
