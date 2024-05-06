@@ -154,8 +154,8 @@
                             </div>
 						    </div>
 							<div class="col-lg-5 align-items-center">
-								<img id="profile-picture" [src]="image" alt="User image" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 80px">
-
+								<img [src]="image ? image : '../../assets/img/default-profile.png'" id="profile-picture" alt="" style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; margin-right: 100px; margin-top: 80px">
+								
 								<div class="user-profile text-center">
 									<div class="align-items-center" style="margin-top: 360px">
 										<form (ngSubmit) = "uploadImage()" class="text-center" enctype="multipart/form-data">

@@ -19,17 +19,21 @@ export class ProfileComponent {
   ngOnInit() {
     if (this.authService.isLogged()) {
       this.user = this.authService.getUserDetails();
-
+  
       this.authService.getUserImage(this.authService.getId()).subscribe(
         (imageBlob: Blob) => {
-          const objectUrl = URL.createObjectURL(imageBlob);
-          this.image = objectUrl;
+          if (imageBlob.size > 0) {
+            const objectUrl = URL.createObjectURL(imageBlob);
+            this.image = objectUrl;
+            console.log("IMAGEN: ", this.image);
+          } else {
+            this.image = null;
+          }
         },
         (error) => {
           console.error('Error getting user image', error);
         }
       );
-
     }
   }
     logOut() {

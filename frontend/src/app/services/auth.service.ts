@@ -73,7 +73,8 @@ export class AuthService {
       return this.user;
   }
 
-  register(user: User): Observable<any> {
+  register(user: User) {
+
 
 
     if (user.roles) {
@@ -82,36 +83,17 @@ export class AuthService {
         user.roles = ['USER'];
     }
 
+
     console.log("EL USUARIO ES: ", user.username);
     console.log("LA WALLET TIENE: ", user.wallet?.money);
 
-
-
-    const headers = {
-      'Content-Type': 'application/json'
-    };
-
-    let iFile = user.getImageFile();
-    let Aimage = user.image;
-
-    const body=JSON.stringify(user);
-    console.log("USUARIO: ", user);
-    console.log("BODY RARO: ", body);
-
-    let formData = new FormData();
-    formData.append('user', JSON.stringify(user));
-
-    if (iFile) {
-      formData.append('imageFile', iFile); // Añade el File solo si no es undefined
-    }
-
-    if (Aimage) {
-      formData.append('image', Aimage); // Añade el File solo si no es undefined
-    }
-
-    console.log("FORMDATA: ", formData);
-
-      return this.http.post(BASE_URL_USERS, formData, { headers });
+      return this.http.post(BASE_URL_USERS, user).pipe(
+          catchError(error => {
+              console.error('Error registering user: ' + JSON.stringify(error));
+              return throwError('Error registering user');
+          })
+      );
+      
     }
 
     setRole(user: User){

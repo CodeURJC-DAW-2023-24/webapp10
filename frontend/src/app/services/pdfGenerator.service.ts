@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { jsPDF } from 'jspdf';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,10 @@ export class PdfGeneratorService {
 
   generatePdf(userId: number | undefined, betData: any[]): void {
     const pdfContent = this.buildPdfContent(userId, betData);
-    const blob = new Blob([pdfContent], { type: 'application/pdf' });
-    const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'bet_history.pdf';
-    a.click();
-
-    window.URL.revokeObjectURL(url);
+    const doc = new jsPDF();
+    doc.text(pdfContent, 10, 10);
+    doc.save('bet_history.pdf');
   }
 
   private buildPdfContent(userId: number | undefined, betData: any[]): string {
@@ -27,7 +23,7 @@ export class PdfGeneratorService {
       pdfContent += 'Aún no hay apuestas realizadas...\n';
     } else {
       betData.forEach((bet, index) => {
-        pdfContent += `${index + 1}. ${bet.eventName}\nCantidad apostada: ${bet.betAmount}€\nCantidad ganada: ${bet.winningAmount}€\nBeneficio obtenido: ${bet.profit}€\n\n`;
+        pdfContent += `${index + 1}. ${bet.event.name}\nCantidad apostada: ${bet.bet_amount}€\nCantidad ganada: ${bet.winning_amount}€\nBeneficio obtenido: ${bet.winning_amount - bet.bet_amount}€\n\n`;
       });
     }
 
