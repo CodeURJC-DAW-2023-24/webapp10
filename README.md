@@ -489,4 +489,88 @@ ___
 - Open your web browser and navigate to `https://localhost:4200/`.
 - You should see the existing Angular application running.
 
-  
+
+  ## Phase 4 MEMBERS' PARTICIPATION
+  - **Vicente Navarro Raboso**:
+ In this phase I made the miigration to all the html pages to Angular components. I created the signup function and the operations for the admin. I also fixed some errors and helped my teamates with other tasks.
+    My most inmportant commits:
+
+     [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/45eb87d50badc7519c5e2b0713dbe848ea2a1d8e)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5620d2d29ba3921b6e8e2a01a9af3c098f7307b0)  
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/75e0f67c8a39f1784f1911b8f2c25c7d14892942)  
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/7bcd83a9a5d360780d6420933507d982f9c53846)  
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/748749532b8d51e66a76d9368a281b9351c78db5)
+
+    The files I worked the most:
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/services/auth.service.ts)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/services/events.service.ts)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/betsadmin/betsadmin.component.ts)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/profile/profile.component.ts)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/frontend/src/app/edit-event/edit-event.component.ts)  
+
+  - **Álvaro Pindado Castiñeira**:
+    In this phase I developed the security and updated it to SpringBoot 3 and helped the rest of the team with the controllers and mustache implementation.  
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/b869be16353d81762850031839ee3e4d26f34282)  
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/7f409f2d70d048c38b19bb2ac706fc3d2794a04e)  
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/9081a740f1e707c9c6726814e282c5f81e187772)  
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d17f53e6b3531f5e92bcaa81d91561951a3b7786)  
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/befb2ea13779b402c24d795ac6960122f47de9e9)  
+
+    The files I worked in the most:  
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/WebSecurityConfig.java)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/templates/login.html)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/RepositoryUserDetailsService.java)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/security/CSRFHandlerConfiguration.java)  
+
+  - **Alberto Roldán Nieto**:
+    In this phase I helped the rest of the team and implemented the roulette algorithm and https  
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/8069106ab74e0653aa14aa89deb3447beb72aeef)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5ce73fe0a9d4e886852e9180c49ef527016ab785) 
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/c7fb5e3eb955de8ae696892e9684c7db05d14617)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/5773574b4f40cb106e7b9694089d4d23efbf1448)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/34054be3e905502a77b007f8ddc0be31a1c57848)
+
+   
+    The files I worked in the most:
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/advice/BaseControllerAdvice.java)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/assets/js/scriptroulette.js)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/fragments/header.html)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/main/src/main/resources/application.properties)  
+    
+  - **José Villagrán Robles**:
+    In this phase I connected the database on MySQL to the application, and also helped with the login, create
+    the PDFGenerator and some little details.
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/2e8cd7a33aec06720c11ce484575e3d6545eca3b)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/d7dea2ca11ffd50fde0d8970623e8692c5773e69) 
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/f3a928148a07e8c5c8da881cbde431d455c2ab2c)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/91aabd4b4756bad393e1f585a5673abdc6ec7053)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/6aaade018285ffb072eca7a37644c73618205753)
+
+    
+    The files I worked in the most:
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/PDFExportController.java)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/MainController.java)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/service/PDFGeneratorService.java)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/User.java)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
+
+ - **Guillermo Romero Almazan**:
+    In this phase I was in charge of the bets, how they are displayed, how to bet and how to save them, also I helped with the register and fixing some errors.
+    My most important commits:  
+    [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/78145be0f0f32b3d3a02a8a47630ce6fc93089ec)
+    [Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/33c7b9b8f4f4ecb75a94b0ab7877f67828c33292)
+    [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/bdae85457ed73644d6e900c299fea9cfc8f1fef1#diff-9d3d6d342c0eb97140c741512078e2f8b5265e892d5f3850800febb86b583ec3)
+    [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/a318818d121d2e08c06d53c00d09646ba7e13f76)
+    [Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/commit/60f394bfa50cbf1fdaada632b22a4cc49bf2a45a#diff-94076bacca6130783ae9057d5e04863a29cc29cd6978d236b2112dd03900ae38)
+    
+The files I worked in the most:
+    [File 1](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/controller/AppController.java)  
+    [File 2](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Bet.java)  
+    [File 3](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/resources/assets/js/scriptapuestas.js)  
+    [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/resources/templates/single-product.html)  
+    [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/develop/src/main/java/es/codeurj/mortez365/model/Event.java)  
