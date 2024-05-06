@@ -68,7 +68,7 @@
                         <p><input id="cvv" name="cvv" type="number" placeholder="CVV" [(ngModel)]="wallet.cvv" required></p>
                         <p><input id="expired_date" name="expired_date" type="month" pattern="MM/yy" min="2025-01" placeholder="Fecha de expiración" [(ngModel)]="wallet.expired_date" required></p>
 
-  											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" required></p>
+  											<p><input id="imageFile" name="imageFile" type="file" placeholder="Imagen" (change)="onFileSelected($event)" required></p>
 
 												<div style="text-align: right;">
 													<input type="submit" class="boxed-btn">

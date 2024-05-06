@@ -7,7 +7,6 @@ export class Wallet {
   cvv: string;
   owner: string;
   money: number;
-  user?: User;
 
   constructor() {
     this.card_number = '';
@@ -15,9 +14,5 @@ export class Wallet {
     this.cvv = '';
     this.owner = '';
     this.money = 100;
-  }
-
-  setUser(u: User) {
-    this.user = u;
   }
 }
