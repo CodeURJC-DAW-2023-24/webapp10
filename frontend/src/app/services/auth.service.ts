@@ -73,12 +73,8 @@ export class AuthService {
       return this.user;
   }
 
-  register(user: User, wallet: Wallet) {
+  register(user: User): Observable<any> {
 
-    const registrationData: RegistrationDataDTO = {
-      user: user,
-      wallet: wallet
-    }
 
     if (user.roles) {
         user.roles.push('USER');
@@ -90,16 +86,34 @@ export class AuthService {
     console.log("LA WALLET TIENE: ", user.wallet?.money);
 
 
-    console.log("DTO USER: ", registrationData.user.username);
-    console.log("LA WALLET TIENE: ", registrationData.wallet.money);
 
-      return this.http.post(BASE_URL_USERS, user).pipe(
-          catchError(error => {
-              console.error('Error registering user: ' + JSON.stringify(error));
-              return throwError('Error registering user');
-          })
-      );
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+
+    let iFile = user.getImageFile();
+    let Aimage = user.image;
+
+    const body=JSON.stringify(user);
+    console.log("USUARIO: ", user);
+    console.log("BODY RARO: ", body);
+
+    let formData = new FormData();
+    formData.append('user', JSON.stringify(user));
+
+    if (iFile) {
+      formData.append('imageFile', iFile); // Añade el File solo si no es undefined
     }
+
+    if (Aimage) {
+      formData.append('image', Aimage); // Añade el File solo si no es undefined
+    }
+
+    console.log("FORMDATA: ", formData);
+
+      return this.http.post(BASE_URL_USERS, formData, { headers });
+    }
+
     setRole(user: User){
         user.roles.push("USER");
     }

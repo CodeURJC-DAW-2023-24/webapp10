@@ -111,14 +111,13 @@ public class UserRestController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/")
-    public ResponseEntity<User> newEvent(@RequestBody User user) {
-        try {
+    public ResponseEntity<User> newUser(@RequestBody User user) {
+        try {/* 
             log.info("ESTE ES EL NOMBRE DEL USUARIO: ", user.getName());
             log.info("ESTE ES EL DINERO QUE TIENE LA WALLET: ", user.getWallet().getMoney());
-                    
-            Resource image = new ClassPathResource(user.getImageFile());
-            user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-            log.info("IMAGENES BIEN");
+             
+            
+            log.info("IMAGENES BIEN");*/
     
             User savedUser = userService.save(user);
             URI location = fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();

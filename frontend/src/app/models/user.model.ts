@@ -16,6 +16,7 @@ export class User {
   postcode: number;
   telephone: number;
   imageFile?: File;
+  image?: Blob;
   wallet?: Wallet;
 
   constructor() {
@@ -32,9 +33,18 @@ export class User {
     this.adress = '';
     this.postcode = 0;
     this.telephone = 0;
+    this.imageFile = new File([], "", undefined);
   }
 
   setWallet(w: Wallet) {
     this.wallet = w;
+  }
+
+  getImageFile() {
+    return this.imageFile;
+  }
+
+  setImage(b: Blob) {
+    this.image = b;
   }
 }
