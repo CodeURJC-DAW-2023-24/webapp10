@@ -11,7 +11,7 @@ import java.util.List;
 
 import es.codeurj.mortez365.model.Wallet;
 
-import es.codeurj.mortez365.restController.UserRestController;
+
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/register")
 public class UserController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserRestController.class);
+
     private UserService userService;
     private PasswordEncoder passwordEncoder;
 
@@ -81,11 +81,11 @@ public class UserController {
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
     user.setImageFile(imageFile.getOriginalFilename());
-    logger.info("archivo: " + imageFile.getOriginalFilename());
+
     Resource image = new ClassPathResource(user.getImageFile());
     user.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
   
-    logger.info("archivo: " + image.getFilename() );
+
     String real_date = expired_date.substring(5) + "/" + expired_date.substring(2,4);
     Wallet w = new Wallet(card_number, cvv, real_date, user);
     user.setWallet(w);
