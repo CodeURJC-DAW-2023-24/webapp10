@@ -69,6 +69,11 @@ public class AppController {
     @Autowired
     private CommentService commentService;
 
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/index";
+    }
+
     @RequestMapping("/index")
     public String index(Model model) {
         // Get the current user
