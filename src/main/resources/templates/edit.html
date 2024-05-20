@@ -87,10 +87,23 @@
             <form name="edit-event" action="/edit" method="post">
             <div class="col-md-5">
                 <div class="single-product-img">
-                    <img id="product-image" src="{{event.image}}" alt=""><input type="file">
+                    <img id="product-image" src="data:image/jpeg;base64,{{imageBase64}}" alt="Event Image" onerror="this.onerror=null; this.src='/assets/img/default-profile.png'" style="margin-bottom: 20px">
+                    <!-- <img id="product-image" src="{{event.image}}" alt=""> -->
                 </div>
-            </div><p></p>
-            <div class="col-md-7">
+            </div>
+                <div class="form-group">
+                    <label for="product-image">Selecciona una nueva imagen de perfil:</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="profile-picture1" name="file" accept="image/*" onchange="updateFileName()" required>
+                            <label class="custom-file-label" for="product-image" id="file-label">Elegir archivo</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Subir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
                 <div class="single-product-content">
                     <h3 id="product-name">Nombre: <label>
                         <input name="event-name" value="{{event.name}}">

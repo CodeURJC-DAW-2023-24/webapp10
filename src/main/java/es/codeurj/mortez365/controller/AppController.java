@@ -548,6 +548,20 @@ public String profile(Model model, HttpServletRequest request) {
     public String editEvent(@RequestParam("id") Long id, Model model){
         Event event = events.findById(id).orElse(null);
         assert event != null;
+
+        log.info("EVENT NAME: " + event.getName());
+
+        String imageBase64 = null;
+        if (event.getImage() != null) {
+            try {
+                byte[] bytes = event.getImage().getBytes(1, (int) event.getImage().length());
+                imageBase64 = Base64.getEncoder().encodeToString(bytes);
+            } catch (SQLException e) {
+                // handle exception
+            }
+        }
+
+        model.addAttribute("imageBase64", imageBase64);
         model.addAttribute("event", event);
         return "edit";
     }
@@ -562,7 +576,7 @@ public String profile(Model model, HttpServletRequest request) {
     @PostMapping("/edit")
     public String edit(Model model, @RequestParam("eventId") Long eventId, @RequestParam("event-name") String eventName,
                        @RequestParam("event-championship") String eventChampionship, @RequestParam("event-sport") String eventSport,
-                       @RequestParam("event-fee") Double eventFee) {
+                       @RequestParam("event-fee") Double eventFee, @RequestParam("event-fee") Double a) {
         Event event = events.findById(eventId).orElse(null);
         assert event != null;
         event.setName(eventName);
