@@ -254,7 +254,7 @@ public class AppController {
             userMoney = userMoney - money;
             currentUser.getWallet().setMoney(userMoney);
             Double p = m - money;
-            Bet bet = new Bet(event, money, result, m, p, currentUser);
+            Bet bet = new Bet(event, truncar(money, 2), result, truncar(m, 2), truncar(p, 2), currentUser);
             betRepository.save(bet);
             return "redirect:/index";
         }
@@ -263,6 +263,11 @@ public class AppController {
             redirectAttributes.addFlashAttribute("noMoney", true);
             return "redirect:" + refer;
         }
+    }
+
+    private static double truncar(double valor, int decimales) {
+        double factor = Math.pow(10, decimales);
+        return Math.floor(valor * factor) / factor;
     }
 
     @PostMapping("/single-product/{id}/comment")
