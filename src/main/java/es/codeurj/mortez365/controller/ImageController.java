@@ -111,6 +111,7 @@ public class ImageController {
         return "redirect:/edit?id=" + id; // Reload the page
     }
 
+    // Image get for the betsadmin page
     @GetMapping("/uploadEventPicture/{id}")
     public ResponseEntity<Object> downloadEventImage(@PathVariable Long id) throws SQLException {
         Optional<Event> e = eventService.findById(id);

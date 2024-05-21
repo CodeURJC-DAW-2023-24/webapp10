@@ -84,12 +84,31 @@
 <div class="single-product mt-150 mb-150">
     <div class="container">
         <div class="row">
+                <div class="col-md-7">
+
+                <form name="edit-event" action="/edit" method="post">
+                    <div class="single-product-content">
+                        <h3 id="product-name">Nombre: <label>
+                            <input name="event-name" value="{{event.name}}">
+                        </label></h3>
+
+                        <h3>Campeonato: <input name="event-championship" value="{{event.championship}}"></h3>
+                        <p>Deporte: <input name="event-sport" value="{{event.sport}}"></p>
+                        <h4>Cuota: <input name="event-fee" value="{{event.fee}}"></h4>
+
+                        <div class="single-product-form">
+                                <input type="hidden" name="eventId" value="{{event.id}}">
+                                <input class="cart-btn" type="submit" value="Realizar cambios">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="col-md-5">
                 <div class="single-product-img">
                     <img id="product-image" src="data:image/jpeg;base64,{{imageBase64}}" alt="Event Image" onerror="this.onerror=null; this.src='/assets/img/default-profile.png'" style="margin-bottom: 20px">
                     <!-- <img id="product-image" src="{{event.image}}" alt=""> -->
                 </div>
-            </div>
                 <form action="/uploadEventPicture/{{event.id}}" method="post" enctype="multipart/form-data" class="text-center">
                     <div class="form-group">
                         <label for="product-image">Selecciona una nueva imagen para el evento:</label>
@@ -104,24 +123,7 @@
                         </div>
                     </div>
                 </form>
-            <form name="edit-event" action="/edit" method="post">
-                <div class="col-md-7">
-                <div class="single-product-content">
-                    <h3 id="product-name">Nombre: <label>
-                        <input name="event-name" value="{{event.name}}">
-                    </label></h3>
-                    <h3>Campeonato: <input name="event-championship" value="{{event.championship}}"></h3>
-                    <p>Deporte: <input name="event-sport" value="{{event.sport}}"></p>
-                    <h4>Cuota: <input name="event-fee" value="{{event.fee}}"></h4>
-                    <p></p>
-                    <div class="single-product-form">
-                            <input type="hidden" name="eventId" value="{{event.id}}">
-                            <input class="cart-btn" type="submit" value="Realizar cambios">
-                            <input type="hidden" name="_csrf" value="{{token}}"/>
-                    </div>
-                </div>
             </div>
-            </form>
         </div>
     </div>
 </div>
