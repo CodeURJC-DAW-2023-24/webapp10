@@ -11,11 +11,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletRequest;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import org.springframework.http.HttpHeaders;
+
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,6 +46,8 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 
 @Controller
@@ -513,19 +518,17 @@ public String profile(Model model, HttpServletRequest request) {
         Event event = new Event();
         //Save the image in the data base
         if(!image.isEmpty()) {
-            Path imageDirectory = Paths.get("src/main/resources/assets/img/laliga");
-            String imagePath = imageDirectory.toFile().getAbsolutePath();
+            URI location = fromCurrentRequest().build().toUri();
+            event.setImageFile(location.toString());
+            event.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+
             Random rand = new Random();
             double randomValue = 1 + (2.5 - 1) * rand.nextDouble();
-            byte[] bytes = image.getBytes();
-            Path path = Paths.get(imagePath + "//" +image.getOriginalFilename());
-            Files.write(path, bytes);
             event.setName(name);
             event.setChampionship(championship);
             event.setSport(sport);
             event.setFee(randomValue);
-            event.setDeadline(deadline);
-            event.setImageFile(("assets/img/laliga/"+image.getOriginalFilename()));
+            event.setDeadline(deadline);;
             eventService.save(event);
         }
         return "redirect:/betsadmin";
