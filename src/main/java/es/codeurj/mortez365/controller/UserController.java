@@ -79,7 +79,7 @@ public class UserController {
     user.setTelephone(telephone);
     user.setEmail(email);
     user.setUsername(username);
-    user.setPassword(passwordEncoder.encode(password));
+    user.setPassword(password);
     user.setImageFile(imageFile.getOriginalFilename());
     logger.info("archivo: " + imageFile.getOriginalFilename());
     Resource image = new ClassPathResource(user.getImageFile());

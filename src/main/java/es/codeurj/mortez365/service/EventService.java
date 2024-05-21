@@ -47,11 +47,11 @@ public class EventService {
     public void init() throws SerialException, SQLException, IOException {
 
          var v = new Date();
-         v.setMinutes(v.getMinutes() + 1);
+         v.setMinutes(v.getMinutes() + 3);
          
-        events.save(new Event("Villarreal - Tenerife", "assets/img/laliga/carletes.jpeg", "LaLiga","Fútbol", new Date(124, 7, 15, 15, 30)));
+      
 
-        events.save(new Event("Levante - Leganés", "assets/img/laliga/carletes.jpeg", "LaLiga","Fútbol", v));
+        events.save(new Event("Levante - Leganés", "assets/img/laliga/levanteleganes.jpg", "LaLiga","Fútbol", v));
         events.save(new Event("Real Madrid - Girona", "assets/img/laliga/madridgirona.jpg", "LaLiga","Fútbol", new Date(124, 7, 15, 15, 30)));
         events.save(new Event("Cádiz - Betis", "assets/img/laliga/cadizbetis.jpg", "LaLiga","Fútbol", new Date(124, 7, 15, 15, 30)));
 
