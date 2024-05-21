@@ -47,7 +47,7 @@ public class EventService {
     public void init() throws SerialException, SQLException, IOException {
 
          var v = new Date();
-         v.setMinutes(v.getMinutes() + 5);
+         v.setMinutes(v.getMinutes() + 3);
          
        
 
