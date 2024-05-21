@@ -155,7 +155,7 @@ public WebMvcConfigurer corsConfigurer() {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.csrf((csrf) -> csrf
-                .ignoringRequestMatchers("/updateValue", "/getValue", "/uploadProfilePicture")
+                .ignoringRequestMatchers("/updateValue", "/getValue", "/uploadProfilePicture", "/uploadEventPicture/*")
         );
 
         http.authenticationProvider(authenticationProvider());
@@ -187,6 +187,8 @@ public WebMvcConfigurer corsConfigurer() {
                         .requestMatchers(HttpMethod.GET, "/getValue").permitAll()
                         .requestMatchers(HttpMethod.POST, "/uploadProfilePicture").permitAll()
                         .requestMatchers(HttpMethod.GET, "/uploadProfilePicture").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/uploadEventPicture/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/uploadEventPicture/*").permitAll()
 
                   
 

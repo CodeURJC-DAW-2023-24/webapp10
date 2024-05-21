@@ -1,6 +1,8 @@
 package es.codeurj.mortez365.controller;
 
+import es.codeurj.mortez365.model.Event;
 import es.codeurj.mortez365.model.User;
+import es.codeurj.mortez365.service.EventService;
 import es.codeurj.mortez365.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.slf4j.Logger;
@@ -13,9 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -33,6 +33,9 @@ public class ImageController {
 
     @Autowired
     private UserService userSevice;
+    
+    @Autowired
+    private EventService eventService;
 
     @PostMapping("/uploadProfilePicture")
     public String uploadProfilePicture(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
@@ -63,7 +66,7 @@ public class ImageController {
         return "redirect:/profile"; // Reload the page
     }
 
-    @GetMapping("/uploadProfilePicture")
+    @GetMapping("/uploadProfilePicture/")
     public ResponseEntity<Object> downloadImage() throws SQLException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
@@ -74,6 +77,49 @@ public class ImageController {
                 return ResponseEntity.ok()
                         .header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
                         .contentLength(currentUser.get().getImage().length())
+                        .body(file);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/uploadEventPicture/{id}")
+    public String uploadEventPicture(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes,
+                                     @PathVariable Long id) {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Por favor seleccione un archivo.");
+            return "redirect:/edit?id=" + id;
+        }
+
+        try {
+            Optional<Event> e = eventService.findById(id);
+            if (e.isPresent()) {
+                URI location = fromCurrentRequest().build().toUri();
+                e.get().setImageFile(location.toString());
+                e.get().setImage(BlobProxy.generateProxy(file.getInputStream(), file.getSize()));
+                eventService.save(e.get());
+            }
+            // Success message
+            redirectAttributes.addFlashAttribute("message", "La imagen de perfil se ha subido correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Error message
+            redirectAttributes.addFlashAttribute("message", "Ocurrió un error al subir la imagen de perfil.");
+        }
+
+        return "redirect:/edit?id=" + id; // Reload the page
+    }
+
+    @GetMapping("/uploadEventPicture/{id}")
+    public ResponseEntity<Object> downloadEventImage(@PathVariable Long id) throws SQLException {
+        Optional<Event> e = eventService.findById(id);
+        if (e.isPresent()) {
+            if (e.get().getImage() != null) {
+                Resource file = new InputStreamResource(e.get().getImage().getBinaryStream());
+                return ResponseEntity.ok()
+                        .header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(e.get().getImage().length())
                         .body(file);
             }
         }
