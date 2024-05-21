@@ -46,6 +46,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -516,9 +517,14 @@ public String profile(Model model, HttpServletRequest request) {
     public String addEvent(@RequestParam String name, @RequestParam String championship, @RequestParam String sport,
                            @RequestParam MultipartFile image, @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") @RequestParam Date deadline) throws IOException {
         Event event = new Event();
+        eventService.save(event);
         //Save the image in the data base
         if(!image.isEmpty()) {
-            URI location = fromCurrentRequest().build().toUri();
+            URI location = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/uploadEventPicture/")
+                    .path(String.valueOf(event.getId()))
+                    .build()
+                    .toUri();
             event.setImageFile(location.toString());
             event.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
 
@@ -527,8 +533,10 @@ public String profile(Model model, HttpServletRequest request) {
             event.setName(name);
             event.setChampionship(championship);
             event.setSport(sport);
-            event.setFee(randomValue);
-            event.setDeadline(deadline);;
+            event.setFee(truncar(randomValue, 2));
+            event.setDeadline(deadline);
+            event.setFinished(false);
+            event.setComments(new ArrayList<>());
             eventService.save(event);
         }
         return "redirect:/betsadmin";
