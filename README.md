@@ -363,7 +363,7 @@ ___
 
 ## Updated Class Diagram
 
-![Captura de pantalla 2024-04-02 061442](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/117302316/d9c6bda0-c181-4faa-88d5-55fd5c91283b)
+![Captura de pantalla 2024-05-22 021807.png](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase3Extraordinaria/src/main/resources/assets/img/Captura%20de%20pantalla%202024-05-22%20021807.png)
 
 ___
 
