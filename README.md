@@ -165,9 +165,9 @@ ___
 
 ___
 
-## Class Diagram
+## Class Diagram (Phase 2)
 
-![esquema clases daw](https://github.com/CodeURJC-DAW-2023-24/webapp10/assets/80198176/29429ab9-38a5-4560-9308-9dd0d0d18999)
+![Captura de pantalla 2024-05-22 020402.png](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase2Extraordinaria/src/main/resources/assets/img/Captura%20de%20pantalla%202024-05-22%20020402.png)
 
 ___
 
@@ -361,7 +361,7 @@ ___
 
 ___
 
-## Updated Class Diagram
+## Updated Class Diagram (Phase 3)
 
 ![Captura de pantalla 2024-05-22 021807.png](https://github.com/CodeURJC-DAW-2023-24/webapp10/blob/Fase3Extraordinaria/src/main/resources/assets/img/Captura%20de%20pantalla%202024-05-22%20021807.png)
 
